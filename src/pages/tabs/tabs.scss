@@ -1,0 +1,11 @@
+page-tabs {
+  .tabs .tabbar {
+    background:  #231f20;
+  }
+  .tabs .tab-button{
+    border:1px ridge #231f20 ;
+  }
+  .tabs .tab-button[aria-selected=true] {
+    color: #8dc63f;
+  }
+}

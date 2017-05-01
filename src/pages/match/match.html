@@ -1,0 +1,68 @@
+<!--
+  Generated template for the Match page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content style="background-color: black">
+  <div class="main">
+    <div class="headerQ">
+      <ion-row class="questionRow">
+        <ion-col> <h2 text-center>Eρώτηση 1</h2></ion-col>
+      </ion-row>
+      <ion-row class="questionRow">
+        <ion-col class="time" width-25>
+          <p>Χρόνος</p>
+        </ion-col>
+        <ion-col width-50 class="progressBar">
+          <progress-bar [progress]="70"></progress-bar>
+        </ion-col>
+      </ion-row>
+
+
+
+    </div>
+    <div class="questions">
+      <div class="question">
+        <h2 text-uppercase>{{arenaQuestions[index]?.question}}</h2>
+      </div>
+
+      <div class="questionButtons">
+        <ion-row>
+          <ion-col text-center>
+            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[0],'wrongButton':wrongButtons[0],'rightButton':rightButtons[0]}" (click)="checkQuestion(arenaQuestions[index]?.optiona,arenaQuestions[index],0)"><p>{{arenaQuestions[index]?.optiona}}</p></button>
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <button [disabled]="buttonDisabled"  [ngClass]="{'intializeButton':initButtons[1],'wrongButton':wrongButtons[1],'rightButton':rightButtons[1]}" (click)="checkQuestion(arenaQuestions[index]?.optionb,arenaQuestions[index],1)" ><p>{{arenaQuestions[index]?.optionb}}</p></button>
+
+          </ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col text-center>
+            <button [disabled]="buttonDisabled"  [ngClass]="{'intializeButton':initButtons[2],'wrongButton':wrongButtons[2],'rightButton':rightButtons[2]}" (click)="checkQuestion(arenaQuestions[index]?.optionc,arenaQuestions[index],2)"><p>{{arenaQuestions[index]?.optionc}}</p></button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <button [disabled]="buttonDisabled"   [ngClass]="{'intializeButton':initButtons[3],'wrongButton':wrongButtons[3],'rightButton':rightButtons[3]}" (click)="checkQuestion(arenaQuestions[index]?.optiond,arenaQuestions[index],3)"><p>{{arenaQuestions[index]?.optiond}}</p></button>
+
+          </ion-col>
+        </ion-row>
+        <ion-row class="cancelButton">
+          <ion-col>
+            <button (click)="cancelButton()"><p>Άκυρο</p></button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+
+
+</div>
+</ion-content>

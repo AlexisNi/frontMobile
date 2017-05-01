@@ -1,0 +1,254 @@
+page-my-arenas {
+  .arenaRow{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    font-size: 3vw;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 0.5vw;
+
+  }
+  .myTeamsName{
+    background-color: gray;
+    box-sizing: border-box;
+    width: 7vw;
+    height: 12vw;
+    position: relative;
+  }
+  .myTeamsName:after{
+    content: '';
+    position: absolute;
+    top:0px;
+    left: 13vw;
+    background-color: gray;
+    width: 29vw;
+    height: 12vw;
+    z-index: -1;
+    transform: skew(-45deg);
+  }
+  .myTeamsName div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+
+  }
+
+
+
+
+  .myOpponentsTeamName{
+    background-color: gray;
+    box-sizing: border-box;
+    width: 7vw;
+    height: 12vw;
+    position: relative;
+
+  }
+  .myOpponentsTeamName:after{
+    content: '';
+    position: absolute;
+    top:0px;
+    right:  13vw;
+    background-color: gray;
+    width: 29vw;
+    height: 12vw;
+    z-index: -1;
+    transform: skew(-45deg);
+
+  }
+  .myOpponentsTeamName div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+
+  }
+  @media screen and (min-width: 300px) and (max-width:349px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 29.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+    h1{
+      font-size: 1.6rem;
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 29.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
+  @media screen and (min-width: 360px) and (max-width:400px) {
+  .myTeamsName:after{
+    content: '';
+    position: absolute;
+    top:0px;
+    left: 13vw;
+    background-color: gray;
+    width: 29.5vw;
+    height: 12vw;
+    z-index: -1;
+    transform: skew(-45deg);
+  }
+
+  .myOpponentsTeamName:after{
+    content: '';
+    position: absolute;
+    top:0px;
+    right:  13vw;
+    background-color: gray;
+    width: 29.5vw;
+    height: 12vw;
+    z-index: -1;
+    transform: skew(-45deg);
+
+  }
+     h1{
+      font-size: 1.6rem;
+    }
+}
+  @media screen and (min-width: 400px) and (max-width: 600px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 30vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 30vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
+
+
+  @media screen and (min-width: 600px) and (max-width: 767px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 30.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 30.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
+
+
+
+  @media screen and (min-width: 768px) and (max-width: 798px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 30.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 30.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
+  @media screen and (min-width: 799px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 30.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 31.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
+  .statusRow{
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 3vw;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+  }
+  .correctAnswerCol{
+    background-color: lightslategrey;
+    margin: 0px;
+  }
+  .statusPlayCol{
+    background-color: lightslategrey;
+    margin: 0px;
+
+  }
+
+}

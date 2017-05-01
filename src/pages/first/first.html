@@ -1,0 +1,52 @@
+<!--
+  Generated template for the First page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content >
+
+    <div class="site-container">
+      <div class="header">
+        <ion-row>
+          <ion-col class="personIcon" width-10>
+            <ion-icon name="person"></ion-icon>
+          </ion-col>
+          <ion-col class="headerTitle" width-80><h2>Kick-off Quiz</h2></ion-col>
+          <ion-col class="personIcon" width-10>
+            <ion-icon name="menu"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="nav-row"  width-50>
+            <div class="navButtons" (click)="goingTo(0)" [ngClass]="{'inactiveTab':pageView!=0}">
+              <h2 >H ομάδα μου</h2>
+            </div>
+            <div class="nav-left" [ngClass]="{'inactiveTab':pageView!=0}"></div>
+          </ion-col>
+          <ion-col class="nav-row"   width-50 >
+            <div class="navButtons"  [ngClass]="{'inactiveTab':pageView!=1}" (click)="goingTo(1)">
+              <h2  >Οι Αναμετρησεις μου</h2>
+            </div>
+            <div class="nav-left" [ngClass]="{'inactiveTab':pageView!=1}"></div>
+          </ion-col>
+
+        </ion-row>
+      </div>
+
+      <div  class="main">
+        <div [ngSwitch]="pageView">
+          <div *ngSwitchCase="1"><page-arena></page-arena></div>
+          <div *ngSwitchCase="0"><page-starting-page></page-starting-page></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+</ion-content>

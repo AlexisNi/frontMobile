@@ -1,0 +1,28 @@
+progress-bar {
+  .progress-outer {
+    width: 96%;
+    text-align: center;
+    background-color: gray;
+    border: 1px solid #231f20;
+    color: map-get($colors, questions);
+    /*map-get($colors, questions);
+    border-radius: 20px;
+    */
+    transform: skew(-40deg);
+
+  }
+
+  .progress-inner {
+    min-width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+   /* border-radius: 20px;*/
+    background-color: map-get($colors, questions);
+    font-size: 1.8vh;
+  }
+  .progress-inner p{
+    font-size: 2vh;
+  }
+
+
+}

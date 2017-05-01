@@ -1,0 +1,56 @@
+page-my-profile {
+  .headerRow {
+    background-color: #231f20;
+    min-height: 56px;
+    display: flex;
+    height: 100%;
+  }
+  .quizHeader h2{
+    font-size: 2rem;
+    color: #E6E7E8;
+  }
+  .main{
+    height: 100%;
+    width: 100%;
+  }
+  .logoRow{
+    padding: 60px;
+  }
+  .item ion-avatar img {
+    width: 116px;
+    height: 93px;
+
+    background-color: gray;
+
+  }
+  .teamName h2{
+    color: #E6E7E8;
+    font-size: 2vh;
+
+  }
+  ion-content .scroll-content {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .progressBarRow{
+    padding-top: 50px;
+  }
+  .buttonRow{
+    padding-top: 50px;
+  }
+  .playButton{
+    background-color: #8dc63f;
+    position: relative;
+    transform: skew(-40deg);
+    width: 70vw;
+
+
+  }
+  .playButton p{
+    transform: skew(40deg);
+    font-weight: bold;
+
+  }
+
+}

@@ -1,0 +1,37 @@
+game-item {
+
+.arena{
+  width: 100%;
+  padding: 1vw;
+}
+  .arenaDiv{
+    width: 100vw;
+    padding: 1vw;
+
+  }
+  .team1-col{
+    background-color: darkgrey;
+
+  }
+  .team2-col{
+    background-color: darkgrey;
+
+  }
+  .arenaBody{
+    width: 100%;
+    background-color: darkgrey;
+  }
+  .arenaRowBody{
+    padding-top: 1vw;
+  }
+  .still{
+    padding-top: 8vh;
+  }
+  .arenaBody h1,p{
+    color: yellowgreen;
+
+  }
+
+
+
+}

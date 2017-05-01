@@ -1,0 +1,22 @@
+page-arena {
+
+  img{
+    width:35%;
+    height:35%;
+  }
+  div.game{
+    border-radius: 40px;
+    margin: 10%;
+    padding: 10%;
+    background-color: transparent;
+    width: 80%;
+  }
+  ion-item{
+    border-radius: 30px !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
+    background-color: #f6f6f6;
+    opacity: 0.5;
+    font-size: 0.9em;  }
+
+}
