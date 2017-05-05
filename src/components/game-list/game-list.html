@@ -5,11 +5,5 @@
   for more info on Angular 2 Components.
 -->
 
-  <ion-row><h1>Edw oi arenes</h1></ion-row>
-  <ion-row *ngFor="let arena of arenas" >
-    <game-item [arena]="arena"></game-item>
-  </ion-row>
 
-
-
-
+<game-item *ngFor="let arena of arenas" [arena]="arena"></game-item>

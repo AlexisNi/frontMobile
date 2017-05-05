@@ -14,6 +14,7 @@ export class Auth {
 
   public token: any;
   public userId:any;
+  public username:any;
 
 
   constructor(public http: Http, public storage: Storage) {

@@ -49,6 +49,7 @@ export class StartingPage {
       headers.append('Authorization', this.authService.token);
       return this.http.post('http://localhost:3000/api/arenas', body, {headers: headers})
         .map((response: Response) => {
+          console.log(response);
           let transformedQuestions:Question[]=[];
           for(let finalQuestion of response.json().obj.questions){
             transformedQuestions.push(new Question(
@@ -61,11 +62,12 @@ export class StartingPage {
               finalQuestion._id
             ));
           }
-          const arenas = new Arenas(response.json().obj._id,
+          const arenas = new Arenas(
+            response.json().obj._id,
             response.json().obj.user._id,
             response.json().obj.invite._id,
             response.json().obj.status_accept,
-            response.json().obj.invite.lastName,
+            response.json().obj.invite.userName,
             response.json().obj.user_played,
             response.json().obj.invite_played,
             transformedQuestions);

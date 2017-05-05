@@ -53,6 +53,13 @@ export class Sockets{
 
 
   }
+    enterArena(arenaId:string,userId:string,inviteId:string){
+        this.socket.emit('enterArena',{arenaId:arenaId,userId:userId,inviteId:inviteId});
+    }
+  arenaLeave(userId){
+        this.socket.emit('leaveArena');
+        this.reqArenas(userId);
+    }
 
    getStats(){
      this.socket.removeAllListeners('loadStats');
@@ -137,7 +144,6 @@ export class Sockets{
     let observable=new Observable((observer:any)=>{
       this.socket.on('loadQuestions',(data:any)=>{
         const questions=data.obj;
-
         let transFormedQuestions:Question[]=[];
         for (let question of questions){
           transFormedQuestions.push(new Question(

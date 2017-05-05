@@ -4,47 +4,33 @@
   See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
   for more info on Angular 2 Components.
 -->
-<ion-row class="arenaRow">
 
-  <div class="arenaDiv">
-    <div class="arena">
-      <ion-row>
-
-        <ion-col width-50 class="team1-col">
-          <div>
-            <p>My team</p>
-          </div>
-        </ion-col>
-
-        <ion-col width-50 class="team2-col">
-          <div>
-            <p>Opposite team</p>
-          </div>
-        </ion-col>
-
-
-
-      </ion-row>
-
-
-
-      <ion-row class="arenaRowBody">
-        <div class="arenaBody">
-          <ion-row>
-            <ion-col width-50>
-              <h1>5</h1>
-              <h2>agains {{arena.userName}}</h2>
-              <p>Correct answers</p>
-            </ion-col>
-
-            <ion-col width-50 class="still">
-              <button ion-button (click)="playMatch(arena)">Play</button>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-row>
-
+<ion-row class="arenaRow" (click)="playMatch(arena)">
+  <ion-col width-33 class="myTeamsName">
+    <div>
+      <p>ManchesterUN</p>
     </div>
+  </ion-col>
 
-  </div>
+  <ion-col width-33 offset-34 class="myOpponentsTeamName">
+    <div>
+      <p>{{arena.userName}}</p>
+    </div>
+  </ion-col>
+</ion-row>
+
+<ion-row class="statusRow">
+  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==false" >
+    <h1>You havent play yet</h1>
+  </ion-col>
+  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==true">
+    <h1>{{correctNumber}}</h1>
+    <p>Correct answers</p>
+  </ion-col>
+  <ion-col width-50 class="statusPlayCol">
+    <h1>still playing</h1>
+    <p>Correct answers</p>
+  </ion-col>
+
+
 </ion-row>

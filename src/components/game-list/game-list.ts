@@ -18,9 +18,13 @@ export class GameListComponent implements OnInit{
   constructor(public socketService:Sockets,
               public authService:Auth) {
   }
-  ngOnInit(): void {
+  ngOnInit() {
     this.socketService.reqArenas(this.authService.userId);
     this.getArenaUpdate();
+  }
+  ionViewDidEnter(){
+        console.log('init')
+
   }
 
   getArenaUpdate(){

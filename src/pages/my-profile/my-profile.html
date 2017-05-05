@@ -19,15 +19,21 @@
     <ion-row class="progressBarRow">
       <ion-col width-50 offset-25>
         <progress-bar [progress]="50"></progress-bar>
-      <p text-center>217/400</p>
+        <p text-center>217/400</p>
       </ion-col>
     </ion-row>
 
 
 
     <ion-row class="buttonRow">
-      <ion-col  text-center>
-        <button class="playButton">
+      <ion-col>
+        <ion-item>
+          <ion-label>Find User</ion-label>
+          <ion-input #username></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col text-center>
+        <button class="playButton" (click)="findUser(username.value)">
           <p> Παίξε τώρα</p>
         </button>
       </ion-col>

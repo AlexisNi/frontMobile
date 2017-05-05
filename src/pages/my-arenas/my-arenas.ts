@@ -18,5 +18,8 @@ export class MyArenasPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyArenasPage');
   }
+  ionViewWillEnter(){
+    console.log('entered')
+  }
 
 }
