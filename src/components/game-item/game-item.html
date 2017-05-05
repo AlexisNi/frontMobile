@@ -20,16 +20,19 @@
 </ion-row>
 
 <ion-row class="statusRow">
-  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==false" >
+  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==false||arena.inviteId==userId && arena.invite_played==false">
     <h1>You havent play yet</h1>
   </ion-col>
-  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==true">
+  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==true||arena.inviteId==userId && arena.invite_played==true">
     <h1>{{correctNumber}}</h1>
     <p>Correct answers</p>
   </ion-col>
-  <ion-col width-50 class="statusPlayCol">
+  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==false  || arena.user_played==false" >
     <h1>still playing</h1>
     <p>Correct answers</p>
+  </ion-col>
+  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==true  && arena.user_played==true">
+    <button ion-button>Reward </button>
   </ion-col>
 
 
