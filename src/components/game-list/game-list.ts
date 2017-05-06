@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Arenas} from "../../models/arenas";
-import {Sockets} from "../../providers/sockets";
-import {Auth} from "../../providers/auth";
+import { Component, OnInit } from '@angular/core';
+import { Arenas } from "../../models/arenas";
+import { Sockets } from "../../providers/sockets";
+import { Auth } from "../../providers/auth";
+import { StartingPage } from "../../providers/starting-page";
 
 /*
   Generated class for the GameList component.
@@ -13,26 +14,32 @@ import {Auth} from "../../providers/auth";
   selector: 'game-list',
   templateUrl: 'game-list.html'
 })
-export class GameListComponent implements OnInit{
-  arenas:Arenas[];
-  constructor(public socketService:Sockets,
-              public authService:Auth) {
+export class GameListComponent implements OnInit {
+  arenas: Arenas[];
+  constructor(public socketService: Sockets,
+    public authService: Auth,
+    public startingPage: StartingPage) {
   }
   ngOnInit() {
+    this.startingPage.newArena
+      .subscribe(
+        (arena:Arenas)=>{
+          console.log(arena);
+          this.arenas.push(arena);
+
+        }
+        )
     this.socketService.reqArenas(this.authService.userId);
     this.getArenaUpdate();
-  }
-  ionViewDidEnter(){
-        console.log('init')
-
+    this
   }
 
-  getArenaUpdate(){
+  getArenaUpdate() {
     this.socketService.getArenas().subscribe(
-      (arena:Arenas[])=> {
+      (arena: Arenas[]) => {
 
-        this.arenas=arena;
-        console.log(arena);
+        this.arenas = arena;
+      /*  console.log(arena);*/
       });
   }
 
