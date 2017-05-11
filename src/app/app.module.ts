@@ -21,7 +21,8 @@ import {GameItemComponent} from "../components/game-item/game-item";
 import {MatchPage} from "../pages/match/match";
 import {Questions} from "../providers/questions";
 import {MyArenasPage} from "../pages/my-arenas/my-arenas";
-import {MyProfilePage} from "../pages/my-profile/my-profile";
+import { MyProfilePage } from "../pages/my-profile/my-profile";
+import { ShowRewardPage } from "../pages/show-reward/show-reward";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MyProfilePage} from "../pages/my-profile/my-profile";
     GameItemComponent,
     MatchPage,
     MyArenasPage,
-    MyProfilePage
+    MyProfilePage,
+    ShowRewardPage
 
   ],
   imports: [
@@ -59,7 +61,8 @@ import {MyProfilePage} from "../pages/my-profile/my-profile";
     GameItemComponent,
     MatchPage,
     MyArenasPage,
-    MyProfilePage
+    MyProfilePage,
+    ShowRewardPage
 
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}

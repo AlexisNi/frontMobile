@@ -32,7 +32,7 @@
     <p>Correct answers</p>
   </ion-col>
   <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==true  && arena.user_played==true">
-    <button ion-button>Reward </button>
+    <button ion-button (click)="getReward()">Reward </button>
   </ion-col>
 
 

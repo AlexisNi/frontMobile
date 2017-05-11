@@ -23,15 +23,16 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
     this.startingPage.newArena
       .subscribe(
-        (arena:Arenas)=>{
-          console.log(arena);
-          this.arenas.push(arena);
+      (arena: Arenas) => {
+        this.arenas.push(arena);
 
-        }
-        )
-    this.socketService.reqArenas(this.authService.userId);
-    this.getArenaUpdate();
-    this
+      }
+      )
+    setTimeout(() => {
+      this.socketService.reqArenas(this.authService.userId);
+      this.getArenaUpdate();
+    }, 500);
+
   }
 
   getArenaUpdate() {
@@ -39,7 +40,7 @@ export class GameListComponent implements OnInit {
       (arena: Arenas[]) => {
 
         this.arenas = arena;
-      /*  console.log(arena);*/
+        console.log(arena);
       });
   }
 

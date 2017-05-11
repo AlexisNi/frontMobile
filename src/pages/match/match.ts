@@ -11,6 +11,7 @@ import { Subscription } from "rxjs";
 import { FirstPage } from "../first/first";
 import { TabsPage } from "../tabs/tabs";
 import { ArenaCorrect } from "../../models/arenaCorrect";
+import { Arena } from "../../providers/arena";
 
 /*
   Generated class for the Match page.
@@ -27,6 +28,7 @@ export class MatchPage implements OnDestroy {
   arena: Arenas;
   index = 0;
   userId;
+  arenaInfo: ArenaCorrect;
   buttonDisabled = false;
   rightButtons = [false, false, false, false];
   wrongButtons = [false, false, false, false];
@@ -39,7 +41,8 @@ export class MatchPage implements OnDestroy {
     public navParams: NavParams,
     public socketService: Sockets,
     public authService: Auth,
-    public questionServie: Questions) { }
+    public questionServie: Questions,
+    public arenaService: Arena) { }
 
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
@@ -47,15 +50,16 @@ export class MatchPage implements OnDestroy {
     this.getQuestions();
     this.getInviteId();
     this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
+    this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
 
   }
   getQuestions() {
-    let arenaInfo: ArenaCorrect =new ArenaCorrect(this.userId,this.arena.arenaId);
+    let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
         console.log(questions);
         this.arenaQuestions = questions;
-      },err=>console.log(err.error))
+      }, err => console.log(err.error))
   }
 
 
@@ -131,12 +135,23 @@ export class MatchPage implements OnDestroy {
 
   }
 
+  statusPlayed() {
+    this.arenaService.statusPlayed(this.arenaInfo)
+      .subscribe(
+      data => console.log(data),
+      error => console.log(error));
+  }
 
 
   ngOnDestroy(): void {
+
     console.log('on Destroy all arenas');
-    this.socketService.arenaLeave(this.inviteId);
+     setTimeout(() => {
+        this.socketService.arenaLeave(this.inviteId);
+      }, 500);
+    this.statusPlayed();
   }
+
 
 
 
