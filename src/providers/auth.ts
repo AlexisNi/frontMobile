@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage'
 import 'rxjs/add/operator/map';
+import {myGlobals}  from "../globals";
 
 /*
   Generated class for the Auth provider.
@@ -22,6 +23,7 @@ export class Auth {
   }
 
   checkAuthentication(){
+  
 
     return new Promise((resolve, reject) => {
 
@@ -36,7 +38,7 @@ export class Auth {
         let headers = new Headers();
         headers.append('Authorization', this.token);
 
-        this.http.get('http://localhost:3000/api/auth/protected', {headers: headers})
+        this.http.get(myGlobals.host+'auth/protected', {headers: headers})
           .subscribe(res => {
             resolve(res);
           }, (err) => {
@@ -56,7 +58,7 @@ export class Auth {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post('http://localhost:3000/api/auth/register', JSON.stringify(details), {headers: headers})
+      this.http.post(myGlobals.host+'auth/register', JSON.stringify(details), {headers: headers})
         .subscribe(res => {
 
           let data = res.json();
@@ -79,7 +81,7 @@ export class Auth {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        this.http.post('http://localhost:3000/api/auth/login', JSON.stringify(credentials), {headers: headers})
+        this.http.post(myGlobals.host+'auth/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
 
             let data = res.json();

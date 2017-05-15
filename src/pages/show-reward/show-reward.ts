@@ -21,6 +21,7 @@ export class ShowRewardPage {
   playerResult: PlayerResult
   userId;
   arenaId;
+  showModal=false;
 
   constructor(
     public params: NavParams,
@@ -34,6 +35,12 @@ export class ShowRewardPage {
   }
 
   ionViewDidLoad() {
+     setTimeout(() => {
+       this.showModal=true;
+
+       
+          
+        }, 50);
     this.arenaId = this.params.get('arenaId');
     this.userId = this.params.get('userId');
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
@@ -60,7 +67,7 @@ export class ShowRewardPage {
         setTimeout(() => {
           this.socketService.reqArenas(this.userId);
           this.socketService.reqStats(this.userId);
-          this.dismiss()
+          this.dismiss();
         }, 300);
        
       });

@@ -7,8 +7,24 @@
 
 
 
-<ion-content padding>
-  <h1 (click)="dismiss()">Here is modal</h1>
-  <button ion-button (click)="claimAward()" >Get reward </button>
+<ion-content padding *ngIf="showModal">
+  <div *ngIf="playerResult?.draw==true">
+    <h1>Its a draw</h1>
+    <button ion-button (click)="claimAward()">Get reward </button>
+  </div>
+
+  <div *ngIf="playerResult?.winnerUserId==userId">
+    <h1>You Win ,Your award is experience {{playerResult?.winnerAward.experience}} , 
+      <br> Points : {{playerResult?.winnerAward.points}}
+    </h1>
+    <button ion-button (click)="claimAward()">Get reward </button>
+  </div>
+
+  <div *ngIf="playerResult?.loserUserId==userId">
+    <h1>You lost ,Your award is experience {{playerResult?.loserAward.experience}} , <br> Points : {{playerResult?.loserAward.points}}
+    </h1>
+    <button ion-button (click)="claimAward()">Get reward </button>
+  </div>
+
 
 </ion-content>

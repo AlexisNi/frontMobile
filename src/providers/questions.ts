@@ -5,6 +5,7 @@ import { Auth } from "./auth";
 import { Observable } from "rxjs";
 import { ArenaAnsweredQuestion } from "../models/arenaAnsweredQuestion";
 import { Question } from "../models/question";
+import {myGlobals}  from "../globals";
 
 /*
   Generated class for the Questions provider.
@@ -27,7 +28,7 @@ export class Questions {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
 
-    return this.http.post('http://localhost:3000/api/activeArena', body, { headers: headers })
+    return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
@@ -40,7 +41,7 @@ export class Questions {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
 
-    return this.http.post('http://localhost:3000/api/activeArena', body, { headers: headers })
+    return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
@@ -54,7 +55,7 @@ export class Questions {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
 
-    return this.http.post('http://localhost:3000/api/activeArena/getCorrect', body, { headers: headers })
+    return this.http.post(myGlobals.host+'activeArena/getCorrect', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
@@ -66,7 +67,7 @@ export class Questions {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
 
-    return this.http.post('http://localhost:3000/api/activeArena/getQuestions', body, { headers: headers })
+    return this.http.post(myGlobals.host+'activeArena/getQuestions', body, { headers: headers })
       .map((response: Response) => {
         console.log(response);
         let questions = response.json().questions;

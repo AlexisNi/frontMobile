@@ -6,6 +6,7 @@ import { ArenaPlayers } from "../models/arenaPlayers";
 import { ArenaCorrect } from "../models/arenaCorrect";
 import { Observable } from "rxjs/Observable";
 import { PlayerResult } from "../models/playerResult";
+import {myGlobals}  from "../globals";
 
 /*
   Generated class for the Arena provider.
@@ -27,7 +28,7 @@ export class Arena {
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', this.authService.token);
 
-      this.http.post('http://localhost:3000/api/arenas', JSON.stringify(arenaPlayers), { headers: headers })
+      this.http.post(myGlobals.host+'arenas', JSON.stringify(arenaPlayers), { headers: headers })
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -44,7 +45,7 @@ export class Arena {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
-    return this.http.post('http://localhost:3000/api/arenas/statusPlayed', body, { headers: headers })
+    return this.http.post(myGlobals.host+'arenas/statusPlayed', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
@@ -56,7 +57,7 @@ export class Arena {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
-    return this.http.post('http://localhost:3000/api/activeArena/getResults', body, { headers: headers })
+    return this.http.post(myGlobals.host+'activeArena/getResults', body, { headers: headers })
       .map((response: Response) => {
         const winner = response.json().winner;
         const loser = response.json().loser;
@@ -87,11 +88,11 @@ export class Arena {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
-    return this.http.post('http://localhost:3000/api/awards', body, { headers: headers })
+    return this.http.post(myGlobals.host+'awards', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
-      }).debounceTime(1000);
+      });
   }
 
 

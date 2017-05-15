@@ -6,6 +6,7 @@ import { ArenaPlayers } from "../models/arenaPlayers";
 import { Question } from "../models/question";
 import { Arenas } from "../models/arenas";
 import { Observable } from "rxjs";
+import {myGlobals}  from "../globals";
 
 /*
   Generated class for the StartingPage provider.
@@ -32,7 +33,7 @@ export class StartingPage {
       headers.append('Authorization', this.authService.token);
 
 
-      this.http.post('http://localhost:3000/api/users/find', JSON.stringify(userName), { headers: headers })
+      this.http.post(myGlobals.host+'users/find', JSON.stringify(userName), { headers: headers })
         .map((res: Response) => { return res.json() })
         .subscribe(res => {
           resolve(res);
@@ -48,7 +49,7 @@ export class StartingPage {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.authService.token);
-    return this.http.post('http://localhost:3000/api/arenas', body, { headers: headers })
+    return this.http.post(myGlobals.host+'arenas', body, { headers: headers })
       .map((response: Response) => {
         console.log(response);
         let transformedQuestions: Question[] = [];

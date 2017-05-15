@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {Stats} from "../models/stats";
 import {Arenas} from "../models/arenas";
 import {Question} from "../models/question";
+import {myGlobals}  from "../globals";
 
 /*
   Generated class for the Sockets provider.
@@ -16,7 +17,7 @@ import {Question} from "../models/question";
 */
 @Injectable()
 export class Sockets{
-  private socket:any=io('http://localhost:3000',{query:{userId:this.authService.userId}});
+  private socket:any=io(myGlobals.socket,{query:{userId:this.authService.userId}});
 
 
 
