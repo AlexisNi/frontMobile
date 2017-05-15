@@ -1,16 +1,19 @@
 .modal-wrapper {
 position: absolute;
-top: 164px;
+top: 129px;
 left: 56px;
 display: block;
 width: 70%;
 height: 35%;
+  border-radius: 25px;
 }
 page-show-reward{
 ion-content{
     border-radius: 25px;
-    box-shadow: 10px 10px 5px #888888;
 
+}
+.scroll-content{
+overflow-y: hidden;
 }
 }
 

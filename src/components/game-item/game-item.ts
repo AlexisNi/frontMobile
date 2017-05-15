@@ -60,13 +60,14 @@ export class GameItemComponent implements OnChanges, OnInit {
       console.log('you already played');
 
     } else {
+      this.questionService.initAnswers(true,this.arena.arenaId,this.userId).subscribe()
       this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
 
     }
 
   }
   getReward(){
-     let modal = this.modalCtrl.create(ShowRewardPage,{charNum: 0});
+     let modal = this.modalCtrl.create(ShowRewardPage,{arenaId:this.arena.arenaId,userId:this.userId});
     modal.present();
   }
 

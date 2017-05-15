@@ -32,6 +32,19 @@ export class Questions {
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
+  }
+  initAnswers(answer: boolean, arenaId: string, userId: string) {
+    const init = { arenaId: arenaId, userId: userId, question: { answer: answer } }
+     const body = JSON.stringify(init);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.authService.token);
+
+    return this.http.post('http://localhost:3000/api/activeArena', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
 
   }
 
@@ -56,10 +69,10 @@ export class Questions {
     return this.http.post('http://localhost:3000/api/activeArena/getQuestions', body, { headers: headers })
       .map((response: Response) => {
         console.log(response);
-         let questions=response.json().questions;
-         console.log(questions);
-         let transFormedQuestions:Question[]=[];
-        for (let question of questions){
+        let questions = response.json().questions;
+        console.log(questions);
+        let transFormedQuestions: Question[] = [];
+        for (let question of questions) {
           transFormedQuestions.push(new Question(
             question.question,
             question.optiona,
@@ -73,7 +86,7 @@ export class Questions {
         }
         return transFormedQuestions;
 
-      }) 
+      })
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });

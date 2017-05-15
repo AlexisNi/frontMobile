@@ -67,14 +67,14 @@ game-item {
     top: 0px;
 
   }
-  @media screen and (min-width: 300px) and (max-width:349px) {
+  @media screen and (min-device-width: 300px) and (max-device-width:349px) {
     .myTeamsName:after{
       content: '';
       position: absolute;
       top:0px;
       left: 13vw;
       background-color: gray;
-      width: 29.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -89,14 +89,14 @@ game-item {
       top:0px;
       right:  13vw;
       background-color: gray;
-      width: 29.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
 
     }
   }
-  @media screen and (min-width: 360px) and (max-width:400px) {
+  @media screen and (min-width: 350px) and (max-width:400px) {
   .myTeamsName:after{
     content: '';
     position: absolute;

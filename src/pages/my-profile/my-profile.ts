@@ -28,37 +28,37 @@ export class MyProfilePage {
 
   }
 
-  loading:any;
-  hideStartingPage=false;
-  hideArenas=true;
-  stats:Stats;
-  pageView=1;
+  loading: any;
+  hideStartingPage = false;
+  hideArenas = true;
+  stats: Stats;
+  pageView = 1;
 
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public socketService:Sockets,
-              private startPageService:StartingPage,
-              public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController,
-              public authService:Auth) {}
+    public navParams: NavParams,
+    public socketService: Sockets,
+    private startPageService: StartingPage,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
+    public authService: Auth) { }
 
 
-  loadStats(){
+  loadStats() {
     this.socketService.getStats()
-      .subscribe((stats:Stats)=>{
-        this.stats=stats;
+      .subscribe((stats: Stats) => {
+        this.stats = stats;
         console.log(stats);
 
       })
   }
 
-  findUser(userName){
+  findUser(userName) {
     this.showLoader();
-    this.startPageService.findUser({username:userName}).then((result:UserFound) => {
+    this.startPageService.findUser({ username: userName }).then((result: UserFound) => {
       this.loading.dismiss();
-      let alert=this.alertCtrl.create({
-        title:result.message,
+      let alert = this.alertCtrl.create({
+        title: result.message,
         message: result.userName,
         buttons: [
           {
@@ -69,11 +69,17 @@ export class MyProfilePage {
             }
           },
           {
-            text: 'Play with ' +userName ,
+            text: 'Play with ' + userName,
             handler: () => {
-              const arenaPlayer=new ArenaPlayers(this.authService.userId,result.inviteId);
-                this.startPageService.createArena(arenaPlayer)
-                  .subscribe(data=>{console.log(data)},err=>{console.log(err)});
+              const arenaPlayer = new ArenaPlayers(this.authService.userId, result.inviteId);
+              this.startPageService.createArena(arenaPlayer)
+                .subscribe(data => {
+                  setTimeout(() => {
+                    this.socketService.reqArenas(result.inviteId);
+                  }, 1200);
+                }, err => { console.log(err) });
+
+
 
             }
           }
@@ -83,8 +89,8 @@ export class MyProfilePage {
 
     }, (err) => {
       this.loading.dismiss();
-      let alert=this.alertCtrl.create({
-        title:err.json().title,
+      let alert = this.alertCtrl.create({
+        title: err.json().title,
         message: err.json().message,
         buttons: [
           {
@@ -94,14 +100,14 @@ export class MyProfilePage {
               console.log('Cancel clicked');
             }
           }
-          ]
+        ]
       });
       alert.present();
       console.log(err.json());
     });
 
   }
-  showLoader(){
+  showLoader() {
 
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'
@@ -110,17 +116,17 @@ export class MyProfilePage {
     this.loading.present();
 
   }
-  logout(){
+  logout() {
 
     this.authService.logout();
     this.navCtrl.setRoot(SigninPage);
 
   }
- showArenas(){
-    this.hideArenas=false;
-    this.hideStartingPage=true;
+  showArenas() {
+    this.hideArenas = false;
+    this.hideStartingPage = true;
 
- }
+  }
 
 
 }

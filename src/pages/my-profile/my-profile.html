@@ -24,14 +24,17 @@
     </ion-row>
 
 
-
-    <ion-row class="buttonRow">
-      <ion-col>
+    <ion-row>
+      <ion-col width-50 offset-25>
         <ion-item>
           <ion-label>Find User</ion-label>
           <ion-input #username></ion-input>
         </ion-item>
       </ion-col>
+    </ion-row>
+
+    <ion-row class="buttonRow">
+
       <ion-col text-center>
         <button class="playButton" (click)="findUser(username.value)">
           <p> Παίξε τώρα</p>

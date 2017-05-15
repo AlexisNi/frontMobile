@@ -105,7 +105,6 @@ export class MatchPage implements OnDestroy {
         this.nextQuestion();
       }, 1200);
     }
-
   }
   findRightQuestion(currentQuestion: Question) {
     if (currentQuestion.answer == currentQuestion.optiona) {
