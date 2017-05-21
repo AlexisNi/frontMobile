@@ -24,7 +24,7 @@ game-item {
     top:0px;
     left: 13vw;
     background-color: gray;
-    width: 29vw;
+    width: 29.5vw;
     height: 12vw;
     z-index: -1;
     transform: skew(-45deg);
@@ -67,6 +67,35 @@ game-item {
     top: 0px;
 
   }
+    @media screen and  (max-device-width:299px) {
+    .myTeamsName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      left: 13vw;
+      background-color: gray;
+      width: 31.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+    h1{
+      font-size: 1.6rem;
+    }
+
+    .myOpponentsTeamName:after{
+      content: '';
+      position: absolute;
+      top:0px;
+      right:  13vw;
+      background-color: gray;
+      width: 31.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+
+    }
+  }
   @media screen and (min-device-width: 300px) and (max-device-width:349px) {
     .myTeamsName:after{
       content: '';
@@ -103,7 +132,7 @@ game-item {
     top:0px;
     left: 13vw;
     background-color: gray;
-    width: 29.5vw;
+    width: 31.5vw;
     height: 12vw;
     z-index: -1;
     transform: skew(-45deg);
@@ -115,7 +144,7 @@ game-item {
     top:0px;
     right:  13vw;
     background-color: gray;
-    width: 29.5vw;
+    width: 31.5vw;
     height: 12vw;
     z-index: -1;
     transform: skew(-45deg);
@@ -132,7 +161,7 @@ game-item {
       top:0px;
       left: 13vw;
       background-color: gray;
-      width: 30vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -144,7 +173,7 @@ game-item {
       top:0px;
       right:  13vw;
       background-color: gray;
-      width: 30vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -160,7 +189,7 @@ game-item {
       top:0px;
       left: 13vw;
       background-color: gray;
-      width: 30.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -172,7 +201,7 @@ game-item {
       top:0px;
       right:  13vw;
       background-color: gray;
-      width: 30.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -189,7 +218,7 @@ game-item {
       top:0px;
       left: 13vw;
       background-color: gray;
-      width: 30.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -201,7 +230,7 @@ game-item {
       top:0px;
       right:  13vw;
       background-color: gray;
-      width: 30.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
@@ -215,7 +244,7 @@ game-item {
       top:0px;
       left: 13vw;
       background-color: gray;
-      width: 30.5vw;
+      width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);

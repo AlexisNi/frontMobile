@@ -13,14 +13,14 @@
     <button ion-button (click)="claimAward()">Get reward </button>
   </div>
 
-  <div *ngIf="playerResult?.winnerUserId==userId">
+  <div *ngIf="playerResult?.winnerUserId==userId && playerResult?.draw==false">
     <h1>You Win ,Your award is experience {{playerResult?.winnerAward.experience}} , 
       <br> Points : {{playerResult?.winnerAward.points}}
     </h1>
     <button ion-button (click)="claimAward()">Get reward </button>
   </div>
 
-  <div *ngIf="playerResult?.loserUserId==userId">
+  <div *ngIf="playerResult?.loserUserId==userId && playerResult?.draw==false">
     <h1>You lost ,Your award is experience {{playerResult?.loserAward.experience}} , <br> Points : {{playerResult?.loserAward.points}}
     </h1>
     <button ion-button (click)="claimAward()">Get reward </button>

@@ -4,10 +4,16 @@
   See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
   for more info on Angular 2 Components.
 -->
+<div class="progress">
+  <div class="progress-outer" text-center>
+     <p class="level">{{level}}</p>
+    <div class="progress-inner" [style.width]="progress + '%'">
+      {{progress}}
+    </div>
 
-<div class="progress-outer" text-center>
-  <div class="progress-inner" [style.width]="progress + '%'">
-    {{progress}}
+
   </div>
+
+ 
 
 </div>

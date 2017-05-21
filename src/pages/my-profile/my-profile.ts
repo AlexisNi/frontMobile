@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { SigninPage } from "../signin/signin";
 import { ArenaPlayers } from "../../models/arenaPlayers";
@@ -19,6 +19,10 @@ import { Auth } from "../../providers/auth";
   templateUrl: 'my-profile.html'
 })
 export class MyProfilePage {
+  public experienceNextLevel = 0;
+  public currentExp = 0;
+  public percentage=0;
+  public level=1;
 
 
   ngOnInit(): void {
@@ -41,16 +45,23 @@ export class MyProfilePage {
     private startPageService: StartingPage,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public authService: Auth) { }
+    public authService: Auth,
+    public zone: NgZone) { }
 
 
   loadStats() {
     this.socketService.getStats()
       .subscribe((stats: Stats) => {
-        this.stats = stats;
-        console.log(stats);
-
+        this.zone.run(() => this.setStats(stats))
       })
+  }
+  setStats(stats) {
+    console.log(stats);
+    console.log(stats.level)
+    this.level= stats.level;
+    this.currentExp = stats.currentExp;
+    this.experienceNextLevel = 300 * stats.level;
+    this.percentage=(this.currentExp/this.experienceNextLevel)*100;
   }
 
   findUser(userName) {

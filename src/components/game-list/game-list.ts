@@ -3,6 +3,7 @@ import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
 import { Auth } from "../../providers/auth";
 import { StartingPage } from "../../providers/starting-page";
+import { LoadingController, AlertController } from "ionic-angular";
 
 /*
   Generated class for the GameList component.
@@ -16,9 +17,14 @@ import { StartingPage } from "../../providers/starting-page";
 })
 export class GameListComponent implements OnInit {
   arenas: Arenas[];
-  constructor(public socketService: Sockets,
+  loading: any;
+
+  constructor(
+    public socketService: Sockets,
     public authService: Auth,
-    public startingPage: StartingPage) {
+    public startingPage: StartingPage,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController) {
   }
   ngOnInit() {
     this.startingPage.newArena
@@ -29,9 +35,10 @@ export class GameListComponent implements OnInit {
       }
       )
     setTimeout(() => {
+      this.showLoader();
       this.socketService.reqArenas(this.authService.userId);
       this.getArenaUpdate();
-    }, 500);
+    }, 1000);
 
   }
 
@@ -41,7 +48,31 @@ export class GameListComponent implements OnInit {
 
         this.arenas = arena;
         console.log(arena);
+        this.loading.dismiss();
+
+      }, error => {
+        this.loading.dismiss();
+        console.log(error);
+        this.presentAlert(error);
       });
+  }
+
+  showLoader() {
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+
+  }
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }

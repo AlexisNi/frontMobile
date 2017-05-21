@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChange, OnInit } from '@angular/core';
 import { Arenas } from "../../models/arenas";
-import { NavController, NavParams, App, ModalController } from "ionic-angular";
+import { NavController, NavParams, App, ModalController, AlertController } from "ionic-angular";
 import { MatchPage } from "../../pages/match/match";
 import { Auth } from "../../providers/auth";
 import { Questions } from "../../providers/questions";
@@ -28,7 +28,15 @@ export class GameItemComponent implements OnChanges, OnInit {
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
     setTimeout(() => {
       if (this.arena.user_played == true || this.arena.invite_played == true) {
-        this.questionService.getCorrectNumber(this.arenaInfo).subscribe(data => this.correctNumber = data.correct);
+        this.questionService.getCorrectNumber(this.arenaInfo)
+        .subscribe(data =>
+        {
+           this.correctNumber = data.correct
+          },error=>{
+            console.log(error)
+            this.presentAlert(error);
+
+          });
       }
     }, 50);
 
@@ -51,7 +59,8 @@ export class GameItemComponent implements OnChanges, OnInit {
     public appCtrl: App,
     public authService: Auth,
     public questionService: Questions,
-    public modalCtrl: ModalController ) {
+    public modalCtrl: ModalController,
+    private alertCtrl: AlertController) {
 
 
   }
@@ -60,15 +69,23 @@ export class GameItemComponent implements OnChanges, OnInit {
       console.log('you already played');
 
     } else {
-      this.questionService.initAnswers(true,this.arena.arenaId,this.userId).subscribe()
+      this.questionService.initAnswers(true, this.arena.arenaId, this.userId).subscribe()
       this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
 
     }
 
   }
-  getReward(){
-     let modal = this.modalCtrl.create(ShowRewardPage,{arenaId:this.arena.arenaId,userId:this.userId});
+  getReward() {
+    let modal = this.modalCtrl.create(ShowRewardPage, { arenaId: this.arena.arenaId, userId: this.userId });
     modal.present();
   }
 
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
 }

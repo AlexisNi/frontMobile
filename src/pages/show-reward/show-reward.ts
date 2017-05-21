@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { Arena } from "../../providers/arena";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { PlayerResult } from "../../models/playerResult";
@@ -21,13 +21,14 @@ export class ShowRewardPage {
   playerResult: PlayerResult
   userId;
   arenaId;
-  showModal=false;
+  showModal = false;
 
   constructor(
     public params: NavParams,
     public viewCtrl: ViewController,
     public arenaService: Arena,
-    public socketService:Sockets
+    public socketService: Sockets,
+    private alertCtrl: AlertController
   ) {
 
     /*    this.arenInfo.arenaId = this.params.get('arenaId');
@@ -35,12 +36,12 @@ export class ShowRewardPage {
   }
 
   ionViewDidLoad() {
-     setTimeout(() => {
-       this.showModal=true;
+    setTimeout(() => {
+      this.showModal = true;
 
-       
-          
-        }, 50);
+
+
+    }, 50);
     this.arenaId = this.params.get('arenaId');
     this.userId = this.params.get('userId');
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
@@ -52,25 +53,40 @@ export class ShowRewardPage {
         console.log(playerResult);
 
       }, error => {
+
         console.log(error)
       });
   }
 
   dismiss() {
+    console.log(this.viewCtrl);
     this.viewCtrl.dismiss();
   }
   claimAward() {
+    console.log('claim');
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
     this.arenaService.getAward(this.arenInfo)
       .subscribe((message) => {
         console.log(message)
         setTimeout(() => {
+          console.log('inside')
           this.socketService.reqArenas(this.userId);
           this.socketService.reqStats(this.userId);
           this.dismiss();
-        }, 300);
-       
+        }, 1000);
+
+      }, error => {
+        this.dismiss();
+        this.presentAlert(error);
       });
 
+  }
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 }

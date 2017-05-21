@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 
 /*
   Generated class for the ProgressBar component.
@@ -10,11 +10,20 @@ import {Component, Input} from '@angular/core';
   selector: 'progress-bar',
   templateUrl: 'progress-bar.html'
 })
-export class ProgressBarComponent {
+export class ProgressBarComponent implements OnChanges {
 
   @Input('progress') progress;
+  @Input() level = 1;
   text: string;
 
-  constructor() {}
+  constructor() { }
+
+  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    if (changes['level']) {
+      this.level = changes['level'].currentValue;
+      
+    }
+   
+  }
 
 }

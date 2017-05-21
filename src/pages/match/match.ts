@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Question } from "../../models/question";
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
@@ -12,6 +12,7 @@ import { FirstPage } from "../first/first";
 import { TabsPage } from "../tabs/tabs";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { Arena } from "../../providers/arena";
+import { Observable } from "rxjs/Observable";
 
 /*
   Generated class for the Match page.
@@ -35,6 +36,8 @@ export class MatchPage implements OnDestroy {
   initButtons = [true, true, true, true];
   subscription: Subscription;
   inviteId;
+  loading: any;
+  time = 100;
 
 
   constructor(public navCtrl: NavController,
@@ -42,7 +45,8 @@ export class MatchPage implements OnDestroy {
     public socketService: Sockets,
     public authService: Auth,
     public questionServie: Questions,
-    public arenaService: Arena) { }
+    public arenaService: Arena,
+    public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
@@ -54,16 +58,24 @@ export class MatchPage implements OnDestroy {
 
   }
   getQuestions() {
+    this.showLoader();
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
         console.log(questions);
         this.arenaQuestions = questions;
-      }, err => console.log(err.error))
+        this.loading.dismiss();
+        this.timer();
+      }, err => {
+        this.loading.dismiss();
+        console.log(err.error);
+
+      })
   }
 
 
   nextQuestion() {
+    this.time = 100;
     this.index++;
     for (let i in this.rightButtons) {
       this.rightButtons[i] = false;
@@ -85,8 +97,10 @@ export class MatchPage implements OnDestroy {
       this.questionServie.saveAnsweredQuestion(questionAns)
         .subscribe(
         data => {
+          this.time = 7000;
           console.log(data);
           setTimeout(() => {
+
             this.nextQuestion();
           }, 1200);
         },
@@ -145,10 +159,33 @@ export class MatchPage implements OnDestroy {
   ngOnDestroy(): void {
 
     console.log('on Destroy all arenas');
-     setTimeout(() => {
-        this.socketService.arenaLeave(this.inviteId);
-      }, 500);
+    this.subscription.unsubscribe();
+    setTimeout(() => {
+      this.socketService.arenaLeave(this.inviteId);
+    }, 1000);
     this.statusPlayed();
+  }
+
+  showLoader() {
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait questions loading...'
+    });
+
+    this.loading.present();
+
+  }
+
+  timer() {
+
+    let timer = Observable.timer(100, 1000);
+    this.subscription = timer.subscribe(t => {
+      this.time = this.time - 3;
+      if (this.time == 0) {
+        this.subscription.unsubscribe();
+        console.log('Player Lost')
+      }
+    });
   }
 
 

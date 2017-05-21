@@ -18,8 +18,8 @@
 
     <ion-row class="progressBarRow">
       <ion-col width-50 offset-25>
-        <progress-bar [progress]="50"></progress-bar>
-        <p text-center>217/400</p>
+        <progress-bar [progress]="percentage" [level]="level"></progress-bar>
+        <p text-center>{{currentExp}}/{{experienceNextLevel}}</p>
       </ion-col>
     </ion-row>
 

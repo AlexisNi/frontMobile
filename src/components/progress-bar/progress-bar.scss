@@ -9,11 +9,12 @@ progress-bar {
     border-radius: 20px;
     */
     transform: skew(-40deg);
+    position: relative;
 
   }
 
   .progress-inner {
-    min-width: 15%;
+    min-width: 1%;
     white-space: nowrap;
     overflow: hidden;
    /* border-radius: 20px;*/
@@ -22,6 +23,16 @@ progress-bar {
   }
   .progress-inner p{
     font-size: 2vh;
+  }
+  .level{
+    position: absolute;
+    top: -80%;
+    right: 48%;
+    transform: skew(40deg);
+    color:black;
+
+
+
   }
 
 
