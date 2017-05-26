@@ -86,8 +86,10 @@ export class Auth {
 
             let data = res.json();
             this.token = data.token;
+            this.userId=data.user._id;
             this.storage.set('token', data.token);
             this.storage.set('userId',data.user._id);
+
 
             resolve(data);
 
@@ -103,6 +105,8 @@ export class Auth {
 
   logout(){
     this.storage.set('token', '');
+    this.storage.clear();
+    
   }
 
 }

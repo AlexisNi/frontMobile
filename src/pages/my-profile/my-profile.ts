@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, App } from 'ionic-angular';
 import { SigninPage } from "../signin/signin";
 import { ArenaPlayers } from "../../models/arenaPlayers";
 import { UserFound } from "../starting-page/userFound";
@@ -21,8 +21,8 @@ import { Auth } from "../../providers/auth";
 export class MyProfilePage {
   public experienceNextLevel = 0;
   public currentExp = 0;
-  public percentage=0;
-  public level=1;
+  public percentage = 0;
+  public level = 1;
 
 
   ngOnInit(): void {
@@ -46,7 +46,8 @@ export class MyProfilePage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authService: Auth,
-    public zone: NgZone) { }
+    public zone: NgZone,
+    public appCtrl: App) { }
 
 
   loadStats() {
@@ -58,10 +59,10 @@ export class MyProfilePage {
   setStats(stats) {
     console.log(stats);
     console.log(stats.level)
-    this.level= stats.level;
+    this.level = stats.level;
     this.currentExp = stats.currentExp;
     this.experienceNextLevel = 300 * stats.level;
-    this.percentage=(this.currentExp/this.experienceNextLevel)*100;
+    this.percentage = (this.currentExp / this.experienceNextLevel) * 100;
   }
 
   findUser(userName) {
@@ -88,7 +89,7 @@ export class MyProfilePage {
                   setTimeout(() => {
                     this.socketService.reqArenas(result.inviteId);
                   }, 1200);
-                }, err => { console.log(err) });
+                }, err => { this.presentAlert(err.message); console.log(err) });
 
 
 
@@ -128,9 +129,11 @@ export class MyProfilePage {
 
   }
   logout() {
-
     this.authService.logout();
-    this.navCtrl.setRoot(SigninPage);
+    setTimeout(() => {
+      this.appCtrl.getRootNav().push(SigninPage);
+    }, 1000);
+
 
   }
   showArenas() {
@@ -138,6 +141,16 @@ export class MyProfilePage {
     this.hideStartingPage = true;
 
   }
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+
 
 
 }

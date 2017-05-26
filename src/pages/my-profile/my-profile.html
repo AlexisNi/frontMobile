@@ -16,7 +16,7 @@
 <ion-content>
   <div class="main">
 
-    <ion-row class="progressBarRow">
+    <ion-row class="progressBarRow" (click)="logout()">
       <ion-col width-50 offset-25>
         <progress-bar [progress]="percentage" [level]="level"></progress-bar>
         <p text-center>{{currentExp}}/{{experienceNextLevel}}</p>

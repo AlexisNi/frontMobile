@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import * as io from  "socket.io-client";
-import {Auth} from "./auth";
-import {Observable} from "rxjs";
-import {Stats} from "../models/stats";
-import {Arenas} from "../models/arenas";
-import {Question} from "../models/question";
-import {myGlobals}  from "../globals";
+import * as io from "socket.io-client";
+import { Auth } from "./auth";
+import { Observable } from "rxjs";
+import { Stats } from "../models/stats";
+import { Arenas } from "../models/arenas";
+import { Question } from "../models/question";
+import { myGlobals } from "../globals";
 
 /*
   Generated class for the Sockets provider.
@@ -16,92 +16,101 @@ import {myGlobals}  from "../globals";
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Sockets{
-  private socket:any=io(myGlobals.socket,{query:{userId:this.authService.userId}});
+export class Sockets {
 
+  private socket: any; /*= io(myGlobals.socket, { query: { userId: this.authService.userId } });*/
+/*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
+*/
 
 
   constructor(public http: Http,
-              private authService:Auth) {
-
-
-    }
-
-   connect(){
-    let socket = this.socket;
-    const token=this.authService.token;
-     socket.on('connect',()=>{
-
-/*
-       socket.removeAllListeners('authenticated');
-*/
-       socket.emit('authentication', {token:token});
-       socket.on('authenticated', function() {
-
-       });
-       socket.on('unauthorized', function(err){
-         console.log("There was an error with the authentication:", err.message);
-
-       });
-     });
-   }
-
-   //////////////////////req-get stats///////////////////////
-
-  reqStats(userId){
-
-    this.socket.emit('getStats',{userId:userId});
+    private authService: Auth) {
 
 
   }
-    enterArena(arenaId:string,userId:string,inviteId:string){
-        this.socket.emit('enterArena',{arenaId:arenaId,userId:userId,inviteId:inviteId});
-    }
-  arenaLeave(userId){
-        this.socket.emit('leaveArena');
-        this.reqArenas(userId);
-    }
 
-   getStats(){
-     this.socket.removeAllListeners('loadStats');
-     let obsevable=new Observable((observer:any)=>{
-       this.socket.on('loadStats',(data:any)=>{
-         const stats=data.obj;
-         let  transFormedStats:Stats;
-         transFormedStats=new Stats(stats.level,stats.currentExp,stats.wins,stats.loses);
-         observer.next(transFormedStats);
-       });
-       return()=>{
-         this.socket.disconnect();
-       }
-     });
-     return obsevable;
+  connect() {
 
-   }
+   /* let socket = this.socket;
+    const token = this.authService.token;*/
+    console.log(this.authService.userId)
+    this.socket = io(myGlobals.socket, { query: { userId: this.authService.userId } });
+    this.socket.on('connect', () => {
+      console.log('connected');
+
+
+      /*
+             socket.removeAllListeners('authenticated');
+      */
+      /*   socket.emit('authentication', {token:token});
+         socket.on('authenticated', function() {
+  
+         });
+         socket.on('unauthorized', function(err){
+           console.log("There was an error with the authentication:", err.message);
+  
+         });*/
+    });
+  }
+
+  //////////////////////req-get stats///////////////////////
+
+  reqStats(userId) {
+
+    this.socket.emit('getStats', { userId: userId });
+
+
+  }
+  enterArena(arenaId: string, userId: string, inviteId: string) {
+    this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
+  }
+  arenaLeave(userId) {
+    this.socket.emit('leaveArena');
+    this.reqArenas(userId);
+  }
+
+  getStats() {
+    this.socket.removeAllListeners('loadStats');
+    let obsevable = new Observable((observer: any) => {
+      this.socket.on('loadStats', (data: any) => {
+        const stats = data.obj;
+        let transFormedStats: Stats;
+        transFormedStats = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses);
+        observer.next(transFormedStats);
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
+    return obsevable;
+
+  }
 
   //////////////////////req-get stats///////////////////////
 
 
-////////////req-get arenas////////////////////////////
+  ////////////req-get arenas////////////////////////////
 
 
-  reqArenas(userId){
-    this.socket.emit('getArenas',{userId:userId});
+  reqArenas(userId) {
+    console.log('here is user id')
+    console.log(userId);
+    this.socket.emit('getArenas', { userId: userId });
 
   }
 
-  getArenas(){
+  getArenas() {
     this.socket.removeAllListeners('loadArenas');
-    let observable=new Observable((observer:any)=>{
-      this.socket.on('loadArenas',(data:any)=>{
-        const arenas=data.obj;
+    let observable = new Observable((observer: any) => {
+      this.socket.on('loadArenas', (data: any) => {
+        const arenas = data.obj;
 
         let transformedArenas: Arenas[] = [];
         for (let arena of arenas) {
 
           transformedArenas.push(new Arenas(
             arena._id,
-            arena.user ,
+            arena.user,
             arena.invite._id,
             arena.status_accept,
             arena.user.userName || arena.invite.userName,
@@ -110,12 +119,12 @@ export class Sockets{
 
           ));
         }
-        const UserArenas=data.objUser;
-        for (let userArena of UserArenas){
+        const UserArenas = data.objUser;
+        for (let userArena of UserArenas) {
 
           transformedArenas.push(new Arenas(
             userArena._id,
-            userArena.user._id ,
+            userArena.user._id,
             userArena.invite,
             userArena.status_accept,
             userArena.user.userName,
@@ -125,28 +134,29 @@ export class Sockets{
         }
         observer.next(transformedArenas);
       });
-      return()=>{
+      return () => {
         this.socket.disconnect();
       }
     })
     return observable;
   }
 
-////////////req-get arenas////////////////////////////
+  ////////////req-get arenas////////////////////////////
 
 
-//////////start-req-get Questions////////////////////////////
+  //////////start-req-get Questions////////////////////////////
 
-  reqQuestions(userId,arenaId){
-    this.socket.emit('getQuestions',{userId:userId,arenaId:arenaId})
+  reqQuestions(userId, arenaId) {
+    this.socket.emit('getQuestions', { userId: userId, arenaId: arenaId })
   }
-  getQuestions(){
+  getQuestions() {
+
     this.socket.removeAllListeners('getQuestions');
-    let observable=new Observable((observer:any)=>{
-      this.socket.on('loadQuestions',(data:any)=>{
-        const questions=data.obj;
-        let transFormedQuestions:Question[]=[];
-        for (let question of questions){
+    let observable = new Observable((observer: any) => {
+      this.socket.on('loadQuestions', (data: any) => {
+        const questions = data.obj;
+        let transFormedQuestions: Question[] = [];
+        for (let question of questions) {
           transFormedQuestions.push(new Question(
             question.question,
             question.optiona,
@@ -160,7 +170,7 @@ export class Sockets{
         }
         observer.next(transFormedQuestions)
       });
-      return()=>{
+      return () => {
         this.socket.disconnect();
       }
 
@@ -174,5 +184,5 @@ export class Sockets{
 
 
 
-////////////end-req-get Questions////////////////////////////
+  ////////////end-req-get Questions////////////////////////////
 }

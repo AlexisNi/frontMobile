@@ -65,11 +65,11 @@ export class GameItemComponent implements OnChanges, OnInit {
 
   }
   playMatch(arena: Arenas) {
-    if (arena.user_played == true && arena.userId == this.userId) {
+    if (arena.user_played == true && arena.userId == this.userId || arena.invite_played==true && arena.inviteId == this.userId) {
       console.log('you already played');
 
     } else {
-      this.questionService.initAnswers(true, this.arena.arenaId, this.userId).subscribe()
+     
       this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
 
     }

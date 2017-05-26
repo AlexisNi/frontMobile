@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Sockets} from "../../providers/sockets";
 import {Auth} from "../../providers/auth";
 import {Arenas} from "../../models/arenas";
 
@@ -21,11 +20,9 @@ export class FirstPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public socketService:Sockets,
     public authService:Auth) {}
 
   ionViewDidLoad() {
-    this.socketService.connect();
 
   }
 

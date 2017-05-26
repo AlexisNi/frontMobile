@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
 import { Question } from "../../models/question";
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
@@ -38,6 +38,7 @@ export class MatchPage implements OnDestroy {
   inviteId;
   loading: any;
   time = 100;
+  realTime = 30;
 
 
   constructor(public navCtrl: NavController,
@@ -46,7 +47,8 @@ export class MatchPage implements OnDestroy {
     public authService: Auth,
     public questionServie: Questions,
     public arenaService: Arena,
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController,
+    public appCtrl: App) { }
 
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
@@ -62,11 +64,13 @@ export class MatchPage implements OnDestroy {
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
+        this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
         console.log(questions);
         this.arenaQuestions = questions;
         this.loading.dismiss();
         this.timer();
       }, err => {
+        this.appCtrl.getRootNav().push(TabsPage);
         this.loading.dismiss();
         console.log(err.error);
 
@@ -76,7 +80,12 @@ export class MatchPage implements OnDestroy {
 
   nextQuestion() {
     this.time = 100;
+    this.realTime = 30;
     this.index++;
+    if (this.index > 9) {
+      this.playerLost();
+
+    }
     for (let i in this.rightButtons) {
       this.rightButtons[i] = false;
       this.wrongButtons[i] = false;
@@ -97,9 +106,12 @@ export class MatchPage implements OnDestroy {
       this.questionServie.saveAnsweredQuestion(questionAns)
         .subscribe(
         data => {
-          this.time = 7000;
+          this.time = 100;
           console.log(data);
           setTimeout(() => {
+            if (this.index > 9) {
+              this.playerLost();
+            }
 
             this.nextQuestion();
           }, 1200);
@@ -116,7 +128,7 @@ export class MatchPage implements OnDestroy {
       this.initButtons[buttonNumber] = false;
 
       setTimeout(() => {
-        this.nextQuestion();
+        this.playerLost();
       }, 1200);
     }
   }
@@ -180,12 +192,24 @@ export class MatchPage implements OnDestroy {
 
     let timer = Observable.timer(100, 1000);
     this.subscription = timer.subscribe(t => {
-      this.time = this.time - 3;
-      if (this.time == 0) {
+      this.time = this.time - 3.3;
+      this.realTime = this.realTime - 1;
+
+      if (this.realTime <= 0) {
+        this.realTime = 0;
+      }
+
+      if (this.time <= 0) {
+        this.time = 0;
+        this.playerLost();
         this.subscription.unsubscribe();
         console.log('Player Lost')
       }
     });
+  }
+  playerLost() {
+    this.navCtrl.setRoot(TabsPage);
+
   }
 
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams, LoadingController} from 'ionic-angular';
-import {Sockets} from "../../providers/sockets";
 import {Arena} from "../../providers/arena";
 
 /*
@@ -19,7 +18,6 @@ export class ArenaPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public socketService:Sockets,
               private arenaServcie:Arena,
               public loadingCtrl: LoadingController,) {}
 

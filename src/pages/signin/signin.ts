@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import { NavController,LoadingController} from 'ionic-angular';
-import {Auth} from "../../providers/auth";
-import {SignupPage} from "../signup/signup";
-import {ArenaPage} from "../arena/arena";
-import {HomePage} from "../home/home";
-import {StartingPagePage} from "../starting-page/starting-page";
-import {FirstPage} from "../first/first";
-import {MatchPage} from "../match/match";
-import {TabsPage} from "../tabs/tabs";
+import { Component, OnInit } from '@angular/core';
+import { NavController, LoadingController } from 'ionic-angular';
+import { Auth } from "../../providers/auth";
+import { SignupPage } from "../signup/signup";
+import { ArenaPage } from "../arena/arena";
+import { HomePage } from "../home/home";
+import { StartingPagePage } from "../starting-page/starting-page";
+import { FirstPage } from "../first/first";
+import { MatchPage } from "../match/match";
+import { TabsPage } from "../tabs/tabs";
 
 
 
@@ -32,9 +32,9 @@ export class SigninPage implements OnInit {
   loading: any;
 
   constructor(public navCtrl: NavController,
-              public authService: Auth,
-              public loadingCtrl: LoadingController,
-              ) {
+    public authService: Auth,
+    public loadingCtrl: LoadingController,
+  ) {
 
   }
 
@@ -54,7 +54,7 @@ export class SigninPage implements OnInit {
 
   }
 
-  login(){
+  login() {
 
     this.showLoader();
 
@@ -63,10 +63,13 @@ export class SigninPage implements OnInit {
       password: this.password
     };
 
-     this.authService.login(credentials).then((result) => {
+    this.authService.login(credentials).then((result) => {
       this.loading.dismiss();
       console.log(result);
-      this.navCtrl.setRoot(TabsPage);
+      setTimeout(() => {
+        this.navCtrl.setRoot(TabsPage);
+      }, 10);
+
     }, (err) => {
       this.loading.dismiss();
       console.log(err);
@@ -74,11 +77,11 @@ export class SigninPage implements OnInit {
 
   }
 
-  launchSignup(){
+  launchSignup() {
     this.navCtrl.push(SignupPage);
   }
 
-  showLoader(){
+  showLoader() {
 
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'

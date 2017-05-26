@@ -11,14 +11,14 @@
   <div class="main">
     <div class="headerQ">
       <ion-row class="questionRow">
-        <ion-col> <h2 text-center>Eρώτηση 1</h2></ion-col>
+        <ion-col> <h2 text-center>Eρώτηση {{index+1}}</h2></ion-col>
       </ion-row>
       <ion-row class="questionRow">
         <ion-col class="time" width-25>
           <p>Χρόνος</p>
         </ion-col>
         <ion-col width-50 class="progressBar">
-          <progress-bar [progress]="time"></progress-bar>
+          <progress-bar [progress]="time" [level]="realTime"></progress-bar>
         </ion-col>
       </ion-row>
 
