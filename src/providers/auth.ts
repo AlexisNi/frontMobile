@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { Storage } from '@ionic/storage'
+import { Http, Headers,Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {myGlobals}  from "../globals";
+import { myGlobals } from "../globals";
+import { Storage } from '@ionic/storage';
+import { Observable } from "rxjs";
 
 /*
   Generated class for the Auth provider.
@@ -14,21 +15,21 @@ import {myGlobals}  from "../globals";
 export class Auth {
 
   public token: any;
-  public userId:any;
-  public username:any;
+  public userId: any;
+  public username: any;
 
 
   constructor(public http: Http, public storage: Storage) {
 
   }
 
-  checkAuthentication(){
-  
+  checkAuthentication() {
+
 
     return new Promise((resolve, reject) => {
 
       this.storage.get('userId').then((val) => {
-        this.userId=val;
+        this.userId = val;
 
       });
       this.storage.get('token').then((value) => {
@@ -38,7 +39,7 @@ export class Auth {
         let headers = new Headers();
         headers.append('Authorization', this.token);
 
-        this.http.get(myGlobals.host+'auth/protected', {headers: headers})
+        this.http.get(myGlobals.host + 'auth/protected', { headers: headers })
           .subscribe(res => {
             resolve(res);
           }, (err) => {
@@ -50,21 +51,37 @@ export class Auth {
     });
 
   }
+  firebaseAuth(token) {
+    const body = JSON.stringify(token);
 
-  createAccount(details){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post(myGlobals.host+ 'firebase',body,{headers:headers})
+    .map((response: Response) => response.json())
+    .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+    
+
+  
+
+  }
+
+  createAccount(details) {
 
     return new Promise((resolve, reject) => {
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post(myGlobals.host+'auth/register', JSON.stringify(details), {headers: headers})
+      this.http.post(myGlobals.host + 'auth/register', JSON.stringify(details), { headers: headers })
         .subscribe(res => {
 
           let data = res.json();
           this.token = data.token;
           this.storage.set('token', data.token);
-          this.storage.set('userId',data.user._id);
+          this.storage.set('userId', data.user._id);
 
         }, (err) => {
           reject(err);
@@ -74,39 +91,39 @@ export class Auth {
 
   }
 
-  login(credentials){
+  login(credentials) {
 
-         return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
 
-        this.http.post(myGlobals.host+'auth/login', JSON.stringify(credentials), {headers: headers})
-          .subscribe(res => {
+      this.http.post(myGlobals.host + 'auth/login', JSON.stringify(credentials), { headers: headers })
+        .subscribe(res => {
 
-            let data = res.json();
-            this.token = data.token;
-            this.userId=data.user._id;
-            this.storage.set('token', data.token);
-            this.storage.set('userId',data.user._id);
+          let data = res.json();
+          this.token = data.token;
+          this.userId = data.user._id;
+          this.storage.set('token', data.token);
+          this.storage.set('userId', data.user._id);
 
 
-            resolve(data);
+          resolve(data);
 
-            resolve(res.json());
-          }, (err) => {
-            reject(err);
-          });
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
 
     });
 
   }
 
 
-  logout(){
+  logout() {
     this.storage.set('token', '');
     this.storage.clear();
-    
+
   }
 
 }
