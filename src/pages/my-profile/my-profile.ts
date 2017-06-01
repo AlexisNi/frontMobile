@@ -7,6 +7,7 @@ import { Stats } from "../../models/stats";
 import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
 import { Auth } from "../../providers/auth";
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 
 /*
   Generated class for the MyProfile page.
@@ -26,9 +27,12 @@ export class MyProfilePage {
 
 
   ngOnInit(): void {
-    console.log('starting arena init')
-    this.socketService.reqStats(this.authService.userId);
-    this.loadStats();
+    this.socketService.connect();
+    if (this.firebasaService.userId) {
+      console.log(this.firebasaService.userId);
+      this.socketService.reqStats(this.firebasaService.userId);
+      this.loadStats();
+    }
 
   }
 
@@ -46,6 +50,7 @@ export class MyProfilePage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authService: Auth,
+    public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
     public appCtrl: App) { }
 

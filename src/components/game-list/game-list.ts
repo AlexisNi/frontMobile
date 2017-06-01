@@ -30,7 +30,6 @@ export class GameListComponent implements OnInit {
     this.showLoader();
 
     setTimeout(() => {
-      this.socketService.connect();
       this.startingPage.newArena
         .subscribe(
         (arena: Arenas) => {

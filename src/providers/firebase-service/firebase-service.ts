@@ -18,6 +18,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class FirebaseServiceProvider {
   public token;
+  public userId;
 
   constructor(
     public http: Http,
@@ -47,9 +48,9 @@ export class FirebaseServiceProvider {
       return this.afAuth.auth
         .signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then(res => {
-          console.log(res.credential.accessToken);
-          this.token = res.credential.accessToken;
-          this.storage.set('token', res.credential.accessToken);
+          /*        console.log(res);
+                  this.token = res.credential.accessToken;
+                  this.storage.set('token', res.credential.accessToken);*/
 
         });
     }
@@ -61,40 +62,34 @@ export class FirebaseServiceProvider {
         if (!user) {
           reject('User not logged in');
         }
-
         console.log('here')
         this.afAuth.auth.currentUser.getToken(true).then((idToken) => {
           this.token = idToken;
-
           let headers = new Headers();
           headers.append('Authorization', this.token);
-          this.http.get(myGlobals.host +'firebase/protected', { headers: headers })
+          this.http.get(myGlobals.host + 'firebase/protected', { headers: headers })
+            .map((response: Response) => response.json())
+            .catch((error: Response) => {
+              return Observable.throw(error.json())
+            })
             .subscribe(res => {
-              resolve(res);
-            }, (err) => {
-              reject(err);
-            });
-
-
+              this.userId=res.user_id;
+              console.log(res)
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
         }).catch(function (error) {
           reject(error);
         });
       });
-
-  /*    let headers = new Headers();
-      headers.append('Authorization', this.token);
-      this.http.get(myGlobals.host + 'firebase/protected', { headers: headers })
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });*/
-
-
-
     });
-
   }
+
+
+
+
+
 
   signOut() {
     this.afAuth.auth.signOut();
@@ -103,8 +98,6 @@ export class FirebaseServiceProvider {
 
   firebaseAuth() {
     const body = JSON.stringify({ a: 'asdasd' });
-
-
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.token);
@@ -113,10 +106,30 @@ export class FirebaseServiceProvider {
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
+  }
 
+  checkUser() {
+    const body = JSON.stringify({});
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
 
-
-
+  createUser(username) {
+    const body = JSON.stringify({ firebase_id:this.userId,username:username });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
   }
 
   getToken() {

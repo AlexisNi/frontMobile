@@ -7,6 +7,7 @@ import { Question } from "../models/question";
 import { Arenas } from "../models/arenas";
 import { Observable } from "rxjs";
 import {myGlobals}  from "../globals";
+import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
 /*
   Generated class for the StartingPage provider.
@@ -20,7 +21,8 @@ export class StartingPage {
   newArena = new EventEmitter<Arenas>();
 
   constructor(public http: Http,
-    public authService: Auth)
+    public authService: Auth,
+    public firebasaService:FirebaseServiceProvider )
   { }
 
 
@@ -30,7 +32,7 @@ export class StartingPage {
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+      headers.append('Authorization', this.firebasaService.token);
 
 
       this.http.post(myGlobals.host+'users/find', JSON.stringify(userName), { headers: headers })

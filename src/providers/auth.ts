@@ -62,10 +62,6 @@ export class Auth {
     .catch((error: Response) => {
         return Observable.throw(error.json())
       });
-    
-
-  
-
   }
 
   createAccount(details) {

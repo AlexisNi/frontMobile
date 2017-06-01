@@ -10,9 +10,10 @@ import { MatchPage } from "../match/match";
 import { TabsPage } from "../tabs/tabs";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Platform } from 'ionic-angular';
+import { Platform, ModalController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 
 
 /*
@@ -43,7 +44,8 @@ export class SigninPage implements OnInit {
     private afAuth: AngularFireAuth,
     private fb: Facebook,
     private platform: Platform,
-    private firebaseService: FirebaseServiceProvider
+    private firebaseService: FirebaseServiceProvider,
+    private modalCtrl: ModalController
   ) {
   }
 
@@ -53,46 +55,40 @@ export class SigninPage implements OnInit {
       console.log('User Authorized');
       console.log(res);
       this.loading.dismiss();
+      setTimeout(() => {
+        this.firebaseService.checkUser()
+          .subscribe(data => {
+            this.navCtrl.setRoot(TabsPage);
+            
+
+
+          }, error => {
+            let modal = this.modalCtrl.create(CreateUserModalPage, {});
+            modal.present();
+          })
+      }, 10);
     }, error => {
       console.log(error);
       this.loading.dismiss();
-
     });
-
-
-
-    /*   //Check if already authenticated
-       this.authService.checkAuthentication().then((res) => {
-         console.log("Already authorized");
-         this.loading.dismiss();
-         this.navCtrl.setRoot(TabsPage);
-       }, (err) => {
-         console.log("Not already authorized");
-         this.loading.dismiss();
-       });*/
-
   }
-
   login() {
-
-    this.showLoader();
-
-    let credentials = {
-      email: this.email,
-      password: this.password
-    };
-
-    this.authService.login(credentials).then((result) => {
-      this.loading.dismiss();
-      console.log(result);
-      setTimeout(() => {
-        this.navCtrl.setRoot(TabsPage);
-      }, 10);
-
-    }, (err) => {
-      this.loading.dismiss();
-      console.log(err);
-    });
+    /* this.showLoader();
+     let credentials = {
+       email: this.email,
+       password: this.password
+     };
+     this.authService.login(credentials).then((result) => {
+       this.loading.dismiss();
+       console.log(result);
+       setTimeout(() => {
+         this.navCtrl.setRoot(TabsPage);
+       }, 10);
+ 
+     }, (err) => {
+       this.loading.dismiss();
+       console.log(err);
+     });*/
 
   }
 

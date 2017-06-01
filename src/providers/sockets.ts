@@ -8,6 +8,7 @@ import { Stats } from "../models/stats";
 import { Arenas } from "../models/arenas";
 import { Question } from "../models/question";
 import { myGlobals } from "../globals";
+import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
 /*
   Generated class for the Sockets provider.
@@ -23,8 +24,10 @@ export class Sockets {
 */
 
 
-  constructor(public http: Http,
-    private authService: Auth) {
+  constructor(
+    public http: Http,
+    private authService: Auth,
+    public firebasaService:FirebaseServiceProvider) {
 
 
   }
@@ -33,8 +36,8 @@ export class Sockets {
 
    /* let socket = this.socket;
     const token = this.authService.token;*/
-    console.log(this.authService.userId)
-    this.socket = io(myGlobals.socket, { query: { userId: this.authService.userId } });
+    console.log(this.firebasaService.userId)
+    this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
     this.socket.on('connect', () => {
       console.log('connected');
 
@@ -56,6 +59,7 @@ export class Sockets {
   //////////////////////req-get stats///////////////////////
 
   reqStats(userId) {
+    console.log(userId);
 
     this.socket.emit('getStats', { userId: userId });
 

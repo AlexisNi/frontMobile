@@ -30,6 +30,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { CreateUserModalPageModule } from "../pages/create-user-modal/create-user-modal.module";
 
 
 
@@ -67,7 +68,8 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CreateUserModalPageModule
 
   ],
   bootstrap: [IonicApp],
