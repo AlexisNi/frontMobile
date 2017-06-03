@@ -35,7 +35,6 @@ export class Sockets {
 
    /* let socket = this.socket;
     const token = this.authService.token;*/
-    console.log(this.firebasaService.userId)
     this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
     this.socket.on('connect', () => {
       console.log('connected');
@@ -96,7 +95,6 @@ export class Sockets {
 
 
   reqArenas(userId) {
-    console.log('here is user id')
     console.log(userId);
     this.socket.emit('getArenas', { userId: userId });
 
@@ -116,7 +114,7 @@ export class Sockets {
             arena.user,
             arena.invite._id,
             arena.status_accept,
-            arena.user.userName || arena.invite.userName,
+            arena.user.username || arena.invite.username,
             arena.user_played,
             arena.invite_played,
 
@@ -130,7 +128,7 @@ export class Sockets {
             userArena.user._id,
             userArena.invite,
             userArena.status_accept,
-            userArena.user.userName,
+            userArena.user.username,
             userArena.user_played,
             userArena.invite_played,
           ));

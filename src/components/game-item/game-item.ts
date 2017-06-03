@@ -6,6 +6,7 @@ import { Auth } from "../../providers/auth";
 import { Questions } from "../../providers/questions";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { ShowRewardPage } from "../../pages/show-reward/show-reward";
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 
 /*
   Generated class for the GameItem component.
@@ -23,22 +24,24 @@ export class GameItemComponent implements OnChanges, OnInit {
   public userId;
   arenaInfo: ArenaCorrect;
   correctNumber;
+  username;
   ngOnInit(): void {
-    this.userId = this.authService.userId;
+    this.userId = this.firebasaService.userId;
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
-    setTimeout(() => {
+    this.username=this.firebasaService.username;
+
+/*    setTimeout(() => {
       if (this.arena.user_played == true || this.arena.invite_played == true) {
         this.questionService.getCorrectNumber(this.arenaInfo)
-        .subscribe(data =>
-        {
-           this.correctNumber = data.correct
-          },error=>{
+          .subscribe(data => {
+            this.correctNumber = data.correct
+          }, error => {
             console.log(error)
             this.presentAlert(error);
 
           });
       }
-    }, 50);
+    }, 50);*/
 
 
   }
@@ -57,19 +60,19 @@ export class GameItemComponent implements OnChanges, OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     public appCtrl: App,
-    public authService: Auth,
     public questionService: Questions,
     public modalCtrl: ModalController,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public firebasaService: FirebaseServiceProvider) {
 
 
   }
   playMatch(arena: Arenas) {
-    if (arena.user_played == true && arena.userId == this.userId || arena.invite_played==true && arena.inviteId == this.userId) {
+    if (arena.user_played == true && arena.userId == this.userId || arena.invite_played == true && arena.inviteId == this.userId) {
       console.log('you already played');
 
     } else {
-     
+
       this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
 
     }

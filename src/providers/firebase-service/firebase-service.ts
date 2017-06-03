@@ -138,6 +138,7 @@ export class FirebaseServiceProvider {
       .map((response: Response) =>{
         response.json();
         this.userId=response.json().user_id;
+        console.log(response.json().username);
         this.username=response.json().username;
       
     })
