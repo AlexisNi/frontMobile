@@ -19,7 +19,8 @@ import { Storage } from '@ionic/storage';
 export class FirebaseServiceProvider {
   public token;
   public userId;
-
+  public firebaseUserId;
+  public username;
   constructor(
     public http: Http,
     public afAuth: AngularFireAuth,
@@ -92,7 +93,7 @@ export class FirebaseServiceProvider {
               return Observable.throw(error.json())
             })
             .subscribe(res => {
-              this.userId=res.user_id;
+              this.firebaseUserId=res.user_id;
               console.log(res)
             resolve(res);
           }, (err) => {
@@ -134,14 +135,19 @@ export class FirebaseServiceProvider {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.token);
     return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
-      .map((response: Response) => response.json())
+      .map((response: Response) =>{
+        response.json();
+        this.userId=response.json().user_id;
+        this.username=response.json().username;
+      
+    })
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
   }
 
   createUser(username) {
-    const body = JSON.stringify({ firebase_id:this.userId,username:username });
+    const body = JSON.stringify({ firebase_id:this.firebaseUserId,username:username });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.token);

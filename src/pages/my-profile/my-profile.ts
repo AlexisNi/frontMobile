@@ -29,7 +29,6 @@ export class MyProfilePage {
   ngOnInit(): void {
     this.socketService.connect();
     if (this.firebasaService.userId) {
-      console.log(this.firebasaService.userId);
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
     }
