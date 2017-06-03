@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { ArenaAnsweredQuestion } from "../models/arenaAnsweredQuestion";
 import { Question } from "../models/question";
 import {myGlobals}  from "../globals";
+import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
 /*
   Generated class for the Questions provider.
@@ -16,8 +17,9 @@ import {myGlobals}  from "../globals";
 @Injectable()
 export class Questions {
 
-  constructor(public http: Http,
-    public authService: Auth) {
+  constructor(
+    public http: Http,
+    public firebasaService: FirebaseServiceProvider) {
     console.log('Hello Questions Provider');
   }
 
@@ -26,7 +28,7 @@ export class Questions {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
+    headers.append('Authorization', this.firebasaService.token);
 
     return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
       .map((response: Response) => response.json())
@@ -39,7 +41,7 @@ export class Questions {
      const body = JSON.stringify(init);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
+    headers.append('Authorization', this.firebasaService.token);
 
     return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
       .map((response: Response) => response.json())
@@ -53,7 +55,7 @@ export class Questions {
     const body = JSON.stringify(arenaInfo);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
+    headers.append('Authorization', this.firebasaService.token);
 
     return this.http.post(myGlobals.host+'activeArena/getCorrect', body, { headers: headers })
       .map((response: Response) => response.json())
@@ -65,7 +67,7 @@ export class Questions {
     const body = JSON.stringify(arenaInfo);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
+    headers.append('Authorization', this.firebasaService.token);
 
     return this.http.post(myGlobals.host+'activeArena/getQuestions', body, { headers: headers })
       .map((response: Response) => {

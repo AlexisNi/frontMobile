@@ -26,7 +26,6 @@ export class Sockets {
 
   constructor(
     public http: Http,
-    private authService: Auth,
     public firebasaService:FirebaseServiceProvider) {
 
 

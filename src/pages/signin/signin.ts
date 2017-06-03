@@ -114,6 +114,15 @@ export class SigninPage implements OnInit {
     this.firebaseService.firebaseAuth()
       .subscribe();
   }
+  signUp(){
+    this.firebaseService.signUpWithEmailPassword(this.email,this.password);
+
+  }
+
+  signIn(){
+     this.firebaseService.signInWithEmailPassword(this.email,this.password);
+
+  }
 
 
 

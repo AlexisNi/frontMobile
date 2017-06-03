@@ -49,7 +49,6 @@ export class MyProfilePage {
     private startPageService: StartingPage,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public authService: Auth,
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
     public appCtrl: App) { }
@@ -88,11 +87,11 @@ export class MyProfilePage {
           {
             text: 'Play with ' + userName,
             handler: () => {
-              const arenaPlayer = new ArenaPlayers(this.authService.userId, result.inviteId);
+              const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
               this.startPageService.createArena(arenaPlayer)
                 .subscribe(data => {
                   setTimeout(() => {
-                    this.socketService.reqArenas(result.inviteId);
+                   /* this.socketService.reqArenas(result.inviteId);*/
                   }, 1200);
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
@@ -134,10 +133,10 @@ export class MyProfilePage {
 
   }
   logout() {
-    this.authService.logout();
+/*    this.authService.logout();
     setTimeout(() => {
       this.appCtrl.getRootNav().push(SigninPage);
-    }, 1000);
+    }, 1000);*/
 
 
   }

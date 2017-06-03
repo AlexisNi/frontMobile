@@ -6,7 +6,8 @@ import { ArenaPlayers } from "../models/arenaPlayers";
 import { ArenaCorrect } from "../models/arenaCorrect";
 import { Observable } from "rxjs/Observable";
 import { PlayerResult } from "../models/playerResult";
-import {myGlobals}  from "../globals";
+import { myGlobals } from "../globals";
+import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
 /*
   Generated class for the Arena provider.
@@ -18,7 +19,7 @@ import {myGlobals}  from "../globals";
 export class Arena {
 
   constructor(public http: Http,
-    public authService: Auth) { }
+    public firebasaService: FirebaseServiceProvider) { }
 
   createArena(arenaPlayers: ArenaPlayers) {
     return new Promise((resolve, reject) => {
@@ -26,9 +27,9 @@ export class Arena {
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+      headers.append('Authorization', this.firebasaService.token);
 
-      this.http.post(myGlobals.host+'arenas', JSON.stringify(arenaPlayers), { headers: headers })
+      this.http.post(myGlobals.host + 'arenas', JSON.stringify(arenaPlayers), { headers: headers })
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -44,8 +45,8 @@ export class Arena {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
-    return this.http.post(myGlobals.host+'arenas/statusPlayed', body, { headers: headers })
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'arenas/statusPlayed', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())
@@ -56,8 +57,8 @@ export class Arena {
     const body = JSON.stringify(arenaUserInfo);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
-    return this.http.post(myGlobals.host+'activeArena/getResults', body, { headers: headers })
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'activeArena/getResults', body, { headers: headers })
       .map((response: Response) => {
         const winner = response.json().winner;
         const loser = response.json().loser;
@@ -82,13 +83,13 @@ export class Arena {
       });
   }
 
-    getAward(arenaInfo: ArenaCorrect) {
+  getAward(arenaInfo: ArenaCorrect) {
     const body = JSON.stringify(arenaInfo);
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
-    return this.http.post(myGlobals.host+'awards', body, { headers: headers })
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'awards', body, { headers: headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         return Observable.throw(error.json())

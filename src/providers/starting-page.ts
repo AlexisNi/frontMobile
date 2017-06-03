@@ -21,7 +21,6 @@ export class StartingPage {
   newArena = new EventEmitter<Arenas>();
 
   constructor(public http: Http,
-    public authService: Auth,
     public firebasaService:FirebaseServiceProvider )
   { }
 
@@ -50,7 +49,7 @@ export class StartingPage {
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.authService.token);
+    headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host+'arenas', body, { headers: headers })
       .map((response: Response) => {
         console.log(response);

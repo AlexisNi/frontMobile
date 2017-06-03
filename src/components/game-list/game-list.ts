@@ -4,6 +4,7 @@ import { Sockets } from "../../providers/sockets";
 import { Auth } from "../../providers/auth";
 import { StartingPage } from "../../providers/starting-page";
 import { LoadingController, AlertController } from "ionic-angular";
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 
 /*
   Generated class for the GameList component.
@@ -21,10 +22,10 @@ export class GameListComponent implements OnInit {
 
   constructor(
     public socketService: Sockets,
-    public authService: Auth,
     public startingPage: StartingPage,
     public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public firebasaService:FirebaseServiceProvider) {
   }
   ngOnInit() {
     this.showLoader();
@@ -35,7 +36,7 @@ export class GameListComponent implements OnInit {
         (arena: Arenas) => {
           this.arenas.push(arena);
         })
-      this.socketService.reqArenas(this.authService.userId);
+      this.socketService.reqArenas(this.firebasaService.userId);
       this.getArenaUpdate();
     }, 1000);
 

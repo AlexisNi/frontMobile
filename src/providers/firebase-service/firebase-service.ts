@@ -48,12 +48,30 @@ export class FirebaseServiceProvider {
       return this.afAuth.auth
         .signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then(res => {
-          /*        console.log(res);
-                  this.token = res.credential.accessToken;
-                  this.storage.set('token', res.credential.accessToken);*/
-
         });
     }
+  }
+  signUpWithEmailPassword(email,password){
+    return this.afAuth.auth.
+    createUserWithEmailAndPassword(email,password).
+    then(res=>{
+
+    },error=>{
+      console.log(error);
+    });
+    
+
+  }
+    signInWithEmailPassword(email,password){
+    return this.afAuth.auth.
+    signInWithEmailAndPassword(email,password).
+    then(res=>{
+
+    },error=>{
+      console.log(error);
+    });
+    
+
   }
 
   checkAuthentication() {
@@ -62,7 +80,8 @@ export class FirebaseServiceProvider {
         if (!user) {
           reject('User not logged in');
         }
-        console.log('here')
+
+        else{
         this.afAuth.auth.currentUser.getToken(true).then((idToken) => {
           this.token = idToken;
           let headers = new Headers();
@@ -82,6 +101,7 @@ export class FirebaseServiceProvider {
         }).catch(function (error) {
           reject(error);
         });
+        }
       });
     });
   }
