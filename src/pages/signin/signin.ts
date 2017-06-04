@@ -59,7 +59,7 @@ export class SigninPage implements OnInit {
         this.firebaseService.checkUser()
           .subscribe(data => {
             this.navCtrl.setRoot(TabsPage);
-            
+
 
 
           }, error => {
@@ -114,34 +114,48 @@ export class SigninPage implements OnInit {
     this.firebaseService.firebaseAuth()
       .subscribe();
   }
-  signUp(){
-    this.firebaseService.signUpWithEmailPassword(this.email,this.password);
+  signUp() {
+    this.showLoader();
+    this.firebaseService.signUpWithEmailPassword(this.email, this.password).
+      then(res => {
+        setTimeout(() => {
+          this.firebaseService.checkUser()
+            .subscribe(data => {
+              this.loading.dismiss();
+              this.navCtrl.setRoot(TabsPage);
+            }, error => {
+              this.loading.dismiss();
+              let modal = this.modalCtrl.create(CreateUserModalPage, {});
+              modal.present();
+            })
+        }, 10);
+
+      }, error => {
+        console.log(error);
+        this.loading.dismiss();
+      });;
 
   }
 
-  signIn(){
+  signIn() {
     this.showLoader();
-     this.firebaseService.signInWithEmailPassword(this.email,this.password).
-       then(res=>{
+    this.firebaseService.signInWithEmailPassword(this.email, this.password).
+      then(res => {
         setTimeout(() => {
-        this.firebaseService.checkUser()
-          .subscribe(data => {
-            this.loading.dismiss();
-            this.navCtrl.setRoot(TabsPage);
-            
-
-
-          }, error => {
-            this.loading.dismiss();
-            let modal = this.modalCtrl.create(CreateUserModalPage, {});
-            modal.present();
-          })
-      }, 10);
-
-    },error=>{
-      console.log(error);
-      this.loading.dismiss();
-    });
+          this.firebaseService.checkUser()
+            .subscribe(data => {
+              this.loading.dismiss();
+              this.navCtrl.setRoot(TabsPage);
+            }, error => {
+              this.loading.dismiss();
+              let modal = this.modalCtrl.create(CreateUserModalPage, {});
+              modal.present();
+            })
+        }, 10);
+      }, error => {
+        console.log(error);
+        this.loading.dismiss();
+      });
 
   }
 

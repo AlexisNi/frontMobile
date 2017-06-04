@@ -10,10 +10,8 @@
       <ion-col col-12>
         <p class="title"> KICK OFF </p>
         <p class="subtitle"> FOOTBALL QUIZ</p>
-        <p>Hello , {{displayName}} </p>
       </ion-col>
     </ion-row>
-
     <ion-row justify-content-center class="connectionP">
       <ion-col col-12>
         <p (click)="sendRandompost()"> Συνδέσου με τον λογαριασμό σου </p>
@@ -27,23 +25,19 @@
         <ion-icon name="logo-google" class="google" (click)="signOut()"></ion-icon>
       </ion-col>
     </ion-row>
-
     <ion-row class="or">
       <ion-col col-5>
         <hr>
       </ion-col>
-
       <ion-col col-2>
         <p> Ή </p>
       </ion-col>
-
       <ion-col col-5>
         <hr>
       </ion-col>
     </ion-row>
-
     <ion-row justify-content-center>
-      <ion-col >
+      <ion-col>
         <ion-list inset>
           <ion-item>
             <ion-label>
@@ -58,15 +52,15 @@
             <ion-input [(ngModel)]="password" placeholder="password" type="password"></ion-input>
           </ion-item>
         </ion-list>
-     
-         
       </ion-col>
-         <ion-col>
-            <button ion-button full (click)="signUp()" color="primary" class="login-button">Signup</button>
-        </ion-col>
-           <ion-col>
-            <button ion-button full (click)="signIn()" color="primary" class="login-button">Sign in</button>
-        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="signUp()" color="primary" class="login-button">Signup</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="signIn()" color="primary" class="login-button">Sign in</button>
+      </ion-col>
     </ion-row>
 
   </ion-grid>

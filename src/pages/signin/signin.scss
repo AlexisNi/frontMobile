@@ -20,13 +20,13 @@ page-signin {
 
   
     
-        margin-top: 25px;
+        margin-top: 0px;
 
     align-items: center;
     text-align: center;
   }
   .header{
-    margin-top:45px;
+    margin-top:20px;
     font-family: 'Play';
     p{
       margin: 0px 0px 0px 0px;
@@ -34,7 +34,7 @@ page-signin {
     .title{
       color: wheat;
       font-weight: bold;
-      font-size: 50px;
+      font-size: 45px;
     }
     .subtitle{
       color: grey;
@@ -51,12 +51,12 @@ page-signin {
 .icons{
   .facebook{
     color: lightblue;
-    font-size: 7rem;
+    font-size: 5rem;
 
   }
   .google{
    color: red;
-    font-size: 7rem;
+    font-size: 5rem;
 
   }
 
