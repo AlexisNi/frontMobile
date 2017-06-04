@@ -120,7 +120,28 @@ export class SigninPage implements OnInit {
   }
 
   signIn(){
-     this.firebaseService.signInWithEmailPassword(this.email,this.password);
+    this.showLoader();
+     this.firebaseService.signInWithEmailPassword(this.email,this.password).
+       then(res=>{
+        setTimeout(() => {
+        this.firebaseService.checkUser()
+          .subscribe(data => {
+            this.loading.dismiss();
+            this.navCtrl.setRoot(TabsPage);
+            
+
+
+          }, error => {
+            this.loading.dismiss();
+            let modal = this.modalCtrl.create(CreateUserModalPage, {});
+            modal.present();
+          })
+      }, 10);
+
+    },error=>{
+      console.log(error);
+      this.loading.dismiss();
+    });
 
   }
 

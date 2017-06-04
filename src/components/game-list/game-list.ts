@@ -34,6 +34,7 @@ export class GameListComponent implements OnInit {
       this.startingPage.newArena
         .subscribe(
         (arena: Arenas) => {
+          console.log(arena);
           this.arenas.push(arena);
         })
       this.socketService.reqArenas(this.firebasaService.userId);

@@ -56,6 +56,7 @@ export class FirebaseServiceProvider {
     return this.afAuth.auth.
     createUserWithEmailAndPassword(email,password).
     then(res=>{
+      console.log(res);
 
     },error=>{
       console.log(error);
@@ -65,12 +66,13 @@ export class FirebaseServiceProvider {
   }
     signInWithEmailPassword(email,password){
     return this.afAuth.auth.
-    signInWithEmailAndPassword(email,password).
+    signInWithEmailAndPassword(email,password)/*.
     then(res=>{
+     this
 
     },error=>{
       console.log(error);
-    });
+    });*/
     
 
   }

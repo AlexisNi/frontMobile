@@ -91,7 +91,7 @@ export class MyProfilePage {
                 .subscribe(data => {
                   setTimeout(() => {
                    /* this.socketService.reqArenas(result.inviteId);*/
-                  }, 1200);
+                  }, 10);
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
 
@@ -132,10 +132,10 @@ export class MyProfilePage {
 
   }
   logout() {
-/*    this.authService.logout();
+    this.firebasaService.signOut();
     setTimeout(() => {
       this.appCtrl.getRootNav().push(SigninPage);
-    }, 1000);*/
+    }, 1000);
 
 
   }

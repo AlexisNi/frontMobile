@@ -13,6 +13,7 @@ import { TabsPage } from "../tabs/tabs";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { Arena } from "../../providers/arena";
 import { Observable } from "rxjs/Observable";
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 
 /*
   Generated class for the Match page.
@@ -44,7 +45,7 @@ export class MatchPage implements OnDestroy {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public socketService: Sockets,
-    public authService: Auth,
+    public firebasaService: FirebaseServiceProvider,
     public questionServie: Questions,
     public arenaService: Arena,
     public loadingCtrl: LoadingController,
@@ -52,7 +53,7 @@ export class MatchPage implements OnDestroy {
 
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
-    this.userId = this.authService.userId;
+    this.userId = this.firebasaService.userId;
     this.getQuestions();
     this.getInviteId();
     this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);

@@ -70,7 +70,7 @@ export class StartingPage {
           response.json().obj.user._id,
           response.json().obj.invite._id,
           response.json().obj.status_accept,
-          response.json().obj.invite.userName,
+          response.json().obj.invite.username,
           response.json().obj.user_played,
           response.json().obj.invite_played,
           transformedQuestions);
