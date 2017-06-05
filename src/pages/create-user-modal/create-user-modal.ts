@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { TabsPage } from "../tabs/tabs";
 
 /**
  * Generated class for the CreateUserModalPage page.
@@ -14,26 +15,50 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
   templateUrl: 'create-user-modal.html',
 })
 export class CreateUserModalPage {
+  loading: any;
+  email;
+  password;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public firebaseService:FirebaseServiceProvider) {
+    public firebaseService: FirebaseServiceProvider,
+    public loadingCtrl: LoadingController, ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateUserModalPage');
-  }
-  
-  CreateUser(username){
-    this.firebaseService.createUser(username)
-    .subscribe(data=>{
 
-    },
-    error=>{
-      console.log(error);
-    })
-    
-    
   }
+
+  CreateUser(username) {
+     this.showLoader();
+    this.firebaseService.checkAuthentication()
+      .then((res) => {
+        this.firebaseService.createUser(username)
+          .subscribe(data => {
+            this.loading.dismiss();
+            console.log(data);
+            this.navCtrl.setRoot(TabsPage);
+          },
+          error => {
+            this.loading.dismiss();
+            console.log(error);
+          })
+      }, err => {
+        this.loading.dismiss();
+        console.log('user Not auth')
+        console.log(err)
+      })
+
+  }
+
+  showLoader() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });
+
+    this.loading.present();
+  }
+
+
 }

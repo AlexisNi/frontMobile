@@ -59,37 +59,22 @@ export class SigninPage implements OnInit {
         this.firebaseService.checkUser()
           .subscribe(data => {
             this.navCtrl.setRoot(TabsPage);
-
-
-
           }, error => {
-            let modal = this.modalCtrl.create(CreateUserModalPage, {});
-            modal.present();
+            if (error.error == 100) {
+              let modal = this.modalCtrl.create(CreateUserModalPage, {});
+              modal.present();
+            }
+
           })
       }, 10);
     }, error => {
+      this.firebaseService.chechUnsubscribe();
       console.log(error);
       this.loading.dismiss();
     });
   }
   login() {
-    /* this.showLoader();
-     let credentials = {
-       email: this.email,
-       password: this.password
-     };
-     this.authService.login(credentials).then((result) => {
-       this.loading.dismiss();
-       console.log(result);
-       setTimeout(() => {
-         this.navCtrl.setRoot(TabsPage);
-       }, 10);
- 
-     }, (err) => {
-       this.loading.dismiss();
-       console.log(err);
-     });*/
-
+  
   }
 
   launchSignup() {
@@ -118,17 +103,19 @@ export class SigninPage implements OnInit {
     this.showLoader();
     this.firebaseService.signUpWithEmailPassword(this.email, this.password).
       then(res => {
-        setTimeout(() => {
-          this.firebaseService.checkUser()
-            .subscribe(data => {
-              this.loading.dismiss();
-              this.navCtrl.setRoot(TabsPage);
-            }, error => {
-              this.loading.dismiss();
               let modal = this.modalCtrl.create(CreateUserModalPage, {});
               modal.present();
+    /*    setTimeout(() => {
+          this.firebaseService.checkUser()
+            .subscribe(data => {
+             this.loading.dismiss();
+              this.navCtrl.setRoot(TabsPage)
+            }, error => {
+              console.log(error);
+              let modal = this.modalCtrl.create(CreateUserModalPage, {email:this.email,password:this.password});
+              modal.present();
             })
-        }, 10);
+        }, 10);*/
 
       }, error => {
         console.log(error);
@@ -147,9 +134,12 @@ export class SigninPage implements OnInit {
               this.loading.dismiss();
               this.navCtrl.setRoot(TabsPage);
             }, error => {
-              this.loading.dismiss();
+              if(error){
+          if (error.error==100) {
               let modal = this.modalCtrl.create(CreateUserModalPage, {});
               modal.present();
+            }
+              }
             })
         }, 10);
       }, error => {

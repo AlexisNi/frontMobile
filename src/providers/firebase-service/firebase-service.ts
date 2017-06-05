@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import { Platform } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { myGlobals } from "../../globals";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Storage } from '@ionic/storage';
 
 /*
@@ -21,6 +21,7 @@ export class FirebaseServiceProvider {
   public userId;
   public firebaseUserId;
   public username;
+  checkSub:Subscription;
   constructor(
     public http: Http,
     public afAuth: AngularFireAuth,
@@ -52,39 +53,27 @@ export class FirebaseServiceProvider {
         });
     }
   }
-  signUpWithEmailPassword(email,password){
+  signUpWithEmailPassword(email, password) {
     return this.afAuth.auth.
-    createUserWithEmailAndPassword(email,password)/*.
-    then(res=>{
-      console.log(res);
+      createUserWithEmailAndPassword(email, password)
 
-    },error=>{
-      console.log(error);
-    });*/
-    
 
   }
-    signInWithEmailPassword(email,password){
+  signInWithEmailPassword(email, password) {
     return this.afAuth.auth.
-    signInWithEmailAndPassword(email,password)/*.
-    then(res=>{
-     this
+      signInWithEmailAndPassword(email, password)
 
-    },error=>{
-      console.log(error);
-    });*/
-    
+
 
   }
 
   checkAuthentication() {
     return new Promise((resolve, reject) => {
-      this.afAuth.authState.subscribe((user: firebase.User) => {
-        if (!user) {
-          reject('User not logged in');
-        }
-
-        else{
+     this.checkSub=   this.afAuth.authState.subscribe((user: firebase.User) => {
+          if (!user) {
+            reject('User not logged in');
+          }
+      else {
         this.afAuth.auth.currentUser.getToken(true).then((idToken) => {
           this.token = idToken;
           let headers = new Headers();
@@ -95,77 +84,80 @@ export class FirebaseServiceProvider {
               return Observable.throw(error.json())
             })
             .subscribe(res => {
-              this.firebaseUserId=res.user_id;
+              this.firebaseUserId = res.user_id;
               console.log(res)
-            resolve(res);
-          }, (err) => {
-            reject(err);
-          });
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            });
         }).catch(function (error) {
           reject(error);
         });
-        }
-      });
+      }
     });
-  }
+  });
+}
 
 
 
 
 
 
-  signOut() {
-    this.afAuth.auth.signOut();
-  }
+signOut() {
+  this.afAuth.auth.signOut();
+}
 
 
-  firebaseAuth() {
-    const body = JSON.stringify({ a: 'asdasd' });
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.token);
-    return this.http.post(myGlobals.host + 'firebase', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
-  }
+firebaseAuth() {
+  const body = JSON.stringify({ a: 'asdasd' });
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('Authorization', this.token);
+  return this.http.post(myGlobals.host + 'firebase', body, { headers: headers })
+    .map((response: Response) => response.json())
+    .catch((error: Response) => {
+      return Observable.throw(error.json())
+    });
+}
 
-  checkUser() {
-    const body = JSON.stringify({});
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.token);
-    return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
-      .map((response: Response) =>{
-        response.json();
-        this.userId=response.json().user_id;
-        console.log(response.json().username);
-        this.username=response.json().username;
-      
+checkUser() {
+  const body = JSON.stringify({});
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('Authorization', this.token);
+  return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
+    .map((response: Response) => {
+      response.json();
+      this.userId = response.json().user_id;
+      console.log(response.json().username);
+      this.username = response.json().username;
+
     })
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
-  }
+    .catch((error: Response) => {
+      return Observable.throw(error.json())
+    });
+}
 
-  createUser(username) {
-    const body = JSON.stringify({ firebase_id:this.firebaseUserId,username:username });
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.token);
-    return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
-  }
+createUser(username) {
+  const body = JSON.stringify({ firebase_id: this.firebaseUserId, username: username });
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append('Authorization', this.token);
+  return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
+    .map((response: Response) => response.json())
+    .catch((error: Response) => {
+      return Observable.throw(error.json())
+    });
+}
 
-  getToken() {
+getToken() {
 
 
 
-  }
+}
+chechUnsubscribe(){
+  this.checkSub.unsubscribe();
+}
 
 
 

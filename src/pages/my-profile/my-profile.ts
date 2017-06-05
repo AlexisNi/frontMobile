@@ -90,7 +90,7 @@ export class MyProfilePage {
               this.startPageService.createArena(arenaPlayer)
                 .subscribe(data => {
                   setTimeout(() => {
-                   /* this.socketService.reqArenas(result.inviteId);*/
+                    this.socketService.reqArenas(result.inviteId);
                   }, 10);
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
