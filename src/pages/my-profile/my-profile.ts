@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, App } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, App, ModalController } from 'ionic-angular';
 import { SigninPage } from "../signin/signin";
 import { ArenaPlayers } from "../../models/arenaPlayers";
 import { UserFound } from "../starting-page/userFound";
@@ -8,6 +8,7 @@ import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
 import { Auth } from "../../providers/auth";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 
 /*
   Generated class for the MyProfile page.
@@ -20,26 +21,27 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
   templateUrl: 'my-profile.html'
 })
 export class MyProfilePage {
+  firebaseService: any;
   public experienceNextLevel = 0;
   public currentExp = 0;
   public percentage = 0;
   public level = 1;
+  loading: any;
+  hideStartingPage = false;
+  hideArenas = true;
+  stats: Stats;
+  pageView = 1;
 
 
   ngOnInit(): void {
-    this.socketService.connect();
     if (this.firebasaService.userId) {
+      this.socketService.connect();
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
     }
 
   }
 
-  loading: any;
-  hideStartingPage = false;
-  hideArenas = true;
-  stats: Stats;
-  pageView = 1;
 
 
   constructor(public navCtrl: NavController,
@@ -50,8 +52,8 @@ export class MyProfilePage {
     public alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
-    public appCtrl: App) { }
-
+    public appCtrl: App,
+    private modalCtrl: ModalController) { }
 
   loadStats() {
     this.socketService.getStats()
@@ -125,7 +127,7 @@ export class MyProfilePage {
   showLoader() {
 
     this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
+      content: 'please wait...'
     });
 
     this.loading.present();

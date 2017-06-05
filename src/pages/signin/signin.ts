@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from "../../providers/auth";
 import { SignupPage } from "../signup/signup";
@@ -10,7 +10,7 @@ import { MatchPage } from "../match/match";
 import { TabsPage } from "../tabs/tabs";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Platform, ModalController } from 'ionic-angular';
+import { Platform, ModalController, AlertController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
@@ -26,14 +26,17 @@ import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
   selector: 'page-signin',
   templateUrl: 'signin.html'
 })
-export class SigninPage implements OnInit {
+export class SigninPage implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    this.firebaseService.chechUnsubscribe();
+  }
   ngOnInit(): void {
 
 
   }
 
-  email: string;
-  password: string;
+  email: string = '';
+  password: string = '';
   loading: any;
   displayName;
 
@@ -44,10 +47,12 @@ export class SigninPage implements OnInit {
     private afAuth: AngularFireAuth,
     private fb: Facebook,
     private platform: Platform,
+    public alertCtrl: AlertController,
     private firebaseService: FirebaseServiceProvider,
     private modalCtrl: ModalController
   ) {
   }
+
 
   ionViewDidLoad() {
     this.showLoader();
@@ -61,6 +66,7 @@ export class SigninPage implements OnInit {
             this.navCtrl.setRoot(TabsPage);
           }, error => {
             if (error.error == 100) {
+              this.firebaseService.chechUnsubscribe();
               let modal = this.modalCtrl.create(CreateUserModalPage, {});
               modal.present();
             }
@@ -74,15 +80,73 @@ export class SigninPage implements OnInit {
     });
   }
   login() {
-  
+
   }
 
   launchSignup() {
     this.navCtrl.push(SignupPage);
   }
 
-  showLoader() {
 
+  signInWithFacebook() {
+    console.log(this.firebaseService.signInWithFacebook())  
+
+  }
+  signUp() {
+    this.showLoader();
+    this.firebaseService.signUpWithEmailPassword(this.email, this.password).
+      then(res => {
+        this.loading.dismiss();
+        let modal = this.modalCtrl.create(CreateUserModalPage, {});
+        modal.present();
+      }, error => {
+        this.presentAlert(error.message);
+        this.loading.dismiss();
+      });;
+  }
+
+  signIn() {
+    this.showLoader();
+    this.firebaseService.signInWithEmailPassword(this.email, this.password).
+      then(res => {
+        this.firebaseService.checkAuthentication().then((res) => {
+          console.log('User Authorized');
+          console.log(res);
+          this.loading.dismiss();
+          setTimeout(() => {
+            this.firebaseService.checkUser()
+              .subscribe(data => {
+                this.navCtrl.setRoot(TabsPage);
+              }, error => {
+                if (error.error == 100) {
+                  this.firebaseService.chechUnsubscribe();
+                  let modal = this.modalCtrl.create(CreateUserModalPage, {});
+                  modal.present();
+                }
+              })
+          }, 10);
+        }, error => {
+          this.firebaseService.chechUnsubscribe();
+          this.presentAlert(error.message);
+          this.loading.dismiss();
+        });
+      }, error => {
+        this.presentAlert(error.message);
+        console.log(error);
+        this.loading.dismiss();
+      });
+
+  }
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  showLoader() {
     this.loading = this.loadingCtrl.create({
       content: 'Authenticating...'
     });
@@ -91,63 +155,6 @@ export class SigninPage implements OnInit {
 
   }
 
-  signInWithFacebook() {
-    this.firebaseService.signInWithFacebook();
-
-  }
-  sendRandompost() {
-    this.firebaseService.firebaseAuth()
-      .subscribe();
-  }
-  signUp() {
-    this.showLoader();
-    this.firebaseService.signUpWithEmailPassword(this.email, this.password).
-      then(res => {
-              let modal = this.modalCtrl.create(CreateUserModalPage, {});
-              modal.present();
-    /*    setTimeout(() => {
-          this.firebaseService.checkUser()
-            .subscribe(data => {
-             this.loading.dismiss();
-              this.navCtrl.setRoot(TabsPage)
-            }, error => {
-              console.log(error);
-              let modal = this.modalCtrl.create(CreateUserModalPage, {email:this.email,password:this.password});
-              modal.present();
-            })
-        }, 10);*/
-
-      }, error => {
-        console.log(error);
-        this.loading.dismiss();
-      });;
-
-  }
-
-  signIn() {
-    this.showLoader();
-    this.firebaseService.signInWithEmailPassword(this.email, this.password).
-      then(res => {
-        setTimeout(() => {
-          this.firebaseService.checkUser()
-            .subscribe(data => {
-              this.loading.dismiss();
-              this.navCtrl.setRoot(TabsPage);
-            }, error => {
-              if(error){
-          if (error.error==100) {
-              let modal = this.modalCtrl.create(CreateUserModalPage, {});
-              modal.present();
-            }
-              }
-            })
-        }, 10);
-      }, error => {
-        console.log(error);
-        this.loading.dismiss();
-      });
-
-  }
 
 
 

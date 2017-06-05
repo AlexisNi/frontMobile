@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ViewController, App } from 'ionic-angular';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { TabsPage } from "../tabs/tabs";
 
@@ -15,13 +15,15 @@ import { TabsPage } from "../tabs/tabs";
   templateUrl: 'create-user-modal.html',
 })
 export class CreateUserModalPage {
-  loading: any;
+  /*  loading: any;*/
   email;
   password;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+     public appCtrl: App,
+    public viewCtrl: ViewController,
     public firebaseService: FirebaseServiceProvider,
     public loadingCtrl: LoadingController, ) {
   }
@@ -31,34 +33,38 @@ export class CreateUserModalPage {
   }
 
   CreateUser(username) {
-     this.showLoader();
     this.firebaseService.checkAuthentication()
       .then((res) => {
         this.firebaseService.createUser(username)
           .subscribe(data => {
-            this.loading.dismiss();
-            console.log(data);
-            this.navCtrl.setRoot(TabsPage);
+            this.firebaseService.checkUser()
+              .subscribe(data => {
+               this.viewCtrl.dismiss();
+                     this.appCtrl.getRootNav().push(TabsPage);
+
+              }, error => {
+                console.log(error);
+              })
           },
           error => {
-            this.loading.dismiss();
             console.log(error);
           })
       }, err => {
-        this.loading.dismiss();
         console.log('user Not auth')
         console.log(err)
       })
-
+  }
+  ngOnDestroy(): void {
+    this.firebaseService.chechUnsubscribe();
   }
 
-  showLoader() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
-    });
-
-    this.loading.present();
-  }
+  /*  showLoader() {
+      this.loading = this.loadingCtrl.create({
+        content: 'Authenticating...'
+      });
+  
+      this.loading.present();
+    }*/
 
 
 }

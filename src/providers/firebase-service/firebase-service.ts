@@ -41,7 +41,6 @@ export class FirebaseServiceProvider {
   signInWithFacebook() {
     if (this.platform.is('cordova')) {
       return this.fb.login(['email', 'public_profile']).then(res => {
-        console.log()
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         return firebase.auth().signInWithCredential(facebookCredential);
       })
@@ -85,7 +84,6 @@ export class FirebaseServiceProvider {
             })
             .subscribe(res => {
               this.firebaseUserId = res.user_id;
-              console.log(res)
               resolve(res);
             }, (err) => {
               reject(err);

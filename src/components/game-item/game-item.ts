@@ -72,7 +72,6 @@ export class GameItemComponent implements OnChanges, OnInit {
       console.log('you already played');
 
     } else {
-
       this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
 
     }

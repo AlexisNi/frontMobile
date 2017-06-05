@@ -3,8 +3,8 @@
 
 
 export const myGlobals = Object.freeze({
-    host: 'http://localhost:3000/api/',
-    socket: 'http://localhost:3000'
+    host: 'https://footballquizarena.herokuapp.com/api/',
+    socket: 'https://footballquizarena.herokuapp.com'
 });
 /*
  public Heroku='https://footballquizarena.herokuapp.com/api/';

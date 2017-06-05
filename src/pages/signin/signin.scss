@@ -3,6 +3,9 @@ page-signin {
     font-family: 'Play';
     src: url('../assets/fonts/Play-Bold.ttf'); /*URL to font*/
 }
+ion-col{
+  position: initial !important;
+}
 
   ion-content {
     background-color: map-get($colors, secondary);
