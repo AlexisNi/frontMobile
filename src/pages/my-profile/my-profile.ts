@@ -35,11 +35,15 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
+      this.firebasaService.initPushNotification().then((res)=>{
+        console.log(res);
+      },error=>{
+        console.log(error);
+      });
       this.socketService.connect();
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
     }
-
   }
 
 
@@ -125,26 +129,21 @@ export class MyProfilePage {
 
   }
   showLoader() {
-
     this.loading = this.loadingCtrl.create({
       content: 'please wait...'
     });
 
     this.loading.present();
-
   }
   logout() {
     this.firebasaService.signOut();
     setTimeout(() => {
       this.appCtrl.getRootNav().push(SigninPage);
     }, 1000);
-
-
   }
   showArenas() {
     this.hideArenas = false;
     this.hideStartingPage = true;
-
   }
 
   presentAlert(error) {

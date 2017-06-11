@@ -31,6 +31,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { CreateUserModalPageModule } from "../pages/create-user-modal/create-user-modal.module";
+import { Push } from "@ionic-native/push";
 
 
 
@@ -92,7 +93,7 @@ export const firebaseConfig = {
 
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }
-    , AuthService, Auth, Todos, Sockets, Arena, StartingPage, Questions,Facebook,
+    , AuthService, Auth, Todos, Sockets, Arena, StartingPage, Questions,Facebook,Push,
     FirebaseServiceProvider]
 })
 export class AppModule { }

@@ -170,6 +170,7 @@ export class Sockets {
           ));
         }
         observer.next(transFormedQuestions)
+        
       });
       return () => {
         this.socket.disconnect();

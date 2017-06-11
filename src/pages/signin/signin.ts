@@ -89,7 +89,7 @@ export class SigninPage implements OnInit, OnDestroy {
 
 
   signInWithFacebook() {
-    console.log(this.firebaseService.signInWithFacebook())  
+  this.firebaseService.signInWithFacebook();
 
   }
   signUp() {

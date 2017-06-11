@@ -8,6 +8,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { myGlobals } from "../../globals";
 import { Observable, Subscription } from "rxjs";
 import { Storage } from '@ionic/storage';
+import { Push, PushObject, PushOptions, NotificationEventResponse } from "@ionic-native/push";
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -21,13 +22,14 @@ export class FirebaseServiceProvider {
   public userId;
   public firebaseUserId;
   public username;
-  checkSub:Subscription;
+  checkSub: Subscription;
   constructor(
     public http: Http,
     public afAuth: AngularFireAuth,
     private fb: Facebook,
     private platform: Platform,
-    public storage: Storage
+    public storage: Storage,
+    public push: Push
   ) {
 
 
@@ -42,7 +44,8 @@ export class FirebaseServiceProvider {
     if (this.platform.is('cordova')) {
       return this.fb.login(['email', 'public_profile']).then(res => {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-        return firebase.auth().signInWithCredential(facebookCredential);
+
+        return firebase.auth().signInWithCredential(facebookCredential).then(res => { console.log(res) });
       })
     }
     else {
@@ -68,95 +71,157 @@ export class FirebaseServiceProvider {
 
   checkAuthentication() {
     return new Promise((resolve, reject) => {
-     this.checkSub=   this.afAuth.authState.subscribe((user: firebase.User) => {
-          if (!user) {
-            reject('User not logged in');
-          }
-      else {
-        this.afAuth.auth.currentUser.getToken(true).then((idToken) => {
-          this.token = idToken;
-          let headers = new Headers();
-          headers.append('Authorization', this.token);
-          this.http.get(myGlobals.host + 'firebase/protected', { headers: headers })
-            .map((response: Response) => response.json())
-            .catch((error: Response) => {
-              return Observable.throw(error.json())
-            })
-            .subscribe(res => {
-              this.firebaseUserId = res.user_id;
-              resolve(res);
-            }, (err) => {
-              reject(err);
-            });
-        }).catch(function (error) {
-          reject(error);
-        });
+      this.checkSub = this.afAuth.authState.subscribe((user: firebase.User) => {
+        if (!user) {
+          reject('User not logged in');
+        }
+        else {
+          this.afAuth.auth.currentUser.getToken(true).then((idToken) => {
+            this.token = idToken;
+            let headers = new Headers();
+            headers.append('Authorization', this.token);
+            this.http.get(myGlobals.host + 'firebase/protected', { headers: headers })
+              .map((response: Response) => response.json())
+              .catch((error: Response) => {
+                return Observable.throw(error.json())
+              })
+              .subscribe(res => {
+                this.firebaseUserId = res.user_id;
+                resolve(res);
+              }, (err) => {
+                reject(err);
+              });
+          }).catch(function (error) {
+            reject(error);
+          });
+        }
+      });
+    });
+  }
+
+
+
+
+
+
+  signOut() {
+    this.afAuth.auth.signOut();
+  }
+
+
+  firebaseAuth() {
+    const body = JSON.stringify({ a: 'asdasd' });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
+
+  checkUser() {
+    const body = JSON.stringify({});
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
+      .map((response: Response) => {
+        response.json();
+        this.userId = response.json().user_id;
+        console.log(response.json().username);
+        this.username = response.json().username;
+
+      })
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
+
+  createUser(username) {
+    const body = JSON.stringify({ firebase_id: this.firebaseUserId, username: username });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
+
+  sendDeviceToken(deviceToken) {
+    const body = JSON.stringify({devToken:deviceToken,userid:this.userId });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return this.http.post(myGlobals.host + 'firebase/devToken', body, { headers: headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
+  chechUnsubscribe() {
+    this.checkSub.unsubscribe();
+  } 
+  
+  initPushNotification() {
+    
+    if (!this.platform.is('cordova')) {
+      console.warn("Push notifications not initialized. Cordova is not available - Run in physical device");
+      return;
+    }
+    const options: PushOptions = {
+      android: {
+        senderID: '327625743458'
+      },
+      ios: {
+        alert: "true",
+        badge: false,
+        sound: "true"
+      },
+      windows: {}
+    };
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('registration').subscribe((data: any) => {
+      console.log( data.registrationId);
+      this.sendDeviceToken(data.registrationId).subscribe(data=>{
+      },error=>{console.log(error)})
+    
+    });
+
+    pushObject.on('notification').subscribe((response: NotificationEventResponse) => {
+      console.log('message', response.message);
+      console.log(response);
+   
+      if (response.additionalData.foreground) {
+        console.log('message', response.message);
+        // if application open, show popup
+        /*  let confirmAlert = this.alertCtrl.create({
+            title: 'New Notification',
+            message: data.message,
+            buttons: [{
+              text: 'Ignore',
+              role: 'cancel'
+            }, {
+              text: 'View',
+              handler: () => {
+                //TODO: Your logic here
+              }
+            }]
+          });
+          confirmAlert.present();*/
+      } else {
+      
+
+        console.log("Push notification clicked");
       }
     });
-  });
-}
 
-
-
-
-
-
-signOut() {
-  this.afAuth.auth.signOut();
-}
-
-
-firebaseAuth() {
-  const body = JSON.stringify({ a: 'asdasd' });
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Authorization', this.token);
-  return this.http.post(myGlobals.host + 'firebase', body, { headers: headers })
-    .map((response: Response) => response.json())
-    .catch((error: Response) => {
-      return Observable.throw(error.json())
-    });
-}
-
-checkUser() {
-  const body = JSON.stringify({});
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Authorization', this.token);
-  return this.http.post(myGlobals.host + 'firebase/checkuser', body, { headers: headers })
-    .map((response: Response) => {
-      response.json();
-      this.userId = response.json().user_id;
-      console.log(response.json().username);
-      this.username = response.json().username;
-
-    })
-    .catch((error: Response) => {
-      return Observable.throw(error.json())
-    });
-}
-
-createUser(username) {
-  const body = JSON.stringify({ firebase_id: this.firebaseUserId, username: username });
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-  headers.append('Authorization', this.token);
-  return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
-    .map((response: Response) => response.json())
-    .catch((error: Response) => {
-      return Observable.throw(error.json())
-    });
-}
-
-getToken() {
-
-
-
-}
-chechUnsubscribe(){
-  this.checkSub.unsubscribe();
-}
-
+    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+  }
 
 
 
