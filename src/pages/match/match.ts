@@ -108,11 +108,11 @@ export class MatchPage implements OnDestroy {
         .subscribe(
         data => {
           this.time = 100;
-          console.log(data);
           setTimeout(() => {
             if (this.index > 9) {
               this.playerLost();
             }
+             this.realTime = 30;
 
             this.nextQuestion();
           }, 1200);
@@ -157,7 +157,6 @@ export class MatchPage implements OnDestroy {
     } else {
       this.inviteId = this.arena.userId;
     }
-    console.log(this.inviteId);
 
   }
 
@@ -180,13 +179,10 @@ export class MatchPage implements OnDestroy {
   }
 
   showLoader() {
-
     this.loading = this.loadingCtrl.create({
       content: 'Please wait questions loading...'
     });
-
     this.loading.present();
-
   }
 
   timer() {
@@ -195,16 +191,13 @@ export class MatchPage implements OnDestroy {
     this.subscription = timer.subscribe(t => {
       this.time = this.time - 3.3;
       this.realTime = this.realTime - 1;
-
       if (this.realTime <= 0) {
         this.realTime = 0;
       }
-
       if (this.time <= 0) {
         this.time = 0;
         this.playerLost();
         this.subscription.unsubscribe();
-        console.log('Player Lost')
       }
     });
   }

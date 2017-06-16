@@ -76,6 +76,7 @@ export class ShowRewardPage {
         }, 1000);
 
       }, error => {
+        console.log(error);
         this.dismiss();
         this.presentAlert(error);
       });
@@ -84,7 +85,8 @@ export class ShowRewardPage {
 
   presentAlert(error) {
     let alert = this.alertCtrl.create({
-      title: error,
+      title: error.message,
+      message:error.error,
       buttons: ['Dismiss']
     });
     alert.present();

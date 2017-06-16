@@ -36,7 +36,6 @@ export class GameItemComponent implements OnChanges, OnInit {
           .subscribe(data => {
             this.correctNumber = data.correct
           }, error => {
-            console.log(error)
             this.presentAlert(error);
 
           });
@@ -86,6 +85,7 @@ export class GameItemComponent implements OnChanges, OnInit {
   presentAlert(error) {
     let alert = this.alertCtrl.create({
       title: error,
+      message:error.error,
       buttons: ['Dismiss']
     });
     alert.present();

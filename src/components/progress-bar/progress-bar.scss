@@ -10,30 +10,23 @@ progress-bar {
     */
     transform: skew(-40deg);
     position: relative;
-
   }
-
   .progress-inner {
     min-width: 0%;
     white-space: nowrap;
     overflow: hidden;
-   /* border-radius: 20px;*/
+    /* border-radius: 20px;*/
     background-color: map-get($colors, questions);
     font-size: 1.8vh;
   }
-  .progress-inner p{
+  .progress-inner p {
     font-size: 2vh;
   }
-  .level{
+  .level {
     position: absolute;
     top: -80%;
     right: 48%;
     transform: skew(40deg);
-    color:black;
-
-
-
+    color: black;
   }
-
-
 }

@@ -152,7 +152,7 @@ export class FirebaseServiceProvider {
   }
 
   sendDeviceToken(deviceToken) {
-    const body = JSON.stringify({devToken:deviceToken,userid:this.userId });
+    const body = JSON.stringify({devToken:deviceToken,userId:this.userId });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.token);
@@ -184,43 +184,7 @@ export class FirebaseServiceProvider {
       windows: {}
     };
     const pushObject: PushObject = this.push.init(options);
-
-    pushObject.on('registration').subscribe((data: any) => {
-      console.log( data.registrationId);
-      this.sendDeviceToken(data.registrationId).subscribe(data=>{
-      },error=>{console.log(error)})
-    
-    });
-
-    pushObject.on('notification').subscribe((response: NotificationEventResponse) => {
-      console.log('message', response.message);
-      console.log(response);
-   
-      if (response.additionalData.foreground) {
-        console.log('message', response.message);
-        // if application open, show popup
-        /*  let confirmAlert = this.alertCtrl.create({
-            title: 'New Notification',
-            message: data.message,
-            buttons: [{
-              text: 'Ignore',
-              role: 'cancel'
-            }, {
-              text: 'View',
-              handler: () => {
-                //TODO: Your logic here
-              }
-            }]
-          });
-          confirmAlert.present();*/
-      } else {
-      
-
-        console.log("Push notification clicked");
-      }
-    });
-
-    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+    return pushObject;
   }
 
 

@@ -1,6 +1,6 @@
 
 export class Stats{
-    constructor(public level:number,public currentExp:number,public wins:number,public loses:number){
+    constructor(public level:number,public currentExp:number,public wins:number,public loses:number,public draws?:number){
     }
 
 }

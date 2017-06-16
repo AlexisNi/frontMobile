@@ -9,6 +9,8 @@ import { StartingPage } from "../../providers/starting-page";
 import { Auth } from "../../providers/auth";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
+import { NotificationEventResponse } from "@ionic-native/push";
+import { MatchPage } from "../match/match";
 
 /*
   Generated class for the MyProfile page.
@@ -35,13 +37,11 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
-      this.firebasaService.initPushNotification().then((res)=>{
-        console.log(res);
-      },error=>{
-        console.log(error);
-      });
-      this.socketService.connect();
-      this.socketService.reqStats(this.firebasaService.userId);
+    /* this.notifcationHandler();*/
+     
+
+/*      this.socketService.connect();
+*/      this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
     }
   }
@@ -95,9 +95,7 @@ export class MyProfilePage {
               const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
               this.startPageService.createArena(arenaPlayer)
                 .subscribe(data => {
-                  setTimeout(() => {
-                    this.socketService.reqArenas(result.inviteId);
-                  }, 10);
+                   this.appCtrl.getRootNav().push(MatchPage, { arena: data });
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
 
@@ -154,6 +152,44 @@ export class MyProfilePage {
     alert.present();
   }
 
+
+notifcationHandler(){
+  this.firebasaService.initPushNotification().on('registration')
+  .subscribe((data: any) => {
+      console.log( data.registrationId);
+      this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data=>{
+      },error=>{console.log(error)})
+    });
+    this.firebasaService.initPushNotification()
+    .on('notification').subscribe((response: NotificationEventResponse) => {
+      console.log('message', response.message);
+      console.log(response);
+      if (response.additionalData.foreground) {
+        console.log('message', response.message);
+          let confirmAlert = this.alertCtrl.create({
+            title: 'New Notification',
+            message: response.message,
+            buttons: [{
+              text: 'Ok',
+              role: 'cancel'
+            }, {
+              text: 'Go to arenas',
+              handler: () => {
+                //TODO: Your logic here
+              }
+            }]
+          });
+          confirmAlert.present();
+      } else {
+      
+
+        console.log("Push notification clicked");
+      }
+    });
+
+   
+
+}
 
 
 

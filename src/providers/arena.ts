@@ -91,6 +91,7 @@ export class Arena {
     headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host + 'awards', body, { headers: headers })
       .map((response: Response) => response.json())
+     .debounceTime(5000)
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });

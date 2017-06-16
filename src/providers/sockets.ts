@@ -19,7 +19,7 @@ import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 @Injectable()
 export class Sockets {
 
-  private socket: any; /*= io(myGlobals.socket, { query: { userId: this.authService.userId } });*/
+  private socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
 /*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
 */
 
@@ -31,44 +31,35 @@ export class Sockets {
 
   }
 
-  connect() {
-
-   /* let socket = this.socket;
-    const token = this.authService.token;*/
+  /*connect() {
     this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
     this.socket.on('connect', () => {
       console.log('connected');
 
 
-      /*
-             socket.removeAllListeners('authenticated');
-      */
-      /*   socket.emit('authentication', {token:token});
-         socket.on('authenticated', function() {
-  
-         });
-         socket.on('unauthorized', function(err){
-           console.log("There was an error with the authentication:", err.message);
-  
-         });*/
+   
     });
-  }
+  }*/
 
   //////////////////////req-get stats///////////////////////
 
   reqStats(userId) {
     console.log(userId);
-
     this.socket.emit('getStats', { userId: userId });
-
-
   }
+
   enterArena(arenaId: string, userId: string, inviteId: string) {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
   }
+
   arenaLeave(userId) {
     this.socket.emit('leaveArena');
     this.reqArenas(userId);
+    this.sendNotification(userId);
+  }
+
+  sendNotification(userId){
+    this.socket.emit('sendNotication',{userId:userId});
   }
 
   getStats() {
@@ -77,7 +68,7 @@ export class Sockets {
       this.socket.on('loadStats', (data: any) => {
         const stats = data.obj;
         let transFormedStats: Stats;
-        transFormedStats = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses);
+        transFormedStats = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses,stats.draws);
         observer.next(transFormedStats);
       });
       return () => {
@@ -97,7 +88,6 @@ export class Sockets {
   reqArenas(userId) {
     console.log(userId);
     this.socket.emit('getArenas', { userId: userId });
-
   }
 
   getArenas() {
@@ -105,10 +95,8 @@ export class Sockets {
     let observable = new Observable((observer: any) => {
       this.socket.on('loadArenas', (data: any) => {
         const arenas = data.obj;
-
         let transformedArenas: Arenas[] = [];
         for (let arena of arenas) {
-
           transformedArenas.push(new Arenas(
             arena._id,
             arena.user,

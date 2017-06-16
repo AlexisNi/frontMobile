@@ -1,11 +1,21 @@
 page-tabs {
-  .tabs .tabbar {
+ .tabs .tabbar {
     background:  #231f20;
   }
   .tabs .tab-button{
-    border:1px ridge #231f20 ;
+    border:1px ridge #382F2E ;
   }
   .tabs .tab-button[aria-selected=true] {
-    color: #8dc63f;
+    color:lighten(#B4B4B4,20%) ;
+
+     .tab-button-text{
+    font-size: 1.4rem !important;
   }
+
+  }
+    .tabs .tab-button[aria-selected=false] {
+    color: darken(#878787, 20%) 
+  }
+
+
 }

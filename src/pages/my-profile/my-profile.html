@@ -7,14 +7,31 @@
 <ion-header>
 
   <ion-navbar [color]="'navBar'">
-    <ion-title text-center>myProfile</ion-title>
+    <ion-title text-center>My team</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div class="main">
+  <ion-row class="statistics">
+    <ion-col>
+      <div class="wins" [style.max-height]="40 + '%'">
+        <p> wins</p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="draws" [style.max-height]="30 + '%'">
+        <p> draw</p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="loses" [style.max-height]="30 + '%'">
+        <p> lose</p>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!-- <div class="main">
 
     <ion-row class="progressBarRow" (click)="logout()">
       <ion-col width-50 offset-25>
@@ -42,7 +59,7 @@
       </ion-col>
     </ion-row>
 
-  </div>
+  </div>-->
 
 
 </ion-content>

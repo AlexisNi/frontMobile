@@ -1,56 +1,83 @@
 page-my-profile {
+  @font-face {
+    font-family: 'Play';
+    src: url('../assets/fonts/Play-Bold.ttf');
+    /*URL to font*/
+  }
+  font-family: 'Play';
   .headerRow {
     background-color: #231f20;
     min-height: 56px;
     display: flex;
     height: 100%;
   }
-  .quizHeader h2{
+  .quizHeader h2 {
     font-size: 2rem;
     color: #E6E7E8;
   }
-  .main{
+  .main {
     height: 100%;
     width: 100%;
   }
-  .logoRow{
+  .logoRow {
     padding: 60px;
   }
   .item ion-avatar img {
     width: 116px;
     height: 93px;
-
     background-color: gray;
-
   }
-  .teamName h2{
+  .teamName h2 {
     color: #E6E7E8;
     font-size: 2vh;
-
   }
   ion-content .scroll-content {
     overflow-x: hidden;
     overflow-y: hidden;
   }
-
-  .progressBarRow{
+  .progressBarRow {
     padding-top: 50px;
   }
-  .buttonRow{
+  .buttonRow {
     padding-top: 50px;
   }
-  .playButton{
+  .playButton {
     background-color: #8dc63f;
     position: relative;
     transform: skew(-40deg);
     width: 70vw;
-
-
   }
-  .playButton p{
+  .playButton p {
     transform: skew(40deg);
     font-weight: bold;
-
   }
-
+  .statistics {
+    height: 50%;
+    div {
+      height: 100%;
+      min-height: 1px;
+      max-height: 80%;
+      margin-top: 10px;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.2);
+      position: absolute;
+      bottom: 0px;
+      p {
+        position: absolute;
+        top: -32px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 15px;
+      }
+    }
+    .wins {
+      margin-left: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    .draws {
+      margin-left: 5px;
+    }
+    .loses {
+      margin-right: 10px;
+    }
+  }
 }
