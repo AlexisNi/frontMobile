@@ -33,6 +33,12 @@ export class MyProfilePage {
   hideArenas = true;
   stats: Stats;
   pageView = 1;
+  wins;
+  loses;
+  draws;
+  pWins;
+  pLoses;
+  pDraws;
 
 
   ngOnInit(): void {
@@ -66,9 +72,14 @@ export class MyProfilePage {
       })
   }
   setStats(stats) {
-    console.log(stats);
-    console.log(stats.level)
     this.level = stats.level;
+    this.wins=stats.wins;
+    this.loses=stats.loses;
+    this.draws=stats.draws;
+    let sum=this.wins+this.loses+this.draws;
+    this.pWins=(this.wins/sum)*100;
+    this.pLoses=(this.loses/sum)*100;
+    this.pDraws=(this.draws/sum)*100;
     this.currentExp = stats.currentExp;
     this.experienceNextLevel = 300 * stats.level;
     this.percentage = (this.currentExp / this.experienceNextLevel) * 100;

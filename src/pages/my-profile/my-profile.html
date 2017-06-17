@@ -16,19 +16,26 @@
 <ion-content>
   <ion-row class="statistics">
     <ion-col>
-      <div class="wins" [style.max-height]="40 + '%'">
-        <p> wins</p>
+      <div class="wins" [style.max-height]="pWins + '%'">
+        <p>{{wins}} wins</p>
       </div>
     </ion-col>
     <ion-col>
       <div class="draws" [style.max-height]="30 + '%'">
-        <p> draw</p>
+        <p>{{draws}} draw</p>
       </div>
     </ion-col>
     <ion-col>
-      <div class="loses" [style.max-height]="30 + '%'">
-        <p> lose</p>
+      <div class="loses" [style.max-height]="pLoses + '%'">
+        <p>{{loses}} lose</p>
       </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="progressBarRow" (click)="logout()">
+    <ion-col width-50 offset-25>
+      <progress-bar [progress]="percentage" [level]="level"></progress-bar>
+      <p text-center>{{currentExp}}/{{experienceNextLevel}}</p>
     </ion-col>
   </ion-row>
   <!-- <div class="main">

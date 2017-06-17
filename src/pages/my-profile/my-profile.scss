@@ -59,10 +59,14 @@ page-my-profile {
       max-height: 80%;
       margin-top: 10px;
       width: 90%;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
       position: absolute;
       bottom: 0px;
+      border: 0;
+      border-radius: 1px;
+      box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.1);
       p {
+        /* Chrome10-25,Safari5.1-6 */
         position: absolute;
         top: -32px;
         color: rgba(255, 255, 255, 0.9);
@@ -71,7 +75,6 @@ page-my-profile {
     }
     .wins {
       margin-left: 10px;
-      background-color: rgba(255, 255, 255, 0.5);
     }
     .draws {
       margin-left: 5px;

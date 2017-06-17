@@ -1,14 +1,21 @@
 progress-bar {
+  .progressCol {
+    padding: 0px;
+  }
+  .col-2 {
+    padding-bottom: 5px;
+  }
   .progress-outer {
     width: 96%;
     text-align: center;
     background-color: gray;
-    border: 1px solid #231f20;
-    color: map-get($colors, questions);
+/*    border: 1px solid #231f20;
+*/    color: map-get($colors, questions);
     /*map-get($colors, questions);
     border-radius: 20px;
     */
-    transform: skew(-40deg);
+    /*    transform: skew(-40deg);
+*/
     position: relative;
   }
   .progress-inner {
@@ -26,7 +33,19 @@ progress-bar {
     position: absolute;
     top: -80%;
     right: 48%;
-    transform: skew(40deg);
+    /*    transform: skew(40deg);
+*/
     color: black;
+  }
+  .levelCol {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 5%;
+    .levelContainer {
+      position: relative;
+      p {
+        position: absolute;
+        top: -14px;
+      }
+    }
   }
 }
