@@ -13,7 +13,9 @@
     </div>
   </ion-col>
   <ion-col class="progressCol">
+
     <div class="progress">
+      <p class="exp" text-center>{{currentExp}}/{{experienceNextLevel}}</p>
       <div class="progress-outer" text-center>
         <p class="level"></p>
         <div class="progress-inner" [style.width]="progress + '%'">

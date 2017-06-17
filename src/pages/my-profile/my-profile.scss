@@ -36,7 +36,7 @@ page-my-profile {
     overflow-y: hidden;
   }
   .progressBarRow {
-    padding-top: 50px;
+    padding-top: 5%;
   }
   .buttonRow {
     padding-top: 50px;
@@ -52,6 +52,7 @@ page-my-profile {
     font-weight: bold;
   }
   .statistics {
+    padding: 1%;
     height: 50%;
     div {
       height: 100%;
@@ -74,10 +75,10 @@ page-my-profile {
       }
     }
     .wins {
-      margin-left: 10px;
+      margin-left: 5px;
     }
     .draws {
-      margin-left: 5px;
+      margin-left: 2.5px;
     }
     .loses {
       margin-right: 10px;

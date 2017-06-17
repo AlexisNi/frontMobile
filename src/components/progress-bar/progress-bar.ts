@@ -14,6 +14,9 @@ export class ProgressBarComponent implements OnChanges {
 
   @Input('progress') progress;
   @Input() level = 1;
+  @Input() currentExp;
+  @Input() experienceNextLevel;
+  
   text: string;
 
   constructor() { }

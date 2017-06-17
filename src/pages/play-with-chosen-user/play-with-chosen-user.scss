@@ -1,0 +1,22 @@
+page-play-with-chosen-user {
+    ion-content{
+        border-radius: 10px;
+        .scroll-content{
+            overflow-y: hidden;
+        }
+
+    }
+    .findButton{
+        width: 100%;
+    }
+
+}
+
+ion-modal {
+    padding-top: 166px;
+    padding-bottom: 162px;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+  background: rgba(0, 0, 0, 0.7);
+}

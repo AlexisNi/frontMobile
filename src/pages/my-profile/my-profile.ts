@@ -11,6 +11,7 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { MatchPage } from "../match/match";
+import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
 
 /*
   Generated class for the MyProfile page.
@@ -39,6 +40,7 @@ export class MyProfilePage {
   pWins;
   pLoses;
   pDraws;
+  findPlayerPage:any='PlayWithChosenUserPage';
 
 
   ngOnInit(): void {
@@ -202,6 +204,10 @@ notifcationHandler(){
 
 }
 
+  choosePlayer() {
+    let modal = this.modalCtrl.create(this.findPlayerPage, { });
+    modal.present();
+  }
 
 
 }
