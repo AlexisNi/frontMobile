@@ -1,6 +1,34 @@
 // http://ionicframework.com/docs/v2/theming/
-form{
+form {
   background-color: greenyellow;
+}
+
+@font-face {
+  font-family: Play;
+  src: url('../assets/fonts/Play-Regular.ttf');
+  /*  src: url('../assets/fonts/play.woff2');
+*/
+}
+
+* {
+  font-family: Play;
+}
+
+ion-icon {
+  &[class*="appname-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  } // custom icons
+  &[class*="appname-customicon1"] {
+    mask-image: url(../assets/images/icons_tab_arena.svg);
+  }
+  &[class*="appname-customicon2"] {
+    mask-image: url(../assets/images/icons_tab_team.svg);
+  }
 }
 
 // App Global Sass

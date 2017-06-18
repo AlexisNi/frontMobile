@@ -1,10 +1,15 @@
 page-my-profile {
-  @font-face {
-    font-family: 'Play';
-    src: url('../assets/fonts/Play-Bold.ttf');
-    /*URL to font*/
+  ion-col {
+    h2 {
+      position: absolute;
+      top: 44%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      font-size: 29px;
+      color: white;
+    }
   }
-  font-family: 'Play';
   .headerRow {
     background-color: #231f20;
     min-height: 56px;
@@ -42,22 +47,28 @@ page-my-profile {
     padding-top: 50px;
   }
   .playButton {
-    background-color: #8dc63f;
+    background-color: white;
     position: relative;
     transform: skew(-40deg);
-    width: 70vw;
+    width: 100%;
+    max-width: 150px;
+    box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
   }
   .playButton p {
     transform: skew(40deg);
     font-weight: bold;
   }
   .statistics {
+    background-image: url("../assets/images/field_graphic.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     padding: 1%;
     height: 50%;
     div {
       height: 100%;
-      min-height: 1px;
-      max-height: 80%;
+      min-height: 10%;
+      max-height: 100%;
       margin-top: 10px;
       width: 90%;
       background-color: rgba(255, 255, 255, 0.1);
@@ -66,22 +77,32 @@ page-my-profile {
       border: 0;
       border-radius: 1px;
       box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.1);
+      letter-spacing: 1.5px;
       p {
         /* Chrome10-25,Safari5.1-6 */
         position: absolute;
-        top: -32px;
+        bottom: -8px;
         color: rgba(255, 255, 255, 0.9);
         font-size: 15px;
       }
     }
     .wins {
       margin-left: 5px;
+      p {
+        left: 31%;
+      }
     }
     .draws {
       margin-left: 2.5px;
+      p {
+        left: 15%;
+      }
     }
     .loses {
       margin-right: 10px;
+      p {
+        left: 31%;
+      }
     }
   }
 }

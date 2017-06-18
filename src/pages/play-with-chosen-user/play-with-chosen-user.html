@@ -25,8 +25,38 @@
       </ion-col>
     </ion-row>
 
-    <ion-row justify-content-start>
-      <ion-col col-6>
+    <div class="userFoundStats">
+      <ion-row justify-content-center class="userNameRow">
+        <ion-col col-10 class="userName">
+          Username : Alex
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 class="userName">
+          W:25%
+        </ion-col>
+        <ion-col col-4 class="userName">
+          L:%32
+        </ion-col>
+        <ion-col col-4 class="userName">
+          D:43%
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button class="findButton" (click)="choosePlayer()">
+          <p>Παίξε μαζι του</p>
+        </button>
+        </ion-col>
+        <ion-col>
+          <button class="findButton" (click)="choosePlayer()">
+          <p>Ακύρωση</p>
+        </button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <!-- <ion-col col-6>
         <ion-row>
           <ion-col col-12>
             Name:Alex
@@ -58,7 +88,6 @@
 
         </ion-row>
 
-      </ion-col>
-    </ion-row>
+      </ion-col>-->
   </ion-grid>
 </ion-content>

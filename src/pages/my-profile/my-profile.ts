@@ -40,13 +40,16 @@ export class MyProfilePage {
   pWins;
   pLoses;
   pDraws;
-  findPlayerPage:any='PlayWithChosenUserPage';
+  findPlayerPage: any = 'PlayWithChosenUserPage';
+  sWins;
+  sLoses;
+  sDraws;
 
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
     /* this.notifcationHandler();*/
-     
+
 
 /*      this.socketService.connect();
 */      this.socketService.reqStats(this.firebasaService.userId);
@@ -74,14 +77,36 @@ export class MyProfilePage {
       })
   }
   setStats(stats) {
+
     this.level = stats.level;
-    this.wins=stats.wins;
-    this.loses=stats.loses;
-    this.draws=stats.draws;
-    let sum=this.wins+this.loses+this.draws;
-    this.pWins=(this.wins/sum)*100;
-    this.pLoses=(this.loses/sum)*100;
-    this.pDraws=(this.draws/sum)*100;
+    this.wins = stats.wins;
+    this.loses = stats.loses;
+    this.draws = stats.draws;
+    let sum = this.wins + this.loses + this.draws;
+    this.pWins = ((this.wins / sum) * 100) + 10;
+    this.pLoses = ((this.loses / sum) * 100) + 10;
+    this.pDraws = ((this.draws / sum) * 100) + 10;
+    this.pWins = this.pWins.toFixed(1);
+    this.pLoses = this.pLoses.toFixed(1);
+    this.pDraws = this.pDraws.toFixed(1);
+    if (this.pWins == 'NaN') {
+      this.pWins = 0;
+      this.sWins = 0;
+    } else {
+      this.sWins = this.pWins - 10;
+    }
+    if (this.pLoses == 'NaN') {
+      this.pLoses = 0;
+      this.sLoses = 0;
+    } else {
+      this.sLoses = this.pLoses - 10;
+    }
+    if (this.pDraws == 'NaN') {
+      this.pDraws = 0;
+      this.sDraws = 0;
+    } else {
+      this.sDraws = this.pDraws - 10;
+    }
     this.currentExp = stats.currentExp;
     this.experienceNextLevel = 300 * stats.level;
     this.percentage = (this.currentExp / this.experienceNextLevel) * 100;
@@ -108,7 +133,7 @@ export class MyProfilePage {
               const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
               this.startPageService.createArena(arenaPlayer)
                 .subscribe(data => {
-                   this.appCtrl.getRootNav().push(MatchPage, { arena: data });
+                  this.appCtrl.getRootNav().push(MatchPage, { arena: data });
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
 
@@ -166,19 +191,19 @@ export class MyProfilePage {
   }
 
 
-notifcationHandler(){
-  this.firebasaService.initPushNotification().on('registration')
-  .subscribe((data: any) => {
-      console.log( data.registrationId);
-      this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data=>{
-      },error=>{console.log(error)})
-    });
+  notifcationHandler() {
+    this.firebasaService.initPushNotification().on('registration')
+      .subscribe((data: any) => {
+        console.log(data.registrationId);
+        this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data => {
+        }, error => { console.log(error) })
+      });
     this.firebasaService.initPushNotification()
-    .on('notification').subscribe((response: NotificationEventResponse) => {
-      console.log('message', response.message);
-      console.log(response);
-      if (response.additionalData.foreground) {
+      .on('notification').subscribe((response: NotificationEventResponse) => {
         console.log('message', response.message);
+        console.log(response);
+        if (response.additionalData.foreground) {
+          console.log('message', response.message);
           let confirmAlert = this.alertCtrl.create({
             title: 'New Notification',
             message: response.message,
@@ -193,19 +218,19 @@ notifcationHandler(){
             }]
           });
           confirmAlert.present();
-      } else {
-      
+        } else {
 
-        console.log("Push notification clicked");
-      }
-    });
 
-   
+          console.log("Push notification clicked");
+        }
+      });
 
-}
+
+
+  }
 
   choosePlayer() {
-    let modal = this.modalCtrl.create(this.findPlayerPage, { });
+    let modal = this.modalCtrl.create(this.findPlayerPage, {});
     modal.present();
   }
 

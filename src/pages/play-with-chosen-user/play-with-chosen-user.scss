@@ -20,3 +20,14 @@ ion-modal {
     
   background: rgba(0, 0, 0, 0.7);
 }
+
+.userFoundStats{
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    border: 1px solid white;
+    .userNameRow{
+         border-bottom: 1px solid white;
+    }
+
+}

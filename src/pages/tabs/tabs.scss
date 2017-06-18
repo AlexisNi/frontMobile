@@ -7,6 +7,9 @@ page-tabs {
   }
   .tabs .tab-button[aria-selected=true] {
     color:lighten(#B4B4B4,20%) ;
+    ion-icon{
+      background-color:lighten(#B4B4B4,20%) !important ;
+    }
 
      .tab-button-text{
     font-size: 1.4rem !important;

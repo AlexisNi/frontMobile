@@ -16,18 +16,27 @@
 <ion-content>
   <ion-row class="statistics">
     <ion-col>
-      <div class="wins" [style.max-height]="pWins + '%'">
-        <p>{{wins}} ΝΙΚΕΣ</p>
+      <h2>
+        {{sWins}}%
+      </h2>
+      <div class="wins" [style.transition-timing-function]="linear" [style.max-height]="pWins + '%'">
+        <p> ΝΙΚΕΣ</p>
       </div>
     </ion-col>
     <ion-col>
-      <div class="draws" [style.max-height]="30 + '%'">
-        <p>{{draws}} ΙΣΟΠΑΛΙΕΣ</p>
+      <h2>
+        {{sDraws}}%
+      </h2>
+      <div class="draws" [style.max-height]="pDraws + '%'">
+        <p> ΙΣΟΠΑΛΙΕΣ</p>
       </div>
     </ion-col>
     <ion-col>
+      <h2>
+        {{sLoses}}%
+      </h2>
       <div class="loses" [style.max-height]="pLoses + '%'">
-        <p>{{loses}} ΗΤΤΕΣ</p>
+        <p> ΗΤΤΕΣ</p>
       </div>
     </ion-col>
   </ion-row>
@@ -35,41 +44,22 @@
   <ion-row class="progressBarRow" (click)="logout()">
     <ion-col width-50 offset-25>
       <progress-bar [currentExp]="currentExp" [experienceNextLevel]="experienceNextLevel" [progress]="percentage" [level]="level"></progress-bar>
-      <!--      <p text-center>{{currentExp}}/{{experienceNextLevel}}</p>
--->
     </ion-col>
   </ion-row>
 
   <ion-row>
-<!--    <ion-col width-50 offset-25>
-      <ion-item>
-        <ion-label>Find User</ion-label>
-        <ion-input #username></ion-input>
-      </ion-item>
-    </ion-col>-->
+
   </ion-row>
   <ion-row class="buttonRow">
     <ion-col text-center>
       <button class="playButton" (click)="choosePlayer()">
-          <p> Παίξε τώρα</p>
+          <p> Παίξε με αντίπαλο με το Username</p>
+        </button>
+    </ion-col>
+    <ion-col>
+      <button class="playButton" (click)="choosePlayer()">
+          <p> Παίξε με τυχαίο αντίπαλο</p>
         </button>
     </ion-col>
   </ion-row>
-
-
-  <!-- <div class="main">
-
-    <ion-row class="progressBarRow" (click)="logout()">
-      <ion-col width-50 offset-25>
-        <progress-bar [progress]="percentage" [level]="level"></progress-bar>
-        <p text-center>{{currentExp}}/{{experienceNextLevel}}</p>
-      </ion-col>
-    </ion-row>
-
-
- 
-
-  </div>-->
-
-
 </ion-content>
