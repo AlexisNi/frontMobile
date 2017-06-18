@@ -83,12 +83,16 @@ export class MyProfilePage {
     this.loses = stats.loses;
     this.draws = stats.draws;
     let sum = this.wins + this.loses + this.draws;
-    this.pWins = ((this.wins / sum) * 100) + 10;
-    this.pLoses = ((this.loses / sum) * 100) + 10;
-    this.pDraws = ((this.draws / sum) * 100) + 10;
-    this.pWins = this.pWins.toFixed(1);
-    this.pLoses = this.pLoses.toFixed(1);
-    this.pDraws = this.pDraws.toFixed(1);
+
+/*    this.pWins = Math.round((((this.wins / sum) * 100) + 10))
+    this.pLoses = Math.round((((this.loses / sum) * 100) + 10))
+    this.pDraws =Math.round((((this.draws / sum) * 100) + 10))*/
+      this.pWins = (((this.wins / sum) * 100) + 10).toFixed(1);
+       this.pLoses = (((this.loses / sum) * 100) + 10).toFixed(1);;
+       this.pDraws = (((this.draws / sum) * 100) + 10).toFixed(1);
+    /* this.pWins = this.pWins.toFixed(1);*/
+    /*  this.pLoses = this.pLoses.toFixed(1);
+      this.pDraws = this.pDraws.toFixed(1);*/
     if (this.pWins == 'NaN') {
       this.pWins = 0;
       this.sWins = 0;
@@ -99,7 +103,8 @@ export class MyProfilePage {
       this.pLoses = 0;
       this.sLoses = 0;
     } else {
-      this.sLoses = this.pLoses - 10;
+      this.sLoses = this.pLoses - 10
+
     }
     if (this.pDraws == 'NaN') {
       this.pDraws = 0;

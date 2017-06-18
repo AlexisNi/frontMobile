@@ -17,7 +17,7 @@
   <ion-row class="statistics">
     <ion-col>
       <h2>
-        {{sWins}}%
+        {{sWins|number:'1.1'}}%
       </h2>
       <div class="wins" [style.transition-timing-function]="linear" [style.max-height]="pWins + '%'">
         <p> ΝΙΚΕΣ</p>
@@ -25,7 +25,7 @@
     </ion-col>
     <ion-col>
       <h2>
-        {{sDraws}}%
+        {{sDraws|number:'1.1' }}%
       </h2>
       <div class="draws" [style.max-height]="pDraws + '%'">
         <p> ΙΣΟΠΑΛΙΕΣ</p>
@@ -33,7 +33,7 @@
     </ion-col>
     <ion-col>
       <h2>
-        {{sLoses}}%
+        {{sLoses |number:'1.1'}}%
       </h2>
       <div class="loses" [style.max-height]="pLoses + '%'">
         <p> ΗΤΤΕΣ</p>
