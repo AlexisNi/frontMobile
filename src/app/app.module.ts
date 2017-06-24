@@ -32,6 +32,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { CreateUserModalPageModule } from "../pages/create-user-modal/create-user-modal.module";
 import { Push } from "@ionic-native/push";
+import { TimerComponent } from '../components/timer/timer';
 
 
 
@@ -60,7 +61,8 @@ export const firebaseConfig = {
     MatchPage,
     MyArenasPage,
     MyProfilePage,
-    ShowRewardPage
+    ShowRewardPage,
+    TimerComponent
 
   ],
   imports: [

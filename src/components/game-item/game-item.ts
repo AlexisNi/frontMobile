@@ -36,7 +36,7 @@ export class GameItemComponent implements OnChanges, OnInit {
           .subscribe(data => {
             this.correctNumber = data.correct
           }, error => {
-            this.presentAlert(error);
+            this.presentAlert(error.message);
 
           });
       }

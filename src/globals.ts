@@ -4,11 +4,11 @@
 
 export const myGlobals = Object.freeze({
     host: 'https://footballquizarena.herokuapp.com/api/',
-    socket: 'https://footballquizarena.herokuapp.com'
+    socket:  'https://footballquizarena.herokuapp.com'
 });
 /*
- public Heroku='https://footballquizarena.herokuapp.com/api/';
- host:'http://localhost:3000/'
+ public Heroku='http://localhost:3000/api/';
+ host:'http://localhost:3000'
  */
 
 

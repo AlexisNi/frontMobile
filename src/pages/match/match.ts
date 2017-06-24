@@ -112,7 +112,7 @@ export class MatchPage implements OnDestroy {
             if (this.index > 9) {
               this.playerLost();
             }
-             this.realTime = 30;
+            this.realTime = 30;
 
             this.nextQuestion();
           }, 1200);
@@ -172,10 +172,11 @@ export class MatchPage implements OnDestroy {
 
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
-    setTimeout(() => {
-      this.socketService.arenaLeave(this.inviteId);
-    }, 1000);
+    /*    setTimeout(() => {
+          this.socketService.arenaLeave(this.inviteId);
+        }, 1000);*/
     this.statusPlayed();
+    this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
   }
 
   showLoader() {

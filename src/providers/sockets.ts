@@ -18,18 +18,20 @@ import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 */
 @Injectable()
 export class Sockets {
-
-  private socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-/*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
-*/
+  private socket:any;
+/*  private socket = io(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
+*/  /*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
+  */
 
 
   constructor(
     public http: Http,
-    public firebasaService:FirebaseServiceProvider) {
+    public firebasaService: FirebaseServiceProvider) {
+      this.socket=io.connect(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
 
 
   }
+  
 
   /*connect() {
     this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
@@ -44,6 +46,7 @@ export class Sockets {
   //////////////////////req-get stats///////////////////////
 
   reqStats(userId) {
+
     console.log(userId);
     this.socket.emit('getStats', { userId: userId });
   }
@@ -58,8 +61,8 @@ export class Sockets {
     this.sendNotification(userId);
   }
 
-  sendNotification(userId){
-    this.socket.emit('sendNotication',{userId:userId});
+  sendNotification(userId) {
+    this.socket.emit('sendNotication', { userId: userId });
   }
 
   getStats() {
@@ -68,7 +71,7 @@ export class Sockets {
       this.socket.on('loadStats', (data: any) => {
         const stats = data.obj;
         let transFormedStats: Stats;
-        transFormedStats = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses,stats.draws);
+        transFormedStats = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses, stats.draws);
         observer.next(transFormedStats);
       });
       return () => {
@@ -86,14 +89,65 @@ export class Sockets {
 
 
   reqArenas(userId) {
-    console.log(userId);
     this.socket.emit('getArenas', { userId: userId });
   }
 
+  reqOneArena(userId, arenaId) {
+    this.socket.emit('sendArena', { userId: userId, arenaId: arenaId });
+  }
+
+  getOneArena() {
+    this.socket.removeAllListeners('loadOneArena');
+    let observable = new Observable((observer: any) => {
+      console.log(observer);
+      this.socket.on('loadOneArena', (data: any) => {
+        console.log(data);
+        let transformedArena: Arenas
+        if (data.obj != null) {
+          const arena = data.obj;
+          transformedArena = new Arenas(
+            arena._id,
+            arena.user,
+            arena.invite._id,
+            arena.status_accept,
+            arena.user.username || arena.invite.username,
+            arena.user_played,
+            arena.invite_played
+          )
+        }
+        if (data.objUser != null) {
+          const UserArenas = data.objUser;
+          transformedArena = new Arenas(
+            UserArenas._id,
+            UserArenas.user._id,
+            UserArenas.invite,
+            UserArenas.status_accept,
+            UserArenas.user.username,
+            UserArenas.user_played,
+            UserArenas.invite_played,
+          );
+        }
+        observer.next(transformedArena);
+      });
+      return (error) => {
+        observer.error(error);
+        this.socket.disconnect();
+      }
+    })
+    return observable;
+  }
+
   getArenas() {
+    console.log(this.socket);
+  
     this.socket.removeAllListeners('loadArenas');
     let observable = new Observable((observer: any) => {
+        this.socket.on('error',()=>{
+          console.log('error');
+        })
+      console.log(observer);
       this.socket.on('loadArenas', (data: any) => {
+        console.log(data)
         const arenas = data.obj;
         let transformedArenas: Arenas[] = [];
         for (let arena of arenas) {
@@ -123,7 +177,8 @@ export class Sockets {
         }
         observer.next(transformedArenas);
       });
-      return () => {
+      return (error) => {
+        observer.error(error);
         this.socket.disconnect();
       }
     })
@@ -158,7 +213,7 @@ export class Sockets {
           ));
         }
         observer.next(transFormedQuestions)
-        
+
       });
       return () => {
         this.socket.disconnect();

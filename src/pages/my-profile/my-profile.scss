@@ -6,7 +6,7 @@ page-my-profile {
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      font-size: 29px;
+      font-size: 5.9vw;
       color: white;
     }
   }
@@ -44,14 +44,14 @@ page-my-profile {
     padding-top: 5%;
   }
   .buttonRow {
-    padding-top: 50px;
+    padding-top: 15px;
   }
   .playButton {
     background-color: white;
     position: relative;
     transform: skew(-40deg);
     width: 100%;
-    max-width: 150px;
+    max-width: 80%;
     box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
   }
   .playButton p {
@@ -83,7 +83,7 @@ page-my-profile {
         position: absolute;
         bottom: -8px;
         color: rgba(255, 255, 255, 0.9);
-        font-size: 15px;
+        font-size: 4vw;
       }
     }
     .wins {
@@ -105,5 +105,14 @@ page-my-profile {
       }
     }
   }
-  
+  /* @media screen and (max-width: 320px) {
+    .playButton {
+      max-width: 70%;
+      height:50px;
+      flex: 100%;
+       p {
+        font-size: 15px;
+      }
+    }
+  }*/
 }

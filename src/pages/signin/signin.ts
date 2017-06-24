@@ -57,10 +57,7 @@ export class SigninPage implements OnInit, OnDestroy {
   ionViewDidLoad() {
     this.showLoader();
     this.firebaseService.checkAuthentication().then((res) => {
-      console.log('User Authorized');
-      console.log(res);
       this.loading.dismiss();
-      setTimeout(() => {
         this.firebaseService.checkUser()
           .subscribe(data => {
             this.navCtrl.setRoot(TabsPage);
@@ -72,7 +69,6 @@ export class SigninPage implements OnInit, OnDestroy {
             }
 
           })
-      }, 10);
     }, error => {
       this.firebaseService.chechUnsubscribe();
       console.log(error);
