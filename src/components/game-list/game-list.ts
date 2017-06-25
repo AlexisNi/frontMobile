@@ -30,7 +30,13 @@ export class GameListComponent implements OnInit {
   ) {
   }
   ngOnInit() {
-    this.showLoader();
+    this.arenas=this.startingPage.arenas;
+    this.startingPage.getArenas
+    .subscribe((arenas:Arenas[])=>{
+      console.log(arenas)
+      this.arenas=arenas;
+    });
+/*    this.showLoader();
 
 
     this.startingPage.newArena
@@ -40,11 +46,7 @@ export class GameListComponent implements OnInit {
       });
 
     this.getArenaUpdate();
-    this.getOneArena();
-
-
-
-
+    this.getOneArena();*/
   }
   //edw na valw event emitter poy na elenxei an einai disconnet o user kai an einai na svinei to loading
   getOneArena() {

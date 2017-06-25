@@ -16,6 +16,8 @@ import { Stats } from "../models/stats";
 export class StartingPage {
   arenaList: Arenas[] = [];
   newArena = new EventEmitter<Arenas>();
+  getArenas=new EventEmitter<Arenas[]>();
+  public arenas:Arenas[];
 
   constructor(public http: Http,
     public firebasaService: FirebaseServiceProvider)
@@ -89,7 +91,10 @@ export class StartingPage {
   }
   sendNewArena(arena) {
     this.newArena.emit(arena)
-
+  }
+  sendArenas(arenas){
+    this.arenas=arenas;
+    this.getArenas.emit(arenas);
   }
 
 

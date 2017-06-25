@@ -57,7 +57,7 @@ export class Sockets {
 
   arenaLeave(userId) {
     this.socket.emit('leaveArena');
-    this.reqArenas(userId);
+ /*   this.reqArenas(userId);*/
     this.sendNotification(userId);
   }
 

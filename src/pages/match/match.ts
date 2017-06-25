@@ -71,7 +71,7 @@ export class MatchPage implements OnDestroy {
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().push(TabsPage);
+        this.appCtrl.getRootNav().push(TabsPage,{index:1});
         this.loading.dismiss();
         console.log(err.error);
 
@@ -149,7 +149,7 @@ export class MatchPage implements OnDestroy {
 
   }
   cancelButton() {
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot(TabsPage,{index:1});
   }
   getInviteId() {
     if (this.arena.userId == this.userId) {
@@ -172,9 +172,7 @@ export class MatchPage implements OnDestroy {
 
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
-    /*    setTimeout(() => {
-          this.socketService.arenaLeave(this.inviteId);
-        }, 1000);*/
+    this.socketService.arenaLeave(this.inviteId);
     this.statusPlayed();
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
   }
