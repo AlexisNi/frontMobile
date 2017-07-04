@@ -6,6 +6,8 @@ import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { NotificationEventResponse } from "@ionic-native/push";
+import { Arena } from "../../providers/arena";
 
 /*
   Generated class for the Tabs page.
@@ -23,7 +25,7 @@ export class TabsPage {
   arenaPage = MyArenasPage;
   loading: any;
   nots = 0;
-  tab=0;
+  tab = 0;
 
 
   constructor(
@@ -34,7 +36,8 @@ export class TabsPage {
     public loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
-    public zone: NgZone) { }
+    public zone: NgZone,
+    public arenaService: Arena) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
@@ -42,7 +45,7 @@ export class TabsPage {
 
 
   ngOnInit() {
-    this.tab=this.navParams.get('index') || 0;
+    this.tab = this.navParams.get('index') || 0
     this.showLoader();
     this.stSer.newArena
       .subscribe(
@@ -50,12 +53,13 @@ export class TabsPage {
         this.arenas.push(arena);
       });
     setTimeout(() => {
-      this.getArenaUpdate();
+/*      this.notifcationHandler();
+*/    this.getAllArenas();
       this.getOneArena();
     }, 2000);
 
   }
- 
+
   getOneArena() {
     this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
@@ -80,6 +84,16 @@ export class TabsPage {
     this.stSer.sendArenas(this.arenas);
     this.setBages(this.arenas);
 
+
+  }
+  getAllArenas() {
+    this.arenaService.getArenas(this.firebasaService.userId).subscribe((arenas:Arena) => {
+      this.zone.run(() => this.setArenas(arenas))
+      this.loading.dismiss();
+    }, err => {
+      console.log(err);
+      this.loading.dismiss();
+    })
 
   }
 
@@ -139,5 +153,32 @@ export class TabsPage {
     });
     alert.present();
   }
+
+  notifcationHandler() {
+    this.firebasaService.initPushNotification().on('registration')
+      .subscribe((data: any) => {
+        console.log(data.registrationId);
+        this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data => {
+        }, error => { console.log(error) })
+      }, error => {
+        console.log(error);
+      });
+    this.firebasaService.initPushNotification()
+      .on('notification').subscribe((response: NotificationEventResponse) => {
+        console.log('message', response.message);
+        console.log(response);
+        if (response.additionalData.foreground) {
+          /* */
+        } else {
+
+
+          console.log("Push notification clicked");
+        }
+      });
+
+
+
+  }
+
 
 }

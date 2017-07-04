@@ -38,6 +38,7 @@ export class FirebaseServiceProvider {
 
 
 
+
   }
 
   signInWithFacebook() {
@@ -68,6 +69,7 @@ export class FirebaseServiceProvider {
 
 
   }
+
 
   checkAuthentication() {
     return new Promise((resolve, reject) => {
@@ -151,7 +153,7 @@ export class FirebaseServiceProvider {
   }
 
   sendDeviceToken(deviceToken) {
-    const body = JSON.stringify({devToken:deviceToken,userId:this.userId });
+    const body = JSON.stringify({ devToken: deviceToken, userId: this.userId });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.token);
@@ -163,10 +165,9 @@ export class FirebaseServiceProvider {
   }
   chechUnsubscribe() {
     this.checkSub.unsubscribe();
-  } 
-  
+  }
+
   initPushNotification() {
-    
     if (!this.platform.is('cordova')) {
       console.warn("Push notifications not initialized. Cordova is not available - Run in physical device");
       return;

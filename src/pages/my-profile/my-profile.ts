@@ -48,7 +48,7 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
-    /* this.notifcationHandler();*/
+ /*   this.notifcationHandler();*/
 
 
 /*      this.socketService.connect();
@@ -169,6 +169,56 @@ export class MyProfilePage {
     });
 
   }
+  findRandom() {
+      this.showLoader();
+    this.startPageService.findRandomUser().subscribe((result: UserFound) => {
+      this.loading.dismiss();
+      let alert = this.alertCtrl.create({
+        title: result.message,
+        message: result.userName,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Play with ' + result.userName,
+            handler: () => {
+              const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
+              this.startPageService.createArena(arenaPlayer)
+                .subscribe(data => {
+                  this.appCtrl.getRootNav().push(MatchPage, { arena: data });
+                }, err => { this.presentAlert(err.message); console.log(err) });
+            }
+          }
+        ]
+      });
+      alert.present();
+
+    }, (err) => {
+      this.loading.dismiss();
+      let alert = this.alertCtrl.create({
+        title: err.json().title,
+        message: err.json().message,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      alert.present();
+      console.log(err.json());
+    });
+
+  }
+
   showLoader() {
     this.loading = this.loadingCtrl.create({
       content: 'please wait...'

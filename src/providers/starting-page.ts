@@ -16,8 +16,8 @@ import { Stats } from "../models/stats";
 export class StartingPage {
   arenaList: Arenas[] = [];
   newArena = new EventEmitter<Arenas>();
-  getArenas=new EventEmitter<Arenas[]>();
-  public arenas:Arenas[];
+  getArenas = new EventEmitter<Arenas[]>();
+  public arenas: Arenas[];
 
   constructor(public http: Http,
     public firebasaService: FirebaseServiceProvider)
@@ -34,13 +34,9 @@ export class StartingPage {
 
       this.http.post(myGlobals.host + 'users/find', JSON.stringify(userName), { headers: headers })
         .map((res: Response) => {
-          let stats=res.json().statistics;
-          let statsModel=new Stats(stats.level,stats.currentExp,stats.wins,stats.loses,stats.draws)
-          let transFormed:UserFound=new UserFound(res.json().message,res.json().username,res.json().inviteId,stats);
-
-
-
-
+          let stats = res.json().statistics;
+          let statsModel = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses, stats.draws)
+          let transFormed: UserFound = new UserFound(res.json().message, res.json().username, res.json().inviteId, stats);
           return transFormed;
         })
         .subscribe(res => {
@@ -51,6 +47,9 @@ export class StartingPage {
 
     });
   }
+
+
+
   createArena(arenaPlayers: ArenaPlayers) {
     const body = JSON.stringify(arenaPlayers);
     const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
@@ -92,12 +91,27 @@ export class StartingPage {
   sendNewArena(arena) {
     this.newArena.emit(arena)
   }
-  sendArenas(arenas){
-    this.arenas=arenas;
+  sendArenas(arenas) {
+    this.arenas = arenas;
     this.getArenas.emit(arenas);
   }
 
+  findRandomUser() {
 
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'users/findRandom', '', { headers: headers })
+      .map((response: Response) => {
+        let stats = response.json().statistics;
+        let statsModel = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses, stats.draws)
+        let transFormed: UserFound = new UserFound(response.json().message, response.json().username, response.json().inviteId, stats);
+        return transFormed;
+      })
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+  }
 
 
 }

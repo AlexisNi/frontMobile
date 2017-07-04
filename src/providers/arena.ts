@@ -8,6 +8,7 @@ import { Observable } from "rxjs/Observable";
 import { PlayerResult } from "../models/playerResult";
 import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
+import { Arenas } from "../models/arenas";
 
 /*
   Generated class for the Arena provider.
@@ -91,10 +92,49 @@ export class Arena {
     headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host + 'awards', body, { headers: headers })
       .map((response: Response) => response.json())
-     .debounceTime(5000)
+      .debounceTime(5000)
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
+  }
+  getArenas(userId) {
+    const body = JSON.stringify({ userId: userId });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'arenas/getArenas', body, { headers: headers })
+      .map((response: Response) => {
+        const arenas=response.json().obj;
+          let transformedArenas: Arenas[] = [];
+        for (let arena of arenas) {
+          transformedArenas.push(new Arenas(
+            arena._id,
+            arena.user,
+            arena.invite._id,
+            arena.status_accept,
+            arena.user.username || arena.invite.username,
+            arena.user_played,
+            arena.invite_played,
+          ));
+        }
+         const UserArenas =response.json().objUser;
+        for (let userArena of UserArenas) {
+          transformedArenas.push(new Arenas(
+            userArena._id,
+            userArena.user._id,
+            userArena.invite,
+            userArena.status_accept,
+            userArena.user.username,
+            userArena.user_played,
+            userArena.invite_played,
+          ));
+        }
+        return transformedArenas;
+      })
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+
   }
 
 

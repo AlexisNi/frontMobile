@@ -99,9 +99,7 @@ export class Sockets {
   getOneArena() {
     this.socket.removeAllListeners('loadOneArena');
     let observable = new Observable((observer: any) => {
-      console.log(observer);
       this.socket.on('loadOneArena', (data: any) => {
-        console.log(data);
         let transformedArena: Arenas
         if (data.obj != null) {
           const arena = data.obj;
@@ -138,16 +136,13 @@ export class Sockets {
   }
 
   getArenas() {
-    console.log(this.socket);
   
     this.socket.removeAllListeners('loadArenas');
     let observable = new Observable((observer: any) => {
         this.socket.on('error',()=>{
           console.log('error');
         })
-      console.log(observer);
       this.socket.on('loadArenas', (data: any) => {
-        console.log(data)
         const arenas = data.obj;
         let transformedArenas: Arenas[] = [];
         for (let arena of arenas) {
