@@ -28,6 +28,8 @@ export class PlayWithChosenUserPage {
   name;
   inviteId;
 
+  randomUser;
+
 
 
 
@@ -46,6 +48,19 @@ export class PlayWithChosenUserPage {
   }
 
   ionViewDidLoad() {
+    if (this.navParams.get('userFound') != undefined) {
+      let userInfo=this.navParams.get('userFound');
+      this.randomUser = true;
+      this.userFound = true;
+      this.inviteId = userInfo.inviteId;
+      this.name = userInfo.userName;
+      let userStats = userInfo.stats;
+      this.wins = userStats.wins;
+      this.loses = userStats.loses;
+      this.draws = userStats.draws;
+      this.level = userStats.level;
+    }
+
   }
 
   findUser(userName) {
@@ -53,30 +68,6 @@ export class PlayWithChosenUserPage {
     this.startPageService.findUser({ username: userName }).then((result: UserFound) => {
       this.zone.run(() => this.setStats(result))
       this.loading.dismiss();
-      /*     let alert = this.alertCtrl.create({
-             title: result.message,
-             message: result.userName,
-             buttons: [
-               {
-                 text: 'Cancel',
-                 role: 'cancel',
-                 handler: () => {
-                   console.log('Cancel clicked');
-                 }
-               },
-               {
-                 text: 'Play with ' + userName,
-                 handler: () => {
-                   const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
-                   this.startPageService.createArena(arenaPlayer)
-                     .subscribe(data => {
-                       this.appCtrl.getRootNav().push(MatchPage, { arena: data });
-                     }, err => { this.presentAlert(err.message); console.log(err) });
-                 }
-               }
-             ]
-           });
-           alert.present();*/
     }, (err) => {
       this.userFound = false;
       this.loading.dismiss();

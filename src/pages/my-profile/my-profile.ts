@@ -84,12 +84,12 @@ export class MyProfilePage {
     this.draws = stats.draws;
     let sum = this.wins + this.loses + this.draws;
 
-/*    this.pWins = Math.round((((this.wins / sum) * 100) + 10))
-    this.pLoses = Math.round((((this.loses / sum) * 100) + 10))
-    this.pDraws =Math.round((((this.draws / sum) * 100) + 10))*/
-      this.pWins = (((this.wins / sum) * 100) + 10).toFixed(1);
-       this.pLoses = (((this.loses / sum) * 100) + 10).toFixed(1);;
-       this.pDraws = (((this.draws / sum) * 100) + 10).toFixed(1);
+    /*    this.pWins = Math.round((((this.wins / sum) * 100) + 10))
+        this.pLoses = Math.round((((this.loses / sum) * 100) + 10))
+        this.pDraws =Math.round((((this.draws / sum) * 100) + 10))*/
+    this.pWins = (((this.wins / sum) * 100) + 10).toFixed(1);
+    this.pLoses = (((this.loses / sum) * 100) + 10).toFixed(1);;
+    this.pDraws = (((this.draws / sum) * 100) + 10).toFixed(1);
     /* this.pWins = this.pWins.toFixed(1);*/
     /*  this.pLoses = this.pLoses.toFixed(1);
       this.pDraws = this.pDraws.toFixed(1);*/
@@ -169,56 +169,18 @@ export class MyProfilePage {
     });
 
   }
+
   findRandom() {
-      this.showLoader();
-    this.startPageService.findRandomUser().subscribe((result: UserFound) => {
-      this.loading.dismiss();
-      let alert = this.alertCtrl.create({
-        title: result.message,
-        message: result.userName,
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          },
-          {
-            text: 'Play with ' + result.userName,
-            handler: () => {
-              const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
-              this.startPageService.createArena(arenaPlayer)
-                .subscribe(data => {
-                  this.appCtrl.getRootNav().push(MatchPage, { arena: data });
-                }, err => { this.presentAlert(err.message); console.log(err) });
-            }
-          }
-        ]
+    this.showLoader();
+    this.startPageService.findRandomUser()
+      .subscribe((result: UserFound) => {
+        this.loading.dismiss();
+        this.choosePlayer(result);
+      }, err => {
+        this.loading.dismiss();
+        console.log(err);
       });
-      alert.present();
-
-    }, (err) => {
-      this.loading.dismiss();
-      let alert = this.alertCtrl.create({
-        title: err.json().title,
-        message: err.json().message,
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          }
-        ]
-      });
-      alert.present();
-      console.log(err.json());
-    });
-
   }
-
   showLoader() {
     this.loading = this.loadingCtrl.create({
       content: 'please wait...'
@@ -284,8 +246,8 @@ export class MyProfilePage {
 
   }
 
-  choosePlayer() {
-    let modal = this.modalCtrl.create(this.findPlayerPage, {});
+  choosePlayer(userFound = undefined) {
+    let modal = this.modalCtrl.create(this.findPlayerPage, { userFound: userFound });
     modal.present();
   }
 

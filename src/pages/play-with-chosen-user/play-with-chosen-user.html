@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row>
+    <ion-row *ngIf="randomUser==false">
       <ion-col>
         <ion-list>
           <ion-item>
@@ -21,7 +21,7 @@
         </ion-list>
       </ion-col>
     </ion-row>
-    <ion-row justify-content-center>
+    <ion-row *ngIf="randomUser==false" justify-content-center>
       <ion-col col-6>
         <button class="playButton" (click)="findUser(username.value)">
           Ψαξε για τον αντίπαλο
@@ -64,6 +64,5 @@
         </ion-col>
       </ion-row>
     </div>
-
   </ion-grid>
 </ion-content>
