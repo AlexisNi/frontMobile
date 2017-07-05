@@ -71,7 +71,7 @@ export class MatchPage implements OnDestroy {
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().push(TabsPage,{index:1});
+        this.appCtrl.getRootNav().push(TabsPage, { index: 1 });
         this.loading.dismiss();
         console.log(err.error);
 
@@ -83,6 +83,7 @@ export class MatchPage implements OnDestroy {
     this.time = 100;
     this.realTime = 30;
     this.index++;
+    this.timer();
     if (this.index > 9) {
       this.playerLost();
 
@@ -108,12 +109,12 @@ export class MatchPage implements OnDestroy {
         .subscribe(
         data => {
           this.time = 100;
+          this.subscription.unsubscribe();
           setTimeout(() => {
             if (this.index > 9) {
               this.playerLost();
             }
             this.realTime = 30;
-
             this.nextQuestion();
           }, 1200);
         },
@@ -123,6 +124,7 @@ export class MatchPage implements OnDestroy {
 
 
     } else {
+      this.subscription.unsubscribe();
       this.buttonDisabled = true;
       this.findRightQuestion(currentQuestion);
       this.wrongButtons[buttonNumber] = true;
@@ -149,7 +151,7 @@ export class MatchPage implements OnDestroy {
 
   }
   cancelButton() {
-    this.navCtrl.setRoot(TabsPage,{index:1});
+    this.navCtrl.setRoot(TabsPage, { index: 1 });
   }
   getInviteId() {
     if (this.arena.userId == this.userId) {
@@ -185,7 +187,6 @@ export class MatchPage implements OnDestroy {
   }
 
   timer() {
-
     let timer = Observable.timer(100, 1000);
     this.subscription = timer.subscribe(t => {
       this.time = this.time - 3.3;

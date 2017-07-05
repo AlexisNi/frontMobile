@@ -5,7 +5,7 @@
   for more info on Angular 2 Components.
 -->
 
-<ion-row class="arenaRow" (click)="playMatch(arena)">
+<!--<ion-row class="arenaRow" (click)="playMatch(arena)">
   <ion-col width-33 class="myTeamsName">
     <div>
       <p>{{username}}</p>
@@ -27,7 +27,7 @@
     <h1>{{correctNumber}}</h1>
     <p>Correct answers</p>
   </ion-col>
-  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==false  || arena.user_played==false" >
+  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==false  || arena.user_played==false">
     <h1>still playing</h1>
     <p>Correct answers</p>
   </ion-col>
@@ -36,4 +36,94 @@
   </ion-col>
 
 
-</ion-row>
+</ion-row>-->
+
+<!--<div class="arenasPlayedContainer" *ngIf="arena.userId==userId && arena.user_played==true||arena.inviteId==userId && arena.invite_played==true">
+  <ion-row class="arenaRow">
+    <ion-col col-6 class="myTeamContainer">
+      <ion-row>
+        <ion-col col-2>
+
+        </ion-col>
+        <ion-col col-7 class="nameContainer">
+          <p>{{username}}lexandros</p>
+        </ion-col>
+        <ion-col col-3 class="itemContainer">
+          <p class="correctNumber">{{correctNumber}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col col-6 class="opponentContainer">
+      <ion-row>
+        <ion-col col-3 class="itemContainer">
+          <ion-icon name="md-alarm"></ion-icon>
+        </ion-col>
+
+        <ion-col col-7 class="nameContainer">
+          <p>{{arena.userName}}</p>
+        </ion-col>
+
+        <ion-col col-2>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</div>-->
+
+<!--<ion-row class="arenaRow" *ngIf="arena.userId==userId && 
+arena.user_played==false||arena.inviteId==userId && arena.invite_played==false">
+  <ion-col col-6 class="myTeamContainer">
+    <ion-row class="rowContainer " text-center>
+      <ion-col col-2>
+      </ion-col>
+
+      <ion-col col-7 class="nameContainer" text-center>
+        <p>{{arena.userName}}
+          <p>
+      </ion-col>
+
+      <ion-col col-3 class="itemContainer">
+        <ion-icon name="md-alarm"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+  </ion-col>
+  <ion-col col-6 class="buttonContainer">
+    <button class="button"> 
+     <p>Play</p>
+    </button>
+  </ion-col>
+</ion-row>-->
+<div>
+  <div class="testContainer" text-center>
+    <ion-row class="firstTeam">
+      <ion-col col-12 class="myTeamContainer">
+        <ion-row>
+          <ion-col col-2>
+          </ion-col>
+          <ion-col col-7 class="nameContainer">
+            <p>{{username}}lexandros</p>
+          </ion-col>
+          <ion-col col-3 class="itemContainer">
+            <p class="correctNumber">{{correctNumber}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        VS
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="secondTeam">
+      <ion-col>
+        Aresenal
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

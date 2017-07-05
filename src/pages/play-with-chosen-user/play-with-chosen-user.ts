@@ -28,7 +28,7 @@ export class PlayWithChosenUserPage {
   name;
   inviteId;
 
-  randomUser;
+  randomUser=false;
 
 
 
@@ -50,6 +50,7 @@ export class PlayWithChosenUserPage {
   ionViewDidLoad() {
     if (this.navParams.get('userFound') != undefined) {
       let userInfo=this.navParams.get('userFound');
+      console.log(userInfo)
       this.randomUser = true;
       this.userFound = true;
       this.inviteId = userInfo.inviteId;

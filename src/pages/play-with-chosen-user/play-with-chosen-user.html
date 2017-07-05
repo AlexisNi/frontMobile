@@ -9,7 +9,8 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row *ngIf="randomUser==false">
+    <div *ngIf="randomUser==false">
+    <ion-row >
       <ion-col>
         <ion-list>
           <ion-item>
@@ -21,7 +22,7 @@
         </ion-list>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="randomUser==false" justify-content-center>
+    <ion-row  justify-content-center>
       <ion-col col-6>
         <button class="playButton" (click)="findUser(username.value)">
           Ψαξε για τον αντίπαλο
@@ -33,6 +34,7 @@
         </button>
       </ion-col>
     </ion-row>
+    </div>
 
     <div *ngIf="userFound==true" class="userFoundStats">
       <ion-row justify-content-center class="userNameRow">

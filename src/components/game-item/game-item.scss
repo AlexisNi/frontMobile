@@ -1,6 +1,5 @@
 game-item {
-
-.arenaRow{
+  /*  .arenaRow {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
@@ -9,19 +8,18 @@ game-item {
     position: relative;
     white-space: nowrap;
     margin-bottom: 0.5vw;
-
   }
-  .myTeamsName{
+  .myTeamsName {
     background-color: gray;
     box-sizing: border-box;
     width: 7vw;
     height: 12vw;
     position: relative;
   }
-  .myTeamsName:after{
+  .myTeamsName:after {
     content: '';
     position: absolute;
-    top:0px;
+    top: 0px;
     left: 13vw;
     background-color: gray;
     width: 29.5vw;
@@ -29,49 +27,41 @@ game-item {
     z-index: -1;
     transform: skew(-45deg);
   }
-  .myTeamsName div{
+  .myTeamsName div {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0px;
-
   }
-
-
-
-
-  .myOpponentsTeamName{
+  .myOpponentsTeamName {
     background-color: gray;
     box-sizing: border-box;
     width: 7vw;
     height: 12vw;
     position: relative;
-
   }
-  .myOpponentsTeamName:after{
+  .myOpponentsTeamName:after {
     content: '';
     position: absolute;
-    top:0px;
-    right:  13vw;
+    top: 0px;
+    right: 13vw;
     background-color: gray;
     width: 29vw;
     height: 12vw;
     z-index: -1;
     transform: skew(-45deg);
-
   }
-  .myOpponentsTeamName div{
+  .myOpponentsTeamName div {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0px;
-
   }
-    @media screen and  (max-device-width:299px) {
-    .myTeamsName:after{
+  @media screen and (max-device-width:299px) {
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -79,28 +69,26 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-    h1{
+    h1 {
       font-size: 1.6rem;
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
   @media screen and (min-device-width: 300px) and (max-device-width:349px) {
-    .myTeamsName:after{
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -108,57 +96,53 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-    h1{
+    h1 {
       font-size: 1.6rem;
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
   @media screen and (min-width: 350px) and (max-width:400px) {
-  .myTeamsName:after{
-    content: '';
-    position: absolute;
-    top:0px;
-    left: 13vw;
-    background-color: gray;
-    width: 31.5vw;
-    height: 12vw;
-    z-index: -1;
-    transform: skew(-45deg);
-  }
-
-  .myOpponentsTeamName:after{
-    content: '';
-    position: absolute;
-    top:0px;
-    right:  13vw;
-    background-color: gray;
-    width: 31.5vw;
-    height: 12vw;
-    z-index: -1;
-    transform: skew(-45deg);
-
-  }
-     h1{
+    .myTeamsName:after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 13vw;
+      background-color: gray;
+      width: 31.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+    .myOpponentsTeamName:after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      right: 13vw;
+      background-color: gray;
+      width: 31.5vw;
+      height: 12vw;
+      z-index: -1;
+      transform: skew(-45deg);
+    }
+    h1 {
       font-size: 1.6rem;
     }
-}
+  }
   @media screen and (min-width: 400px) and (max-width: 600px) {
-    .myTeamsName:after{
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -166,27 +150,23 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
-
-
   @media screen and (min-width: 600px) and (max-width: 767px) {
-    .myTeamsName:after{
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -194,28 +174,23 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
-
-
-
   @media screen and (min-width: 768px) and (max-width: 798px) {
-    .myTeamsName:after{
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -223,25 +198,23 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
   @media screen and (min-width: 799px) {
-    .myTeamsName:after{
+    .myTeamsName:after {
       content: '';
       position: absolute;
-      top:0px;
+      top: 0px;
       left: 13vw;
       background-color: gray;
       width: 31.5vw;
@@ -249,21 +222,19 @@ game-item {
       z-index: -1;
       transform: skew(-45deg);
     }
-
-    .myOpponentsTeamName:after{
+    .myOpponentsTeamName:after {
       content: '';
       position: absolute;
-      top:0px;
-      right:  13vw;
+      top: 0px;
+      right: 13vw;
       background-color: gray;
       width: 31.5vw;
       height: 12vw;
       z-index: -1;
       transform: skew(-45deg);
-
     }
   }
-  .statusRow{
+  .statusRow {
     padding-left: 5%;
     padding-right: 5%;
     font-size: 3vw;
@@ -271,16 +242,127 @@ game-item {
     position: relative;
     white-space: nowrap;
   }
-  .correctAnswerCol{
+  .correctAnswerCol {
     background-color: lightslategrey;
     margin: 0px;
   }
-  .statusPlayCol{
+  .statusPlayCol {
     background-color: lightslategrey;
     margin: 0px;
-
+  }*/
+  .arenasPlayedContainer {
+    padding: 0px;
+    padding-left: 1vw;
+    padding-right: 1vw;
   }
-
-
-
+  .arenaRow {
+    /*  padding-left: 1vw;
+    padding-right: 1vw;*/
+    font-size: 3vw;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 1.5vh;
+    margin-top: 2.5vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+  .myTeamContainer {
+    background-color: lighten(black, 30%) !important;
+    padding: 0px;
+/*    max-width: 47% !important;
+*/    margin-right: 5vw;
+    border: 0.2vw solid transparent;
+    border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+    border-image-slice: 1;
+    .correctNumber {
+      font-size: 4vh;
+      position: absolute;
+      right: 3.5vw;
+      top: -2.6vh;
+      color: lighten(black, 30%) !important;
+    }
+  }
+  .opponentContainer {
+    background-color: lighten(black, 30%) !important;
+    padding: 0px;
+    max-width: 47% !important;
+    border: 0.2vw solid transparent;
+    border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+    border-image-slice: 1;
+  }
+  .rowContainer {
+    height: 100%
+  }
+  .nameContainer {
+    p {
+      color: white;
+      font-size: 2vh;
+    }
+  }
+  .itemContainer {
+    background-color: lighten(white, 10%) !important;
+    ion-icon {
+      color: #c1c1c1 !important;
+      display: inline-block;
+      font-size: 4vh;
+      position: absolute;
+      right: 2.6vw;
+      top: 2.0vh;
+    }
+  }
+  .buttonContainer {
+    background-color: transparent;
+    padding: 0px;
+    max-width: 47% !important;
+    .button {
+      p {
+        transform: skew(40deg);
+        font-weight: bold;
+      }
+      position: relative;
+      transform: skew(-40deg);
+      border: 0.2vw solid transparent;
+      background: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+      border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+      border-image-slice: 1;
+      width: 33vw;
+      height: 100%;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+    }
+    .button:after {
+      content: "";
+      background: #90EE90;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px!important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+    .button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+  }
+  .testContainer {
+    padding-right: 1vw;
+    padding-left: 1vw;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 7px;
+    position: relative;
+    margin-bottom: 24px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    margin-right: 3vw;
+    margin-left: 3vw;
+    margin-top: 2vh;
+  }
 }
