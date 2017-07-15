@@ -1,10 +1,14 @@
 timer {
+  .progress {
+    width: 94.6vw;
+  }
   .progress-outer {
-    width: 96%;
-    text-align: center;
+    min-width: 0%;
+    height: 0.04vh;
+    /*    text-align: center;
     background-color: gray;
-    border: 1px solid #231f20;
-    color: map-get($colors, questions);
+    border: 1px solid #231f20;*/
+    background: linear-gradient(to right, #d2ff52 0%, #91e842 100%);
     /*map-get($colors, questions);
     border-radius: 20px;
     */

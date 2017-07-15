@@ -18,10 +18,9 @@
     <ion-row class="questionTitle" text-center>
       <ion-col>
         <div class="questionTitleWrapper">
-        <p>
-          {{arenaQuestions[index]?.question}}
-          asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas
-        </p>
+          <p>
+            {{arenaQuestions[index]?.question}}
+          </p>
         </div>
       </ion-col>
     </ion-row>
@@ -58,6 +57,9 @@
           </div>
         </ion-col>
       </ion-row>
+      <div class="timerContainer">
+      <timer [progress]="100" [level]="10"></timer>
+      </div>
     </div>
 
 

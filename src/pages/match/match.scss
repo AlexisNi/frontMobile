@@ -147,6 +147,7 @@ page-match {
   }
   .questionTitleWrapper {
     max-height: 14vh;
+    overflow: hidden;
   }
   .questionTitle {
     ion-col {
@@ -160,6 +161,7 @@ page-match {
     }
   }
   .questionAnswers {
+    position: relative;
     display: inline-block;
     background: url("../assets/images/Match_field_icon-01.svg") no-repeat;
     background-repeat: no-repeat;
@@ -188,5 +190,10 @@ page-match {
   }
   .wrapper {
     transform: skewX(-40deg);
+  }
+  .timerContainer {
+    position: absolute;
+    top: 65vh;
+     right: 1.3vw;;
   }
 }
