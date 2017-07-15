@@ -20,6 +20,7 @@
         <div class="questionTitleWrapper">
           <p>
             {{arenaQuestions[index]?.question}}
+            
           </p>
         </div>
       </ion-col>
@@ -28,37 +29,37 @@
       <ion-row>
         <ion-col>
           <div class="wrapper">
-            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[0],'wrongButton':wrongButtons[0],'rightButton':rightButtons[0]}"
-              (click)="checkQuestion(arenaQuestions[index]?.optiona,arenaQuestions[index],0)"><p>{{arenaQuestions[index]?.optiona}} </p></button>
+            <button text-left [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[0],'wrongButton':wrongButtons[0],'rightButton':rightButtons[0]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optiona,arenaQuestions[index],0)"><p>A.{{arenaQuestions[index]?.optiona}} ΑΣΔΑΣ </p></button>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <div class="wrapper">
-            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[1],'wrongButton':wrongButtons[1],'rightButton':rightButtons[1]}"
-              (click)="checkQuestion(arenaQuestions[index]?.optionb,arenaQuestions[index],1)"><p>{{arenaQuestions[index]?.optionb}}</p></button>
+            <button text-left [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[1],'wrongButton':wrongButtons[1],'rightButton':rightButtons[1]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optionb,arenaQuestions[index],1)"><p>B.{{arenaQuestions[index]?.optionb}} ΑΣΔΑΣ</p></button>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <div class="wrapper">
-            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[2],'wrongButton':wrongButtons[2],'rightButton':rightButtons[2]}"
-              (click)="checkQuestion(arenaQuestions[index]?.optionc,arenaQuestions[index],2)"><p>{{arenaQuestions[index]?.optionc}}</p></button>
+            <button text-left [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[2],'wrongButton':wrongButtons[2],'rightButton':rightButtons[2]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optionc,arenaQuestions[index],2)"><p>Γ.{{arenaQuestions[index]?.optionc}} ΔΑΔ</p></button>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <div class="wrapper">
-            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[3],'wrongButton':wrongButtons[3],'rightButton':rightButtons[3]}"
-              (click)="checkQuestion(arenaQuestions[index]?.optiond,arenaQuestions[index],3)"><p>{{arenaQuestions[index]?.optiond}}</p></button>
+            <button text-left [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[3],'wrongButton':wrongButtons[3],'rightButton':rightButtons[3]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optiond,arenaQuestions[index],3)"><p>Δ.{{arenaQuestions[index]?.optiond}} ΑΔΑΣ</p></button>
           </div>
         </ion-col>
       </ion-row>
       <div class="timerContainer">
-      <timer [progress]="100" [level]="10"></timer>
+      <timer [progress]="time" [level]="realTime"></timer>
       </div>
     </div>
 

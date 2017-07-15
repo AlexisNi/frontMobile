@@ -134,8 +134,8 @@ export class MatchPage implements OnDestroy {
         this.playerLost();
       }, 1200);
     }
-  }
-  findRightQuestion(currentQuestion: Question) {
+  }*/
+ /* findRightQuestion(currentQuestion: Question) {
     if (currentQuestion.answer == currentQuestion.optiona) {
       this.rightButtons[0] = true;
     } else if (currentQuestion.answer == currentQuestion.optionb) {
@@ -204,10 +204,10 @@ export class MatchPage implements OnDestroy {
   playerLost() {
     this.navCtrl.setRoot(TabsPage);
 
-  }*/
+  }
 
 
 
-
+*/
 
 }
