@@ -8,7 +8,63 @@
 
 
 <ion-content style="background-color: black">
-  <div class="main">
+
+  <ion-grid>
+    <ion-row class="questionCount" text-center>
+      <ion-col>
+        <p>ΕΡΩΤΗΣΗ {{index+1}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="questionTitle" text-center>
+      <ion-col>
+        <div class="questionTitleWrapper">
+        <p>
+          {{arenaQuestions[index]?.question}}
+          asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas
+        </p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div class="questionAnswers" text-center>
+      <ion-row>
+        <ion-col>
+          <div class="wrapper">
+            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[0],'wrongButton':wrongButtons[0],'rightButton':rightButtons[0]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optiona,arenaQuestions[index],0)"><p>{{arenaQuestions[index]?.optiona}} </p></button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="wrapper">
+            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[1],'wrongButton':wrongButtons[1],'rightButton':rightButtons[1]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optionb,arenaQuestions[index],1)"><p>{{arenaQuestions[index]?.optionb}}</p></button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="wrapper">
+            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[2],'wrongButton':wrongButtons[2],'rightButton':rightButtons[2]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optionc,arenaQuestions[index],2)"><p>{{arenaQuestions[index]?.optionc}}</p></button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="wrapper">
+            <button [disabled]="buttonDisabled" [ngClass]="{'intializeButton':initButtons[3],'wrongButton':wrongButtons[3],'rightButton':rightButtons[3]}"
+              (click)="checkQuestion(arenaQuestions[index]?.optiond,arenaQuestions[index],3)"><p>{{arenaQuestions[index]?.optiond}}</p></button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+
+  </ion-grid>
+
+  <!--  <div class="main">
     <div class="headerQ">
       <ion-row class="questionRow">
         <ion-col> <h2 text-center>Eρώτηση {{index+1}}</h2></ion-col>
@@ -64,5 +120,5 @@
 
 
 
-</div>
+</div>-->
 </ion-content>

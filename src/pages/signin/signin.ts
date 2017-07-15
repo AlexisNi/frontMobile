@@ -60,7 +60,7 @@ export class SigninPage implements OnInit, OnDestroy {
       this.loading.dismiss();
         this.firebaseService.checkUser()
           .subscribe(data => {
-            this.navCtrl.setRoot(TabsPage);
+            this.navCtrl.setRoot(MatchPage);
           }, error => {
             if (error.error == 100) {
               this.firebaseService.chechUnsubscribe();

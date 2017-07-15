@@ -268,7 +268,7 @@ game-item {
     padding-bottom: 1vh;
   }
   .myTeamContainer {
-    background-color: lighten(black, 30%) !important;
+    background-color: transparent !important;
     padding: 0px;
 /*    max-width: 47% !important;
 */    margin-right: 5vw;
@@ -364,5 +364,8 @@ game-item {
     margin-right: 3vw;
     margin-left: 3vw;
     margin-top: 2vh;
+  }
+  .firstTeam{
+    padding-top:5px; 
   }
 }

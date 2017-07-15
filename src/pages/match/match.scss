@@ -1,143 +1,192 @@
 page-match {
-  .main{
+  .main {
     background-color: black;
     width: 100%;
     height: 100%;
   }
-  .headerQ{
+  .headerQ {
     width: 100%;
     height: 10vh;
-}
-  .headerQ h2{
+  }
+  .headerQ h2 {
     font-size: 2.5vh;
     color: #8dc63f;
     font-weight: 400;
     margin: 0px;
-
-
   }
-  .headerQ p{
+  .headerQ p {
     font-size: 2.0vh;
     color: white;
     padding-bottom: 50px;
     line-height: 0vh;
-
-
   }
-  .questions{
-
+  .questions {
     width: 100%;
     height: 100%;
-    background-color:#8dc63f ;
+    background-color: #8dc63f;
     position: relative;
-
-
   }
-  .time{
+  .time {
     padding: 0px 0px 0px 5vw;
   }
-  .questionRow{
+  .questionRow {
     height: 5vh;
   }
-  .progressBar{
-    padding:1vh;
-
-    p{
+  .progressBar {
+    padding: 1vh;
+    p {
       line-height: 2vh !important;
       padding-bottom: 8px !important;
-
     }
   }
-
-
-  .question{
+  .question {
     padding: 4vh;
   }
-  .question h2{
+  .question h2 {
     font-weight: bold;
     font-size: 3vh;
   }
-  .questionButtons{
-    padding-top :10vh ;
-    padding-left : 4vh ;
-    padding-right :4vh ;
+  .questionButtons {
+    padding-top: 10vh;
+    padding-left: 4vh;
+    padding-right: 4vh;
   }
-  .questionButtons p{
+  .questionButtons p {
     color: #8dc63f;
     margin: 0px;
     padding: 0px;
     transform: skewX(40deg);
-
   }
-
-  button{
+  button {
     width: 70vw;
     height: 6vh;
     background-color: #231f20;
     color: #8dc63f;
     font-size: 2vh;
-    transform: skewX(-40deg);
+    /*    transform: skewX(-40deg);
+*/
     margin: 0.3vh;
-
   }
-  .cancelButton{
-    padding-top :8vh ;
+  .cancelButton {
+    padding-top: 8vh;
     padding-left: 5vw;
   }
-
-  .cancelButton button{
+  .cancelButton button {
     background-color: transparent;
     border: solid black;
     width: 35vw;
     color: #231f20;
-
   }
-  .cancelButton p{
+  .cancelButton p {
     color: #231f20;
-
   }
-  .intializeButton{
+  .intializeButton {
+    display: inline-block;
+    position: relative;
     width: 70vw;
     height: 6vh;
-    background-color: #231f20;
+    background-color: white;
     color: #8dc63f;
     font-size: 2vh;
-    transform: skewX(-40deg);
+    /*    transform: skewX(-40deg);
+*/
     margin: 0.3vh;
-
+    box-shadow: 1px;
   }
-
-  .wrongButton{
+  .intializeButton:before {
+    position: absolute;
+    z-index: -6;
+    width: 99%;
+    height: 98%;
+    top: 10%;
+    left: 2.5%;
+    background: linear-gradient(to right, #d2ff52 0%, #91e842 100%);
+    content: '';
+  }
+  .wrongButton {
     width: 70vw;
     height: 6vh;
     background-color: #231f20;
     color: #231f20;
     font-size: 2vh;
-    transform: skewX(-40deg);
+    /*    transform: skewX(-40deg);
+*/
     margin: 0.3vh;
     border: 15px solid red;
-
   }
-  .rightButton{
+  .rightButton {
     width: 70vw;
     height: 6vh;
     background-color: #231f20;
     color: #231f20;
     font-size: 2vh;
-    transform: skewX(-40deg);
+    /*    transform: skewX(-40deg);
+*/
     margin: 0.3vh;
     border: 15px solid green;
   }
-  button:disabled{
+  button:disabled {
     width: 70vw;
     height: 6vh;
     background-color: #231f20;
     color: #8dc63f;
     font-size: 2vh;
-    transform: skewX(-40deg);
+    /*    transform: skewX(-40deg);
+*/
     margin: 0.3vh;
     opacity: 100;
   }
-
-
+  .questionCount {
+    ion-col {
+      padding: 1vh;
+    }
+    p {
+      color: darken(white, 30%);
+      font-size: 2vh;
+    }
+  }
+  .questionTitleWrapper {
+    max-height: 14vh;
+  }
+  .questionTitle {
+    ion-col {
+      padding: 1vh;
+    }
+    p {
+      color: lighten(white, 30%);
+      font-size: 2vh;
+      word-wrap: break-word;
+      margin: 0;
+    }
+  }
+  .questionAnswers {
+    display: inline-block;
+    background: url("../assets/images/Match_field_icon-01.svg") no-repeat;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 70vh;
+    ion-col {
+      padding: 1vh;
+    }
+    p {
+      color: lighten(black, 1%);
+      transform: skewX(40deg);
+    }
+    ion-row:nth-child(1) {
+      margin-top: 12vh;
+    }
+    ion-row:nth-child(2) {
+      margin-top: 3.8vh;
+    }
+    ion-row:nth-child(3) {
+      margin-top: 4vh;
+    }
+    ion-row:nth-child(4) {
+      margin-top: 4vh;
+    }
+  }
+  .wrapper {
+    transform: skewX(-40deg);
+  }
 }
