@@ -1,5 +1,5 @@
-game-item {
-  /*  .arenaRow {
+  game-item {
+    /*  .arenaRow {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
@@ -250,14 +250,12 @@ game-item {
     background-color: lightslategrey;
     margin: 0px;
   }*/
-  .arenasPlayedContainer {
+    /*  .arenasPlayedContainer {
     padding: 0px;
     padding-left: 1vw;
     padding-right: 1vw;
   }
   .arenaRow {
-    /*  padding-left: 1vw;
-    padding-right: 1vw;*/
     font-size: 3vw;
     text-align: center;
     position: relative;
@@ -270,8 +268,7 @@ game-item {
   .myTeamContainer {
     background-color: transparent !important;
     padding: 0px;
-/*    max-width: 47% !important;
-*/    margin-right: 5vw;
+    margin-right: 5vw;
     border: 0.2vw solid transparent;
     border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
     border-image-slice: 1;
@@ -350,8 +347,8 @@ game-item {
       opacity: 1;
       transition: 0s
     }
-  }
-  .testContainer {
+  }*/
+    /*  .testContainer {
     padding-right: 1vw;
     padding-left: 1vw;
     color: #fff;
@@ -367,5 +364,60 @@ game-item {
   }
   .firstTeam{
     padding-top:5px; 
+  }*/
+    .arenaWrapper {
+      background-color: #414042, ;
+      margin-top: 1vh;
+      margin-left: 2vw;
+      margin-right: 2vw;
+    }
+    .TeamsContainer {
+      height: 5.6vh;
+      max-height: 5.6vh;
+    }
+    .myTeamContainer {
+      padding: 0;
+      .teamCorrectConteiner {
+        height: 100%;
+      }
+      .myTeamName {
+        border-bottom: 0.25vh solid;
+        border-image: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        border-image-slice: 1;
+        padding: 0;
+        p {
+          color: darken(white, 5%);
+          font-size: 2.5vh;
+          margin: 0;
+          padding: 0;
+          margin-top: 1.5vh;
+        }
+      }
+      .teamCorrect {
+        padding: 0;
+        background-color: white;
+        p {
+          margin: 0;
+          padding: 0;
+          font-size: 4vh;
+          margin-top: 0.6vh;
+        }
+      }
+    }
+    .gameStatus {
+      padding: 0;
+      margin: 0;
+      height: 3vh;
+      p {
+        color: darken(white, 5%);
+        padding: 0;
+        margin: 0;
+        font-size: 1.7vh;
+        margin-top: 0.5vh;
+      }
+      ion-col {
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
-}

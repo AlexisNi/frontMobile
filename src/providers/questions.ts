@@ -78,10 +78,10 @@ export class Questions {
         for (let question of questions) {
           transFormedQuestions.push(new Question(
             question.question,
-            question.optiona,
-            question.optionb,
-            question.optionc,
-            question.optiond,
+            question.optionA,
+            question.optionB,
+            question.optionC,
+            question.optionD,
             question.answer,
             question._id
 

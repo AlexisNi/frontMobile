@@ -1,4 +1,17 @@
 page-match {
+  .scroll-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
   .main {
     background-color: black;
     width: 100%;
@@ -59,12 +72,10 @@ page-match {
   }
   button {
     width: 70vw;
-    height: 6vh;
+    height: 4.5vw;
     background-color: #231f20;
     color: #8dc63f;
     font-size: 2vh;
-    /*    transform: skewX(-40deg);
-*/
     margin: 0.3vh;
   }
   .cancelButton {
@@ -86,11 +97,7 @@ page-match {
     width: 70vw;
     height: 6vh;
     background-color: #FFFFFF;
-    /*    color: #8dc63f;
-*/
     font-size: 2vh;
-    /*    transform: skewX(-40deg);
-*/
     margin: 0.3vh;
     box-shadow: 1px;
   }
@@ -105,71 +112,90 @@ page-match {
     content: '';
   }
   .wrongButton {
+    display: inline-block;
+    position: relative;
     width: 70vw;
     height: 6vh;
-    background-color: #231f20;
-    color: #231f20;
+    background-color: #FFFFFF;
     font-size: 2vh;
-    /*    transform: skewX(-40deg);
-*/
     margin: 0.3vh;
-    border: 15px solid red;
+    box-shadow: 1px;
+    border: 0.7vh solid red;
   }
+
   .rightButton {
+    display: inline-block;
+    position: relative;
     width: 70vw;
     height: 6vh;
-    background-color: #231f20;
-    color: #231f20;
+    background-color: #FFFFFF;
     font-size: 2vh;
-    /*    transform: skewX(-40deg);
-*/
     margin: 0.3vh;
-    border: 15px solid green;
+    box-shadow: 1px;
+    border: 0.7vh solid green;
   }
+
   button:disabled {
+    display: inline-block;
+    position: relative;
     width: 70vw;
     height: 6vh;
-    background-color: #231f20;
-    color: #8dc63f;
+    background-color: #FFFFFF;
     font-size: 2vh;
-    /*    transform: skewX(-40deg);
-*/
     margin: 0.3vh;
+    box-shadow: 1px;
     opacity: 100;
   }
   .questionCount {
     ion-col {
-      padding: 1vh;
+      padding: 0;
+      margin: 0;
     }
     p {
       color: darken(white, 30%);
-      font-size: 2vh;
+      font-size: 5vw;
+      margin: 0;
+      margin-top: 1vh;
+      border-bottom: solid 0.1vh gray;
+      border-top: solid 0.1vh gray;
     }
   }
   .questionTitleWrapper {
-    min-height: 14vh;
-    max-height: 14vh;
+    min-height: 19vh;
+    max-height: 19vh;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.2);
   }
   .questionTitle {
+    margin-top: 7vh;
     ion-col {
       padding: 1vh;
     }
     p {
       color: lighten(white, 30%);
-      font-size: 2vh;
+      font-size: 5vw;
       word-wrap: break-word;
       margin: 0;
     }
   }
+  ion-grid {
+    height: 100%;
+    position: relative;
+  }
   .questionAnswers {
     position: relative;
     display: inline-block;
-    background: url("../assets/images/Match_field_icon_gradient-01.svg") no-repeat;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 70vh;
+    height: 61vh;
+    max-height: 61vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    img {
+      height: 100%;
+      width: 100%;
+    }
     ion-col {
       padding: 1vh;
     }
@@ -180,10 +206,10 @@ page-match {
       font-size: 2.5vh;
       font-weight: BOLD;
       margin: 0;
-      margin-left: 3vw;
+      /*    margin-left: 3vw;*/
     }
     ion-row:nth-child(1) {
-      margin-top: 12vh;
+      margin-top: 4vh;
     }
     ion-row:nth-child(2) {
       margin-top: 3.8vh;
@@ -196,11 +222,11 @@ page-match {
     }
   }
   .wrapper {
-    transform: skewX(-40deg);
+    transform: skewX(-45deg);
   }
   .timerContainer {
     position: absolute;
-    top: 65vh;
-    right: 1vw;
+    left: 0vh;
+    bottom: 0vh;
   }
 }

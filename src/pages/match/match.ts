@@ -50,7 +50,7 @@ export class MatchPage implements OnDestroy {
     public arenaService: Arena,
     public loadingCtrl: LoadingController,
     public appCtrl: App) { }
-/*
+
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
     this.userId = this.firebasaService.userId;
@@ -91,7 +91,7 @@ export class MatchPage implements OnDestroy {
     for (let i in this.rightButtons) {
       this.rightButtons[i] = false;
       this.wrongButtons[i] = false;
-      this.initButtons[i] = false;
+      this.initButtons[i] = true;
       this.buttonDisabled = false;
 
 
@@ -134,8 +134,8 @@ export class MatchPage implements OnDestroy {
         this.playerLost();
       }, 1200);
     }
-  }*/
- /* findRightQuestion(currentQuestion: Question) {
+  }
+  findRightQuestion(currentQuestion: Question) {
     if (currentQuestion.answer == currentQuestion.optiona) {
       this.rightButtons[0] = true;
     } else if (currentQuestion.answer == currentQuestion.optionb) {
@@ -168,18 +168,18 @@ export class MatchPage implements OnDestroy {
       data => console.log(data),
       error => console.log(error));
   }
-*/
+
 
   ngOnDestroy(): void {
 
-   /* console.log('on Destroy all arenas');
+   console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
     this.socketService.arenaLeave(this.inviteId);
     this.statusPlayed();
-    this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);*/
+    this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
   }
 
- /* showLoader() {
+  showLoader() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait questions loading...'
     });
@@ -208,6 +208,6 @@ export class MatchPage implements OnDestroy {
 
 
 
-*/
+
 
 }

@@ -1,5 +1,5 @@
-/*page-my-arenas {
-  .arenaRow{
+page-my-arenas {
+  /*  .arenaRow{
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
@@ -249,7 +249,18 @@
     background-color: lightslategrey;
     margin: 0px;
 
+  }*/
+  .scroll-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
   }
-
 }
-*/

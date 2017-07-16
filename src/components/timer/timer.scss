@@ -1,36 +1,18 @@
 timer {
   .progress {
-    width: 95.1vw;
+    position: relative;
+    width: 100vw;
   }
   .progress-outer {
     min-width: 0%;
-    height: 0.3vh;
-    /*    text-align: center;
-    background-color: gray;
-    border: 1px solid #231f20;*/
+    height: 2vh;
     background: linear-gradient(to right, #C2FB80 0%, #ABFFD1 100%);
-    /*map-get($colors, questions);
-    border-radius: 20px;
-    */
-    transform: skew(-40deg);
-    position: relative;
-  }
-  .progress-inner {
-    min-width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    /* border-radius: 20px;*/
-    background-color: map-get($colors, questions);
-    font-size: 1.8vh;
-  }
-  .progress-inner p {
-    font-size: 2vh;
   }
   .level {
+    font-size: 2vh;
     position: absolute;
-    top: -80%;
-    right: 48%;
-    transform: skew(40deg);
-    color: black;
+    bottom: 1vh;
+    left: 50%;
+    color: rebeccapurple;
   }
 }
