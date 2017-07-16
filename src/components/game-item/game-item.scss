@@ -390,7 +390,7 @@
           font-size: 2.5vh;
           margin: 0;
           padding: 0;
-          margin-top: 1.5vh;
+          margin-top: 1.1vh;
         }
       }
       .teamCorrect {
@@ -400,8 +400,37 @@
           margin: 0;
           padding: 0;
           font-size: 4vh;
-          margin-top: 0.6vh;
+          margin-top: 0.3vh;
         }
+      }
+    }
+    .opponentContainer {
+      padding: 0;
+      .opponentIconConteiner {
+        height: 100%;
+      }
+      .myTeamName {
+        border-bottom: 0.25vh solid;
+        border-image: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        border-image-slice: 1;
+        padding: 0;
+        p {
+          color: darken(white, 5%);
+          font-size: 2.5vh;
+          margin: 0;
+          padding: 0;
+          margin-top: 1.1vh;
+        }
+      }
+      ion-icon {
+        display: inline-block;
+        font-size: 4vh;
+        margin-top: 0.6vh;
+        color: rgba(gray, 30%);
+      }
+      .teamIcon {
+        padding: 0;
+        background-color: white;
       }
     }
     .gameStatus {
