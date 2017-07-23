@@ -28,8 +28,14 @@ export class Sockets {
     public http: Http,
     public firebasaService: FirebaseServiceProvider) {
     console.log('inside');
-    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+    this.socket = io.connect(myGlobals.socket, {  query: { userId: this.firebasaService.userId } });
+    console.log(this.socket.connected);
 
+    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+/*    this.socket.reconnect();
+*/    this.socket.on('disconnect', function () {
+/*      
+*/    })
 
 
   }
@@ -50,19 +56,14 @@ export class Sockets {
   reqStats(userId) {
     this.socket.emit('getStats', { userId: userId });
   }
-  recconect() {
-    console.log(this.socket)
-    if (this.socket.connected == false) {
-      this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-      console.log(this.socket)
 
-    }
-  }
   enterArena(arenaId: string, userId: string, inviteId: string) {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
   }
   logout() {
     this.socket.disconnect();
+    this.socket.removeAllListeners();
+
   }
 
   arenaLeave(userId) {
