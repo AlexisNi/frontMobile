@@ -18,20 +18,22 @@ import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 */
 @Injectable()
 export class Sockets {
-  private socket:any;
-/*  private socket = io(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
-*/  /*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
-  */
+  private socket: any;
+  /*  private socket = io(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
+  */  /*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
+    */
 
 
   constructor(
     public http: Http,
     public firebasaService: FirebaseServiceProvider) {
-      this.socket=io.connect(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
+    console.log('inside');
+    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+
 
 
   }
-  
+
 
   /*connect() {
     this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
@@ -46,18 +48,26 @@ export class Sockets {
   //////////////////////req-get stats///////////////////////
 
   reqStats(userId) {
-
-    console.log(userId);
     this.socket.emit('getStats', { userId: userId });
   }
+  recconect() {
+    console.log(this.socket)
+    if (this.socket.connected == false) {
+      this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+      console.log(this.socket)
 
+    }
+  }
   enterArena(arenaId: string, userId: string, inviteId: string) {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
+  }
+  logout() {
+    this.socket.disconnect();
   }
 
   arenaLeave(userId) {
     this.socket.emit('leaveArena');
- /*   this.reqArenas(userId);*/
+    /*   this.reqArenas(userId);*/
     this.sendNotification(userId);
   }
 
@@ -136,12 +146,12 @@ export class Sockets {
   }
 
   getArenas() {
-  
+
     this.socket.removeAllListeners('loadArenas');
     let observable = new Observable((observer: any) => {
-        this.socket.on('error',()=>{
-          console.log('error');
-        })
+      this.socket.on('error', () => {
+        console.log('error');
+      })
       this.socket.on('loadArenas', (data: any) => {
         const arenas = data.obj;
         let transformedArenas: Arenas[] = [];

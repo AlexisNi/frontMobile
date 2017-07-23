@@ -71,7 +71,7 @@ export class MatchPage implements OnDestroy {
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().push(TabsPage, { index: 1 });
+        this.appCtrl.getRootNav().push(TabsPage, {index: 1});
         this.loading.dismiss();
         console.log(err.error);
 
@@ -202,7 +202,7 @@ export class MatchPage implements OnDestroy {
     });
   }
   playerLost() {
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot(TabsPage,{index:1});
 
   }
 

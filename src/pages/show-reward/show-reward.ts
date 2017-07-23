@@ -58,11 +58,12 @@ export class ShowRewardPage {
       });
   }
 
-  dismiss() {
+  dismiss(arenaId) {
     console.log(this.viewCtrl);
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(arenaId);
   }
   claimAward() {
+    
     console.log('claim');
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
     this.arenaService.getAward(this.arenInfo)
@@ -72,12 +73,12 @@ export class ShowRewardPage {
           console.log('inside')
           this.socketService.reqArenas(this.userId);
           this.socketService.reqStats(this.userId);
-          this.dismiss();
+          this.dismiss({arenaId:this.arenaId});
         }, 1000);
 
       }, error => {
         console.log(error);
-        this.dismiss();
+        this.dismiss({arenaId:''});
         this.presentAlert(error);
       });
 

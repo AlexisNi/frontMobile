@@ -4,5 +4,5 @@
 import { Stats } from "../../models/stats";
 
 export class UserFound {
-  constructor(public message:string,public userName:string,public inviteId:string,public stats?:Stats){}
+  constructor(public message:string,public userName:string,public inviteId:string,public stats?:Stats,public history?:any){}
 }

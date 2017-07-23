@@ -368,8 +368,10 @@
     .arenaWrapper {
       background-color: #414042, ;
       margin-top: 2vh;
+      margin-bottom: 1vh;
       margin-left: 2vw;
       margin-right: 2vw;
+      opacity: 0.5;
     }
     .TeamsContainer {
       height: 6.6vh;
@@ -382,7 +384,7 @@
       }
       .myTeamName {
         border-bottom: 0.25vh solid;
-        border-image: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        -webkit-border-image: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
         border-image-slice: 1;
         padding: 0;
         p {
@@ -452,9 +454,60 @@
     .arenaPlayWrapper {
       background-color: #808285;
       margin-top: 2vh;
+      margin-bottom: 1vh;
       margin-left: 2vw;
       margin-right: 2vw;
       .playContainer {
+        height: 6.6vh;
+        max-height: 6.6vh;
+        border-bottom: 0.25vh solid;
+        border-image: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        border-image-slice: 1;
+        button {
+          transform: skew(-45deg);
+          height: 100%;
+          width: 50vw;
+          background: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        }
+        p {
+          transform: skew(45deg);
+          margin: 0;
+          padding: 0;
+          font-size: 2.5vh;
+          font-weight: BOLD;
+        }
+      }
+      .gameStatus {
+        padding: 0;
+        margin: 0;
+        height: 2.5vh;
+        p {
+          color: darken(white, 5%);
+          padding: 0;
+          margin: 0;
+          font-size: 1.7vh;
+          margin-top: 0.2vh;
+        }
+        ion-col {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+    .rewardPlayWrapper {
+      span {
+        background: linear-gradient(to left, #C2FB80 0%, #ABFFD1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+      background-color: #414042;
+      margin-top: 2vh;
+      margin-bottom: 1vh;
+      margin-left: 2vw;
+      margin-right: 2vw;
+      opacity: 0.9;
+      .rewardContainer {
         height: 6.6vh;
         max-height: 6.6vh;
         border-bottom: 0.25vh solid;

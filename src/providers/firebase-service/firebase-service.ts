@@ -132,7 +132,6 @@ export class FirebaseServiceProvider {
       .map((response: Response) => {
         response.json();
         this.userId = response.json().user_id;
-        console.log(this.userId);
         this.username = response.json().username;
       })
       .catch((error: Response) => {
@@ -153,6 +152,8 @@ export class FirebaseServiceProvider {
   }
 
   sendDeviceToken(deviceToken) {
+    console.log('device token');
+    console.log(deviceToken)
     const body = JSON.stringify({ devToken: deviceToken, userId: this.userId });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -174,7 +175,8 @@ export class FirebaseServiceProvider {
     }
     const options: PushOptions = {
       android: {
-        senderID: '327625743458'
+        senderID: '327625743458',
+        vibrate:true
       },
       ios: {
         alert: "true",

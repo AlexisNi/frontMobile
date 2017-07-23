@@ -7,6 +7,7 @@ import { Questions } from "../../providers/questions";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { ShowRewardPage } from "../../pages/show-reward/show-reward";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { TabsPage } from "../../pages/tabs/tabs";
 
 /*
   Generated class for the GameItem component.
@@ -28,9 +29,9 @@ export class GameItemComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.userId = this.firebasaService.userId;
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
-    this.username=this.firebasaService.username;
+    this.username = this.firebasaService.username;
 
-   setTimeout(() => {
+    setTimeout(() => {
       if (this.arena.user_played == true || this.arena.invite_played == true) {
         this.questionService.getCorrectNumber(this.arenaInfo)
           .subscribe(data => {
@@ -62,7 +63,8 @@ export class GameItemComponent implements OnChanges, OnInit {
     public questionService: Questions,
     public modalCtrl: ModalController,
     private alertCtrl: AlertController,
-    public firebasaService: FirebaseServiceProvider) {
+    public firebasaService: FirebaseServiceProvider,
+    public tabs: TabsPage) {
 
 
   }
@@ -77,15 +79,25 @@ export class GameItemComponent implements OnChanges, OnInit {
 
   }
   getReward() {
-    let modal = this.modalCtrl.create(ShowRewardPage, { arenaId: this.arena.arenaId, userId: this.userId });
+    let modal = this.modalCtrl.create(ShowRewardPage, { arenaId: this.arena.arenaId, userId: this.userId }, { enableBackdropDismiss: false });
+    modal.onDidDismiss(data => {
+      if (data != null) {
+        this.tabs.removeArena(data.arenaId);
+      }
+
+
+
+      console.log(data);
+    });
     modal.present();
+
   }
 
 
   presentAlert(error) {
     let alert = this.alertCtrl.create({
       title: error,
-      message:error.error,
+      message: error.error,
       buttons: ['Dismiss']
     });
     alert.present();

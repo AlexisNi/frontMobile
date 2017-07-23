@@ -20,7 +20,7 @@ import { Arena } from "../../providers/arena";
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  arenas: Arenas[] = [];
+  public arenas: Arenas[] = [];
   startingPage = MyProfilePage;
   arenaPage = MyArenasPage;
   loading: any;
@@ -41,10 +41,12 @@ export class TabsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
+    this.socketService.recconect();
   }
 
 
   ngOnInit() {
+    /* this.notifcationHandler();*/
     this.tab = this.navParams.get('index') || 0
     this.showLoader();
     this.stSer.newArena
@@ -53,8 +55,8 @@ export class TabsPage {
         this.arenas.push(arena);
       });
     setTimeout(() => {
-/*      this.notifcationHandler();
-*/    this.getAllArenas();
+    
+     this.getAllArenas();
       this.getOneArena();
     }, 2000);
 
@@ -68,6 +70,15 @@ export class TabsPage {
       }, error => {
         console.log(error);
       });
+  }
+  public removeArena(arenaId) {
+    for (let i in this.arenas) {
+      if (this.arenas[i].arenaId == arenaId) {
+        var index = this.arenas.indexOf(this.arenas[i]);
+        this.arenas.splice(index, 1);
+        this.nots--;
+      }
+    }
   }
 
   findArena(arena) {
@@ -87,7 +98,7 @@ export class TabsPage {
 
   }
   getAllArenas() {
-    this.arenaService.getArenas(this.firebasaService.userId).subscribe((arenas:Arena) => {
+    this.arenaService.getArenas(this.firebasaService.userId).subscribe((arenas: Arena) => {
       this.zone.run(() => this.setArenas(arenas))
       this.loading.dismiss();
     }, err => {
@@ -101,7 +112,6 @@ export class TabsPage {
     this.socketService.reqArenas(this.firebasaService.userId);
     this.socketService.getArenas().subscribe(
       (arena: Arenas[]) => {
-        console.log(arena)
         this.zone.run(() => this.setArenas(arena))
         this.loading.dismiss();
       }, error => {
@@ -126,6 +136,7 @@ export class TabsPage {
     });
     this.stSer.sendArenas(this.arenas);
   }
+  
   setBages(arena) {
     this.nots = 0;
     let userid = this.firebasaService.userId;

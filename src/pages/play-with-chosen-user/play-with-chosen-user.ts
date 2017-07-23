@@ -66,7 +66,7 @@ export class PlayWithChosenUserPage {
 
   findUser(userName) {
     this.showLoader();
-    this.startPageService.findUser({ username: userName }).then((result: UserFound) => {
+    this.startPageService.findUser({ username: userName,userId:this.firebasaService.userId }).then((result: UserFound) => {
       this.zone.run(() => this.setStats(result))
       this.loading.dismiss();
     }, (err) => {
@@ -90,6 +90,7 @@ export class PlayWithChosenUserPage {
     });
   }
   setStats(stats) {
+    console.log(stats)
     this.userFound = true;
     this.inviteId = stats.inviteId;
     this.name = stats.userName;

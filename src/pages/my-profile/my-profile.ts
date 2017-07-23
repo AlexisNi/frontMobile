@@ -191,6 +191,7 @@ export class MyProfilePage {
   logout() {
     this.firebasaService.signOut();
     setTimeout(() => {
+      this.socketService.logout();
       this.appCtrl.getRootNav().push(SigninPage);
     }, 1000);
   }

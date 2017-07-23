@@ -26,6 +26,7 @@ export class StartingPage {
 
   findUser(userName) {
     return new Promise((resolve, reject) => {
+      
 
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -36,7 +37,8 @@ export class StartingPage {
         .map((res: Response) => {
           let stats = res.json().statistics;
           let statsModel = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses, stats.draws)
-          let transFormed: UserFound = new UserFound(res.json().message, res.json().username, res.json().inviteId, stats);
+          let transFormed: UserFound = new UserFound(res.json().message, res.json().username, 
+          res.json().inviteId, stats,res.json().history);
           return transFormed;
         })
         .subscribe(res => {
@@ -97,11 +99,11 @@ export class StartingPage {
   }
 
   findRandomUser() {
-
+    let body={userId:this.firebasaService.userId};
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.firebasaService.token);
-    return this.http.post(myGlobals.host + 'users/findRandom', '', { headers: headers })
+    return this.http.post(myGlobals.host + 'users/findRandom', body, { headers: headers })
       .map((response: Response) => {
         let stats = response.json().statistics;
         let statsModel = new Stats(stats.level, stats.currentExp, stats.wins, stats.loses, stats.draws)
