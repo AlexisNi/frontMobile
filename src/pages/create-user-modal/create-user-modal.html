@@ -10,12 +10,13 @@
     <ion-col col-8 align-self: center>
       <ion-item>
         <ion-label>UserName</ion-label>
-        <ion-input #username></ion-input>
+        <ion-input  #username (keyup)="onKey(username.value)"></ion-input>
       </ion-item>
+      <p class="error" *ngIf="showError==true">{{error}}</p>
     </ion-col>
     <ion-col col-8>
-      <button (click)="CreateUser(username.value)">
-          <p> Choose Username</p>
+      <button [disabled]="buttonDisabled" (click)="searchUser.next(username.value)">
+          <p> Accept</p>
         </button>
     </ion-col>
   </ion-row>

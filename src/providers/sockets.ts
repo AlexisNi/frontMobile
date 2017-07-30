@@ -61,8 +61,8 @@ export class Sockets {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
   }
   logout() {
-    this.socket.disconnect();
-    this.socket.removeAllListeners();
+/*    this.socket.disconnect();
+    this.socket.removeAllListeners();*/
 
   }
 

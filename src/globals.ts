@@ -12,5 +12,4 @@ export const myGlobals = Object.freeze({
 /*export const myGlobals = Object.freeze({
     host: 'https://footballquizarena.herokuapp.com/api/',
     socket: 'https://footballquizarena.herokuapp.com'
-});
-*/
+});*/

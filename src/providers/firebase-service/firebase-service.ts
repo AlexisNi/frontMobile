@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Platform } from 'ionic-angular';
@@ -146,6 +148,8 @@ export class FirebaseServiceProvider {
     headers.append('Authorization', this.token);
     return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
       .map((response: Response) => response.json())
+      .debounceTime(1000)
+       .distinctUntilChanged() 
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
@@ -176,7 +180,7 @@ export class FirebaseServiceProvider {
     const options: PushOptions = {
       android: {
         senderID: '327625743458',
-        vibrate:true
+        vibrate: true
       },
       ios: {
         alert: "true",
