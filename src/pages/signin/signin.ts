@@ -14,6 +14,7 @@ import { Platform, ModalController, AlertController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
+import { Sockets } from "../../providers/sockets";
 
 
 /*
@@ -49,7 +50,8 @@ export class SigninPage implements OnInit, OnDestroy {
     private platform: Platform,
     public alertCtrl: AlertController,
     private firebaseService: FirebaseServiceProvider,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public socketService: Sockets,
   ) {
   }
 
@@ -58,17 +60,18 @@ export class SigninPage implements OnInit, OnDestroy {
     this.showLoader();
     this.firebaseService.checkAuthentication().then((res) => {
       this.loading.dismiss();
-        this.firebaseService.checkUser()
-          .subscribe(data => {
-            this.navCtrl.setRoot(TabsPage);
-          }, error => {
-            if (error.error == 100) {
-              this.firebaseService.chechUnsubscribe();
-              let modal = this.modalCtrl.create(CreateUserModalPage, {});
-              modal.present();
-            }
+      this.firebaseService.checkUser()
+        .subscribe(data => {
+          this.socketService.connect();
+          this.navCtrl.setRoot(TabsPage);
+        }, error => {
+          if (error.error == 100) {
+            this.firebaseService.chechUnsubscribe();
+            let modal = this.modalCtrl.create(CreateUserModalPage, {});
+            modal.present();
+          }
 
-          })
+        })
     }, error => {
       this.firebaseService.chechUnsubscribe();
       console.log(error);
@@ -85,16 +88,35 @@ export class SigninPage implements OnInit, OnDestroy {
 
 
   signInWithFacebook() {
-  this.firebaseService.signInWithFacebook();
+    this.firebaseService.signInWithFacebook();
 
   }
   signUp() {
     this.showLoader();
     this.firebaseService.signUpWithEmailPassword(this.email, this.password).
       then(res => {
-        this.loading.dismiss();
-        let modal = this.modalCtrl.create(CreateUserModalPage, {});
-        modal.present();
+        this.firebaseService.checkAuthentication().then((res) => {
+          console.log('User Authorized');
+          console.log(res);
+          this.loading.dismiss();
+          setTimeout(() => {
+            this.firebaseService.checkUser()
+              .subscribe(data => {
+                this.socketService.connect();
+                this.navCtrl.setRoot(TabsPage);
+              }, error => {
+                if (error.error == 100) {
+                  this.firebaseService.chechUnsubscribe();
+                  let modal = this.modalCtrl.create(CreateUserModalPage, {});
+                  modal.present();
+                }
+              })
+          }, 10);
+        }, error => {
+          this.firebaseService.chechUnsubscribe();
+          this.presentAlert(error.message);
+          this.loading.dismiss();
+        });
       }, error => {
         this.presentAlert(error.message);
         this.loading.dismiss();
@@ -112,6 +134,7 @@ export class SigninPage implements OnInit, OnDestroy {
           setTimeout(() => {
             this.firebaseService.checkUser()
               .subscribe(data => {
+                this.socketService.connect();
                 this.navCtrl.setRoot(TabsPage);
               }, error => {
                 if (error.error == 100) {

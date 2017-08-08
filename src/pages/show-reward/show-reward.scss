@@ -1,21 +1,37 @@
-/*.modal-wrapper {
-position: absolute;
-top: 129px;
-left: 56px;
-display: block;
-width: 70%;
-height: 35%;
-  border-radius: 25px;
-}
-page-show-reward{
-ion-content{
-    border-radius: 25px;
-
-}
-.scroll-content{
-overflow-y: hidden;
-}
-}
-
-
+    page-show-reward {
+      ion-content {
+        background-color: #F3EFE0 !important;
+      }
+      .drawText {
+        font-size: 3vh;
+        /*        padding-top: 3vh;
 */
+      }
+      ion-icon {
+        font-size: 10vh;
+      }
+      .award {
+        p {
+          font-size: 3vh;
+          font-weight: bold;
+        }
+      }
+      button {
+        display: inline-block;
+        position: relative;
+        width: 70vw;
+        height: 6vh;
+        background-color: black;
+        font-size: 2vh;
+        margin: 0.3vh;
+        box-shadow: 5px 6px 2px #888888;
+        transform: skewX(-40deg);
+        p {
+          color: white;
+          transform: skewX(40deg);
+          font-size: 2.5vh;
+          font-weight: BOLD;
+          margin: 0;
+        }
+      }
+    }

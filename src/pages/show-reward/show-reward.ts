@@ -23,6 +23,9 @@ export class ShowRewardPage {
   arenaId;
   showModal = false;
 
+  experience;
+  points;
+
   constructor(
     public params: NavParams,
     public viewCtrl: ViewController,
@@ -38,9 +41,6 @@ export class ShowRewardPage {
   ionViewDidLoad() {
     setTimeout(() => {
       this.showModal = true;
-
-
-
     }, 50);
     this.arenaId = this.params.get('arenaId');
     this.userId = this.params.get('userId');
@@ -50,7 +50,6 @@ export class ShowRewardPage {
       .subscribe(
       (playerResult: PlayerResult) => {
         this.playerResult = playerResult;
-        console.log(playerResult);
 
       }, error => {
 
@@ -63,12 +62,10 @@ export class ShowRewardPage {
     this.viewCtrl.dismiss(arenaId);
   }
   claimAward() {
-    
     console.log('claim');
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
     this.arenaService.getAward(this.arenInfo)
       .subscribe((message) => {
-        console.log(message)
         setTimeout(() => {
           console.log('inside')
           this.socketService.reqArenas(this.userId);
@@ -81,7 +78,11 @@ export class ShowRewardPage {
         this.dismiss({arenaId:''});
         this.presentAlert(error);
       });
+  }
 
+  setAwards(message){
+      this.points=message.drawAward.points;
+      this.experience=message.drawAward.experience;
   }
 
   presentAlert(error) {

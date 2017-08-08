@@ -27,29 +27,33 @@ export class Sockets {
   constructor(
     public http: Http,
     public firebasaService: FirebaseServiceProvider) {
-    console.log('inside');
-    this.socket = io.connect(myGlobals.socket, {  query: { userId: this.firebasaService.userId } });
-    console.log(this.socket.connected);
+    /*    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+        console.log(this.socket.connected);*/
+    /*
+        this.connect();*/
 
+/*    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+*/  }
+
+
+  connect() {
     this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-/*    this.socket.reconnect();
-*/    this.socket.on('disconnect', function () {
-/*      
-*/    })
+    if (this.socket == undefined) {
+      /*this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+      console.log('inside first')*/
+    }
+ /*   if (this.socket != undefined) {
+      if (this.socket.connected == false) {
+        this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
+        console.log('inside second')
+      }
+    }
+*/
+
+
 
 
   }
-
-
-  /*connect() {
-    this.socket = io(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-    this.socket.on('connect', () => {
-      console.log('connected');
-
-
-   
-    });
-  }*/
 
   //////////////////////req-get stats///////////////////////
 
@@ -61,9 +65,9 @@ export class Sockets {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
   }
   logout() {
-/*    this.socket.disconnect();
-    this.socket.removeAllListeners();*/
-
+    this.socket.disconnect();
+    this.socket.removeAllListeners();
+    this.socket.emit("logout");
   }
 
   arenaLeave(userId) {

@@ -71,7 +71,7 @@ export class MatchPage implements OnDestroy {
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().push(TabsPage, {index: 1});
+        this.appCtrl.getRootNav().push(TabsPage, { index: 1 });
         this.loading.dismiss();
         console.log(err.error);
 
@@ -138,13 +138,17 @@ export class MatchPage implements OnDestroy {
   findRightQuestion(currentQuestion: Question) {
     if (currentQuestion.answer == currentQuestion.optiona) {
       this.rightButtons[0] = true;
+      this.initButtons[0] = false;
     } else if (currentQuestion.answer == currentQuestion.optionb) {
       this.rightButtons[1] = true;
+      this.initButtons[1] = false;
     } else if (currentQuestion.answer == currentQuestion.optionc) {
       this.rightButtons[2] = true;
+      this.initButtons[2] = false;
     }
     else if (currentQuestion.answer == currentQuestion.optiond) {
       this.rightButtons[3] = true;
+      this.initButtons[3] = false;
     }
 
 
@@ -172,7 +176,7 @@ export class MatchPage implements OnDestroy {
 
   ngOnDestroy(): void {
 
-   console.log('on Destroy all arenas');
+    console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
     this.socketService.arenaLeave(this.inviteId);
     this.statusPlayed();
@@ -202,7 +206,7 @@ export class MatchPage implements OnDestroy {
     });
   }
   playerLost() {
-    this.navCtrl.setRoot(TabsPage,{index:1});
+    this.navCtrl.setRoot(TabsPage, { index: 1 });
 
   }
 

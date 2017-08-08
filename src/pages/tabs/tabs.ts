@@ -46,7 +46,7 @@ export class TabsPage {
 
   ngOnInit() {
 /*     this.notifcationHandler();
-*/    this.tab = this.navParams.get('index') || 0
+*/   this.tab = this.navParams.get('index') || 0
     this.showLoader();
     this.stSer.newArena
       .subscribe(
@@ -54,8 +54,7 @@ export class TabsPage {
         this.arenas.push(arena);
       });
     setTimeout(() => {
-    
-     this.getAllArenas();
+      this.getAllArenas();
       this.getOneArena();
     }, 2000);
 
@@ -121,6 +120,7 @@ export class TabsPage {
   }
 
   setArenas(arena) {
+    console.log(arena)
     this.setBages(arena);
     let userid = this.firebasaService.userId;
     for (let i in arena) {
@@ -135,7 +135,7 @@ export class TabsPage {
     });
     this.stSer.sendArenas(this.arenas);
   }
-  
+
   setBages(arena) {
     this.nots = 0;
     let userid = this.firebasaService.userId;

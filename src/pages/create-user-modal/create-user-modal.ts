@@ -4,6 +4,7 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
 import { TabsPage } from "../tabs/tabs";
 import { Subject } from "rxjs/Subject";
 import { Observable } from "rxjs/Observable";
+import { Sockets } from "../../providers/sockets";
 
 /**
  * Generated class for the CreateUserModalPage page.
@@ -31,13 +32,13 @@ export class CreateUserModalPage {
     public appCtrl: App,
     public viewCtrl: ViewController,
     public firebaseService: FirebaseServiceProvider,
-    public loadingCtrl: LoadingController, ) {
-      
+    public loadingCtrl: LoadingController,
+    public socketService: Sockets, ) {
+
     const observable = this.searchUser
       .map(value => value)
       .debounceTime(300)
-/*      .distinctUntilChanged()
-*/      .flatMap((search) => {
+      .flatMap((search) => {
         return Observable.of(search).delay(100);
       })
       .subscribe((data) => {
@@ -50,23 +51,26 @@ export class CreateUserModalPage {
   }
 
   CreateUser(username) {
-    console.log(username);
-       this.firebaseService.createUser(username)
+    this.firebaseService.createUser(username)
+      .subscribe(data => {
+        this.firebaseService.checkUser()
           .subscribe(data => {
-            this.firebaseService.checkUser()
-              .subscribe(data => {
-                this.viewCtrl.dismiss();
-                this.appCtrl.getRootNav().push(TabsPage);
-    
-              }, error => {
-                console.log(error);
-              })
-          },
-          error => {
-            this.error = error.message;
-            this.showError = true
+            console.log('inside makis')
+            this.socketService.connect();
+            setTimeout(() => {
+              this.viewCtrl.dismiss();
+              this.appCtrl.getRootNav().push(TabsPage);
+            },1000)
+
+          }, error => {
             console.log(error);
           })
+      },
+      error => {
+        this.error = error.message;
+        this.showError = true
+        console.log(error);
+      })
 
   }
   ngOnDestroy(): void {
