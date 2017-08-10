@@ -1,8 +1,58 @@
 page-create-user-modal {
-  button {
-    width: 100%;
-  }
-  .error{
-      color: red;
-  }
+      ion-content {
+        background-color: #F3EFE0 !important;
+      }
+      .drawText {
+        font-size: 3vh;
+        /*        padding-top: 3vh;
+*/
+      }
+      ion-icon {
+        font-size: 10vh;
+      }
+      .award {
+        p {
+          font-size: 3vh;
+          font-weight: bold;
+        }
+      }
+      button {
+        display: inline-block;
+        position: relative;
+        width: 70vw;
+        height: 6vh;
+        background-color: black;
+        font-size: 2vh;
+        margin: 0.3vh;
+        box-shadow: 5px 6px 2px #888888;
+        transform: skewX(-40deg);
+        p {
+          color: white;
+          transform: skewX(40deg);
+          font-size: 2.5vh;
+          font-weight: BOLD;
+          margin: 0;
+        }
+      }
+      button:disabled{
+        display: inline-block;
+        position: relative;
+        width: 70vw;
+        height: 6vh;
+        background-color: black;
+        font-size: 2vh;
+        margin: 0.3vh;
+        box-shadow: 5px 6px 2px #888888;
+        transform: skewX(-40deg);
+        opacity: 0.7 !important;
+        p {
+          color: white;
+          transform: skewX(40deg);
+          font-size: 2.5vh;
+          font-weight: BOLD;
+          margin: 0;
+        }
+      }
+    
+
 }
