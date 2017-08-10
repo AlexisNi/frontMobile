@@ -6,11 +6,11 @@
 -->
 
 <ion-content padding>
-  <ion-row justify-content-center>
-    <ion-col col-8 align-self: center>
+  <ion-row justify-content-center class="selectUsernameRow">
+    <ion-col col-8>
       <ion-item>
-        <ion-label>UserName</ion-label>
-        <ion-input  #username (keyup)="onKey(username.value)"></ion-input>
+<!--        <ion-label>UserName</ion-label>
+-->        <ion-input placeholder="Select UserName"  #username (keyup)="onKey(username.value)"></ion-input>
       </ion-item>
       <p class="error" *ngIf="showError==true">{{error}}</p>
     </ion-col>

@@ -7,6 +7,12 @@ page-create-user-modal {
         /*        padding-top: 3vh;
 */
       }
+  /*    ion-item{
+        width: 63vw !important;
+      }*/
+      .selectUsernameRow{
+        margin-top: 11vh;
+      }
       ion-icon {
         font-size: 10vh;
       }
@@ -15,6 +21,9 @@ page-create-user-modal {
           font-size: 3vh;
           font-weight: bold;
         }
+      }
+      ion-label{
+        margin: 0;
       }
       button {
         display: inline-block;
