@@ -45,8 +45,13 @@ export class TabsPage {
 
 
   ngOnInit() {
+<<<<<<< HEAD
 /*     this.notifcationHandler();
 */   this.tab = this.navParams.get('index') || 0
+=======
+     // this.notifcationHandler();
+   this.tab = this.navParams.get('index') || 0
+>>>>>>> 7124b3b486085ff0a78bddf553be2ded5785bcee
     this.showLoader();
     this.stSer.newArena
       .subscribe(
