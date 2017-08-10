@@ -15,6 +15,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { Sockets } from "../../providers/sockets";
+import { Keyboard } from '@ionic-native/keyboard';
 
 
 /*
@@ -52,6 +53,7 @@ export class SigninPage implements OnInit, OnDestroy {
     private firebaseService: FirebaseServiceProvider,
     private modalCtrl: ModalController,
     public socketService: Sockets,
+    private keyboard: Keyboard
   ) {
   }
 
@@ -124,7 +126,8 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   signIn() {
-    this.showLoader();
+        this.keyboard.close();
+   this.showLoader();
     this.firebaseService.signInWithEmailPassword(this.email, this.password).
       then(res => {
         this.firebaseService.checkAuthentication().then((res) => {

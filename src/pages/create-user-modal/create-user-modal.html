@@ -12,12 +12,13 @@
 <!--        <ion-label>UserName</ion-label>
 -->        <ion-input placeholder="Select UserName"  #username (keyup)="onKey(username.value)"></ion-input>
       </ion-item>
-      <p class="error" *ngIf="showError==true">{{error}}</p>
+     
     </ion-col>
     <ion-col text-center>
       <button [disabled]="buttonDisabled" (click)="searchUser.next(username.value)">
           <p> Accept</p>
         </button>
     </ion-col>
+     <p class="error" *ngIf="showError==true">{{error}}</p>
   </ion-row>
 </ion-content>
