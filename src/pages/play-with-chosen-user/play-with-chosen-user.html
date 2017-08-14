@@ -1,0 +1,70 @@
+<!--
+  Generated template for the PlayWithChosenUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding>
+  <ion-grid>
+    <div *ngIf="randomUser==false">
+    <ion-row >
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary">
+              <ion-icon name="football"></ion-icon>
+            </ion-label>
+            <ion-input #username></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row  justify-content-center>
+      <ion-col col-6>
+        <button class="playButton" (click)="findUser(username.value)">
+          Ψαξε για τον αντίπαλο
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button class="playButton" (click)="dismiss()">
+          Cancel
+        </button>
+      </ion-col>
+    </ion-row>
+    </div>
+
+    <div *ngIf="userFound==true" class="userFoundStats">
+      <ion-row justify-content-center class="userNameRow">
+        <ion-col text-center col-10 class="userName">
+          Username : {{name}}
+        </ion-col>
+      </ion-row>
+      <ion-row class="userStats" text-center>
+        <ion-col col-4 class="userName">
+          W: {{wins}}
+        </ion-col>
+        <ion-col col-4 class="userName">
+          L: {{loses}}
+        </ion-col>
+        <ion-col col-4 class="userName">
+          D: {{draws}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button class="findButton" (click)="playWith()">
+          Παίξε μαζι του
+        </button>
+        </ion-col>
+        <ion-col>
+          <button class="findButton" (click)="dismiss()">
+          Ακύρωση
+        </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

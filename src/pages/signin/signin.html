@@ -1,0 +1,65 @@
+<!--<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Football arena quiz</ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+
+    <ion-row justify-content-center class="header">
+      <ion-col col-12>
+        <p class="title"> KICK OFF </p>
+        <p class="subtitle"> FOOTBALL QUIZ</p>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center class="connectionP">
+      <ion-col col-12>
+        <p> Συνδέσου με τον λογαριασμό σου </p>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center class="icons">
+      <ion-col col-6>
+        <ion-icon name="logo-facebook" class="facebook" (click)="signInWithFacebook()"></ion-icon>
+      </ion-col>
+      <ion-col col-6>
+        <ion-icon name="logo-google" class="google" (click)="signOut()"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="or">
+      <ion-col col-5>
+        <hr>
+      </ion-col>
+      <ion-col col-2>
+        <p> Ή </p>
+      </ion-col>
+      <ion-col col-5>
+        <hr>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col>
+          <ion-item>
+            <ion-label>
+              <ion-icon style="color:black" name="person"></ion-icon>
+            </ion-label>
+            <ion-input  (onfocus)="show('focus')" (click)="show('click')"   class="text-input" [(ngModel)]="email" placeholder="email" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon style="color:black" name="lock"></ion-icon>
+            </ion-label>
+            <ion-input (onfocus)="show('focus')" (click)="show('click')" [(ngModel)]="password" placeholder="password" type="password"></ion-input>
+          </ion-item>
+       
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="signUp()" color="primary" class="login-button">Signup</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="signIn()" color="primary" class="login-button">Sign in</button>
+      </ion-col>
+    </ion-row>
+
+</ion-content>

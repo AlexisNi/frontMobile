@@ -1,0 +1,118 @@
+page-my-profile {
+  ion-col {
+    h2 {
+      position: absolute;
+      top: 44%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      font-size: 5.9vw;
+      color: white;
+    }
+  }
+  .headerRow {
+    background-color: #231f20;
+    min-height: 56px;
+    display: flex;
+    height: 100%;
+  }
+  .quizHeader h2 {
+    font-size: 2rem;
+    color: #E6E7E8;
+  }
+  .main {
+    height: 100%;
+    width: 100%;
+  }
+  .logoRow {
+    padding: 60px;
+  }
+  .item ion-avatar img {
+    width: 116px;
+    height: 93px;
+    background-color: gray;
+  }
+  .teamName h2 {
+    color: #E6E7E8;
+    font-size: 2vh;
+  }
+  ion-content .scroll-content {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .progressBarRow {
+    padding-top: 5%;
+  }
+  .buttonRow {
+    padding-top: 15px;
+  }
+  .playButton {
+    background-color: white;
+    position: relative;
+    transform: skew(-40deg);
+    width: 100%;
+    max-width: 80%;
+    box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
+  }
+  .playButton p {
+    transform: skew(40deg);
+    font-weight: bold;
+  }
+  .statistics {
+    background-image: url("../assets/images/field_graphic.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 1%;
+    height: 50%;
+    div {
+      height: 100%;
+      min-height: 10%;
+      max-height: 100%;
+      margin-top: 10px;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      bottom: 0px;
+      border: 0;
+      border-radius: 1px;
+      box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.1);
+      letter-spacing: 1.5px;
+      p {
+        /* Chrome10-25,Safari5.1-6 */
+        position: absolute;
+        bottom: -8px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 4vw;
+      }
+    }
+    .wins {
+      margin-left: 5px;
+      p {
+        left: 31%;
+      }
+    }
+    .draws {
+      margin-left: 2.5px;
+      p {
+        left: 15%;
+      }
+    }
+    .loses {
+      margin-right: 10px;
+      p {
+        left: 31%;
+      }
+    }
+  }
+  /* @media screen and (max-width: 320px) {
+    .playButton {
+      max-width: 70%;
+      height:50px;
+      flex: 100%;
+       p {
+        font-size: 15px;
+      }
+    }
+  }*/
+}

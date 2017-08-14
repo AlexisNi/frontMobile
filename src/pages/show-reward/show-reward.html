@@ -1,0 +1,95 @@
+<!--
+  Generated template for the ShowReward page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding *ngIf="showModal">
+  <div *ngIf="playerResult?.draw==true">
+    <ion-row text-center>
+      <ion-col col-12>
+        <ion-icon name="md-ribbon"></ion-icon>
+      </ion-col>
+      <ion-col class="drawText">
+        O αγώνας τελείωσε με ισοπαλία....
+      </ion-col>
+    </ion-row>
+    <ion-row class="award">
+      <ion-col col-6 text-center>
+        <p>EXP : {{playerResult?.drawAward.experience}}
+          <p>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <p>PTS : {{playerResult?.drawAward.points}}
+          <p>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <button (click)="claimAward()"><p>Collect award<p></button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="playerResult?.winnerUserId==userId && playerResult?.draw==false">
+    <ion-row text-center>
+      <ion-col col-12>
+        <ion-icon name="md-ribbon"></ion-icon>
+      </ion-col>
+      <ion-col class="drawText">
+        Συγχαρητήρια Νίκησες!
+      </ion-col>
+    </ion-row>
+    <ion-row class="award">
+      <ion-col col-6 text-center>
+        <p>EXP : {{playerResult?.winnerAward.experience}}
+          <p>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <p>PTS : {{playerResult?.winnerAward.points}}
+          <p>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <button (click)="claimAward()"><p>Collect award<p></button>
+      </ion-col>
+    </ion-row>
+    <!--
+    <h1>You Win ,Your award is experience {{playerResult?.winnerAward.experience}} ,
+      <br> Points : {{playerResult?.winnerAward.points}}
+    </h1>
+    <button ion-button (click)="claimAward()">Get reward </button>-->
+  </div>
+
+  <div *ngIf="playerResult?.loserUserId==userId && playerResult?.draw==false">
+    <ion-row text-center>
+      <ion-col col-12>
+        <ion-icon name="md-ribbon"></ion-icon>
+      </ion-col>
+      <ion-col class="drawText">
+        Δυστυχώς έχασες....
+      </ion-col>
+    </ion-row>
+    <ion-row class="award">
+      <ion-col col-6 text-center>
+        <p>EXP: {{playerResult?.loserAward.experience}}
+          <p>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <p>PTS: {{playerResult?.loserAward.points}}
+          <p>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <button (click)="claimAward()"><p>Collect award<p></button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+</ion-content>

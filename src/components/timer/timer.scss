@@ -1,0 +1,18 @@
+timer {
+  .progress {
+    position: relative;
+    width: 100vw;
+  }
+  .progress-outer {
+    min-width: 0%;
+    height: 2vh;
+    background: linear-gradient(to right, #C2FB80 0%, #ABFFD1 100%);
+  }
+  .level {
+    font-size: 2vh;
+    position: absolute;
+    bottom: 1vh;
+    left: 50%;
+    color: rebeccapurple;
+  }
+}

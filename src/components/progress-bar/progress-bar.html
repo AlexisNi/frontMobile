@@ -1,0 +1,28 @@
+<!--
+  Generated template for the ProgressBar component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+<ion-row>
+  <ion-col col-2 class="levelCol">
+    <div class="levelContainer">
+      <p>
+        {{level}}lvl
+      </p>
+    </div>
+  </ion-col>
+  <ion-col class="progressCol">
+
+    <div class="progress">
+      <p class="exp" text-center>{{currentExp}}/{{experienceNextLevel}}</p>
+      <div class="progress-outer" text-center>
+        <p class="level"></p>
+        <div class="progress-inner" [style.width]="progress + '%'">
+          {{progress}}
+        </div>
+      </div>
+    </div>
+  </ion-col>
+
+</ion-row>
