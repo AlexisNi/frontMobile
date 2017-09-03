@@ -5,17 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-<<<<<<< HEAD
   <ion-navbar [color]="'navBar'">
     <ion-title text-center>{{username}}'s profile</ion-title>
   </ion-navbar>
-=======
-
-  <ion-navbar [color]="'navBar'">
-    <ion-title text-center>My team</ion-title>
-  </ion-navbar>
-
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 </ion-header>
 
 
@@ -47,11 +39,8 @@
     </ion-col>
   </ion-row>
 
-<<<<<<< HEAD
   <ion-row class="progressBarRow">
-=======
-  <ion-row class="progressBarRow" (click)="logout()">
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
     <ion-col width-50 offset-25>
       <progress-bar [currentExp]="currentExp" [experienceNextLevel]="experienceNextLevel" [progress]="percentage" [level]="level"></progress-bar>
     </ion-col>
@@ -77,7 +66,6 @@
     </ion-col>
   </ion-row>
 
-<<<<<<< HEAD
   <div class="popup-menu">
     <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
     <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
@@ -100,7 +88,4 @@
       </div>
     </div>
   </div>
-
-=======
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 </ion-content>

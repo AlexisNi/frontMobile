@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component, OnInit, OnDestroy } from '@angular/core';
-=======
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from "../../providers/auth";
 import { SignupPage } from "../signup/signup";
@@ -41,12 +37,7 @@ export class SigninPage implements OnInit, OnDestroy {
 
   }
 
-<<<<<<< HEAD
-  email: string = '';
-  password: string = '';
-  loading: any;
-  displayName;
-=======
+
   email: string = 'a@hotmail.com';
   password: string = '123456';
   loading: any;
@@ -62,7 +53,6 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
 
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
 
   constructor(public navCtrl: NavController,
@@ -98,10 +88,7 @@ export class SigninPage implements OnInit, OnDestroy {
         })
     }, error => {
       this.firebaseService.chechUnsubscribe();
-<<<<<<< HEAD
-=======
-      console.log(error);
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
       this.loading.dismiss();
     });
   }
@@ -151,15 +138,11 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   signIn() {
-<<<<<<< HEAD
         this.keyboard.close();
-=======
-   
     if (this.keyboardShowed==true){
       this.keyboard.close();
     }
     setTimeout( ()=>{
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
    this.showLoader();
     this.firebaseService.signInWithEmailPassword(this.email, this.password).
       then(res => {
@@ -190,10 +173,7 @@ export class SigninPage implements OnInit, OnDestroy {
         console.log(error);
         this.loading.dismiss();
       });
-<<<<<<< HEAD
-=======
     },500);
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
   }
 

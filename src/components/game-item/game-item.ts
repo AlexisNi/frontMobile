@@ -84,13 +84,10 @@ export class GameItemComponent implements OnChanges, OnInit {
       if (data != null) {
         this.tabs.removeArena(data.arenaId);
       }
-<<<<<<< HEAD
-=======
 
 
 
       console.log(data);
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     });
     modal.present();
 
