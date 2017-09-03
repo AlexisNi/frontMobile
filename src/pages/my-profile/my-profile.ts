@@ -12,10 +12,8 @@ import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { MatchPage } from "../match/match";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
-<<<<<<< HEAD
 import { HistoricDataProvider } from "../../providers/historic-data";
-=======
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
 
 /*
   Generated class for the MyProfile page.
@@ -48,11 +46,8 @@ export class MyProfilePage {
   sWins;
   sLoses;
   sDraws;
-<<<<<<< HEAD
   username = '';
   openMenu = false;
-=======
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
 
   ngOnInit(): void {
@@ -63,10 +58,8 @@ export class MyProfilePage {
 /*      this.socketService.connect();
 */      this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
-<<<<<<< HEAD
       this.username = this.firebasaService.username;
-=======
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
     }
   }
 
@@ -81,12 +74,9 @@ export class MyProfilePage {
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
     public appCtrl: App,
-<<<<<<< HEAD
     private modalCtrl: ModalController
    ) { }
-=======
-    private modalCtrl: ModalController) { }
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
 
   loadStats() {
     this.socketService.getStats()
@@ -207,16 +197,11 @@ export class MyProfilePage {
     this.loading.present();
   }
   logout() {
-<<<<<<< HEAD
     this.showLoader();
     this.firebasaService.signOut();
     setTimeout(() => {
       this.togglePopupMenu();
       this.loading.dismiss();
-=======
-    this.firebasaService.signOut();
-    setTimeout(() => {
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
       this.socketService.logout();
       this.appCtrl.getRootNav().push(SigninPage);
     }, 1000);
@@ -277,7 +262,6 @@ export class MyProfilePage {
     let modal = this.modalCtrl.create(this.findPlayerPage, { userFound: userFound });
     modal.present();
   }
-<<<<<<< HEAD
   togglePopupMenu() {
     return this.openMenu = !this.openMenu;
   }
@@ -311,8 +295,7 @@ export class MyProfilePage {
     alert('Shop clicked.');
     this.togglePopupMenu();
   }
-=======
->>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
+
 
 
 }
