@@ -5,6 +5,7 @@ import { ArenaPlayers } from "../../models/arenaPlayers";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { UserFound } from "../starting-page/userFound";
 import { MatchPage } from "../match/match";
+import { HistoricDataProvider } from "../../providers/historic-data";
 
 /**
  * Generated class for the PlayWithChosenUserPage page.
@@ -28,7 +29,7 @@ export class PlayWithChosenUserPage {
   name;
   inviteId;
 
-  randomUser=false;
+  randomUser = false;
 
 
 
@@ -42,14 +43,15 @@ export class PlayWithChosenUserPage {
     public alertCtrl: AlertController,
     public zone: NgZone,
     public firebasaService: FirebaseServiceProvider,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    private historic: HistoricDataProvider
 
   ) {
   }
 
   ionViewDidLoad() {
     if (this.navParams.get('userFound') != undefined) {
-      let userInfo=this.navParams.get('userFound');
+      let userInfo = this.navParams.get('userFound');
       console.log(userInfo)
       this.randomUser = true;
       this.userFound = true;
@@ -66,9 +68,15 @@ export class PlayWithChosenUserPage {
 
   findUser(userName) {
     this.showLoader();
-    this.startPageService.findUser({ username: userName,userId:this.firebasaService.userId }).then((result: UserFound) => {
-      this.zone.run(() => this.setStats(result))
-      this.loading.dismiss();
+
+    this.startPageService.findUser({ username: userName, userId: this.firebasaService.userId }).then((result: UserFound) => {
+      this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe(data => {
+        data.inviteId = result.inviteId;
+        data.userName = result.userName;
+        data.level = result.stats.level;
+        this.zone.run(() => this.setStats(data));
+        this.loading.dismiss();
+      });
     }, (err) => {
       this.userFound = false;
       this.loading.dismiss();
@@ -90,11 +98,10 @@ export class PlayWithChosenUserPage {
     });
   }
   setStats(stats) {
-    console.log(stats)
     this.userFound = true;
     this.inviteId = stats.inviteId;
     this.name = stats.userName;
-    let userStats = stats.stats;
+    let userStats = stats.history;
     this.wins = userStats.wins;
     this.loses = userStats.loses;
     this.draws = userStats.draws;

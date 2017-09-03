@@ -76,7 +76,6 @@ export class SigninPage implements OnInit, OnDestroy {
         })
     }, error => {
       this.firebaseService.chechUnsubscribe();
-      console.log(error);
       this.loading.dismiss();
     });
   }

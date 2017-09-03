@@ -98,6 +98,7 @@ export class Auth {
         .subscribe(res => {
 
           let data = res.json();
+          console.log(data);
           this.token = data.token;
           this.userId = data.user._id;
           this.storage.set('token', data.token);

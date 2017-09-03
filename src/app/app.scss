@@ -32,6 +32,10 @@ ion-icon {
   &[class*="appname-court"] {
     mask-image: url(../assets/images/Match_field_icon-01.svg);
   }
+  &[class*="appname-statistics"] {
+    mask-image: url(../assets/images/football-stats-graphic.svg);
+/*        width: 16vw;
+*/  }
 }
 
 // App Global Sass

@@ -34,6 +34,7 @@ import { CreateUserModalPageModule } from "../pages/create-user-modal/create-use
 import { Push } from "@ionic-native/push";
 import { TimerComponent } from '../components/timer/timer';
 import { Keyboard } from '@ionic-native/keyboard';
+import { HistoricDataProvider } from "../providers/historic-data";
 
 
 
@@ -97,6 +98,7 @@ export const firebaseConfig = {
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }
     , AuthService, Auth, Todos, Sockets, Arena, StartingPage, Questions,Facebook,Push,
-    FirebaseServiceProvider,Keyboard]
+    FirebaseServiceProvider,Keyboard,
+    HistoricDataProvider]
 })
 export class AppModule { }

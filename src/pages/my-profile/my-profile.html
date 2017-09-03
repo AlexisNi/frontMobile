@@ -5,11 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar [color]="'navBar'">
-    <ion-title text-center>My team</ion-title>
+    <ion-title text-center>{{username}}'s profile</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -41,7 +39,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="progressBarRow" (click)="logout()">
+  <ion-row class="progressBarRow">
     <ion-col width-50 offset-25>
       <progress-bar [currentExp]="currentExp" [experienceNextLevel]="experienceNextLevel" [progress]="percentage" [level]="level"></progress-bar>
     </ion-col>
@@ -66,5 +64,28 @@
         </button>
     </ion-col>
   </ion-row>
+
+  <div class="popup-menu">
+    <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
+    <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
+    <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
+      <div class="popup-menu-item" (click)="goToAccount()">
+        <ion-icon name="appname-statistics"></ion-icon>
+        <span>Statistics</span>
+      </div>
+      <div class="popup-menu-item" (click)="goToLeaderboard()">
+        <ion-icon name="podium"></ion-icon>
+        <span>LEADERBOARD</span>
+      </div>
+      <div class="popup-menu-item" (click)="goToHelp()">
+        <ion-icon name="help"></ion-icon>
+        <span>HELP</span>
+      </div>
+      <div class="popup-menu-item" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+        <span>Logout</span>
+      </div>
+    </div>
+  </div>
 
 </ion-content>

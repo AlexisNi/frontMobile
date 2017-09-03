@@ -12,6 +12,7 @@ import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { MatchPage } from "../match/match";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
+import { HistoricDataProvider } from "../../providers/historic-data";
 
 /*
   Generated class for the MyProfile page.
@@ -44,6 +45,8 @@ export class MyProfilePage {
   sWins;
   sLoses;
   sDraws;
+  username = '';
+  openMenu = false;
 
 
   ngOnInit(): void {
@@ -54,6 +57,7 @@ export class MyProfilePage {
 /*      this.socketService.connect();
 */      this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
+      this.username = this.firebasaService.username;
     }
   }
 
@@ -68,7 +72,8 @@ export class MyProfilePage {
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
     public appCtrl: App,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController
+   ) { }
 
   loadStats() {
     this.socketService.getStats()
@@ -189,8 +194,11 @@ export class MyProfilePage {
     this.loading.present();
   }
   logout() {
+    this.showLoader();
     this.firebasaService.signOut();
     setTimeout(() => {
+      this.togglePopupMenu();
+      this.loading.dismiss();
       this.socketService.logout();
       this.appCtrl.getRootNav().push(SigninPage);
     }, 1000);
@@ -250,6 +258,39 @@ export class MyProfilePage {
   choosePlayer(userFound = undefined) {
     let modal = this.modalCtrl.create(this.findPlayerPage, { userFound: userFound });
     modal.present();
+  }
+  togglePopupMenu() {
+    return this.openMenu = !this.openMenu;
+  }
+
+  goToAccount() {
+    alert('Account clicked.');
+    this.togglePopupMenu();
+  }
+
+  goToHome() {
+    alert('Home clicked.');
+    this.togglePopupMenu();
+  }
+
+  goToCups() {
+    alert('Cups clicked.');
+    this.togglePopupMenu();
+  }
+
+  goToLeaderboard() {
+    alert('Leaderboard clicked.');
+    this.togglePopupMenu();
+  }
+
+  goToHelp() {
+    alert('Help clicked.');
+    this.togglePopupMenu();
+  }
+
+  goToShop() {
+    alert('Shop clicked.');
+    this.togglePopupMenu();
   }
 
 
