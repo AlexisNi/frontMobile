@@ -5,7 +5,10 @@ import { ArenaPlayers } from "../../models/arenaPlayers";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { UserFound } from "../starting-page/userFound";
 import { MatchPage } from "../match/match";
+<<<<<<< HEAD
 import { HistoricDataProvider } from "../../providers/historic-data";
+=======
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
 /**
  * Generated class for the PlayWithChosenUserPage page.
@@ -29,7 +32,11 @@ export class PlayWithChosenUserPage {
   name;
   inviteId;
 
+<<<<<<< HEAD
   randomUser = false;
+=======
+  randomUser=false;
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
 
 
@@ -43,15 +50,23 @@ export class PlayWithChosenUserPage {
     public alertCtrl: AlertController,
     public zone: NgZone,
     public firebasaService: FirebaseServiceProvider,
+<<<<<<< HEAD
     public viewCtrl: ViewController,
     private historic: HistoricDataProvider
+=======
+    public viewCtrl: ViewController
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
   ) {
   }
 
   ionViewDidLoad() {
     if (this.navParams.get('userFound') != undefined) {
+<<<<<<< HEAD
       let userInfo = this.navParams.get('userFound');
+=======
+      let userInfo=this.navParams.get('userFound');
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
       console.log(userInfo)
       this.randomUser = true;
       this.userFound = true;
@@ -68,6 +83,7 @@ export class PlayWithChosenUserPage {
 
   findUser(userName) {
     this.showLoader();
+<<<<<<< HEAD
 
     this.startPageService.findUser({ username: userName, userId: this.firebasaService.userId }).then((result: UserFound) => {
       this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe(data => {
@@ -77,6 +93,11 @@ export class PlayWithChosenUserPage {
         this.zone.run(() => this.setStats(data));
         this.loading.dismiss();
       });
+=======
+    this.startPageService.findUser({ username: userName,userId:this.firebasaService.userId }).then((result: UserFound) => {
+      this.zone.run(() => this.setStats(result))
+      this.loading.dismiss();
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     }, (err) => {
       this.userFound = false;
       this.loading.dismiss();
@@ -98,10 +119,18 @@ export class PlayWithChosenUserPage {
     });
   }
   setStats(stats) {
+<<<<<<< HEAD
     this.userFound = true;
     this.inviteId = stats.inviteId;
     this.name = stats.userName;
     let userStats = stats.history;
+=======
+    console.log(stats)
+    this.userFound = true;
+    this.inviteId = stats.inviteId;
+    this.name = stats.userName;
+    let userStats = stats.stats;
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     this.wins = userStats.wins;
     this.loses = userStats.loses;
     this.draws = userStats.draws;

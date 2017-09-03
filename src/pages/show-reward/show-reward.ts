@@ -4,8 +4,11 @@ import { Arena } from "../../providers/arena";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { PlayerResult } from "../../models/playerResult";
 import { Sockets } from "../../providers/sockets";
+<<<<<<< HEAD
 import { Subject } from "rxjs/Subject";
 import { Observable } from "rxjs/Observable";
+=======
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
 /*
   Generated class for the ShowReward page.
@@ -24,10 +27,16 @@ export class ShowRewardPage {
   userId;
   arenaId;
   showModal = false;
+<<<<<<< HEAD
   experience;
   points;
   claimAwardBtn = new Subject<string>();
   awardClicked = false;
+=======
+
+  experience;
+  points;
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
   constructor(
     public params: NavParams,
@@ -36,6 +45,7 @@ export class ShowRewardPage {
     public socketService: Sockets,
     private alertCtrl: AlertController
   ) {
+<<<<<<< HEAD
     const observable = this.claimAwardBtn
       .map(value => value)
       .debounceTime(300)
@@ -50,6 +60,8 @@ export class ShowRewardPage {
         }
 
       });
+=======
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 
     /*    this.arenInfo.arenaId = this.params.get('arenaId');
         this.arenInfo.userId = this.params.get('userId');*/
@@ -79,6 +91,10 @@ export class ShowRewardPage {
     this.viewCtrl.dismiss(arenaId);
   }
   claimAward() {
+<<<<<<< HEAD
+=======
+    console.log('claim');
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     this.arenInfo = new ArenaCorrect(this.userId, this.arenaId);
     this.arenaService.getAward(this.arenInfo)
       .subscribe((message) => {
@@ -86,25 +102,43 @@ export class ShowRewardPage {
           console.log('inside')
           this.socketService.reqArenas(this.userId);
           this.socketService.reqStats(this.userId);
+<<<<<<< HEAD
           this.dismiss({ arenaId: this.arenaId });
+=======
+          this.dismiss({arenaId:this.arenaId});
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
         }, 1000);
 
       }, error => {
         console.log(error);
+<<<<<<< HEAD
         this.dismiss({ arenaId: '' });
+=======
+        this.dismiss({arenaId:''});
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
         this.presentAlert(error);
       });
   }
 
+<<<<<<< HEAD
   setAwards(message) {
     this.points = message.drawAward.points;
     this.experience = message.drawAward.experience;
+=======
+  setAwards(message){
+      this.points=message.drawAward.points;
+      this.experience=message.drawAward.experience;
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
   }
 
   presentAlert(error) {
     let alert = this.alertCtrl.create({
       title: error.message,
+<<<<<<< HEAD
       message: error.error,
+=======
+      message:error.error,
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
       buttons: ['Dismiss']
     });
     alert.present();

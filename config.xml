@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <widget id="com.footballArena" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+=======
+<widget id="com.ionicframework.footballquizm938037" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     <name>footballQuizM</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -14,6 +18,10 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+<<<<<<< HEAD
+=======
+    <allow-intent href="https://*.firebaseio.com" />
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -40,6 +48,10 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="orientation" value="portrait" />
+<<<<<<< HEAD
+=======
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -57,7 +69,10 @@
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
+<<<<<<< HEAD
     <engine name="android" spec="~6.1.2" />
+=======
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
     <plugin name="cordova-plugin-console" spec="1.0.5" />
     <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
@@ -72,4 +87,9 @@
     <plugin name="phonegap-plugin-push" spec="~1.8.2">
         <variable name="SENDER_ID" value="327625743458" />
     </plugin>
+<<<<<<< HEAD
+=======
+    <engine name="android" spec="~6.1.2" />
+    <allow-navigation href="http://192.168.10.252:8100" />
+>>>>>>> 7e8592e1895d9374125c8528e0b909d0ed322a76
 </widget>
