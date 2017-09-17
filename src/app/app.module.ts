@@ -14,7 +14,6 @@ import { StartingPage } from "../providers/starting-page";
 import { StartingPagePage } from "../pages/starting-page/starting-page";
 import { TabsPage } from "../pages/tabs/tabs";
 import { FirstPage } from "../pages/first/first";
-import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 import { GameListComponent } from "../components/game-list/game-list";
 import { GameItemComponent } from "../components/game-item/game-item";
 import { MatchPage } from "../pages/match/match";
@@ -35,6 +34,7 @@ import { Push } from "@ionic-native/push";
 import { TimerComponent } from '../components/timer/timer';
 import { Keyboard } from '@ionic-native/keyboard';
 import { HistoricDataProvider } from "../providers/historic-data";
+import { SharedModule } from "./shared.module";
 
 
 
@@ -58,7 +58,6 @@ export const firebaseConfig = {
     StartingPagePage,
     TabsPage,
     FirstPage,
-    ProgressBarComponent,
     GameListComponent,
     GameItemComponent,
     MatchPage,
@@ -75,7 +74,9 @@ export const firebaseConfig = {
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    CreateUserModalPageModule
+    CreateUserModalPageModule,
+    SharedModule
+
 
   ],
   bootstrap: [IonicApp],
@@ -88,7 +89,6 @@ export const firebaseConfig = {
     StartingPagePage,
     TabsPage,
     FirstPage,
-    ProgressBarComponent,
     GameListComponent,
     GameItemComponent,
     MatchPage,
@@ -100,7 +100,8 @@ export const firebaseConfig = {
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }
     , AuthService, Auth, Todos, Sockets, Arena, StartingPage, Questions,Facebook,Push,
     FirebaseServiceProvider,Keyboard,
-    HistoricDataProvider]
+    HistoricDataProvider],
+
 
 })
 export class AppModule { }

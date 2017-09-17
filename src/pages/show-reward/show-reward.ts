@@ -67,8 +67,9 @@ export class ShowRewardPage {
 
     this.arenaService.getResult(this.arenInfo)
       .subscribe(
-      (playerResult: PlayerResult) => {
-        this.playerResult = playerResult;
+      (playerResult:any) => {
+        this.playerResult=playerResult;
+        console.log(playerResult)
 
       }, error => {
 
@@ -107,7 +108,8 @@ export class ShowRewardPage {
   presentAlert(error) {
     let alert = this.alertCtrl.create({
       title: error.message,
-      message: error.error,
+      message: error.where,
+      
       buttons: ['Dismiss']
     });
     alert.present();

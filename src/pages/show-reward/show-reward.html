@@ -59,11 +59,6 @@
         <button class="button" (click)="claimAwardBtn.next('d')"><p>Collect award<p></button>
       </ion-col>
     </ion-row>
-    <!--
-    <h1>You Win ,Your award is experience {{playerResult?.winnerAward.experience}} ,
-      <br> Points : {{playerResult?.winnerAward.points}}
-    </h1>
-    <button ion-button (click)="claimAward()">Get reward </button>-->
   </div>
 
   <div *ngIf="playerResult?.loserUserId==userId && playerResult?.draw==false">

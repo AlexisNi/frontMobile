@@ -8,33 +8,78 @@
 
 
 <ion-content padding>
+  <span  (click)="dismiss()" class="close">&times;</span>
   <ion-grid>
     <div *ngIf="randomUser==false">
-    <ion-row >
-      <ion-col>
-        <ion-list>
-          <ion-item>
-            <ion-label color="primary">
-              <ion-icon name="football"></ion-icon>
-            </ion-label>
-            <ion-input #username></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row  justify-content-center>
-      <ion-col col-6>
-        <button class="playButton" (click)="findUser(username.value)">
-          Ψαξε για τον αντίπαλο
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label color="primary">
+                <ion-icon name="football"></ion-icon>
+              </ion-label>
+              <ion-input #username></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col col-12>
+          <button class="button" (click)="findUser(username.value)">
+          <p> Ψαξε για τον αντίπαλο </p>
         </button>
-      </ion-col>
-      <ion-col col-6>
-        <button class="playButton" (click)="dismiss()">
-          Cancel
-        </button>
-      </ion-col>
-    </ion-row>
+        </ion-col>
+      </ion-row>
     </div>
+
+   <!-- <div class="statisticsWrapper">
+      <ion-row justify-content-center class="userNameRow">
+        <ion-col text-center>
+          <p>{{name}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="winsRow">
+        <ion-col col-3>
+          <p>WINS :</p>
+        </ion-col>
+        <ion-col>
+          <div class="container">
+            <div class="skills wins">{{wins}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="losesRow">
+        <ion-col col-3>
+          <p>LOSES :</p>
+        </ion-col>
+        <ion-col>
+          <div class="container">
+            <div class="skills loses">{{loses}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="drawsRow">
+        <ion-col col-3>
+          <p>DRAWS :</p>
+        </ion-col>
+        <ion-col>
+          <div class="container">
+            <div class="skills draws">{{draws}}</div>
+          </div>
+        </ion-col>
+
+      </ion-row>
+      <ion-row justify-content-center>
+        <ion-col>
+          <button class="button" (click)="playWith()">
+         <p> Παίξε μαζί του </p>
+        </button>
+        </ion-col>
+      </ion-row>
+    </div>-->
+
+
+
 
     <div *ngIf="userFound==true" class="userFoundStats">
       <ion-row justify-content-center class="userNameRow">
@@ -59,11 +104,7 @@
           Παίξε μαζι του
         </button>
         </ion-col>
-        <ion-col>
-          <button class="findButton" (click)="dismiss()">
-          Ακύρωση
-        </button>
-        </ion-col>
+
       </ion-row>
     </div>
   </ion-grid>

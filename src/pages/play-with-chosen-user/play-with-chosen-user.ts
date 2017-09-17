@@ -23,11 +23,12 @@ export class PlayWithChosenUserPage {
   loading: any;
   hasSearched = false;
   userFound = false;
-  wins;
-  loses;
-  draws;
+  wins=0;
+  loses=0;
+  draws=0;
+  progress=50;
   level;
-  name;
+  name='Username';
   inviteId;
   randomUser=false;
 

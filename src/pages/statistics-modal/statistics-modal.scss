@@ -1,0 +1,9 @@
+page-statistics-modal {
+  ion-content {
+    background-color: #F3EFE0 !important;
+    border-radius: 10px;
+    .scroll-content {
+      overflow-y: hidden;
+    }
+  }
+}

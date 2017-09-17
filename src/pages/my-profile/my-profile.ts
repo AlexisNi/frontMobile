@@ -43,6 +43,7 @@ export class MyProfilePage {
   pLoses;
   pDraws;
   findPlayerPage: any = 'PlayWithChosenUserPage';
+  showStats:any='StatisticsModalPage';
   sWins;
   sLoses;
   sDraws;
@@ -75,7 +76,7 @@ export class MyProfilePage {
     public zone: NgZone,
     public appCtrl: App,
     private modalCtrl: ModalController
-   ) { }
+  ) { }
 
 
   loadStats() {
@@ -266,8 +267,9 @@ export class MyProfilePage {
     return this.openMenu = !this.openMenu;
   }
 
-  goToAccount() {
-    alert('Account clicked.');
+  openStatistics() {
+    let modal = this.modalCtrl.create(this.showStats, {userId: this.firebasaService.userId});
+    modal.present();
     this.togglePopupMenu();
   }
 

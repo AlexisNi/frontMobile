@@ -65,9 +65,9 @@ export class Arena {
         const loser = response.json().loser;
         const Awards = response.json().awards;
         var WinnerResult = new PlayerResult(
-          winner._id,
+          winner,
           winner.userName,
-          loser._id,
+          loser,
           loser.userName,
           Awards.awards.winner,
           Awards.awards.loser,
@@ -86,7 +86,6 @@ export class Arena {
 
   getAward(arenaInfo: ArenaCorrect) {
     const body = JSON.stringify(arenaInfo);
-
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.firebasaService.token);

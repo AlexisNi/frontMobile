@@ -1,5 +1,5 @@
 export class Awards {
-    constructor(public userId: string, public experience: number, public points: number) {
+    constructor(public userId: string, public experience: number, public points: number,public correctedAnswer:number) {
     }
 
 }

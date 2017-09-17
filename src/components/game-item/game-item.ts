@@ -26,6 +26,7 @@ export class GameItemComponent implements OnChanges, OnInit {
   arenaInfo: ArenaCorrect;
   correctNumber;
   username;
+  
   ngOnInit(): void {
     this.userId = this.firebasaService.userId;
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);

@@ -40,6 +40,7 @@ export class MatchPage implements OnDestroy {
   loading: any;
   time = 100;
   realTime = 30;
+  questionsLoaded = false;
 
 
   constructor(public navCtrl: NavController,
@@ -65,11 +66,13 @@ export class MatchPage implements OnDestroy {
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
-        this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
-        console.log(questions);
+       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe(() => {
+
+        });
         this.arenaQuestions = questions;
         this.loading.dismiss();
         this.timer();
+        this.questionsLoaded = true;
       }, err => {
         this.appCtrl.getRootNav().push(TabsPage, { index: 1 });
         this.loading.dismiss();
@@ -179,7 +182,10 @@ export class MatchPage implements OnDestroy {
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
     this.socketService.arenaLeave(this.inviteId);
-    this.statusPlayed();
+    if (this.questionsLoaded == true) {
+      this.statusPlayed();
+
+    }
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
   }
 

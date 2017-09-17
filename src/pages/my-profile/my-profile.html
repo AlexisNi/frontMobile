@@ -70,7 +70,7 @@
     <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
     <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
     <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
-      <div class="popup-menu-item" (click)="goToAccount()">
+      <div class="popup-menu-item" (click)="openStatistics()">
         <ion-icon name="appname-statistics"></ion-icon>
         <span>Statistics</span>
       </div>
