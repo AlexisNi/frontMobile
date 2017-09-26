@@ -8,49 +8,22 @@
 
 
 <ion-content padding *ngIf="showModal">
-  <div *ngIf="playerResult?.draw==true">
+  <div *ngIf="isDraw==true">
     <ion-row text-center>
       <ion-col col-12>
         <ion-icon name="md-ribbon"></ion-icon>
       </ion-col>
       <ion-col class="drawText">
-        O αγώνας τελείωσε με ισοπαλία....
+        O αγώνας τελείωσε με ισοπαλία.... {{playerResult?.award.correctAnswers}}-{{playerResult?.otherPlayerCorrect}}
       </ion-col>
     </ion-row>
     <ion-row class="award">
       <ion-col col-6 text-center>
-        <p>EXP : {{playerResult?.drawAward.experience}}
+        <p>EXP : {{playerResult?.award.experience}}
           <p>
       </ion-col>
       <ion-col col-6 text-center>
-        <p>PTS : {{playerResult?.drawAward.points}}
-          <p>
-      </ion-col>
-    </ion-row>
-    <ion-row text-center>
-      <ion-col>
-        <button class="button" (click)="claimAwardBtn.next('d')"><p>Collect award<p></button>
-
-      </ion-col>
-    </ion-row>
-  </div>
-
-  <div *ngIf="playerResult?.winnerUserId==userId && playerResult?.draw==false">
-    <ion-row text-center>
-      <ion-col col-12>
-        <ion-icon name="md-ribbon"></ion-icon>
-      </ion-col>
-      <ion-col class="drawText">
-        Συγχαρητήρια Νίκησες!
-      </ion-col>
-    </ion-row>
-    <ion-row class="award">
-      <ion-col col-6 text-center>
-        <p>EXP : {{playerResult?.winnerAward.experience}}
-          <p>
-      </ion-col>
-      <ion-col col-6 text-center>
-        <p>PTS : {{playerResult?.winnerAward.points}}
+        <p>PTS : {{playerResult?.award.points}}
           <p>
       </ion-col>
     </ion-row>
@@ -60,29 +33,53 @@
       </ion-col>
     </ion-row>
   </div>
-
-  <div *ngIf="playerResult?.loserUserId==userId && playerResult?.draw==false">
+  <div *ngIf="isDraw==false && isWin==true">
     <ion-row text-center>
       <ion-col col-12>
         <ion-icon name="md-ribbon"></ion-icon>
       </ion-col>
       <ion-col class="drawText">
-        Δυστυχώς έχασες....
+        Συγχαρητήρια Νίκησες! {{playerResult?.award.correctAnswers}}-{{playerResult?.otherPlayerCorrect}}
       </ion-col>
     </ion-row>
     <ion-row class="award">
       <ion-col col-6 text-center>
-        <p>EXP: {{playerResult?.loserAward.experience}}
+        <p>EXP : {{playerResult?.award.experience}}
           <p>
       </ion-col>
       <ion-col col-6 text-center>
-        <p>PTS: {{playerResult?.loserAward.points}}
+        <p>PTS :{{playerResult?.award.points}}
           <p>
       </ion-col>
     </ion-row>
     <ion-row text-center>
       <ion-col>
-        <button  class="button" (click)="claimAwardBtn.next('d')"><p>Collect award<p></button>
+        <button class="button" (click)="claimAwardBtn.next('d')"><p>Collect award<p></button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="isDraw==false && isWin==false">
+    <ion-row text-center>
+      <ion-col col-12>
+        <ion-icon name="md-ribbon"></ion-icon>
+      </ion-col>
+      <ion-col class="drawText">
+        Δυστυχώς έχασες....{{playerResult?.award.correctAnswers}}-{{playerResult?.otherPlayerCorrect}}
+      </ion-col>
+    </ion-row>
+    <ion-row class="award">
+      <ion-col col-6 text-center>
+        <p>EXP:{{playerResult?.award.experience}}
+          <p>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <p>PTS:{{playerResult?.award.points}}
+          <p>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col>
+        <button class="button" (click)="claimAwardBtn.next('d')"><p>Collect award<p></button>
 
       </ion-col>
     </ion-row>

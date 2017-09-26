@@ -4,13 +4,15 @@
 export  class AnsweredQuestion{
   questionId:string;
   answer:Boolean;
+  time:number;
 
 
 
-  constructor(questionId:string,answer:Boolean,){
+  constructor(questionId:string,answer:Boolean,time:number){
 
     this.questionId=questionId;
     this.answer=answer;
+    this.time=time;
   }
 
 

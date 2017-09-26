@@ -88,7 +88,6 @@ export class GameItemComponent implements OnChanges, OnInit {
 
 
 
-      console.log(data);
     });
     modal.present();
 

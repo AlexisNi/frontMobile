@@ -1,0 +1,46 @@
+<!--
+  Generated template for the LeaderBoardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!--  <span (click)="dismiss()" class="close">&times;</span>
+  <ion-row *ngFor="let player of list">
+    <ion-col col-2>
+      <ion-icon name="arrow-down" item-start></ion-icon>
+    </ion-col>
+    <ion-col col-6>
+      {{player?.username}}
+    </ion-col>
+    <ion-col col-4>
+      {{player?.statistics.rating}}
+    </ion-col>
+  </ion-row>-->
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <span (click)="dismiss()" class="close">&times;</span>
+    </ion-col>
+  </ion-row>
+  <div class="listContainer">
+    <ion-list>
+      <ion-item *ngFor="let player of list; let i=index">
+
+        <ion-icon *ngIf="player.statistics.ranking<player.statistics.previousRanking" name="arrow-round-down" item-start></ion-icon>
+        <ion-icon *ngIf="player.statistics.ranking>player.statistics.previousRanking" name="arrow-round-up" item-start></ion-icon>
+        <ion-icon *ngIf="player.statistics.ranking==player.statistics.previousRanking" name="remove" item-start></ion-icon>
+
+
+        <ion-label>
+          {{i+1}}. {{player?.username}}
+        </ion-label>
+        <ion-note item-end>
+          {{player?.statistics.rating}}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

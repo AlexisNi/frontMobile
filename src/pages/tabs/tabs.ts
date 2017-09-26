@@ -45,9 +45,16 @@ export class TabsPage {
 
 
   ngOnInit() {
-/*     this.notifcationHandler();
-*/   this.tab = this.navParams.get('index') || 0
     this.showLoader();
+    this.socketService.onConnect().subscribe((data) => {
+      setTimeout(() => {
+        this.getAllArenas();
+        this.getOneArena();
+      }, 2000);
+
+    });
+/*    this.notifcationHandler();
+*/   this.tab = this.navParams.get('index') || 0
     this.stSer.newArena
       .subscribe(
       (arena: Arenas) => {
@@ -58,11 +65,13 @@ export class TabsPage {
       this.getOneArena();
     }, 2000);
 
+
   }
 
   getOneArena() {
     this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
+        console.log(data);
         this.zone.run(() => this.findArena(data));
         console.log(data);
       }, error => {

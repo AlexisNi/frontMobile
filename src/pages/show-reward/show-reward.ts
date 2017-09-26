@@ -29,6 +29,8 @@ export class ShowRewardPage {
   points;
   claimAwardBtn = new Subject<string>();
   awardClicked = false;
+  isDraw;
+  isWin;
 
   constructor(
     public params: NavParams,
@@ -47,7 +49,6 @@ export class ShowRewardPage {
         if (this.awardClicked == false) {
           this.awardClicked = true;
           this.claimAward();
-
         }
 
       });
@@ -67,10 +68,20 @@ export class ShowRewardPage {
 
     this.arenaService.getResult(this.arenInfo)
       .subscribe(
-      (playerResult:any) => {
-        this.playerResult=playerResult;
-        console.log(playerResult)
-
+      (playerResult: PlayerResult) => {
+        if (playerResult.isDraw == true) {
+          this.isDraw = true;
+          this.playerResult = playerResult;
+        } else {
+          this.isDraw = false;
+          if (playerResult.isWin == true) {
+            this.isWin = true;
+            this.playerResult = playerResult;
+          } else {
+            this.isWin = false;
+            this.playerResult = playerResult;
+          }
+        }
       }, error => {
 
         console.log(error)
@@ -109,7 +120,7 @@ export class ShowRewardPage {
     let alert = this.alertCtrl.create({
       title: error.message,
       message: error.where,
-      
+
       buttons: ['Dismiss']
     });
     alert.present();

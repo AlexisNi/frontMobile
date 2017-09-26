@@ -1,10 +1,11 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
 import { Auth } from "../../providers/auth";
 import { StartingPage } from "../../providers/starting-page";
 import { LoadingController, AlertController } from "ionic-angular";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { Subscription } from "rxjs/Subscription";
 
 /*
   Generated class for the GameList component.
@@ -16,9 +17,11 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
   selector: 'game-list',
   templateUrl: 'game-list.html'
 })
-export class GameListComponent implements OnInit {
+export class GameListComponent implements OnInit, OnDestroy {
+
   arenas: Arenas[];
   loading: any;
+  arenasSub: Subscription;
 
   constructor(
     public socketService: Sockets,
@@ -30,25 +33,17 @@ export class GameListComponent implements OnInit {
   ) {
   }
   ngOnInit() {
-    this.arenas=this.startingPage.arenas;
-    this.startingPage.getArenas
-    .subscribe((arenas:Arenas[])=>{
-      console.log(arenas)
-      this.arenas=arenas;
-    });
-/*    this.showLoader();
-
-
-    this.startingPage.newArena
-      .subscribe(
-      (arena: Arenas) => {
-        this.arenas.push(arena);
+  
+    this.arenas = this.startingPage.arenas;
+    this.arenasSub = this.startingPage.getArenas
+      .subscribe((arenas: Arenas[]) => {
+        this.arenas = arenas;
       });
-
-    this.getArenaUpdate();
-    this.getOneArena();*/
   }
-  //edw na valw event emitter poy na elenxei an einai disconnet o user kai an einai na svinei to loading
+  ngOnDestroy(): void {
+    this.arenasSub.unsubscribe();
+
+  }
   getOneArena() {
     this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
@@ -63,8 +58,8 @@ export class GameListComponent implements OnInit {
     for (let i in this.arenas) {
       if (this.arenas[i].arenaId == arena.arenaId) {
         this.arenas[i] = arena;
-        this.arenas[i].user_played=true;
-        this.arenas[i].invite_played=true;
+        this.arenas[i].user_played = true;
+        this.arenas[i].invite_played = true;
         console.log(this.arenas[i]);
         return true;
       }
@@ -72,19 +67,19 @@ export class GameListComponent implements OnInit {
     this.arenas.push(arena);
 
   }
-  getArenaUpdate() {
-
-    this.socketService.reqArenas(this.firebasaService.userId);
-    this.socketService.getArenas().subscribe(
-      (arena: Arenas[]) => {
-        this.zone.run(() => this.setArenas(arena))
-        this.loading.dismiss();
-      }, error => {
-        this.loading.dismiss();
-        console.log(error);
-        this.presentAlert(error);
-      });
-  }
+  /*  getArenaUpdate() {
+  
+      this.socketService.reqArenas(this.firebasaService.userId);
+      this.socketService.getArenas().subscribe(
+        (arena: Arenas[]) => {
+          this.zone.run(() => this.setArenas(arena))
+          this.loading.dismiss();
+        }, error => {
+          this.loading.dismiss();
+          console.log(error);
+          this.presentAlert(error);
+        });
+    }*/
   setArenas(arena) {
     let userid = this.firebasaService.userId;
     for (let i in arena) {

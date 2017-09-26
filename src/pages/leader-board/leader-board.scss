@@ -1,22 +1,20 @@
-page-statistics-modal {
+page-leader-board {
   ion-content {
     background-color: #F3EFE0 !important;
     border-radius: 10px;
-    .scroll-content {
-      overflow-y: hidden;
+    .listContainer {
+      height: 53vh;
+      overflow-y: scroll;
     }
   }
-  p {
-    margin: 1.2vh 0vh;
-  }
-    .close {
+  .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    position: absolute;
+    /*    position: absolute;
     top: -1vw;
-    right: 2vw;
+    right: 2vw;*/
   }
   .close:hover,
   .close:focus {

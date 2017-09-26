@@ -13,6 +13,7 @@ import { NotificationEventResponse } from "@ionic-native/push";
 import { MatchPage } from "../match/match";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
 import { HistoricDataProvider } from "../../providers/historic-data";
+import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
 
 
 /*
@@ -76,6 +77,7 @@ export class MyProfilePage {
     public zone: NgZone,
     public appCtrl: App,
     private modalCtrl: ModalController
+ 
   ) { }
 
 
@@ -284,8 +286,9 @@ export class MyProfilePage {
   }
 
   goToLeaderboard() {
-    alert('Leaderboard clicked.');
-    this.togglePopupMenu();
+  let modal = this.modalCtrl.create('LeaderBoardPage', {userId: this.firebasaService.userId});
+    modal.present();    
+ 
   }
 
   goToHelp() {

@@ -9,6 +9,9 @@ import { PlayerResult } from "../models/playerResult";
 import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 import { Arenas } from "../models/arenas";
+import { Stats } from "../models/stats";
+import { StatisticsModal } from "../models/statisticsModal";
+import { Last5matches } from "../models/last5Matches";
 
 /*
   Generated class for the HistoricDataProvider provider.
@@ -20,7 +23,7 @@ import { Arenas } from "../models/arenas";
 export class HistoricDataProvider {
 
   constructor(public http: Http, public firebasaService: FirebaseServiceProvider) {
-    
+
   }
 
   getHistoricDataVSOpponent(userId) {
@@ -34,5 +37,31 @@ export class HistoricDataProvider {
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });
+  }
+
+  getStats(userId) {
+    
+    const body = JSON.stringify({userId:userId});
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.firebasaService.token);
+    return this.http.post(myGlobals.host + 'historicData/stats', body, { headers: headers })
+      .map((response: Response) =>{
+        console.log(response.json());
+        let stats=response.json().stats;
+        let last5matches=response.json().last5Matches;
+        let transformedArray:Last5matches[]=[];
+        for(let last5match of  last5matches){
+          transformedArray.push(new Last5matches(last5match.userName,last5match.result));
+        }
+        let transformedStats=new StatisticsModal(stats.wins,stats.loses,stats.draws,stats.winningStreak,stats.losingStreak,stats.drawStreak,stats.rightQuestionsNumber);
+        let statistics={last5matches:transformedArray,stats:transformedStats};
+        return statistics;
+
+      })
+      .catch((error: Response) => {
+        return Observable.throw(error.json())
+      });
+
   }
 }

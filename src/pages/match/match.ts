@@ -66,13 +66,12 @@ export class MatchPage implements OnDestroy {
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
-       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe(() => {
+/*       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
+*/
 
-        });
         this.arenaQuestions = questions;
         this.loading.dismiss();
         this.timer();
-        this.questionsLoaded = true;
       }, err => {
         this.appCtrl.getRootNav().push(TabsPage, { index: 1 });
         this.loading.dismiss();
@@ -104,7 +103,7 @@ export class MatchPage implements OnDestroy {
   checkQuestion(chosenAnswer, currentQuestion: Question, buttonNumber) {
     if (chosenAnswer === currentQuestion.answer) {
       this.buttonDisabled = true;
-      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true);
+      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true,this.realTime);
       let questionAns = new ArenaAnsweredQuestion(this.arena.arenaId, this.userId, questionAnswer);
       this.rightButtons[buttonNumber] = true;
       this.initButtons[buttonNumber] = false;
@@ -182,10 +181,8 @@ export class MatchPage implements OnDestroy {
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
     this.socketService.arenaLeave(this.inviteId);
-    if (this.questionsLoaded == true) {
-      this.statusPlayed();
+    this.statusPlayed();
 
-    }
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
   }
 

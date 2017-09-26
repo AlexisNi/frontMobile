@@ -6,5 +6,92 @@
 -->
 
 <ion-content padding>
+  <span (click)="dismiss()" class="close">&times;</span>
+
+  <ion-row>
+    <ion-col col-4>
+      <p>Wins</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{wins}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p> {{sWins|number:'1.1'}}%</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Loses</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{loses}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p> {{sLoses |number:'1.1'}}%</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Draws</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{draws}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p> {{sDraws|number:'1.1' }}%</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Right answers</p>
+    </ion-col>
+    <ion-col col-4>
+      <p></p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{rightQuestions}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Winning Streak</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{winningStreak?.currentStreak}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{winningStreak?.longestStreak}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Losing Streak</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{losingStreak?.currentStreak}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{losingStreak?.longestStreak}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <p>Draw Streak</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{drawStreak?.currentStreak}}</p>
+    </ion-col>
+    <ion-col col-4>
+      <p>{{drawStreak?.longestStreak}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-2>
+      <p>Form</p>
+    </ion-col>
+    <ion-col col-2 *ngFor="let form of forms">
+      <p>{{form.result}}</p>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

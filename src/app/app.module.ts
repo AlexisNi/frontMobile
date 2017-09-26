@@ -35,6 +35,7 @@ import { TimerComponent } from '../components/timer/timer';
 import { Keyboard } from '@ionic-native/keyboard';
 import { HistoricDataProvider } from "../providers/historic-data";
 import { SharedModule } from "./shared.module";
+import { LeaderBoardsProvider } from '../providers/leader-boards/leader-boards';
 
 
 
@@ -100,7 +101,8 @@ export const firebaseConfig = {
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }
     , AuthService, Auth, Todos, Sockets, Arena, StartingPage, Questions,Facebook,Push,
     FirebaseServiceProvider,Keyboard,
-    HistoricDataProvider],
+    HistoricDataProvider,
+    LeaderBoardsProvider],
 
 
 })

@@ -9,6 +9,7 @@ import { PlayerResult } from "../models/playerResult";
 import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 import { Arenas } from "../models/arenas";
+import { Awards } from "../models/awards";
 
 /*
   Generated class for the Arena provider.
@@ -61,7 +62,7 @@ export class Arena {
     headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host + 'activeArena/getResults', body, { headers: headers })
       .map((response: Response) => {
-        const winner = response.json().winner;
+/*        const winner = response.json().winner;
         const loser = response.json().loser;
         const Awards = response.json().awards;
         var WinnerResult = new PlayerResult(
@@ -74,7 +75,22 @@ export class Arena {
           Awards.awards.draw,
           response.json().draw
         );
-        return WinnerResult;
+        return WinnerResult;*/
+        console.log(response.json());
+        let awards=response.json().awards;
+        let transAwards:Awards=new Awards(
+          awards.userId,
+          awards.experience,
+          awards.points,
+          awards.correctAnswers,
+          awards.received);
+          let playerResult:PlayerResult =new PlayerResult(
+            transAwards,
+            response.json().isWin,
+            response.json().draw,
+            response.json().otherPlayerCorrect)
+            
+            return playerResult;
 
 
 

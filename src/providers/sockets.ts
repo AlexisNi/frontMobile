@@ -19,36 +19,21 @@ import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 @Injectable()
 export class Sockets {
   private socket: any;
-  /*  private socket = io(myGlobals.socket ,{ query: { userId: this.firebasaService.userId } });
-  */  /*  private socket: any = io(myGlobals.socket, { query: { userId: this.authService.userId } });
-    */
+
 
 
   constructor(
     public http: Http,
     public firebasaService: FirebaseServiceProvider) {
-    /*    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-        console.log(this.socket.connected);*/
-    /*
-        this.connect();*/
-
-/*    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-*/  }
+  }
 
 
   connect() {
     this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
     if (this.socket == undefined) {
-      /*this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-      console.log('inside first')*/
+   
     }
- /*   if (this.socket != undefined) {
-      if (this.socket.connected == false) {
-        this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-        console.log('inside second')
-      }
-    }
-*/
+
 
 
 
@@ -56,6 +41,15 @@ export class Sockets {
   }
 
   //////////////////////req-get stats///////////////////////
+
+  onConnect(){
+    let obsevable = new Observable((observer: any) => {
+    this.socket.on("reconnect",()=>{
+      observer.next('connected');
+    })
+  });
+  return obsevable;
+  }
 
   reqStats(userId) {
     this.socket.emit('getStats', { userId: userId });
