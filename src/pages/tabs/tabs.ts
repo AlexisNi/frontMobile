@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnDestroy } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { MyProfilePage } from "../my-profile/my-profile";
 import { MyArenasPage } from "../my-arenas/my-arenas";
@@ -8,6 +8,7 @@ import { StartingPage } from "../../providers/starting-page";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { Arena } from "../../providers/arena";
+import { Subscription } from "rxjs/Subscription";
 
 /*
   Generated class for the Tabs page.
@@ -19,13 +20,21 @@ import { Arena } from "../../providers/arena";
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
-export class TabsPage {
+export class TabsPage implements OnDestroy {
+
   public arenas: Arenas[] = [];
   startingPage = MyProfilePage;
   arenaPage = MyArenasPage;
   loading: any;
   nots = 0;
   tab = 0;
+
+  allArenasSubscription: Subscription;
+  connectSubscription: Subscription;
+  oneArenaSubsription: Subscription;
+  newArenaSubscruotion: Subscription;
+
+
 
 
   constructor(
@@ -40,13 +49,16 @@ export class TabsPage {
     public arenaService: Arena) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+    console.log('view loaded')
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
 
 
   ngOnInit() {
     this.showLoader();
-    this.socketService.onConnect().subscribe((data) => {
+    this.connectSubscription = this.socketService.onConnect().subscribe((data) => {
       setTimeout(() => {
         this.getAllArenas();
         this.getOneArena();
@@ -54,8 +66,8 @@ export class TabsPage {
 
     });
 /*    this.notifcationHandler();
-*/   this.tab = this.navParams.get('index') || 0
-    this.stSer.newArena
+*/  this.tab = this.navParams.get('index') || 0
+    this.newArenaSubscruotion = this.stSer.newArena
       .subscribe(
       (arena: Arenas) => {
         this.arenas.push(arena);
@@ -68,8 +80,19 @@ export class TabsPage {
 
   }
 
+  unsubscribe() {
+    try {
+      this.allArenasSubscription;
+      this.connectSubscription;
+      this.oneArenaSubsription;
+      this.newArenaSubscruotion;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
   getOneArena() {
-    this.socketService.getOneArena()
+    this.oneArenaSubsription = this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
         console.log(data);
         this.zone.run(() => this.findArena(data));
@@ -105,7 +128,7 @@ export class TabsPage {
 
   }
   getAllArenas() {
-    this.arenaService.getArenas(this.firebasaService.userId).subscribe((arenas: Arena) => {
+    this.allArenasSubscription = this.arenaService.getArenas(this.firebasaService.userId).subscribe((arenas: Arenas) => {
       this.zone.run(() => this.setArenas(arenas))
       this.loading.dismiss();
     }, err => {
@@ -113,19 +136,6 @@ export class TabsPage {
       this.loading.dismiss();
     })
 
-  }
-
-  getArenaUpdate() {
-    this.socketService.reqArenas(this.firebasaService.userId);
-    this.socketService.getArenas().subscribe(
-      (arena: Arenas[]) => {
-        this.zone.run(() => this.setArenas(arena))
-        this.loading.dismiss();
-      }, error => {
-        this.loading.dismiss();
-        console.log(error);
-        this.presentAlert(error);
-      });
   }
 
   setArenas(arena) {

@@ -10,6 +10,7 @@ import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 import { Arenas } from "../models/arenas";
 import { Awards } from "../models/awards";
+import { Question } from "../models/question";
 
 /*
   Generated class for the Arena provider.
@@ -62,35 +63,35 @@ export class Arena {
     headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host + 'activeArena/getResults', body, { headers: headers })
       .map((response: Response) => {
-/*        const winner = response.json().winner;
-        const loser = response.json().loser;
-        const Awards = response.json().awards;
-        var WinnerResult = new PlayerResult(
-          winner,
-          winner.userName,
-          loser,
-          loser.userName,
-          Awards.awards.winner,
-          Awards.awards.loser,
-          Awards.awards.draw,
-          response.json().draw
-        );
-        return WinnerResult;*/
+        /*        const winner = response.json().winner;
+                const loser = response.json().loser;
+                const Awards = response.json().awards;
+                var WinnerResult = new PlayerResult(
+                  winner,
+                  winner.userName,
+                  loser,
+                  loser.userName,
+                  Awards.awards.winner,
+                  Awards.awards.loser,
+                  Awards.awards.draw,
+                  response.json().draw
+                );
+                return WinnerResult;*/
         console.log(response.json());
-        let awards=response.json().awards;
-        let transAwards:Awards=new Awards(
+        let awards = response.json().awards;
+        let transAwards: Awards = new Awards(
           awards.userId,
           awards.experience,
           awards.points,
           awards.correctAnswers,
           awards.received);
-          let playerResult:PlayerResult =new PlayerResult(
-            transAwards,
-            response.json().isWin,
-            response.json().draw,
-            response.json().otherPlayerCorrect)
-            
-            return playerResult;
+        let playerResult: PlayerResult = new PlayerResult(
+          transAwards,
+          response.json().isWin,
+          response.json().draw,
+          response.json().otherPlayerCorrect)
+
+        return playerResult;
 
 
 
@@ -119,9 +120,17 @@ export class Arena {
     headers.append('Authorization', this.firebasaService.token);
     return this.http.post(myGlobals.host + 'arenas/getArenas', body, { headers: headers })
       .map((response: Response) => {
-        const arenas=response.json().obj;
-          let transformedArenas: Arenas[] = [];
+        const arenas = response.json().obj;
+        let transformedArenas: Arenas[] = [];
+        let questionNumber = 0;
+        let questionNumberInvite = 0;
         for (let arena of arenas) {
+          if (arena.questionsAnswered) {
+            questionNumber = arena.questionsAnswered.user.questionNumber.questionAnswer.length;
+          } else {
+            questionNumber = 0
+          }
+
           transformedArenas.push(new Arenas(
             arena._id,
             arena.user,
@@ -130,9 +139,10 @@ export class Arena {
             arena.user.username || arena.invite.username,
             arena.user_played,
             arena.invite_played,
-          ));
+            [],
+            questionNumber          ));
         }
-         const UserArenas =response.json().objUser;
+        const UserArenas = response.json().objUser;
         for (let userArena of UserArenas) {
           transformedArenas.push(new Arenas(
             userArena._id,
@@ -141,8 +151,8 @@ export class Arena {
             userArena.status_accept,
             userArena.user.username,
             userArena.user_played,
-            userArena.invite_played,
-          ));
+            userArena.invite_played
+            ));
         }
         return transformedArenas;
       })

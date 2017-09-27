@@ -33,7 +33,7 @@ export class GameListComponent implements OnInit, OnDestroy {
   ) {
   }
   ngOnInit() {
-  
+
     this.arenas = this.startingPage.arenas;
     this.arenasSub = this.startingPage.getArenas
       .subscribe((arenas: Arenas[]) => {
@@ -41,17 +41,13 @@ export class GameListComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): void {
-    this.arenasSub.unsubscribe();
+    try {
+      this.arenasSub.unsubscribe();
 
-  }
-  getOneArena() {
-    this.socketService.getOneArena()
-      .subscribe((data: Arenas) => {
-        this.zone.run(() => this.findArena(data))
-        console.log(data);
-      }, error => {
-        console.log(error);
-      });
+    }catch(err){
+      console.log(err);
+    }
+   
   }
 
   findArena(arena) {
@@ -67,19 +63,6 @@ export class GameListComponent implements OnInit, OnDestroy {
     this.arenas.push(arena);
 
   }
-  /*  getArenaUpdate() {
-  
-      this.socketService.reqArenas(this.firebasaService.userId);
-      this.socketService.getArenas().subscribe(
-        (arena: Arenas[]) => {
-          this.zone.run(() => this.setArenas(arena))
-          this.loading.dismiss();
-        }, error => {
-          this.loading.dismiss();
-          console.log(error);
-          this.presentAlert(error);
-        });
-    }*/
   setArenas(arena) {
     let userid = this.firebasaService.userId;
     for (let i in arena) {

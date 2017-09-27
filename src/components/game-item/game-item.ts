@@ -32,7 +32,7 @@ export class GameItemComponent implements OnChanges, OnInit {
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.username = this.firebasaService.username;
 
-    setTimeout(() => {
+/*    setTimeout(() => {
       if (this.arena.user_played == true || this.arena.invite_played == true) {
         this.questionService.getCorrectNumber(this.arenaInfo)
           .subscribe(data => {
@@ -42,7 +42,7 @@ export class GameItemComponent implements OnChanges, OnInit {
 
           });
       }
-    }, 50);
+    }, 50);*/
 
 
   }
@@ -50,6 +50,7 @@ export class GameItemComponent implements OnChanges, OnInit {
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['arena']) {
       this.arena = changes['arena'].currentValue;
+      this.correctNumber=this.arena.correctNumber;
 
     }
   }

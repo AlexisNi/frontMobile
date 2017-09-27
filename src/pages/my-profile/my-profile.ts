@@ -44,7 +44,7 @@ export class MyProfilePage {
   pLoses;
   pDraws;
   findPlayerPage: any = 'PlayWithChosenUserPage';
-  showStats:any='StatisticsModalPage';
+  showStats: any = 'StatisticsModalPage';
   sWins;
   sLoses;
   sDraws;
@@ -54,11 +54,10 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
- /*   this.notifcationHandler();*/
+      /*   this.notifcationHandler();*/
 
 
-/*      this.socketService.connect();
-*/      this.socketService.reqStats(this.firebasaService.userId);
+      this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
       this.username = this.firebasaService.username;
 
@@ -77,7 +76,7 @@ export class MyProfilePage {
     public zone: NgZone,
     public appCtrl: App,
     private modalCtrl: ModalController
- 
+
   ) { }
 
 
@@ -270,7 +269,7 @@ export class MyProfilePage {
   }
 
   openStatistics() {
-    let modal = this.modalCtrl.create(this.showStats, {userId: this.firebasaService.userId});
+    let modal = this.modalCtrl.create(this.showStats, { userId: this.firebasaService.userId });
     modal.present();
     this.togglePopupMenu();
   }
@@ -286,9 +285,9 @@ export class MyProfilePage {
   }
 
   goToLeaderboard() {
-  let modal = this.modalCtrl.create('LeaderBoardPage', {userId: this.firebasaService.userId});
-    modal.present();    
- 
+    let modal = this.modalCtrl.create('LeaderBoardPage', { userId: this.firebasaService.userId });
+    modal.present();
+
   }
 
   goToHelp() {
