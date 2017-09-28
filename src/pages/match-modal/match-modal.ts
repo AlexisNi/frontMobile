@@ -1,31 +1,30 @@
-import { Component, OnDestroy } from '@angular/core';
-import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, App } from 'ionic-angular';
+import { Sockets } from "../../providers/sockets";
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { Questions } from "../../providers/questions";
+import { Arena } from "../../providers/arena";
 import { Question } from "../../models/question";
 import { Arenas } from "../../models/arenas";
-import { Sockets } from "../../providers/sockets";
-import { Auth } from "../../providers/auth";
-import { AnsweredQuestion } from "../../models/answeredQuestion";
-import { Questions } from "../../providers/questions";
-import { ArenaAnsweredQuestion } from "../../models/arenaAnsweredQuestion";
-import { Subscription } from "rxjs";
-import { FirstPage } from "../first/first";
-import { TabsPage } from "../tabs/tabs";
 import { ArenaCorrect } from "../../models/arenaCorrect";
-import { Arena } from "../../providers/arena";
+import { Subscription } from "rxjs/Subscription";
 import { Observable } from "rxjs/Observable";
-import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
+import { ArenaAnsweredQuestion } from "../../models/arenaAnsweredQuestion";
+import { AnsweredQuestion } from "../../models/answeredQuestion";
 
-/*
-  Generated class for the Match page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+/**
+ * Generated class for the MatchModalPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage()
 @Component({
-  selector: 'page-match',
-  templateUrl: 'match.html'
+  selector: 'page-match-modal',
+  templateUrl: 'match-modal.html',
 })
-export class MatchPage implements OnDestroy {
+export class MatchModalPage {
+
   arenaQuestions: Question[] = [];
   arena: Arenas;
   index = 0;
@@ -42,17 +41,21 @@ export class MatchPage implements OnDestroy {
   realTime = 30;
   questionsLoaded = false;
 
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public viewCtrl: ViewController,
     public socketService: Sockets,
     public firebasaService: FirebaseServiceProvider,
     public questionServie: Questions,
     public arenaService: Arena,
     public loadingCtrl: LoadingController,
-    public appCtrl: App) { }
+    public appCtrl: App) {
+  }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
   ionViewDidLoad() {
     this.arena = this.navParams.get('arena');
     this.userId = this.firebasaService.userId;
@@ -67,14 +70,14 @@ export class MatchPage implements OnDestroy {
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
-/*       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
-*/
+        /*       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
+        */
 
         this.arenaQuestions = questions;
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().setRoot(TabsPage, { index: 1 });
+        this.dismiss()
         this.loading.dismiss();
         console.log(err.error);
 
@@ -104,7 +107,7 @@ export class MatchPage implements OnDestroy {
   checkQuestion(chosenAnswer, currentQuestion: Question, buttonNumber) {
     if (chosenAnswer === currentQuestion.answer) {
       this.buttonDisabled = true;
-      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true,this.realTime);
+      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true, this.realTime);
       let questionAns = new ArenaAnsweredQuestion(this.arena.arenaId, this.userId, questionAnswer);
       this.rightButtons[buttonNumber] = true;
       this.initButtons[buttonNumber] = false;
@@ -158,7 +161,7 @@ export class MatchPage implements OnDestroy {
 
   }
   cancelButton() {
-    this.navCtrl.setRoot(TabsPage, { index: 1 });
+   this.dismiss();
   }
   getInviteId() {
     if (this.arena.userId == this.userId) {
@@ -178,7 +181,6 @@ export class MatchPage implements OnDestroy {
 
 
   ngOnDestroy(): void {
-
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
     this.socketService.arenaLeave(this.inviteId);
@@ -186,7 +188,7 @@ export class MatchPage implements OnDestroy {
 
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
     this.socketService.reqOneArena(this.userId, this.arena.arenaId);
-    
+
   }
 
   showLoader() {
@@ -212,12 +214,9 @@ export class MatchPage implements OnDestroy {
     });
   }
   playerLost() {
-    this.navCtrl.setRoot(TabsPage, { index: 1 });
+    this.viewCtrl.dismiss();
 
   }
-
-
-
 
 
 }

@@ -12,27 +12,9 @@ page-match {
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
   }
-  .main {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-  }
-  .headerQ {
-    width: 100%;
-    height: 10vh;
-  }
-  .headerQ h2 {
-    font-size: 2.5vh;
-    color: #8dc63f;
-    font-weight: 400;
-    margin: 0px;
-  }
-  .headerQ p {
-    font-size: 2.0vh;
-    color: white;
-    padding-bottom: 50px;
-    line-height: 0vh;
-  }
+
+
+
   .questions {
     width: 100%;
     height: 100%;

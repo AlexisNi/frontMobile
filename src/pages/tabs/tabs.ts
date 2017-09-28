@@ -52,11 +52,13 @@ export class TabsPage implements OnDestroy {
     console.log('view loaded')
   }
   ngOnDestroy(): void {
+    console.log('on destroy');
     this.unsubscribe();
   }
 
 
   ngOnInit() {
+    
     this.showLoader();
     this.connectSubscription = this.socketService.onConnect().subscribe((data) => {
       setTimeout(() => {
@@ -82,10 +84,10 @@ export class TabsPage implements OnDestroy {
 
   unsubscribe() {
     try {
-      this.allArenasSubscription;
-      this.connectSubscription;
-      this.oneArenaSubsription;
-      this.newArenaSubscruotion;
+      this.allArenasSubscription.unsubscribe();
+      this.connectSubscription.unsubscribe();
+      this.oneArenaSubsription.unsubscribe();
+      this.newArenaSubscruotion.unsubscribe();
 
     } catch (err) {
       console.log(err);

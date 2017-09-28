@@ -26,23 +26,23 @@ export class GameItemComponent implements OnChanges, OnInit {
   arenaInfo: ArenaCorrect;
   correctNumber;
   username;
-  
+
   ngOnInit(): void {
     this.userId = this.firebasaService.userId;
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.username = this.firebasaService.username;
 
-/*    setTimeout(() => {
-      if (this.arena.user_played == true || this.arena.invite_played == true) {
-        this.questionService.getCorrectNumber(this.arenaInfo)
-          .subscribe(data => {
-            this.correctNumber = data.correct
-          }, error => {
-            this.presentAlert(error.message);
-
-          });
-      }
-    }, 50);*/
+    /*    setTimeout(() => {
+          if (this.arena.user_played == true || this.arena.invite_played == true) {
+            this.questionService.getCorrectNumber(this.arenaInfo)
+              .subscribe(data => {
+                this.correctNumber = data.correct
+              }, error => {
+                this.presentAlert(error.message);
+    
+              });
+          }
+        }, 50);*/
 
 
   }
@@ -50,7 +50,7 @@ export class GameItemComponent implements OnChanges, OnInit {
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['arena']) {
       this.arena = changes['arena'].currentValue;
-      this.correctNumber=this.arena.correctNumber;
+      this.correctNumber = this.arena.correctNumber;
 
     }
   }
@@ -71,11 +71,12 @@ export class GameItemComponent implements OnChanges, OnInit {
 
   }
   playMatch(arena: Arenas) {
+
     if (arena.user_played == true && arena.userId == this.userId || arena.invite_played == true && arena.inviteId == this.userId) {
       console.log('you already played');
 
     } else {
-      this.appCtrl.getRootNav().push(MatchPage, { arena: arena });
+      let gamemodal = this.modalCtrl.create('MatchModalPage', { arena: arena }, { cssClass: 'inset-modal' }).present();
 
     }
 

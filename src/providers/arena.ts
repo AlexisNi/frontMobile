@@ -114,6 +114,7 @@ export class Arena {
       });
   }
   getArenas(userId) {
+    console.log('CALLED ARENA GET')
     const body = JSON.stringify({ userId: userId });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
