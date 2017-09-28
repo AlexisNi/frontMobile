@@ -5,6 +5,7 @@ import { MatchModalPage } from './match-modal';
 @NgModule({
   declarations: [
     MatchModalPage,
+/*    TimerComponent*/
   ],
   imports: [
     IonicPageModule.forChild(MatchModalPage),

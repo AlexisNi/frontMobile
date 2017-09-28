@@ -8,8 +8,8 @@ import { Arenas } from "../models/arenas";
 import { Observable } from "rxjs";
 import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
-import { UserFound } from "../pages/starting-page/userFound";
 import { Stats } from "../models/stats";
+import { UserFound } from "../models/userFound";
 
 
 @Injectable()

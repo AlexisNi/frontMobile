@@ -1,14 +1,13 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, IonicPage } from 'ionic-angular';
 import { MyProfilePage } from "../my-profile/my-profile";
-import { MyArenasPage } from "../my-arenas/my-arenas";
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
-import { StartingPage } from "../../providers/starting-page";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { Arena } from "../../providers/arena";
 import { Subscription } from "rxjs/Subscription";
+import { StartingPage } from "../../providers/starting-page";
 
 /*
   Generated class for the Tabs page.
@@ -16,6 +15,7 @@ import { Subscription } from "rxjs/Subscription";
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+@IonicPage()
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -23,11 +23,11 @@ import { Subscription } from "rxjs/Subscription";
 export class TabsPage implements OnDestroy {
 
   public arenas: Arenas[] = [];
-  startingPage = MyProfilePage;
-  arenaPage = MyArenasPage;
   loading: any;
   nots = 0;
   tab = 0;
+  startingPage = 'MyProfilePage';
+  arenaPage = 'MyArenasPage';
 
   allArenasSubscription: Subscription;
   connectSubscription: Subscription;
@@ -52,13 +52,11 @@ export class TabsPage implements OnDestroy {
     console.log('view loaded')
   }
   ngOnDestroy(): void {
-    console.log('on destroy');
     this.unsubscribe();
   }
 
 
   ngOnInit() {
-    
     this.showLoader();
     this.connectSubscription = this.socketService.onConnect().subscribe((data) => {
       setTimeout(() => {
@@ -84,10 +82,10 @@ export class TabsPage implements OnDestroy {
 
   unsubscribe() {
     try {
-      this.allArenasSubscription.unsubscribe();
-      this.connectSubscription.unsubscribe();
-      this.oneArenaSubsription.unsubscribe();
-      this.newArenaSubscruotion.unsubscribe();
+      this.allArenasSubscription;
+      this.connectSubscription;
+      this.oneArenaSubsription;
+      this.newArenaSubscruotion;
 
     } catch (err) {
       console.log(err);

@@ -1,8 +1,6 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, App, ModalController } from 'ionic-angular';
-import { SigninPage } from "../signin/signin";
+import { NavController, NavParams, LoadingController, AlertController, App, ModalController, IonicPage } from 'ionic-angular';
 import { ArenaPlayers } from "../../models/arenaPlayers";
-import { UserFound } from "../starting-page/userFound";
 import { Stats } from "../../models/stats";
 import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
@@ -10,10 +8,10 @@ import { Auth } from "../../providers/auth";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { NotificationEventResponse } from "@ionic-native/push";
-import { MatchPage } from "../match/match";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
 import { HistoricDataProvider } from "../../providers/historic-data";
 import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
+import { UserFound } from "../../models/userFound";
 
 
 /*
@@ -22,6 +20,7 @@ import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-board
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+@IonicPage()
 @Component({
   selector: 'page-my-profile',
   templateUrl: 'my-profile.html'
@@ -148,7 +147,7 @@ export class MyProfilePage {
               const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
               this.startPageService.createArena(arenaPlayer)
                 .subscribe(data => {
-                  this.appCtrl.getRootNav().push(MatchPage, { arena: data });
+                  this.appCtrl.getRootNav().push('MatchPage', { arena: data });
                 }, err => { this.presentAlert(err.message); console.log(err) });
 
 
@@ -205,7 +204,7 @@ export class MyProfilePage {
       this.togglePopupMenu();
       this.loading.dismiss();
       this.socketService.logout();
-      this.appCtrl.getRootNav().push(SigninPage);
+      this.appCtrl.getRootNav().push('SigninPage');
     }, 1000);
   }
   showArenas() {

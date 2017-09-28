@@ -3,8 +3,6 @@ import { Platform, Nav, AlertController, IonicApp } from 'ionic-angular';
 import { StatusBar, Splashscreen, Geolocation } from 'ionic-native';
 import { Push, PushObject, PushOptions } from "@ionic-native/push";
 
-import { SigninPage } from "../pages/signin/signin";
-import { TabsPage } from "../pages/tabs/tabs";
 
 
 
@@ -16,7 +14,7 @@ export class MyApp implements OnInit {
 
 
   }
-  rootPage: any = SigninPage;
+  rootPage: any = 'SigninPage';
   @ViewChild(Nav) nav: Nav;
 
 

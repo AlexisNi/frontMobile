@@ -1,16 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from "../../providers/auth";
-import { SignupPage } from "../signup/signup";
-import { ArenaPage } from "../arena/arena";
-import { HomePage } from "../home/home";
 import { StartingPagePage } from "../starting-page/starting-page";
 import { FirstPage } from "../first/first";
-import { MatchPage } from "../match/match";
-import { TabsPage } from "../tabs/tabs";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Platform, ModalController, AlertController } from 'ionic-angular';
+import { Platform, ModalController, AlertController, IonicPage } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
@@ -24,6 +19,7 @@ import { Keyboard } from '@ionic-native/keyboard';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+@IonicPage()
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
@@ -77,7 +73,7 @@ export class SigninPage implements OnInit, OnDestroy {
       this.firebaseService.checkUser()
         .subscribe(data => {
           this.socketService.connect();
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.setRoot('TabsPage');
         }, error => {
           if (error.error == 100) {
             this.firebaseService.chechUnsubscribe();
@@ -96,9 +92,7 @@ export class SigninPage implements OnInit, OnDestroy {
 
   }
 
-  launchSignup() {
-    this.navCtrl.push(SignupPage);
-  }
+
 
 
   signInWithFacebook() {
@@ -117,7 +111,7 @@ export class SigninPage implements OnInit, OnDestroy {
             this.firebaseService.checkUser()
               .subscribe(data => {
                 this.socketService.connect();
-                this.navCtrl.setRoot(TabsPage);
+                this.navCtrl.setRoot('TabsPage');
               }, error => {
                 if (error.error == 100) {
                   this.firebaseService.chechUnsubscribe();
@@ -154,7 +148,7 @@ export class SigninPage implements OnInit, OnDestroy {
             this.firebaseService.checkUser()
               .subscribe(data => {
                 this.socketService.connect();
-                this.navCtrl.setRoot(TabsPage);
+                this.navCtrl.setRoot('TabsPage');
               }, error => {
                 if (error.error == 100) {
                   this.firebaseService.chechUnsubscribe();

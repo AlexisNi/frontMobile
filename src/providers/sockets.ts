@@ -31,7 +31,7 @@ export class Sockets {
   connect() {
     this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
     if (this.socket == undefined) {
-   
+
     }
 
 
@@ -42,13 +42,13 @@ export class Sockets {
 
   //////////////////////req-get stats///////////////////////
 
-  onConnect(){
+  onConnect() {
     let obsevable = new Observable((observer: any) => {
-    this.socket.on("reconnect",()=>{
-      observer.next('connected');
-    })
-  });
-  return obsevable;
+      this.socket.on("reconnect", () => {
+        observer.next('connected');
+      })
+    });
+    return obsevable;
   }
 
   reqStats(userId) {
@@ -112,6 +112,12 @@ export class Sockets {
         let transformedArena: Arenas
         if (data.obj != null) {
           const arena = data.obj;
+            let questionNumber = 0;
+          if (arena.questionsAnswered) {
+            questionNumber = arena.questionsAnswered.user.questionNumber.questionAnswer.length;
+          } else {
+            questionNumber = 0
+          }
           transformedArena = new Arenas(
             arena._id,
             arena.user,
@@ -119,7 +125,10 @@ export class Sockets {
             arena.status_accept,
             arena.user.username || arena.invite.username,
             arena.user_played,
-            arena.invite_played
+            arena.invite_played,
+            [],
+            questionNumber
+
           )
         }
         if (data.objUser != null) {

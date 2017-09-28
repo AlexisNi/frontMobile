@@ -59,7 +59,7 @@ export class CreateUserModalPage {
             this.socketService.connect();
             setTimeout(() => {
               this.viewCtrl.dismiss();
-              this.appCtrl.getRootNav().push(TabsPage);
+              this.appCtrl.getRootNav().push('TabsPage');
             },1000)
 
           }, error => {

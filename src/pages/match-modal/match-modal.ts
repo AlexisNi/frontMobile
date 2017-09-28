@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController, App } from 'ionic-angular';
 import { Sockets } from "../../providers/sockets";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
@@ -23,7 +23,7 @@ import { AnsweredQuestion } from "../../models/answeredQuestion";
   selector: 'page-match-modal',
   templateUrl: 'match-modal.html',
 })
-export class MatchModalPage {
+export class MatchModalPage implements OnDestroy {
 
   arenaQuestions: Question[] = [];
   arena: Arenas;
@@ -75,7 +75,7 @@ export class MatchModalPage {
 
         this.arenaQuestions = questions;
         this.loading.dismiss();
-        this.timer();
+      this.timer();
       }, err => {
         this.dismiss()
         this.loading.dismiss();
@@ -90,7 +90,7 @@ export class MatchModalPage {
     this.realTime = 30;
     this.index++;
     this.timer();
-    if (this.index > 9) {
+   if (this.index > 9) {
       this.playerLost();
 
     }

@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PlayWithChosenUserPage } from './play-with-chosen-user';
 import { SharedModule } from "../../app/shared.module";
+import { GameListComponent } from "../../components/game-list/game-list";
+import { GameItemComponent } from "../../components/game-item/game-item";
 
 @NgModule({
   declarations: [
-    PlayWithChosenUserPage,
-    
+    PlayWithChosenUserPage
+
+
   ],
   imports: [
     IonicPageModule.forChild(PlayWithChosenUserPage),
@@ -16,4 +19,4 @@ import { SharedModule } from "../../app/shared.module";
     PlayWithChosenUserPage
   ]
 })
-export class PlayWithChosenUserPageModule {}
+export class PlayWithChosenUserPageModule { }

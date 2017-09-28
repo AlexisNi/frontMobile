@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, App, IonicPage } from 'ionic-angular';
 import { Question } from "../../models/question";
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
@@ -9,7 +9,6 @@ import { Questions } from "../../providers/questions";
 import { ArenaAnsweredQuestion } from "../../models/arenaAnsweredQuestion";
 import { Subscription } from "rxjs";
 import { FirstPage } from "../first/first";
-import { TabsPage } from "../tabs/tabs";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { Arena } from "../../providers/arena";
 import { Observable } from "rxjs/Observable";
@@ -21,6 +20,7 @@ import { FirebaseServiceProvider } from "../../providers/firebase-service/fireba
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+@IonicPage()
 @Component({
   selector: 'page-match',
   templateUrl: 'match.html'
@@ -74,7 +74,7 @@ export class MatchPage implements OnDestroy {
         this.loading.dismiss();
         this.timer();
       }, err => {
-        this.appCtrl.getRootNav().setRoot(TabsPage, { index: 1 });
+        this.appCtrl.getRootNav().setRoot('TabsPage', { index: 1 });
         this.loading.dismiss();
         console.log(err.error);
 
@@ -158,7 +158,7 @@ export class MatchPage implements OnDestroy {
 
   }
   cancelButton() {
-    this.navCtrl.setRoot(TabsPage, { index: 1 });
+    this.navCtrl.setRoot('TabsPage', { index: 1 });
   }
   getInviteId() {
     if (this.arena.userId == this.userId) {
@@ -185,8 +185,8 @@ export class MatchPage implements OnDestroy {
     this.statusPlayed();
 
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
-    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
-    
+/*    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
+*/    
   }
 
   showLoader() {
@@ -212,7 +212,7 @@ export class MatchPage implements OnDestroy {
     });
   }
   playerLost() {
-    this.navCtrl.setRoot(TabsPage, { index: 1 });
+    this.navCtrl.setRoot('TabsPage', { index: 1 });
 
   }
 

@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChange, OnInit } from '@angular/core';
 import { Arenas } from "../../models/arenas";
 import { NavController, NavParams, App, ModalController, AlertController } from "ionic-angular";
-import { MatchPage } from "../../pages/match/match";
 import { Auth } from "../../providers/auth";
 import { Questions } from "../../providers/questions";
 import { ArenaCorrect } from "../../models/arenaCorrect";
@@ -71,12 +70,11 @@ export class GameItemComponent implements OnChanges, OnInit {
 
   }
   playMatch(arena: Arenas) {
-
     if (arena.user_played == true && arena.userId == this.userId || arena.invite_played == true && arena.inviteId == this.userId) {
       console.log('you already played');
 
     } else {
-      let gamemodal = this.modalCtrl.create('MatchModalPage', { arena: arena }, { cssClass: 'inset-modal' }).present();
+      this.appCtrl.getRootNav().push('MatchPage', { arena: arena });
 
     }
 

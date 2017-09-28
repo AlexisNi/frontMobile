@@ -1,11 +1,10 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, App, AlertController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, App, AlertController, ViewController, ModalController } from 'ionic-angular';
 import { StartingPage } from "../../providers/starting-page";
 import { ArenaPlayers } from "../../models/arenaPlayers";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-import { UserFound } from "../starting-page/userFound";
-import { MatchPage } from "../match/match";
 import { HistoricDataProvider } from "../../providers/historic-data";
+import { UserFound } from "../../models/userFound";
 
 
 /**
@@ -23,14 +22,14 @@ export class PlayWithChosenUserPage {
   loading: any;
   hasSearched = false;
   userFound = false;
-  wins=0;
-  loses=0;
-  draws=0;
-  progress=50;
+  wins = 0;
+  loses = 0;
+  draws = 0;
+  progress = 50;
   level;
-  name='Username';
+  name = 'Username';
   inviteId;
-  randomUser=false;
+  randomUser = false;
 
 
 
@@ -45,7 +44,8 @@ export class PlayWithChosenUserPage {
     public zone: NgZone,
     public firebasaService: FirebaseServiceProvider,
     public viewCtrl: ViewController,
-    private historic: HistoricDataProvider
+    private historic: HistoricDataProvider,
+    public modalCtrl: ModalController,
 
 
   ) {
@@ -53,7 +53,7 @@ export class PlayWithChosenUserPage {
 
   ionViewDidLoad() {
     if (this.navParams.get('userFound') != undefined) {
-      let userInfo=this.navParams.get('userFound');
+      let userInfo = this.navParams.get('userFound');
       console.log(userInfo)
       this.randomUser = true;
       this.userFound = true;
@@ -135,7 +135,7 @@ export class PlayWithChosenUserPage {
     const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
     this.startPageService.createArena(arenaPlayer)
       .subscribe(data => {
-        this.appCtrl.getRootNav().push(MatchPage, { arena: data });
+        this.appCtrl.getRootNav().push('MatchPage', { arena: data });
       }, err => { this.presentAlert(err.message); console.log(err) });
   }
 }
