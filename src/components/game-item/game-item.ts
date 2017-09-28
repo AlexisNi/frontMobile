@@ -4,7 +4,6 @@ import { NavController, NavParams, App, ModalController, AlertController } from 
 import { Auth } from "../../providers/auth";
 import { Questions } from "../../providers/questions";
 import { ArenaCorrect } from "../../models/arenaCorrect";
-import { ShowRewardPage } from "../../pages/show-reward/show-reward";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { TabsPage } from "../../pages/tabs/tabs";
 
@@ -80,7 +79,7 @@ export class GameItemComponent implements OnChanges, OnInit {
 
   }
   getReward() {
-    let modal = this.modalCtrl.create(ShowRewardPage, { arenaId: this.arena.arenaId, userId: this.userId }, { enableBackdropDismiss: false });
+    let modal = this.modalCtrl.create('ShowRewardPage', { arenaId: this.arena.arenaId, userId: this.userId }, { enableBackdropDismiss: false });
     modal.onDidDismiss(data => {
       if (data != null) {
         this.tabs.removeArena(data.arenaId);

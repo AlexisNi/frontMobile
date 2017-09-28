@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ShowRewardPage } from "../pages/show-reward/show-reward";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -27,10 +26,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    ShowRewardPage
-
-  ],
+    MyApp],
   imports: [
     BrowserModule,
     HttpModule,
@@ -45,8 +41,8 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    ShowRewardPage
+    MyApp
+    
 
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -125,9 +125,14 @@ export class Arena {
         let transformedArenas: Arenas[] = [];
         let questionNumber = 0;
         let questionNumberInvite = 0;
+        console.log(arenas);
         for (let arena of arenas) {
           if (arena.questionsAnswered) {
-            questionNumber = arena.questionsAnswered.user.questionNumber.questionAnswer.length;
+            if (arena.questionsAnswered.hasOwnProperty('user')) {
+              questionNumber = arena.questionsAnswered.user.questionNumber.questionAnswer.length;
+            }
+
+
           } else {
             questionNumber = 0
           }
@@ -141,7 +146,7 @@ export class Arena {
             arena.user_played,
             arena.invite_played,
             [],
-            questionNumber          ));
+            questionNumber));
         }
         const UserArenas = response.json().objUser;
         for (let userArena of UserArenas) {
@@ -153,7 +158,7 @@ export class Arena {
             userArena.user.username,
             userArena.user_played,
             userArena.invite_played
-            ));
+          ));
         }
         return transformedArenas;
       })

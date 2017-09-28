@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, IonicPage } from 'ionic-angular';
 import { Arena } from "../../providers/arena";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { PlayerResult } from "../../models/playerResult";
@@ -14,6 +14,7 @@ import { Observable } from "rxjs/Observable";
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+@IonicPage()
 @Component({
   selector: 'page-show-reward',
   templateUrl: 'show-reward.html'
