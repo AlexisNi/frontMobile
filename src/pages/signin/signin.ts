@@ -8,7 +8,6 @@ import * as firebase from 'firebase/app';
 import { Platform, ModalController, AlertController, IonicPage } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { Sockets } from "../../providers/sockets";
 import { Keyboard } from '@ionic-native/keyboard';
 
@@ -77,7 +76,7 @@ export class SigninPage implements OnInit, OnDestroy {
         }, error => {
           if (error.error == 100) {
             this.firebaseService.chechUnsubscribe();
-            let modal = this.modalCtrl.create(CreateUserModalPage, {});
+            let modal = this.modalCtrl.create('CreateUserModalPage', {});
             modal.present();
           }
 
@@ -115,7 +114,7 @@ export class SigninPage implements OnInit, OnDestroy {
               }, error => {
                 if (error.error == 100) {
                   this.firebaseService.chechUnsubscribe();
-                  let modal = this.modalCtrl.create(CreateUserModalPage, {});
+                  let modal = this.modalCtrl.create('CreateUserModalPage', {});
                   modal.present();
                 }
               })
@@ -152,7 +151,7 @@ export class SigninPage implements OnInit, OnDestroy {
               }, error => {
                 if (error.error == 100) {
                   this.firebaseService.chechUnsubscribe();
-                  let modal = this.modalCtrl.create(CreateUserModalPage, {});
+                  let modal = this.modalCtrl.create('CreateUserModalPage', {});
                   modal.present();
                 }
               })

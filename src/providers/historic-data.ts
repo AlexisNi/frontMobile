@@ -27,41 +27,52 @@ export class HistoricDataProvider {
   }
 
   getHistoricDataVSOpponent(userId) {
-    console.log(userId);
-    const body = JSON.stringify(userId);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
-    return this.http.post(myGlobals.host + 'historicData', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const body = JSON.stringify(userId);
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
+          return this.http.post(myGlobals.host + 'historicData', body, { headers: headers })
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+              observer.next(data)
+            }, err => {
+              observer.error(err)
+            })
+        })
+    })
+
   }
 
   getStats(userId) {
-    
-    const body = JSON.stringify({userId:userId});
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
-    return this.http.post(myGlobals.host + 'historicData/stats', body, { headers: headers })
-      .map((response: Response) =>{
-        console.log(response.json());
-        let stats=response.json().stats;
-        let last5matches=response.json().last5Matches;
-        let transformedArray:Last5matches[]=[];
-        for(let last5match of  last5matches){
-          transformedArray.push(new Last5matches(last5match.userName,last5match.result));
-        }
-        let transformedStats=new StatisticsModal(stats.wins,stats.loses,stats.draws,stats.winningStreak,stats.losingStreak,stats.drawStreak,stats.rightQuestionsNumber);
-        let statistics={last5matches:transformedArray,stats:transformedStats};
-        return statistics;
-
-      })
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
-
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const body = JSON.stringify({ userId: userId });
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
+          return this.http.post(myGlobals.host + 'historicData/stats', body, { headers: headers })
+            .map((response: Response) => {
+              console.log(response.json());
+              let stats = response.json().stats;
+              let last5matches = response.json().last5Matches;
+              let transformedArray: Last5matches[] = [];
+              for (let last5match of last5matches) {
+                transformedArray.push(new Last5matches(last5match.userName, last5match.result));
+              }
+              let transformedStats = new StatisticsModal(stats.wins, stats.loses, stats.draws, stats.winningStreak, stats.losingStreak, stats.drawStreak, stats.rightQuestionsNumber);
+              let statistics = { last5matches: transformedArray, stats: transformedStats };
+              return statistics;
+            })
+            .subscribe(data=>{
+              observer.next(data);
+            },err=>{
+              observer.error(err);
+            })
+        })
+    })
   }
 }

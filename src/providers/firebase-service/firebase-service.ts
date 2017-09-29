@@ -67,10 +67,17 @@ export class FirebaseServiceProvider {
   signInWithEmailPassword(email, password) {
     return this.afAuth.auth.
       signInWithEmailAndPassword(email, password)
-
-
-
   }
+  
+  getToken(){
+     let obsevable = new Observable((observer: any) => {
+      this.afAuth.auth.currentUser.getToken(false).then((idToken)=>{
+        observer.next(idToken);
+      })
+    });
+    return obsevable;
+  }
+  
 
 
   checkAuthentication() {

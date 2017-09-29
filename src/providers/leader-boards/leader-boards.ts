@@ -23,17 +23,24 @@ export class LeaderBoardsProvider {
   getLeaderBoard() {
 
     return new Promise((resolve, reject) => {
+      this.firebasaService.getToken()
+        .subscribe((token:any) => {
+          let headers = new Headers();
+          headers.append('Authorization', token);
 
-      let headers = new Headers();
-      headers.append('Authorization', this.firebasaService.token);
+          this.http.get(myGlobals.host + 'leaderBoard', { headers: headers })
+            .map(res => res.json())
+            .subscribe(data => {
+              resolve(data);
+            }, (err) => {
+              reject(err);
+            });
 
-      this.http.get(myGlobals.host + 'leaderBoard', { headers: headers })
-        .map(res => res.json())
-        .subscribe(data => {
-          resolve(data);
-        }, (err) => {
+        }, err => {
           reject(err);
-        });
+        })
+
+
     });
 
   }

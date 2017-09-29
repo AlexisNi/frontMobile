@@ -7,9 +7,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { CreateUserModalPageModule } from "../pages/create-user-modal/create-user-modal.module";
 import { SharedModule } from "./shared.module";
-import { TimerComponent } from "../components/timer/timer";
 import { PROVIDERS } from "./imports";
 
 
@@ -34,7 +32,6 @@ export const firebaseConfig = {
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    CreateUserModalPageModule,
     SharedModule
 
 

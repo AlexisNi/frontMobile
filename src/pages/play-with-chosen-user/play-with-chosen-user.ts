@@ -72,7 +72,7 @@ export class PlayWithChosenUserPage {
     this.showLoader();
 
     this.startPageService.findUser({ username: userName, userId: this.firebasaService.userId }).then((result: UserFound) => {
-      this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe(data => {
+      this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe((data:any) => {
         data.inviteId = result.inviteId;
         data.userName = result.userName;
         data.level = result.stats.level;

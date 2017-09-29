@@ -66,7 +66,7 @@ export class TabsPage implements OnDestroy {
 
     });
 /*    this.notifcationHandler();
-*/  this.tab = this.navParams.get('index') || 0
+*/    this.tab = this.navParams.get('index') || 0
     this.newArenaSubscruotion = this.stSer.newArena
       .subscribe(
       (arena: Arenas) => {

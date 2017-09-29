@@ -6,7 +6,6 @@ import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
 import { Auth } from "../../providers/auth";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-import { CreateUserModalPage } from "../create-user-modal/create-user-modal";
 import { NotificationEventResponse } from "@ionic-native/push";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
 import { HistoricDataProvider } from "../../providers/historic-data";
@@ -207,10 +206,7 @@ export class MyProfilePage {
       this.appCtrl.getRootNav().push('SigninPage');
     }, 1000);
   }
-  showArenas() {
-    this.hideArenas = false;
-    this.hideStartingPage = true;
-  }
+
 
   presentAlert(error) {
     let alert = this.alertCtrl.create({

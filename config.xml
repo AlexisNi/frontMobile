@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.footballArena" version="2.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.footballArena" version="2.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>footballQuizM</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -75,4 +75,5 @@
     <plugin name="phonegap-plugin-push" spec="~1.8.2">
         <variable name="SENDER_ID" value="327625743458" />
     </plugin>
+    <plugin name="cordova-plugin-admob-free" spec="~0.11.0" />
 </widget>

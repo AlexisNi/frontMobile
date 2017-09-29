@@ -5,7 +5,7 @@ import { Auth } from "./auth";
 import { Observable } from "rxjs";
 import { ArenaAnsweredQuestion } from "../models/arenaAnsweredQuestion";
 import { Question } from "../models/question";
-import {myGlobals}  from "../globals";
+import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
 /*
@@ -24,75 +24,105 @@ export class Questions {
   }
 
   saveAnsweredQuestion(answer: ArenaAnsweredQuestion) {
-    const body = JSON.stringify(answer);
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const body = JSON.stringify(answer);
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
+          return this.http.post(myGlobals.host + 'activeArena', body, { headers: headers })
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+              observer.next(data)
+            }, err => {
+              observer.err(err)
+            })
+        })
+    })
 
-    return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
+
   }
   initAnswers(answer: boolean, arenaId: string, userId: string) {
-    const init = { arenaId: arenaId, userId: userId, question: { answer: answer } }
-     const body = JSON.stringify(init);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const init = { arenaId: arenaId, userId: userId, question: { answer: answer } }
+          const body = JSON.stringify(init);
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
 
-    return this.http.post(myGlobals.host+'activeArena', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
-
+          return this.http.post(myGlobals.host + 'activeArena', body, { headers: headers })
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+              observer.next(data)
+            }, error => {
+              observer.error(error)
+            })
+        })
+    })
   }
 
   getCorrectNumber(arenaInfo) {
-    const body = JSON.stringify(arenaInfo);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const body = JSON.stringify(arenaInfo);
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
 
-    return this.http.post(myGlobals.host+'activeArena/getCorrect', body, { headers: headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
+          return this.http.post(myGlobals.host + 'activeArena/getCorrect', body, { headers: headers })
+            .map((response: Response) => response.json())
+            .subscribe(data => {
+              observer.next(data)
+            }, error => {
+              observer.error(error);
+            })
+
+        })
+    })
+
   }
   getQuestions(arenaInfo) {
-    const body = JSON.stringify(arenaInfo);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', this.firebasaService.token);
+    return new Observable((observer: any) => {
+      this.firebasaService.getToken()
+        .subscribe((token: any) => {
+          const body = JSON.stringify(arenaInfo);
+          let headers = new Headers();
+          headers.append('Content-Type', 'application/json');
+          headers.append('Authorization', token);
 
-    return this.http.post(myGlobals.host+'activeArena/getQuestions', body, { headers: headers })
-      .map((response: Response) => {
-        console.log(response);
-        let questions = response.json().questions;
-        console.log(questions);
-        let transFormedQuestions: Question[] = [];
-        for (let question of questions) {
-          transFormedQuestions.push(new Question(
-            question.question,
-            question.optionA,
-            question.optionB,
-            question.optionC,
-            question.optionD,
-            question.answer,
-            question._id
+          return this.http.post(myGlobals.host + 'activeArena/getQuestions', body, { headers: headers })
+            .map((response: Response) => {
+              console.log(response);
+              let questions = response.json().questions;
+              console.log(questions);
+              let transFormedQuestions: Question[] = [];
+              for (let question of questions) {
+                transFormedQuestions.push(new Question(
+                  question.question,
+                  question.optionA,
+                  question.optionB,
+                  question.optionC,
+                  question.optionD,
+                  question.answer,
+                  question._id
 
-          ));
-        }
-        return transFormedQuestions;
+                ));
+              }
+              return transFormedQuestions;
 
-      })
-      .catch((error: Response) => {
-        return Observable.throw(error.json())
-      });
+            })
+            .subscribe(data=>{
+              observer.next(data)
+            },err=>{
+              observer.error(err)
+            })
 
+        })
+    })
   }
 }
