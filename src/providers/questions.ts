@@ -37,7 +37,7 @@ export class Questions {
             .subscribe(data => {
               observer.next(data)
             }, err => {
-              observer.err(err)
+              observer.error(err)
             })
         })
     })

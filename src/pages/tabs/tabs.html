@@ -4,9 +4,8 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-tabs  [selectedIndex]="tab" >
+<ion-tabs [selectedIndex]="tab">
   <ion-tab [root]="startingPage" tabIcon="appname-customicon2" tabTitle="My team"></ion-tab>
-<!--  <ion-tab  *ngIf="nots==0" [root]="arenaPage" tabIcon="appname-customicon1"  tabTitle="My Arenas!"></ion-tab>
--->  <ion-tab [root]="arenaPage" tabIcon="appname-customicon1" [tabBadge] = "nots>0 ? nots : null" tabBadgeStyle="danger" tabTitle="My Arenas!"></ion-tab>
-  
+  <ion-tab [root]="arenaPage" tabIcon="appname-customicon1" [tabBadge]="nots>0 ? nots : null" tabBadgeStyle="danger" tabTitle="My Arenas"></ion-tab>
+  <ion-tab [root]="rewardPage" tabIcon="md-ribbon" tabTitle="My Rewards"></ion-tab>
 </ion-tabs>

@@ -24,10 +24,12 @@ export class TabsPage implements OnDestroy {
 
   public arenas: Arenas[] = [];
   loading: any;
+  connectionLoading: any;
   nots = 0;
   tab = 0;
   startingPage = 'MyProfilePage';
   arenaPage = 'MyArenasPage';
+  rewardPage = 'RewardPage';
 
   allArenasSubscription: Subscription;
   connectSubscription: Subscription;
@@ -46,10 +48,12 @@ export class TabsPage implements OnDestroy {
     private alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
-    public arenaService: Arena) { }
+    public arenaService: Arena
+  ) { }
 
   ionViewDidLoad() {
-    console.log('view loaded')
+    /*      this.notifcationHandler();
+    */
   }
   ngOnDestroy(): void {
     this.unsubscribe();
@@ -58,15 +62,8 @@ export class TabsPage implements OnDestroy {
 
   ngOnInit() {
     this.showLoader();
-    this.connectSubscription = this.socketService.onConnect().subscribe((data) => {
-      setTimeout(() => {
-        this.getAllArenas();
-        this.getOneArena();
-      }, 2000);
-
-    });
-/*    this.notifcationHandler();
-*/    this.tab = this.navParams.get('index') || 0
+    this.handleSocketConnections();
+    this.tab = this.navParams.get('index') || 0
     this.newArenaSubscruotion = this.stSer.newArena
       .subscribe(
       (arena: Arenas) => {
@@ -79,6 +76,49 @@ export class TabsPage implements OnDestroy {
 
 
   }
+
+
+  handleSocketConnections() {
+    let showLoading = false;
+    this.connectSubscription = this.socketService.onConnect().subscribe((data) => {
+      setTimeout(() => {
+        try {
+          this.connectionLoading.dismiss();
+          showLoading = false;
+
+        } catch (Err) {
+
+        }
+        this.getAllArenas();
+        this.getOneArena();
+      }, 2000);
+
+    });
+    this.socketService.onRecconecting()
+      .subscribe(data => {
+        if (showLoading == false) {
+          showLoading = true;
+          this.connectionLoader();
+        }
+
+
+      })
+    this.socketService.onRecconectFailed()
+      .subscribe(data => {
+        try {
+          this.connectionLoading.dismiss();
+          showLoading = false;
+          this.navCtrl.setRoot('SigninPage').then(data => {
+            window.location.reload();
+          });
+
+        } catch (Err) {
+
+        }
+      })
+
+  }
+
 
   unsubscribe() {
     try {
@@ -115,8 +155,8 @@ export class TabsPage implements OnDestroy {
     for (let i in this.arenas) {
       if (this.arenas[i].arenaId == arena.arenaId) {
         this.arenas[i] = arena;
-        this.arenas[i].user_played = true;
-        this.arenas[i].invite_played = true;
+        /*        this.arenas[i].user_played = true;
+                this.arenas[i].invite_played = true;*/
         this.setBages(this.arenas);
         return true;
       }
@@ -169,6 +209,7 @@ export class TabsPage implements OnDestroy {
 
 
   showLoader() {
+
     this.loading = this.loadingCtrl.create({
       content: 'Please wait loading arenas...'
     });
@@ -183,7 +224,16 @@ export class TabsPage implements OnDestroy {
     alert.present();
   }
 
+  connectionLoader() {
+    this.connectionLoading = this.loadingCtrl.create({
+      content: 'You have been disconnect,attempt to recconect'
+    });
+    this.connectionLoading.present();
+
+  }
+
   notifcationHandler() {
+    console.log('registration');
     this.firebasaService.initPushNotification().on('registration')
       .subscribe((data: any) => {
         console.log(data.registrationId);

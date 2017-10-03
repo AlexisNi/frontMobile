@@ -183,8 +183,8 @@ export class MatchModalPage implements OnDestroy {
   ngOnDestroy(): void {
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
-    this.socketService.arenaLeave(this.inviteId);
-    this.statusPlayed();
+/*    this.socketService.arenaLeave(this.inviteId);
+*/    this.statusPlayed();
 
     this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
     this.socketService.reqOneArena(this.userId, this.arena.arenaId);

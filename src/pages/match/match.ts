@@ -67,8 +67,8 @@ export class MatchPage implements OnDestroy {
     let arenaInfo: ArenaCorrect = new ArenaCorrect(this.userId, this.arena.arenaId);
     this.questionServie.getQuestions(arenaInfo)
       .subscribe((questions: Question[]) => {
-/*       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
-*/
+        /*       this.questionServie.initAnswers(true, this.arena.arenaId, this.userId).subscribe();
+        */
 
         this.arenaQuestions = questions;
         this.loading.dismiss();
@@ -104,7 +104,7 @@ export class MatchPage implements OnDestroy {
   checkQuestion(chosenAnswer, currentQuestion: Question, buttonNumber) {
     if (chosenAnswer === currentQuestion.answer) {
       this.buttonDisabled = true;
-      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true,this.realTime);
+      let questionAnswer = new AnsweredQuestion(currentQuestion.questionId, true, this.realTime);
       let questionAns = new ArenaAnsweredQuestion(this.arena.arenaId, this.userId, questionAnswer);
       this.rightButtons[buttonNumber] = true;
       this.initButtons[buttonNumber] = false;
@@ -172,21 +172,25 @@ export class MatchPage implements OnDestroy {
   statusPlayed() {
     this.arenaService.statusPlayed(this.arenaInfo)
       .subscribe(
-      data => console.log(data),
+      data => {
+
+        console.log(data);
+        this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
+
+
+      },
       error => console.log(error));
+
   }
 
 
   ngOnDestroy(): void {
-
-    console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
-    this.socketService.arenaLeave(this.inviteId);
+    this.socketService.arenaLeave(this.inviteId,this.arena.userId,this.arena.arenaId);
     this.statusPlayed();
 
-    this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
-/*    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
-*/    
+    /*    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
+    */
   }
 
   showLoader() {

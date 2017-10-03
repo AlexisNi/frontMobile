@@ -25,14 +25,21 @@ export class Sockets {
   constructor(
     public http: Http,
     public firebasaService: FirebaseServiceProvider) {
+
   }
 
 
   connect() {
-    this.socket = io.connect(myGlobals.socket, { query: { userId: this.firebasaService.userId } });
-    if (this.socket == undefined) {
+    this.socket = io.connect(myGlobals.socket, {
+      reconnectionAttempts: 10,
+      reconnectionDelayMax: 5000,
+      reconnectionDelay: 1000,
+      query:
+      {
+        userId: this.firebasaService.userId
+      }
+    });
 
-    }
 
 
 
@@ -40,16 +47,49 @@ export class Sockets {
 
   }
 
-  //////////////////////req-get stats///////////////////////
 
   onConnect() {
     let obsevable = new Observable((observer: any) => {
-      this.socket.on("reconnect", () => {
+      this.socket.on("reconnect", (attempt) => {
+        console.log(attempt);
         observer.next('connected');
       })
     });
     return obsevable;
   }
+  onRecconecting() {
+    let obsevable = new Observable((observer: any) => {
+      this.socket.on("reconnecting", (attempt) => {
+        observer.next(attempt);
+
+
+      })
+    });
+    return obsevable;
+
+  }
+  onRecconectAttempt() {
+    let obsevable = new Observable((observer: any) => {
+      this.socket.on("reconnect_attempt", (attempt) => {
+        observer.next(attempt);
+
+      })
+    });
+    return obsevable;
+
+  }
+  onRecconectFailed() {
+    let obsevable = new Observable((observer: any) => {
+      this.socket.on("reconnect_failed", () => {
+        console.log('fail')
+        observer.next('failed')
+
+      })
+    });
+    return obsevable;
+
+  }
+
 
   reqStats(userId) {
     this.socket.emit('getStats', { userId: userId });
@@ -58,20 +98,21 @@ export class Sockets {
   enterArena(arenaId: string, userId: string, inviteId: string) {
     this.socket.emit('enterArena', { arenaId: arenaId, userId: userId, inviteId: inviteId });
   }
+
   logout() {
     this.socket.disconnect();
     this.socket.removeAllListeners();
     this.socket.emit("logout");
   }
 
-  arenaLeave(userId) {
+  arenaLeave(inviteId, userId, arenaId) {
     this.socket.emit('leaveArena');
     /*   this.reqArenas(userId);*/
-    this.sendNotification(userId);
+    this.sendNotification(userId, inviteId, arenaId);
   }
 
-  sendNotification(userId) {
-    this.socket.emit('sendNotication', { userId: userId });
+  sendNotification(userId, inviteId, arenaId) {
+    this.socket.emit('sendNotication', { userId: userId, inviteId: inviteId, arenaId: arenaId });
   }
 
   getStats() {
@@ -91,10 +132,7 @@ export class Sockets {
 
   }
 
-  //////////////////////req-get stats///////////////////////
 
-
-  ////////////req-get arenas////////////////////////////
 
 
   reqArenas(userId) {
@@ -112,7 +150,7 @@ export class Sockets {
         let transformedArena: Arenas
         if (data.obj != null) {
           const arena = data.obj;
-            let questionNumber = 0;
+          let questionNumber = 0;
           if (arena.questionsAnswered) {
             questionNumber = arena.questionsAnswered.user.questionNumber.questionAnswer.length;
           } else {
@@ -198,10 +236,6 @@ export class Sockets {
     return observable;
   }
 
-  ////////////req-get arenas////////////////////////////
-
-
-  //////////start-req-get Questions////////////////////////////
 
   reqQuestions(userId, arenaId) {
     this.socket.emit('getQuestions', { userId: userId, arenaId: arenaId })
@@ -237,10 +271,4 @@ export class Sockets {
 
   }
 
-
-
-
-
-
-  ////////////end-req-get Questions////////////////////////////
 }

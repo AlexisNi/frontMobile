@@ -41,6 +41,10 @@ export class FirebaseServiceProvider {
 
 
 
+
+  }
+  getAuth(){
+    return this.afAuth.auth;
   }
 
   signInWithFacebook() {
@@ -68,16 +72,18 @@ export class FirebaseServiceProvider {
     return this.afAuth.auth.
       signInWithEmailAndPassword(email, password)
   }
-  
-  getToken(){
-     let obsevable = new Observable((observer: any) => {
-      this.afAuth.auth.currentUser.getToken(false).then((idToken)=>{
+
+  getToken() {
+    let obsevable = new Observable((observer: any) => {
+      this.afAuth.auth.currentUser.getToken(false).then((idToken) => {
         observer.next(idToken);
       })
     });
     return obsevable;
   }
-  
+
+
+
 
 
   checkAuthentication() {
@@ -156,7 +162,7 @@ export class FirebaseServiceProvider {
     return this.http.post(myGlobals.host + 'firebase/createUser', body, { headers: headers })
       .map((response: Response) => response.json())
       .debounceTime(1000)
-       .distinctUntilChanged() 
+      .distinctUntilChanged()
       .catch((error: Response) => {
         return Observable.throw(error.json())
       });

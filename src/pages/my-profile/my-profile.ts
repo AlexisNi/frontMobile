@@ -52,8 +52,8 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
-      /*   this.notifcationHandler();*/
-
+/*       this.notifcationHandler();
+*/
 
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();

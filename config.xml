@@ -60,20 +60,20 @@
     </feature>
     <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
     <allow-navigation href="http://192.168.10.252:8100" />
-    <engine name="android" spec="~6.1.2" />
-    <plugin name="cordova-plugin-console" spec="1.0.5" />
-    <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0" />
-    <plugin name="cordova-plugin-device" spec="1.1.4" />
-    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+    <engine name="android" spec="^6.1.2" />
+    <plugin name="cordova-plugin-admob-free" spec="^0.11.0" />
+    <plugin name="cordova-plugin-console" spec="^1.0.5" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.3.0" />
+    <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.7.4">
         <variable name="APP_ID" value="1531484046884657" />
         <variable name="APP_NAME" value="Football-Quiz" />
     </plugin>
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
-    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
-    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="phonegap-plugin-push" spec="~1.8.2">
+    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="phonegap-plugin-push" spec="^1.10.5">
         <variable name="SENDER_ID" value="327625743458" />
     </plugin>
-    <plugin name="cordova-plugin-admob-free" spec="~0.11.0" />
 </widget>
