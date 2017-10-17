@@ -10,6 +10,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { Sockets } from "../../providers/sockets";
 import { Keyboard } from '@ionic-native/keyboard';
+import { Subscription } from "rxjs/Subscription";
 
 
 /*
@@ -24,6 +25,8 @@ import { Keyboard } from '@ionic-native/keyboard';
   templateUrl: 'signin.html'
 })
 export class SigninPage implements OnInit, OnDestroy {
+  checkUserSubscription: Subscription;
+  IsPlayerAlreadyOnSocketList: Subscription;
   ngOnDestroy(): void {
     this.firebaseService.chechUnsubscribe();
   }
@@ -37,14 +40,14 @@ export class SigninPage implements OnInit, OnDestroy {
   password: string = '123456';
   loading: any;
   displayName;
-  keyboardShowed=false;
-  
-  
-  show(event){
+  keyboardShowed = false;
+
+
+  show(event) {
     console.log(event);
-    this.keyboardShowed=true;
+    this.keyboardShowed = true;
     this.keyboard.show();
-    
+
   }
 
 
@@ -62,6 +65,8 @@ export class SigninPage implements OnInit, OnDestroy {
     public socketService: Sockets,
     private keyboard: Keyboard
   ) {
+    this.socketService.checkIfUserIsOnTheList();
+
   }
 
 
@@ -71,8 +76,34 @@ export class SigninPage implements OnInit, OnDestroy {
       this.loading.dismiss();
       this.firebaseService.checkUser()
         .subscribe(data => {
-          this.socketService.connect();
-          this.navCtrl.setRoot('TabsPage');
+          this.IsPlayerAlreadyOnSocketList = this.socketService.IsPlayerAlreadyOnSocketList()
+            .subscribe((status: any) => {
+              if (status.connected == false) {
+                this.socketService.connect();
+                try {
+                  this.checkUserSubscription.unsubscribe();
+                  this.firebaseService.chechUnsubscribe();
+                  this.IsPlayerAlreadyOnSocketList.unsubscribe();
+                } catch (err) {
+
+                }
+
+                this.navCtrl.setRoot('TabsPage')
+              } else {
+                try {
+                  this.checkUserSubscription.unsubscribe();
+                  this.firebaseService.chechUnsubscribe();
+                  this.IsPlayerAlreadyOnSocketList.unsubscribe();
+                } catch (err) {
+
+                }
+
+                console.log('already connected at another device')
+              }
+
+            })
+          /*      this.socketService.connect();
+                this.navCtrl.setRoot('TabsPage');*/
         }, error => {
           if (error.error == 100) {
             this.firebaseService.chechUnsubscribe();
@@ -87,9 +118,7 @@ export class SigninPage implements OnInit, OnDestroy {
       this.loading.dismiss();
     });
   }
-  login() {
 
-  }
 
 
 
@@ -131,42 +160,66 @@ export class SigninPage implements OnInit, OnDestroy {
   }
 
   signIn() {
-        this.keyboard.close();
-    if (this.keyboardShowed==true){
+    this.keyboard.close();
+    if (this.keyboardShowed == true) {
       this.keyboard.close();
     }
-    setTimeout( ()=>{
-   this.showLoader();
-    this.firebaseService.signInWithEmailPassword(this.email, this.password).
-      then(res => {
-        this.firebaseService.checkAuthentication().then((res) => {
-          console.log('User Authorized');
-          console.log(res);
-          this.loading.dismiss();
-          setTimeout(() => {
-            this.firebaseService.checkUser()
-              .subscribe(data => {
-                this.socketService.connect();
-                this.navCtrl.setRoot('TabsPage');
-              }, error => {
-                if (error.error == 100) {
-                  this.firebaseService.chechUnsubscribe();
-                  let modal = this.modalCtrl.create('CreateUserModalPage', {});
-                  modal.present();
-                }
-              })
-          }, 10);
+    setTimeout(() => {
+      this.showLoader();
+      this.firebaseService.signInWithEmailPassword(this.email, this.password).
+        then(res => {
+          this.firebaseService.checkAuthentication().then((res) => {
+            console.log('User Authorized');
+            console.log(res);
+            this.loading.dismiss();
+            setTimeout(() => {
+              this.checkUserSubscription = this.firebaseService.checkUser()
+                .subscribe(data => {
+                  this.IsPlayerAlreadyOnSocketList = this.socketService.IsPlayerAlreadyOnSocketList()
+                    .subscribe((status: any) => {
+                      if (status.connected == false) {
+                        this.socketService.connect();
+                        try {
+                          this.checkUserSubscription.unsubscribe();
+                          this.firebaseService.chechUnsubscribe();
+                          this.IsPlayerAlreadyOnSocketList.unsubscribe();
+                        } catch (err) {
+
+                        }
+
+                        this.navCtrl.setRoot('TabsPage')
+                      } else {
+                        try {
+                          this.checkUserSubscription.unsubscribe();
+                          this.firebaseService.chechUnsubscribe();
+                          this.IsPlayerAlreadyOnSocketList.unsubscribe();
+                        } catch (err) {
+
+                        }
+
+                        console.log('already connected at another device')
+                      }
+
+                    })
+                }, error => {
+                  if (error.error == 100) {
+                    this.firebaseService.chechUnsubscribe();
+                    let modal = this.modalCtrl.create('CreateUserModalPage', {});
+                    modal.present();
+                  }
+                })
+            }, 10);
+          }, error => {
+            this.firebaseService.chechUnsubscribe();
+            this.presentAlert(error.message);
+            this.loading.dismiss();
+          });
         }, error => {
-          this.firebaseService.chechUnsubscribe();
           this.presentAlert(error.message);
+          console.log(error);
           this.loading.dismiss();
         });
-      }, error => {
-        this.presentAlert(error.message);
-        console.log(error);
-        this.loading.dismiss();
-      });
-    },500);
+    }, 500);
 
   }
 

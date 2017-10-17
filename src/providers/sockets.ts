@@ -10,12 +10,7 @@ import { Question } from "../models/question";
 import { myGlobals } from "../globals";
 import { FirebaseServiceProvider } from "./firebase-service/firebase-service";
 
-/*
-  Generated class for the Sockets provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class Sockets {
   private socket: any;
@@ -30,7 +25,7 @@ export class Sockets {
 
 
   connect() {
-    this.socket = io.connect(myGlobals.socket, {
+    this.socket = io.connect(myGlobals.socket + '/mainGame', {
       reconnectionAttempts: 10,
       reconnectionDelayMax: 5000,
       reconnectionDelay: 1000,
@@ -39,11 +34,23 @@ export class Sockets {
         userId: this.firebasaService.userId
       }
     });
+  }
+  checkIfUserIsOnTheList() {
+    this.socket = io.connect(myGlobals.socket + '/checkIfUser', {});
 
+  }
+  IsPlayerAlreadyOnSocketList() {
+    this.socket.emit('checkUser', {userId: this.firebasaService.userId});
 
-
-
-
+    {
+      let obsevable = new Observable((observer: any) => {
+        this.socket.on("connectedStatus", (status) => {
+          console.log(status);
+          observer.next(status);
+        })
+      });
+      return obsevable;
+    }
 
   }
 

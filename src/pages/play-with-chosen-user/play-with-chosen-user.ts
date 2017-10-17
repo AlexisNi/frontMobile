@@ -72,7 +72,7 @@ export class PlayWithChosenUserPage {
     this.showLoader();
 
     this.startPageService.findUser({ username: userName, userId: this.firebasaService.userId }).then((result: UserFound) => {
-      this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe((data:any) => {
+      this.historic.getHistoricDataVSOpponent({ opponentId: result.inviteId, userId: this.firebasaService.userId }).subscribe((data: any) => {
         data.inviteId = result.inviteId;
         data.userName = result.userName;
         data.level = result.stats.level;
@@ -135,7 +135,16 @@ export class PlayWithChosenUserPage {
     const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
     this.startPageService.createArena(arenaPlayer)
       .subscribe(data => {
-        this.appCtrl.getRootNav().push('MatchPage', { arena: data });
+        let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
+        modal.onDidDismiss(data => {
+          if (data != null) {
+            console.log('dissmiss');
+           
+          }
+        });
+        modal.present();
+
+        /* this.appCtrl.getRootNav().push('MatchPage', { arena: data });*/
       }, err => { this.presentAlert(err.message); console.log(err) });
   }
 }

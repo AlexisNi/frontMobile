@@ -75,7 +75,7 @@ export class MatchModalPage implements OnDestroy {
 
         this.arenaQuestions = questions;
         this.loading.dismiss();
-      this.timer();
+        this.timer();
       }, err => {
         this.dismiss()
         this.loading.dismiss();
@@ -90,7 +90,7 @@ export class MatchModalPage implements OnDestroy {
     this.realTime = 30;
     this.index++;
     this.timer();
-   if (this.index > 9) {
+    if (this.index > 9) {
       this.playerLost();
 
     }
@@ -161,7 +161,7 @@ export class MatchModalPage implements OnDestroy {
 
   }
   cancelButton() {
-   this.dismiss();
+    this.dismiss();
   }
   getInviteId() {
     if (this.arena.userId == this.userId) {
@@ -175,19 +175,19 @@ export class MatchModalPage implements OnDestroy {
   statusPlayed() {
     this.arenaService.statusPlayed(this.arenaInfo)
       .subscribe(
-      data => console.log(data),
+      data => {
+        this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
+        this.socketService.reqOneArena(this.userId, this.arena.arenaId);
+      },
       error => console.log(error));
   }
-
 
   ngOnDestroy(): void {
     console.log('on Destroy all arenas');
     this.subscription.unsubscribe();
-/*    this.socketService.arenaLeave(this.inviteId);
-*/    this.statusPlayed();
+    this.socketService.arenaLeave(this.inviteId, this.arena.userId, this.arena.arenaId);
+    this.statusPlayed();
 
-    this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
-    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
 
   }
 

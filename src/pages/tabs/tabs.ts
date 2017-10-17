@@ -56,6 +56,7 @@ export class TabsPage implements OnDestroy {
     */
   }
   ngOnDestroy(): void {
+    console.log('tabs destroyed')
     this.unsubscribe();
   }
 
