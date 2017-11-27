@@ -1,13 +1,13 @@
 <ion-content padding>
   <ion-row class="test" style="width:100%">
-    <img [src]="backgroundImage" >
+    <img class="backgroundIm" [src]="backgroundImage">
   </ion-row>
 
   <ion-grid no-padding>
     <ion-row justify-content-center text-center class="navBar">
       <ion-col col-12>
         <p class="connectWith">
-          CONNECT WITH
+          ΣΥΝΔΕΣΟΥ ΜΕ
         </p>
       </ion-col>
     </ion-row>
@@ -21,10 +21,10 @@
               FACEBOOK
                </p>
             </ion-col>
-             <ion-col no-padding class="lineCol">
-                <p class="line">
+             <ion-col no-padding col-1 class="lineCol">
+                <div class="line">
                   
-               </p>
+               </div>
             </ion-col>
           </ion-row>
         </button>
@@ -40,7 +40,7 @@
               GOOGLE
                </p>
             </ion-col>
-             <ion-col no-padding class="lineCol">
+             <ion-col col-1 no-padding class="lineCol">
                 <p class="line">
                   
                </p>
@@ -49,6 +49,45 @@
         </button>
       </ion-col>
     </ion-row>
+
+
+    <ion-row justify-content-center text-center class="or">
+      <ion-col col-12>
+        <p class="connectWith">
+          Ή
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row >
+      <ion-col col-2 offset-1>
+        <div class="select">
+          <p>SIGN IN</p>
+          <img [src]="triangle">
+        </div>
+
+      </ion-col>
+
+      <ion-col col-2 offset-6>
+        <div class="select">
+          <p>SIGN UP</p>
+          <img [src]="triangle">
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center text-center class="sigin-section">
+      <ion-col col-12>
+        <p>
+          Ή
+        </p>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
 
 
   </ion-grid>
