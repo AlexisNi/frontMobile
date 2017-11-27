@@ -1,13 +1,20 @@
 page-signin {
+  .scroll-content {
+    padding: 0 !important;
+  }
   ion-content {
-    background: url('../assets/images/login/background.png') no-repeat center center;
+    background: url('../assets/images/login/background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
   }
+  img {
+    width: 100%;
+    height: 45vw;
+  }
   ion-grid {
     color: white;
-    margin-top: 25vh;
+    margin-top: 4vh;
   }
   .navBar {
     .connectWith {
@@ -34,7 +41,7 @@ page-signin {
       }
     }
   }
-  .google{
-    margin-top:3vw;
+  .margin {
+    margin-top: 3vw;
   }
 }

@@ -27,7 +27,7 @@ import { Subscription } from "rxjs/Subscription";
 export class SigninPage implements OnInit, OnDestroy {
   checkUserSubscription: Subscription;
   IsPlayerAlreadyOnSocketList: Subscription;
-  public backgroundImage = 'assets/images/login/background.png';
+  public backgroundImage = 'assets/images/login/SIMA.png';
   ngOnDestroy(): void {
     this.firebaseService.chechUnsubscribe();
   }
