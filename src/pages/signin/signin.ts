@@ -27,6 +27,7 @@ import { Subscription } from "rxjs/Subscription";
 export class SigninPage implements OnInit, OnDestroy {
   checkUserSubscription: Subscription;
   IsPlayerAlreadyOnSocketList: Subscription;
+  public backgroundImage = 'assets/images/login/background.png';
   ngOnDestroy(): void {
     this.firebaseService.chechUnsubscribe();
   }
@@ -87,8 +88,11 @@ export class SigninPage implements OnInit, OnDestroy {
                 } catch (err) {
 
                 }
+                setTimeout(() => {
 
-                this.navCtrl.setRoot('TabsPage')
+                  this.navCtrl.setRoot('TabsPage')
+                }, 300)
+
               } else {
                 try {
                   this.checkUserSubscription.unsubscribe();

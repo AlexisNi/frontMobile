@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Platform, Nav, AlertController, IonicApp } from 'ionic-angular';
 import { StatusBar, Splashscreen, Geolocation } from 'ionic-native';
-import { Push, PushObject, PushOptions } from "@ionic-native/push";
 import { FirebaseServiceProvider } from "../providers/firebase-service/firebase-service";
 import { Subscription } from "rxjs/Subscription";
 import { Sockets } from "../providers/sockets";
@@ -28,7 +27,6 @@ export class MyApp implements OnInit {
 
   constructor(
     public platform: Platform,
-    public push: Push,
     public alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
     private ionicApp: IonicApp,

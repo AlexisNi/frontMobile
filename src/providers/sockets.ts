@@ -26,6 +26,7 @@ export class Sockets {
 
   connect() {
     this.socket = io.connect(myGlobals.socket + '/mainGame', {
+      transports: ['websocket', 'polling', 'flashsocket'],
       reconnectionAttempts: 10,
       reconnectionDelayMax: 5000,
       reconnectionDelay: 1000,
@@ -34,14 +35,26 @@ export class Sockets {
         userId: this.firebasaService.userId
       }
     });
+
   }
+
+  onMessage() {
+
+    let obsevable = new Observable((observer: any) => {
+      this.socket.on('message', data => {
+        console.log(data);
+      })
+    });
+    return obsevable;
+
+  }
+
   checkIfUserIsOnTheList() {
-    this.socket = io.connect(myGlobals.socket + '/checkIfUser', {});
-
+    this.socket = io.connect(myGlobals.socket + '/checkIfUser', {transports: ['websocket', 'polling', 'flashsocket']});
   }
-  IsPlayerAlreadyOnSocketList() {
-    this.socket.emit('checkUser', {userId: this.firebasaService.userId});
 
+  IsPlayerAlreadyOnSocketList() {
+    this.socket.emit('checkUser', { userId: this.firebasaService.userId });
     {
       let obsevable = new Observable((observer: any) => {
         this.socket.on("connectedStatus", (status) => {
@@ -51,9 +64,7 @@ export class Sockets {
       });
       return obsevable;
     }
-
   }
-
 
   onConnect() {
     let obsevable = new Observable((observer: any) => {
@@ -248,7 +259,6 @@ export class Sockets {
     this.socket.emit('getQuestions', { userId: userId, arenaId: arenaId })
   }
   getQuestions() {
-
     this.socket.removeAllListeners('getQuestions');
     let observable = new Observable((observer: any) => {
       this.socket.on('loadQuestions', (data: any) => {

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "327625743458",
+    "firebase_url": "https://football-quiz-a9e1e.firebaseio.com",
+    "project_id": "football-quiz-a9e1e",
+    "storage_bucket": "football-quiz-a9e1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327625743458:android:eb373f17bfbef964",
+        "android_client_info": {
+          "package_name": "com.footballArena"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327625743458-t7rhd1dhmuk126vvjjtkap6sn31gffna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAeZ4-ECEFv6o__I1y0aICgQQERPZNkWA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

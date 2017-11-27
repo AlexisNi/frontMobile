@@ -7,11 +7,11 @@ import { Arena } from "../providers/arena";
 import { StartingPage } from "../providers/starting-page";
 import { Questions } from "../providers/questions";
 import { Facebook } from "@ionic-native/facebook";
-import { Push } from "@ionic-native/push";
 import { FirebaseServiceProvider } from "../providers/firebase-service/firebase-service";
 import { Keyboard } from '@ionic-native/keyboard';
 import { HistoricDataProvider } from "../providers/historic-data";
 import { LeaderBoardsProvider } from "../providers/leader-boards/leader-boards";
+import { FCM } from '@ionic-native/fcm';
 
 
 export const COMPONENTS = [
@@ -27,9 +27,9 @@ export const PROVIDERS = [
     StartingPage,
     Questions,
     Facebook,
-    Push,
     FirebaseServiceProvider,
     Keyboard,
     HistoricDataProvider,
-    LeaderBoardsProvider
+    LeaderBoardsProvider,
+    FCM
 ]

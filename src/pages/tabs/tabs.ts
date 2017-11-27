@@ -1,10 +1,9 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, IonicPage, Platform } from 'ionic-angular';
 import { MyProfilePage } from "../my-profile/my-profile";
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-import { NotificationEventResponse } from "@ionic-native/push";
 import { Arena } from "../../providers/arena";
 import { Subscription } from "rxjs/Subscription";
 import { StartingPage } from "../../providers/starting-page";
@@ -48,12 +47,19 @@ export class TabsPage implements OnDestroy {
     private alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
-    public arenaService: Arena
+    public arenaService: Arena,
+    public platform: Platform
+
   ) { }
 
   ionViewDidLoad() {
-    /*      this.notifcationHandler();
-    */
+    try {
+/*      this.firebasaService.onNotification();
+*/
+    } catch (err) {
+      console.log(err)
+    }
+
   }
   ngOnDestroy(): void {
     console.log('tabs destroyed')
@@ -74,6 +80,9 @@ export class TabsPage implements OnDestroy {
       this.getAllArenas();
       this.getOneArena();
     }, 2000);
+    this.socketService.onMessage().subscribe(data=>{
+      console.log(data);
+    })
 
 
   }
@@ -135,9 +144,8 @@ export class TabsPage implements OnDestroy {
   getOneArena() {
     this.oneArenaSubsription = this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
-        console.log(data);
         this.zone.run(() => this.findArena(data));
-        console.log(data);
+        this.zone.run(()=>{this.setArenas(this.arenas)})
       }, error => {
         console.log(error);
       });
@@ -156,8 +164,6 @@ export class TabsPage implements OnDestroy {
     for (let i in this.arenas) {
       if (this.arenas[i].arenaId == arena.arenaId) {
         this.arenas[i] = arena;
-        /*        this.arenas[i].user_played = true;
-                this.arenas[i].invite_played = true;*/
         this.setBages(this.arenas);
         return true;
       }
@@ -176,7 +182,6 @@ export class TabsPage implements OnDestroy {
       console.log(err);
       this.loading.dismiss();
     })
-
   }
 
   setArenas(arena) {
@@ -186,8 +191,10 @@ export class TabsPage implements OnDestroy {
     for (let i in arena) {
       if (arena[i].inviteId == userid && arena[i].invite_played == false || arena[i].userId == userid && arena[i].user_played == false) {
         arena[i].sort = 1;
-      } else {
-        arena[i].sort = 0;
+      } else if(arena[i].invite_played == true && arena[i].user_played == true) {
+        arena[i].sort = 2;
+      }else{
+          arena[i].sort = 0;
       }
     }
     this.arenas = arena.sort(function (a, b) {
@@ -233,32 +240,7 @@ export class TabsPage implements OnDestroy {
 
   }
 
-  notifcationHandler() {
-    console.log('registration');
-    this.firebasaService.initPushNotification().on('registration')
-      .subscribe((data: any) => {
-        console.log(data.registrationId);
-        this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data => {
-        }, error => { console.log(error) })
-      }, error => {
-        console.log(error);
-      });
-    this.firebasaService.initPushNotification()
-      .on('notification').subscribe((response: NotificationEventResponse) => {
-        console.log('message', response.message);
-        console.log(response);
-        if (response.additionalData.foreground) {
-          /* */
-        } else {
-
-
-          console.log("Push notification clicked");
-        }
-      });
-
-
-
-  }
+ 
 
 
 }

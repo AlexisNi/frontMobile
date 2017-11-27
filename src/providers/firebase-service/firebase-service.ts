@@ -10,7 +10,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { myGlobals } from "../../globals";
 import { Observable, Subscription } from "rxjs";
 import { Storage } from '@ionic/storage';
-import { Push, PushObject, PushOptions, NotificationEventResponse } from "@ionic-native/push";
+import { FCM } from '@ionic-native/fcm';
 
 /*
   Generated class for the FirebaseServiceProvider provider.
@@ -31,19 +31,9 @@ export class FirebaseServiceProvider {
     private fb: Facebook,
     private platform: Platform,
     public storage: Storage,
-    public push: Push
-  ) {
-
-
-
-
-
-
-
-
-
-  }
-  getAuth(){
+    private fcm: FCM
+  ) { }
+  getAuth() {
     return this.afAuth.auth;
   }
 
@@ -65,8 +55,6 @@ export class FirebaseServiceProvider {
   signUpWithEmailPassword(email, password) {
     return this.afAuth.auth.
       createUserWithEmailAndPassword(email, password)
-
-
   }
   signInWithEmailPassword(email, password) {
     return this.afAuth.auth.
@@ -80,6 +68,43 @@ export class FirebaseServiceProvider {
       })
     });
     return obsevable;
+  }
+
+  notificationHandler() {
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log('getToken',token);
+    })
+  }
+
+  async onNotification() {
+    try {
+      await this.platform.ready();
+      this.fcm.getToken().then(token => {
+        console.log(token);
+        this.sendDeviceToken(token).subscribe(data=>{
+          console.log(data)
+        });
+      })
+      this.fcm.onTokenRefresh().subscribe(token => {
+        console.log(token);
+        this.sendDeviceToken(token).subscribe(data=>{
+          console.log(data)
+        });;
+
+      })
+      this.fcm.onNotification().subscribe(data => {
+        if (data.wasTapped) {
+          console.log("Received in background");
+          alert(JSON.stringify(data));
+        } else {
+          console.log("Received in foreground");
+          alert(JSON.stringify(data));
+
+        };
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
 
@@ -170,7 +195,6 @@ export class FirebaseServiceProvider {
 
   sendDeviceToken(deviceToken) {
     console.log('device token');
-    console.log(deviceToken)
     const body = JSON.stringify({ devToken: deviceToken, userId: this.userId });
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -183,27 +207,6 @@ export class FirebaseServiceProvider {
   }
   chechUnsubscribe() {
     this.checkSub.unsubscribe();
-  }
-
-  initPushNotification() {
-    if (!this.platform.is('cordova')) {
-      console.warn("Push notifications not initialized. Cordova is not available - Run in physical device");
-      return;
-    }
-    const options: PushOptions = {
-      android: {
-        senderID: '327625743458',
-        vibrate: true
-      },
-      ios: {
-        alert: "true",
-        badge: false,
-        sound: "true"
-      },
-      windows: {}
-    };
-    const pushObject: PushObject = this.push.init(options);
-    return pushObject;
   }
 
 

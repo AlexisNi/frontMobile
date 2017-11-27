@@ -6,7 +6,6 @@ import { Sockets } from "../../providers/sockets";
 import { StartingPage } from "../../providers/starting-page";
 import { Auth } from "../../providers/auth";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-import { NotificationEventResponse } from "@ionic-native/push";
 import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chosen-user";
 import { HistoricDataProvider } from "../../providers/historic-data";
 import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
@@ -52,8 +51,7 @@ export class MyProfilePage {
 
   ngOnInit(): void {
     if (this.firebasaService.userId) {
-/*       this.notifcationHandler();
-*/
+
 
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
@@ -91,16 +89,9 @@ export class MyProfilePage {
     this.loses = stats.loses;
     this.draws = stats.draws;
     let sum = this.wins + this.loses + this.draws;
-
-    /*    this.pWins = Math.round((((this.wins / sum) * 100) + 10))
-        this.pLoses = Math.round((((this.loses / sum) * 100) + 10))
-        this.pDraws =Math.round((((this.draws / sum) * 100) + 10))*/
     this.pWins = (((this.wins / sum) * 100) + 10).toFixed(1);
     this.pLoses = (((this.loses / sum) * 100) + 10).toFixed(1);;
     this.pDraws = (((this.draws / sum) * 100) + 10).toFixed(1);
-    /* this.pWins = this.pWins.toFixed(1);*/
-    /*  this.pLoses = this.pLoses.toFixed(1);
-      this.pDraws = this.pDraws.toFixed(1);*/
     if (this.pWins == 'NaN') {
       this.pWins = 0;
       this.sWins = 0;
@@ -217,43 +208,7 @@ export class MyProfilePage {
   }
 
 
-  notifcationHandler() {
-    this.firebasaService.initPushNotification().on('registration')
-      .subscribe((data: any) => {
-        console.log(data.registrationId);
-        this.firebasaService.sendDeviceToken(data.registrationId).subscribe(data => {
-        }, error => { console.log(error) })
-      });
-    this.firebasaService.initPushNotification()
-      .on('notification').subscribe((response: NotificationEventResponse) => {
-        console.log('message', response.message);
-        console.log(response);
-        if (response.additionalData.foreground) {
-          console.log('message', response.message);
-          let confirmAlert = this.alertCtrl.create({
-            title: 'New Notification',
-            message: response.message,
-            buttons: [{
-              text: 'Ok',
-              role: 'cancel'
-            }, {
-              text: 'Go to arenas',
-              handler: () => {
-                //TODO: Your logic here
-              }
-            }]
-          });
-          confirmAlert.present();
-        } else {
-
-
-          console.log("Push notification clicked");
-        }
-      });
-
-
-
-  }
+ 
 
   choosePlayer(userFound = undefined) {
     let modal = this.modalCtrl.create(this.findPlayerPage, { userFound: userFound });
