@@ -2,9 +2,6 @@
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 @import "ionic.globals";
-
-
-
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -18,13 +15,16 @@ $font-path: "../assets/fonts";
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( primary: #387ef5,
-secondary: #32db64,
-danger: #f53d3d,
-light: #f4f4f4,
-dark: #222,
-questions:#8dc63f,
-navBar:#231f20);
+$colors: ( 
+    primary: #387ef5, 
+    secondary: #79ab42, 
+    danger: #f53d3d, 
+    light: #f4f4f4,
+    dark: #222, 
+    questions:#8dc63f, 
+    navBar:#231f20,
+    signinButton:#5d983d,
+    shadow:#4c7733);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -53,9 +53,7 @@ $outer-content-md-background-color:greenyellow;
 $card-ios-background-color: #32db64;
 $card-md-background-color: #32db64;
 $card-wp-background-color: #32db64;
-$text-input-md-highlight-color: #000000;
-
-
+$text-input-md-show-focus-highlight:false;
 // Fonts
 // --------------------------------------------------
 @import "roboto";

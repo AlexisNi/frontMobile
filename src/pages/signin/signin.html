@@ -1,5 +1,5 @@
 <ion-content padding>
-  <ion-row class="test" style="width:100%">
+  <ion-row style="width:100%">
     <img class="backgroundIm" [src]="backgroundImage">
   </ion-row>
 
@@ -59,7 +59,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row >
+    <ion-row class="selectRow">
       <ion-col col-2 offset-1>
         <div class="select">
           <p>SIGN IN</p>
@@ -78,9 +78,32 @@
 
     <ion-row justify-content-center text-center class="sigin-section">
       <ion-col col-12>
-        <p>
-          Ή
-        </p>
+
+        <ion-row  justify-content-center text-center>
+          <ion-col col-7>
+            <ion-list>
+              <ion-item>
+                <ion-label>
+                  <ion-icon color="secondary" name="star" item-start></ion-icon>
+                </ion-label>
+                <ion-input placeholder="USERNAME" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>
+                  <ion-icon color="secondary" name="star" item-start></ion-icon> </ion-label>
+                  <ion-input placeholder="PASSWORD" type="password"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-7  offset-2 >
+           <button ion-button round>SIGN IN</button>
+          </ion-col>
+        </ion-row>
+
+
       </ion-col>
     </ion-row>
 

@@ -1,5 +1,8 @@
 page-signin {
   .scroll-content {
+    overflow: hidden !important;
+  }
+  .scroll-content {
     padding: 0 !important;
   }
   ion-content {
@@ -53,26 +56,52 @@ page-signin {
     font-size: 4.1vw;
     margin-top: 3vw;
   }
+  .selectRow {
+    .col[offset-1] {
+      margin-left: 11.33333% !important;
+    }
+    .col[offset-6] {
+      margin-left: 45.33333% !important;
+    }
+    .select {
+      position: relative;
+      height: 100%;
+      font-size: 4.1vw;
+      img {
+        position: absolute;
+        width: 10vw;
+        bottom: 2.3vw;
+        left: 2vw;
+      }
+    }
+  }
   .sigin-section {
     margin-top: 1vh;
     background-color: #ffffff;
     height: 60vw;
-  }
-  .col[offset-1] {
-    margin-left: 11.33333% !important;
-  }
-  .col[offset-6] {
-    margin-left: 45.33333% !important;
-  }
-  .select {
-    position: relative;
-    height: 100%;
-    font-size: 4.1vw;
-    img {
-      position: absolute;
-      width: 10vw;
-      bottom: 2.3vw;
-      left: 2vw;
+    color: black;
+    ion-icon {
+      margin: 0 !important;
+    }
+    ion-label {
+      margin: 0 !important;
+    }
+    ion-input{
+      font-size: 2.70vw;
+    }
+    .list-md .item-input:last-child {
+      border-bottom: 0 !important;
+    }
+    .list-md .item-block .item-inner {
+      border-bottom: 1px solid #dedede !important;
+    }
+    .col[offset-2] {
+      margin-left: 22.33333% !important;
+    }
+    button{
+      width: 100%;
+      background-color: map-get($colors,signinButton );
+      box-shadow:  0vw 0.8vw map-get($colors ,shadow )
     }
   }
 }
