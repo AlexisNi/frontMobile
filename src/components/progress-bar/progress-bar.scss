@@ -12,31 +12,31 @@ progress-bar {
     filter: blur(5px);
   }
   #cont {
-    background: url('../assets/images/eclipse.png') no-repeat center center fixed;
+    background: url('../assets/images/eclipse.png') no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     display: block;
-    height: 200px;
-    width: 200px;
+    height: 210px;
+    width: 210px;
     margin: 2em auto;
-    box-shadow: 0 0 1em black;
+    //box-shadow: 0 0 1em #669933;
     border-radius: 100%;
     position: relative;
   }
   #cont:after {
     position: absolute;
     display: block;
-    height: 160px;
-    width: 160px;
-    left: 50%;
-    top: 50%;
+    height: 194px;
+    width: 194px;
+    left: 44%;
+    top: 46%;
     box-shadow: inset 0 0 1em black;
     content: attr(level);
-    margin-top: -80px;
-    margin-left: -80px;
+    margin-top: -88px;
+    margin-left: -84px;
     border-radius: 100%;
-    line-height: 160px;
+    line-height: 194px;
     font-size: 2em;
     text-shadow: 0 0 0.5em black;
   }
