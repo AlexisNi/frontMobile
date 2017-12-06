@@ -1,7 +1,4 @@
 // http://ionicframework.com/docs/v2/theming/
-form {
-  background-color: greenyellow;
-}
 
 @font-face {
   font-family: Play;
@@ -36,6 +33,9 @@ ion-icon {
 /*        width: 16vw;
 */  }
 
+}
+ion-navbar{
+  border-bottom: solid map-get($colors,secondary ) 0.4vw;
 }
 
 // App Global Sass

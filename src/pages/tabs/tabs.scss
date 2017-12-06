@@ -1,9 +1,13 @@
 page-tabs {
+  .tabbar .show-tabbar {}
   .tabs .tabbar {
-    background: #231f20;
+    background: #000000;
+    margin-top: 0.5vw;
   }
   .tabs .tab-button {
-    border: 1px ridge #382F2E;
+    border: 0;
+    border-top: groove #79ab42 0.1vw;
+    border-bottom: solid map-get($colors, secondary) 0.4vw;
   }
   .tabs .tab-button[aria-selected=true] {
     color: lighten(#B4B4B4, 20%);
@@ -17,7 +21,7 @@ page-tabs {
   .tabs .tab-button[aria-selected=false] {
     color: darken(#878787, 20%);
     ion-icon {
-     color: darken(#878787, 20%) !important;
+      color: darken(#878787, 20%) !important;
     }
   }
 }

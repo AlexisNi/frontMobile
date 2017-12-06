@@ -86,12 +86,12 @@
                 <ion-label>
                   <ion-icon color="secondary" name="star" item-start></ion-icon>
                 </ion-label>
-                <ion-input placeholder="USERNAME" type="text"></ion-input>
+                <ion-input [(ngModel)]="email" placeholder="email" ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label>
                   <ion-icon color="secondary" name="star" item-start></ion-icon> </ion-label>
-                  <ion-input placeholder="PASSWORD" type="password"></ion-input>
+                  <ion-input  [(ngModel)]="password" placeholder="password" type="password"></ion-input>
               </ion-item>
             </ion-list>
           </ion-col>
@@ -99,7 +99,7 @@
 
         <ion-row>
           <ion-col col-7  offset-2 >
-           <button ion-button round>SIGN IN</button>
+           <button ion-button round (click)="signIn()" >SIGN IN</button>
           </ion-col>
         </ion-row>
 

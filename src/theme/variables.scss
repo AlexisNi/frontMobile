@@ -22,7 +22,7 @@ $colors: (
     light: #f4f4f4,
     dark: #222, 
     questions:#8dc63f, 
-    navBar:#231f20,
+    navBar:#000000,
     signinButton:#5d983d,
     shadow:#4c7733);
 // App iOS Variables
@@ -49,10 +49,6 @@ $colors: (
 $background-ios-color: #231f20;
 $background-md-color: #231f20;
 $background-wp-color: #231f20;
-$outer-content-md-background-color:greenyellow;
-$card-ios-background-color: #32db64;
-$card-md-background-color: #32db64;
-$card-wp-background-color: #32db64;
 $text-input-md-show-focus-highlight:false;
 // Fonts
 // --------------------------------------------------

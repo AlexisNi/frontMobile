@@ -1,4 +1,22 @@
 page-my-profile {
+  ion-header {
+    background: url('../assets/images/login/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  .scroll-content {
+    overflow: hidden !important;
+  }
+  .scroll-content {
+    padding: 0 !important;
+  }
+  ion-content {
+    background: url('../assets/images/login/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
   ion-col {
     h2 {
       position: absolute;
@@ -287,5 +305,4 @@ page-my-profile {
     -webkit-transition-delay: 0.15s;
     transition-delay: 0.15s;
   }
-
 }

@@ -29,6 +29,7 @@ export class SigninPage implements OnInit, OnDestroy {
   IsPlayerAlreadyOnSocketList: Subscription;
   public backgroundImage = 'assets/images/login/SIMA.png';
   public triangle ='assets/images/login/triangle.png';
+  
   ngOnDestroy(): void {
     this.firebaseService.chechUnsubscribe();
   }
