@@ -5,23 +5,27 @@
   for more info on Angular 2 Components.
 -->
 <ion-row>
-  <ion-col col-2 class="levelCol">
-    <div class="levelContainer">
-      <p>
-        {{level}}lvl
-      </p>
-    </div>
-  </ion-col>
-  <ion-col class="progressCol">
+  <ion-col col-12 class="svg-container">
 
-    <div class="progress">
-      <p class="exp" text-center>{{currentExp}}/{{experienceNextLevel}}</p>
-      <div class="progress-outer" text-center>
-        <p class="level"></p>
-        <div class="progress-inner" [style.width]="progress + '%'">
-          {{progress}}
-        </div>
-      </div>
+    <div id="cont" level="1">
+      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%" filterUnits="userSpaceOnUse">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+            <!-- stdDeviation is how much to blur -->
+            <feOffset dx="5" dy="5" result="offsetblur" />
+            <feOffset dx="-5" dy="-5" result="offsetblur" />
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <circle  r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+        <circle  id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+      </svg>
     </div>
   </ion-col>
 

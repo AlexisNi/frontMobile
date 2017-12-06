@@ -17,6 +17,32 @@ page-my-profile {
     -moz-background-size: cover;
     background-size: cover;
   }
+  .statistics {
+    position: relative;
+    margin-top: 1vw;
+    border-top: groove map-get($colors, secondary) 0.1vw;
+    padding: 1%;
+    height: 50%;
+    img {
+      position: absolute;
+      width: 10vw;
+      top: -0.43vw;
+      left: 19vw;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      z-index: 10000000;
+    }
+    .progressBarContainer {
+      color: white;
+      position: relative;
+      .progressBarWrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
   ion-col {
     h2 {
       position: absolute;
@@ -75,53 +101,6 @@ page-my-profile {
   .playButton p {
     transform: skew(40deg);
     font-weight: bold;
-  }
-  .statistics {
-    background-image: url("../assets/images/field_graphic.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    padding: 1%;
-    height: 50%;
-    div {
-      height: 100%;
-      min-height: 10%;
-      max-height: 100%;
-      margin-top: 10px;
-      width: 90%;
-      background-color: rgba(255, 255, 255, 0.1);
-      position: absolute;
-      bottom: 0px;
-      border: 0;
-      border-radius: 1px;
-      box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.1);
-      letter-spacing: 1.5px;
-      p {
-        /* Chrome10-25,Safari5.1-6 */
-        position: absolute;
-        bottom: -8px;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 4vw;
-      }
-    }
-    .wins {
-      margin-left: 5px;
-      p {
-        left: 31%;
-      }
-    }
-    .draws {
-      margin-left: 2.5px;
-      p {
-        left: 15%;
-      }
-    }
-    .loses {
-      margin-right: 10px;
-      p {
-        left: 31%;
-      }
-    }
   }
   /* @media screen and (max-width: 320px) {
     .playButton {

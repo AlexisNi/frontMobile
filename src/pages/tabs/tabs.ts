@@ -30,6 +30,7 @@ export class TabsPage implements OnDestroy {
   arenaPage = 'MyArenasPage';
   rewardPage = 'RewardPage';
 
+
   allArenasSubscription: Subscription;
   connectSubscription: Subscription;
   oneArenaSubsription: Subscription;

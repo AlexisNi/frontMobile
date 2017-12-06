@@ -86,7 +86,7 @@ page-signin {
     ion-label {
       margin: 0 !important;
     }
-    ion-input{
+    ion-input {
       font-size: 2.70vw;
     }
     .list-md .item-input:last-child {
@@ -98,10 +98,10 @@ page-signin {
     .col[offset-2] {
       margin-left: 22.33333% !important;
     }
-    button{
+    button {
       width: 100%;
-      background-color: map-get($colors,signinButton );
-      box-shadow:  0vw 0.8vw map-get($colors ,shadow )
+      background-color: map-get($colors, signinButton);
+      box-shadow: 0vw 0.8vw map-get($colors, shadow)
     }
   }
 }

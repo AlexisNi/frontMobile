@@ -46,10 +46,11 @@ $colors: (
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 @import "ionic.ionicons";
-$background-ios-color: #231f20;
-$background-md-color: #231f20;
-$background-wp-color: #231f20;
+$background-ios-color: #000000;
+$background-md-color: #000000;
+$background-wp-color: #000000;
 $text-input-md-show-focus-highlight:false;
+$tabs-md-tab-min-height:4.0rem;
 // Fonts
 // --------------------------------------------------
 @import "roboto";

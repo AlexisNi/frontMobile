@@ -47,6 +47,8 @@ export class MyProfilePage {
   sDraws;
   username = '';
   openMenu = false;
+  public triangle = 'assets/images/login/triangle.png';
+
 
 
   ngOnInit(): void {
@@ -208,7 +210,7 @@ export class MyProfilePage {
   }
 
 
- 
+
 
   choosePlayer(userFound = undefined) {
     let modal = this.modalCtrl.create(this.findPlayerPage, { userFound: userFound });
