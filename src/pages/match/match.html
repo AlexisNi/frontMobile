@@ -5,14 +5,20 @@
   Ionic pages and navigation.
 -->
 
-<ion-header>
+<!--<ion-header>
   <ion-navbar hideBackButton [color]="'navBar'">
     <ion-title text-center>ΕΡΩΤΗΣΗ{{index+1}}</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
-  
+
+  <ion-row justify-content-center text-center class="headerRow">
+    <ion-col text-center class="headerContainer">
+      <p> ΕΡΩΤΗΣΗ{{index+1}} </p>
+    </ion-col>
+  </ion-row>
+
   <ion-row class="questionRow">
     <ion-col class="questionContainer">
       <p>Ποίος απο τους παρακάτω Βραζιλιάνους έχει αγωνιστεί στη Real Madrid ποίος απο τους παρακάτω Βραζιλιάνους έχει αγωνιστεί
@@ -21,13 +27,15 @@
   </ion-row>
 
   <ion-row class="helperRow">
-    <ion-col col-3 class="timerContainer">
+    <ion-col col-4 class="timerContainer">
       <ion-row class="timerIconContainer">
-        <ion-col class="timerIcon">HERE IS ICON </ion-col>
+        <ion-col class="timerIcon">ICON </ion-col>
       </ion-row>
       <ion-row class="timerContainer">
         <ion-col class="timer">
-          here is timer
+          <p>
+            00:20
+          </p>
         </ion-col>
       </ion-row>
     </ion-col>

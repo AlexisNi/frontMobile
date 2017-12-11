@@ -18,8 +18,22 @@ page-match {
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
   }
-  .toolbar-title {
-    font-size: 1.9vh !important;
+  .col {
+    padding: 0;
+  }
+  .headerRow {
+    color: white;
+    padding: 0;
+    border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+    .headerContainer {
+      padding: 0;
+      padding-top: 4vw;
+      padding-bottom: 4vw;
+      p {
+        margin: 0;
+        font-size: 1.9vh !important;
+      }
+    }
   }
   .questionRow {
     padding: 0;
@@ -40,11 +54,31 @@ page-match {
     }
   }
   .helperRow {
-    padding: 0;
-    margin-top:0.5vw;
+    height: 21vw;
+    margin-top: 0.5vw;
     color: white;
     border-top: groove rgba(121, 171, 66, 0.8) 0.1vw;
     border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+    .timerContainer {
+      padding: 0;
+      .timerIconContainer {
+        position: relative;
+        .timerIcon {
+          position: absolute;
+          top: -3vw;
+          font-size: 5vw;
+          left: 14vw;
+        }
+      }
+    }
+    .timer {
+      p {
+        font-family: HIGHSPEED;
+        font-size: 8vw;
+        margin-left: 8vw;
+        margin-top: 7vw;
+      }
+    }
   }
   /*  button {
     width: 70vw;
