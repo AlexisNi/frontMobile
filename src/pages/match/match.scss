@@ -1,4 +1,10 @@
 page-match {
+  ion-content {
+    background: url('../assets/images/login/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
   .scroll-content {
     left: 0;
     right: 0;
@@ -12,10 +18,35 @@ page-match {
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
   }
-
-
-
-  button {
+  .toolbar-title {
+    font-size: 1.9vh !important;
+  }
+  .questionRow {
+    padding: 0;
+    margin-top: 0.5vw;
+    color: white;
+    border-top: groove rgba(121, 171, 66, 0.8) 0.1vw;
+    border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+    .questionContainer {
+      margin-left: 8vw;
+      margin-right: 8vw;
+      padding: 0;
+      margin-top: 5vw;
+      margin-bottom: 10vw;
+      p {
+        margin: 0;
+        font-size: 3.5vw;
+      }
+    }
+  }
+  .helperRow {
+    padding: 0;
+    margin-top:0.5vw;
+    color: white;
+    border-top: groove rgba(121, 171, 66, 0.8) 0.1vw;
+    border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+  }
+  /*  button {
     width: 70vw;
     height: 4.5vw;
     background-color: #231f20;
@@ -23,8 +54,6 @@ page-match {
     font-size: 2vh;
     margin: 0.3vh;
   }
-
-
   .intializeButton {
     display: inline-block;
     position: relative;
@@ -56,7 +85,6 @@ page-match {
     box-shadow: 1px;
     border: 0.7vh solid red;
   }
-
   .rightButton {
     display: inline-block;
     position: relative;
@@ -68,7 +96,6 @@ page-match {
     box-shadow: 1px;
     border: 0.7vh solid green;
   }
-
   button:disabled {
     display: inline-block;
     position: relative;
@@ -140,7 +167,6 @@ page-match {
       font-size: 2.5vh;
       font-weight: BOLD;
       margin: 0;
-      /*    margin-left: 3vw;*/
     }
     ion-row:nth-child(1) {
       margin-top: 4vh;
@@ -162,5 +188,5 @@ page-match {
     position: absolute;
     left: 0vh;
     bottom: 0vh;
-  }
+  }*/
 }

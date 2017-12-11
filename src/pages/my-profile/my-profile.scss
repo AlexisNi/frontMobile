@@ -17,10 +17,11 @@ page-my-profile {
     -moz-background-size: cover;
     background-size: cover;
   }
+  
   .levelProgress {
     position: relative;
     margin-top: 1vw;
-    border-top: groove map-get($colors, secondary) 0.1vw;
+    border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
     padding: 1%;
     height: 50%;
     img {

@@ -117,6 +117,9 @@ export class MyProfilePage {
     this.experienceNextLevel = 300 * stats.level;
     this.percentage = (this.currentExp / this.experienceNextLevel) * 100;
   }
+  play(){
+     this.appCtrl.getRootNav().push('MatchPage', { });
+  }
 
   findUser(userName) {
     this.showLoader();
