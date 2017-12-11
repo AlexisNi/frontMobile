@@ -17,16 +17,16 @@
       <img [src]="triangle">
     </div>
     <ion-col class="progressBarContainer">
-        <ion-row class="progressBarRow">
-          <ion-col class="progressBarInsider" width-50 offset-25>
-            <progress-bar [currentExp]="currentExp" [experienceNextLevel]="experienceNextLevel" [progress]="percentage" [level]="level"></progress-bar>
-            <div class="upLine"></div>
-            <div class="leftLine"></div>
-            <div class="rightLine"> </div>
-            <div class="downLine"> </div>
-            
-          </ion-col>
-        </ion-row>
+      <ion-row class="progressBarRow">
+        <ion-col class="progressBarInsider" width-50 offset-25>
+          <progress-bar [currentExp]="currentExp" [experienceNextLevel]="experienceNextLevel" [progress]="percentage" [level]="level"></progress-bar>
+          <div class="upLine"></div>
+          <div class="leftLine"></div>
+          <div class="rightLine"> </div>
+          <div class="downLine"> </div>
+
+        </ion-col>
+      </ion-row>
     </ion-col>
 
     <!-- <ion-col>
@@ -65,7 +65,7 @@
       </ion-row>
       <ion-row>
         <ion-col class="percentage" text-center>
-          <p> 28%</p>
+          <p> {{sWins|number:'1.1'}}%</p>
 
         </ion-col>
       </ion-row>
@@ -79,7 +79,7 @@
       </ion-row>
       <ion-row>
         <ion-col class="percentage" text-center>
-          <p>28%</p>
+          <p> {{sDraws|number:'1.1' }}%</p>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -92,7 +92,7 @@
       </ion-row>
       <ion-row>
         <ion-col class="percentage" text-center>
-          <p> 28%</p>
+          <p>   {{sLoses |number:'1.1'}}%</p>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -110,7 +110,7 @@
 
   <ion-row style="margin-top: 5vh;" justify-content-center text-center class="userNameOpp">
     <ion-col>
-          <button class="btn"  (click)="play()" >
+      <button class="btn" (click)="choosePlayer()">
              <span><div  class="word-container">
                    <p>BΡΕΣ ΑΝΤΙΠΑΛΟ  </p>
                    <p>ME TO USERNAME</p></div>
@@ -119,8 +119,8 @@
     </ion-col>
   </ion-row>
   <ion-row style="margin-top: 1vh;" justify-content-center text-center class="userNameOpp">
-   <ion-col>
-          <button class="btn">
+    <ion-col>
+      <button class="btn" (click)="findRandom()">
              <span><div  class="word-container">
                    <p>ΠΑΙΞΕ ΜΕ ΤΥΧΑΙΟ   </p>
                    <p>ΑΝΤΙΠΑΛΟ</p></div>

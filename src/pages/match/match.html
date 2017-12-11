@@ -21,8 +21,7 @@
 
   <ion-row class="questionRow">
     <ion-col class="questionContainer">
-      <p>Ποίος απο τους παρακάτω Βραζιλιάνους έχει αγωνιστεί στη Real Madrid ποίος απο τους παρακάτω Βραζιλιάνους έχει αγωνιστεί
-        στη Real Madrid ποίος απο τους παρακάτω;</p>
+      <p> {{arenaQuestions[index]?.question}} </p>
     </ion-col>
   </ion-row>
 
@@ -80,9 +79,9 @@
   <div class="answerRow">
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline (click)="play()">
+        <button ion-button round outline >
              <span><div  class="word-container">
-                   <p>CRIS  </p>
+                   <p>{{arenaQuestions[index]?.optiona}}   </p>
                   </div>
              </span>
           </button>
@@ -91,9 +90,9 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline (click)="play()">
+        <button ion-button round outline >
              <span><div  class="word-container">
-                   <p>CRIS  </p>
+                   <p>{{arenaQuestions[index]?.optionb}}  </p>
                   </div>
              </span>
           </button>
@@ -102,9 +101,9 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline (click)="play()">
+        <button ion-button round outline >
              <span><div  class="word-container">
-                   <p>CRIS  </p>
+                   <p>{{arenaQuestions[index]?.optionc}}  </p>
                   </div>
              </span>
           </button>
@@ -113,9 +112,9 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline (click)="play()">
+        <button ion-button round outline >
              <span><div  class="word-container">
-                   <p>CRIS  </p>
+                   <p>{{arenaQuestions[index]?.optiond}}  </p>
                   </div>
              </span>
           </button>
