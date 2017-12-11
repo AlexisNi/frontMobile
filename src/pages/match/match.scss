@@ -37,9 +37,9 @@ page-match {
   }
   .questionRow {
     padding: 0;
-    margin-top: 0.5vw;
+    margin-top: 0.7vw;
     color: white;
-    border-top: groove rgba(121, 171, 66, 0.8) 0.1vw;
+    border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
     .questionContainer {
       margin-left: 8vw;
@@ -55,9 +55,9 @@ page-match {
   }
   .helperRow {
     height: 21vw;
-    margin-top: 0.5vw;
+    margin-top: 0.7vw;
     color: white;
-    border-top: groove rgba(121, 171, 66, 0.8) 0.1vw;
+    border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
     .timerContainer {
       padding: 0;
@@ -74,9 +74,29 @@ page-match {
     .timer {
       p {
         font-family: HIGHSPEED;
-        font-size: 8vw;
+        font-size: 6.5vw;
         margin-left: 8vw;
-        margin-top: 7vw;
+        margin-top: 8vw;
+      }
+    }
+    .helpContainer {
+      margin-left: 5vw;
+      .helpIconContainer {
+        position: relative;
+        .helpIcon {
+          position: absolute;
+          top: -3vw;
+          font-size: 5vw;
+          left: 0vw;
+        }
+      }
+    }
+    .helpTextContainer {
+      .help {
+        p {
+          font-size: 2.4vw;
+          margin-top: 11vw;
+        }
       }
     }
   }
