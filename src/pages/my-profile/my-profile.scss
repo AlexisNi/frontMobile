@@ -17,7 +17,7 @@ page-my-profile {
     -moz-background-size: cover;
     background-size: cover;
   }
-  .statistics {
+  .levelProgress {
     position: relative;
     margin-top: 1vw;
     border-top: groove map-get($colors, secondary) 0.1vw;
@@ -42,7 +42,121 @@ page-my-profile {
         transform: translate(-50%, -50%);
       }
     }
+    .progressBarInsider {
+      position: relative;
+    }
+    .upLine {
+      position: absolute;
+      width: 1vw;
+      height: 4vw;
+      border-left: 1px solid white;
+      top: 5vw;
+      left: 50%;
+      opacity: 0.5;
+    }
+    .leftLine {
+      position: absolute;
+      width: 4vw;
+      height: 1vh;
+      border-bottom: 1px solid white;
+      top: 50%;
+      left: 11vw;
+      opacity: 0.5;
+    }
+    .downLine {
+      position: absolute;
+      width: 1vw;
+      height: 4vw;
+      border-left: 1px solid white;
+      bottom: 5vw;
+      left: 50%;
+      opacity: 0.5;
+    }
+    .rightLine {
+      position: absolute;
+      width: 4vw;
+      height: 1vh;
+      border-bottom: 1px solid white;
+      top: 50%;
+      right: 11vw;
+      opacity: 0.5;
+    }
   }
+  .statistics {
+    margin-top: 6vw;
+    color: white;
+    position: relative;
+    .statsContainer {
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .userNameOpp {
+    ion-col {
+      padding: 0;
+    }
+    button {
+      margin: 0;
+      background-color: transparent;
+      width: 50vw;
+      position: relative;
+/*      background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+*/      .button-inner {
+        position: relative;
+        display: block !important;
+      }
+      .word-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      p {
+        margin: 0;
+        font-size: 1.5vh;
+        color: white;
+      }
+    }
+  }
+  .btn {
+    background-image: linear-gradient(to right,map-get($colors , secondary ) 50%, white 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #00a84f;
+    font: 1.125rem 'Oswald', Arial, sans-serif;
+    /*18*/
+    height: 6.5vh;
+    padding-top: 0.2vw;
+    padding-bottom: 0.2vw;
+    padding-left: 0.3vw;
+    padding-right: 0.2vw;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 264px;
+    z-index: 2;
+  }
+  .btn span {
+    position: relative;
+    background: black;
+    border-radius: 40px;
+    display: block;
+    height: 100%;
+    transition: background .5s ease;
+    width: 100%;
+    .word-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    p {
+      margin: 0;
+      font-size: 1.5vh;
+      color: white;
+    }
+  } //OLD CODE WILL BE DELETED IN FUTURE 
   ion-col {
     h2 {
       position: absolute;
@@ -84,9 +198,7 @@ page-my-profile {
     overflow-x: hidden;
     overflow-y: hidden;
   }
-  .progressBarRow {
-    padding-top: 5%;
-  }
+  .progressBarRow {}
   .buttonRow {
     padding-top: 15px;
   }

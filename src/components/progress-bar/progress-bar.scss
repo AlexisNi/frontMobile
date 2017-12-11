@@ -8,7 +8,7 @@ progress-bar {
   }
   #svg #bar {
     stroke: map-get($colors, secondary);
-    stroke-dashoffset: 282.743px;
+    stroke-dashoffset: 350;
     filter: blur(5px);
   }
   #cont {
@@ -40,7 +40,10 @@ progress-bar {
     font-size: 2em;
     text-shadow: 0 0 0.5em black;
   }
-  .progressCol {
+
+
+
+/*  .progressCol {
     padding: 0px;
   }
   .col-2 {
@@ -92,5 +95,5 @@ progress-bar {
         font-weight: 700;
       }
     }
-  }
+  }*/
 }

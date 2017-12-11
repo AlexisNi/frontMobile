@@ -1,48 +1,42 @@
-<!--
-  Generated template for the ProgressBar component.
-
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
 <ion-row>
   <ion-col col-12 class="svg-container">
 
     <div id="cont" level="1">
-      <!--<svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">-->
-        <!--<defs>-->
-          <!--<filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%" filterUnits="userSpaceOnUse">-->
-            <!--<feGaussianBlur in="SourceAlpha" stdDeviation="5" />-->
-            <!--&lt;!&ndash; stdDeviation is how much to blur &ndash;&gt;-->
-            <!--<feOffset dx="5" dy="5" result="offsetblur" />-->
-            <!--<feOffset dx="-5" dy="-5" result="offsetblur" />-->
-            <!--<feMerge>-->
-              <!--<feMergeNode/>-->
-              <!--<feMergeNode in="SourceGraphic" />-->
-              <!--<feMergeNode in="SourceGraphic" />-->
-            <!--</feMerge>-->
-          <!--</filter>-->
-        <!--</defs>-->
+<!--      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%" filterUnits="userSpaceOnUse">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+            <feOffset dx="5" dy="5" result="offsetblur" />
+            <feOffset dx="-5" dy="-5" result="offsetblur" />
+            <feMerge>
+              <feMergeNode/>
+              <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
 
-        <!--<circle  r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>-->
-        <!--<circle  id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>-->
-      <!--</svg>-->
-      <svg width="210" height="210">
+        <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+        <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+      </svg>-->
+      
+            <svg id="svg" width="210" height="210"  version="1.1" xmlns="http://www.w3.org/2000/svg">
         <circle
           fill="none"
           cx="50%" cy="50%" r="100"
           stroke="white" stroke-width="3"
         ></circle>
         <circle
+          id="bar"
           fill="transparent"
-          class='progress'
           style="filter:url(#dropshadow)"
           cx="50%" cy="50%" r="100"
-          stroke="#669933" stroke-width="3" stroke-dashoffset="650" stroke-dasharray="480" stroke-linecap="round"
-          transform="rotate(-90)" transform-origin="50% 50%">
+          stroke="#669933" stroke-width="3" stroke-dashoffset="700" stroke-dasharray="700" 
+          transform="rotate(85)" transform-origin="50% 50%">
         </circle>
         <defs>
           <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%" filterUnits="userSpaceOnUse">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="1"/> <!-- stdDeviation is how much to blur -->
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> 
             <feOffset dx="5" dy="5" result="offsetblur"/>
             <feOffset dx="-5" dy="-5" result="offsetblur"/>
             <feColorMatrix in="SourceGraphic"
