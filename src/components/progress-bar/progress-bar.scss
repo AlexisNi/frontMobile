@@ -1,10 +1,12 @@
 progress-bar {
-
   #svg circle {
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
-    stroke: white;
     stroke-width: 1vw;
+  }
+  #insideCircle {
+    opacity: 0.7;
+    stroke: white;
   }
   #svg #bar {
     stroke: map-get($colors, secondary);
@@ -19,8 +21,7 @@ progress-bar {
     display: block;
     height: 210px;
     width: 210px;
-    margin: 2em auto;
-    //box-shadow: 0 0 1em #669933;
+    margin: 2em auto; //box-shadow: 0 0 1em #669933;
     border-radius: 100%;
     position: relative;
   }
@@ -40,10 +41,7 @@ progress-bar {
     font-size: 2em;
     text-shadow: 0 0 0.5em black;
   }
-
-
-
-/*  .progressCol {
+  /*  .progressCol {
     padding: 0px;
   }
   .col-2 {

@@ -260,7 +260,7 @@ page-my-profile {
     top: 75px;
     left: 27px;
     margin-left: -20px;
-    background-color: rgba(black, 0.9);
+    background-color: transparent;
     border-radius: 50%;
     z-index: 101;
     -webkit-transition: all 0.25s ease-in-out;
@@ -268,7 +268,7 @@ page-my-profile {
   }
   .popup-menu-toggle:before {
     position: absolute;
-    content: '\f10a';
+    content: '';
     font-family: "Ionicons";
     width: 40px;
     height: 40px;
@@ -305,7 +305,7 @@ page-my-profile {
     width: 44vw;
     height: 62vh;
     border-radius: 1vw;
-    top: 45px;
+    top:13vh;
     margin-left: 0vw;
     padding: 0px 1vw;
     background-color: rgba(0, 0, 0, 0.8);

@@ -135,16 +135,16 @@ export class PlayWithChosenUserPage {
     const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
     this.startPageService.createArena(arenaPlayer)
       .subscribe(data => {
-        let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
+      /*  let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
         modal.onDidDismiss(data => {
           if (data != null) {
             console.log('dissmiss');
            
           }
         });
-        modal.present();
+        modal.present();*/
 
-        /* this.appCtrl.getRootNav().push('MatchPage', { arena: data });*/
+         this.appCtrl.getRootNav().push('MatchPage', { arena: data });
       }, err => { this.presentAlert(err.message); console.log(err) });
   }
 }

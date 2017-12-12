@@ -6,8 +6,14 @@
 -->
 <ion-header>
   <ion-navbar [color]="'navBar'">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="togglePopupMenu()">
+        <ion-icon color="secondary" name="apps"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title text-center>{{username}}ΤHOMAS</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
@@ -92,7 +98,7 @@
       </ion-row>
       <ion-row>
         <ion-col class="percentage" text-center>
-          <p>   {{sLoses |number:'1.1'}}%</p>
+          <p> {{sLoses |number:'1.1'}}%</p>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -146,7 +152,7 @@
     </ion-col>
   </ion-row>-->
 
-  <!--  <div class="popup-menu">
+  <div class="popup-menu">
     <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}" (click)="togglePopupMenu()"></div>
     <div class="popup-menu-toggle" (click)="togglePopupMenu()" [ngClass]="{'out': openMenu}"></div>
     <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
@@ -167,5 +173,5 @@
         <span>Logout</span>
       </div>
     </div>
-  </div>-->
+  </div>
 </ion-content>

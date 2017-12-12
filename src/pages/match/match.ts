@@ -54,13 +54,13 @@ export class MatchPage implements OnDestroy {
     public appCtrl: App) { }
 
   ionViewDidLoad() {
-   /* this.arena = this.navParams.get('arena');
+    this.arena = this.navParams.get('arena');
     this.userId = this.firebasaService.userId;
     this.getQuestions();
     this.getInviteId();
     this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
     this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
-*/
+
   }
   getQuestions() {
     this.showLoader();
