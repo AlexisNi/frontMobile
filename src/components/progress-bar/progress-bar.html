@@ -27,14 +27,15 @@
           </filter>
 
           <marker id='dot' viewBox='0 0 10 10' markerHeight='10' markerWidth='10' refX='5' refY='5'>
-            <circle cx='5' cy='5' r='1.7' fill="#79ab42" stroke-width="1" />
+            <circle cx='5' cy='5' r='5' fill="#79ab42" stroke-width="1" />
           </marker>
         </defs>
 
         <circle cx='105' cy='105' r='100' fill="transparent" stroke-width="5" stroke="white" />
-        <path   [attr.d]="arc1" stroke="#79ab42"  style="filter:url(#dropshadow)" fill="none" stroke-width="5" />
-        <path [attr.d]="arc2"  style="filter:url(#dropshadow)" marker-start='url(#dot)' fill="none" stroke-width="3" />
-
+       <path  [attr.d]="arc1" stroke="#79ab42" style="filter:url(#dropshadow)" fill="none" stroke-width="5" />
+       <path [attr.d]="arc2"   style="filter:url(#dropshadow)" marker-start='url(#dot)' fill="none" stroke-width="1" />
+       
+       
       </svg>
       <!--      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>

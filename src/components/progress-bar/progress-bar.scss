@@ -1,6 +1,6 @@
 progress-bar {
   #svg circle {
-    stroke-dashoffset: 0;
+  stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
     stroke-width: 1vw;
   }
@@ -32,7 +32,6 @@ progress-bar {
     width: 194px;
     left: 44%;
     top: 46%;
-    box-shadow: inset 0 0 1em black;
     content: attr(level);
     margin-top: -88px;
     margin-left: -84px;

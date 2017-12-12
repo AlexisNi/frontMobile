@@ -14,17 +14,21 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   /*  @ViewChild('arc1') acr1: ElementRef;
     @ViewChild('arc2') arc2: ElementRef;*/
 
-  arc1 :any;
-  arc2 :any;
+  arc1: any;
+  arc2: any;
+
+ @Input() x;
+ @Input() y;
+ @Input() cx;
+ @Input() cy;
+  r = 100;
 
   ngAfterViewInit(): void {
-    setTimeout(()=>{
-      this.arc1=this.describeArc(105, 105, 100, 0, 200)
-      this.arc2=this.describeArc(105, 105, 100, 0, 200)
+    setTimeout(() => {
+      this.arc1 = this.describeArc(105, 105, 100, 0, 200)
+      this.arc2 = this.describeArc(105, 105, 100, 0, 200)
+    
     })
-    /*   */
-
-
   }
 
   @Input('progress') progress;
@@ -66,5 +70,6 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
 
     return d;
   }
+
 
 }
