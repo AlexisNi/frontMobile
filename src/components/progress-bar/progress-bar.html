@@ -1,7 +1,7 @@
 <ion-row>
   <ion-col col-12 class="svg-container">
     <div id="cont" level="1">
-      <svg id="svg" width="400" height="400" >
+      <svg id="svg" width="400" height="400">
         <defs>
           <filter id="dropshadow" height="130%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
@@ -28,9 +28,15 @@
           </marker>
         </defs>
         <circle #circle cx='29vw' cy='30vw' r='28.5vw' fill="transparent" stroke-width="5" stroke="white" />
-       <path  [attr.d]="arc1" stroke="#79ab42" style="filter:url(#dropshadow)" fill="none" stroke-width="5" />
-       <path [attr.d]="arc2"   style="filter:url(#dropshadow)" marker-start='url(#dot)' fill="none" stroke-width="1" />
+
+        <path [attr.d]="arc1" stroke="#79ab42" style="filter:url(#dropshadow)" fill="none" stroke-width="5" />
+        <path [attr.d]="arc2" style="filter:url(#dropshadow)" marker-start='url(#dot)' fill="none" stroke-width="1" />
+
       </svg>
+      <div class="textSvg">
+        2
+      </div>
+
       <!--      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%" filterUnits="userSpaceOnUse">

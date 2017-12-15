@@ -1,8 +1,7 @@
   page-my-profile {
     ion-header {
-      background: url('../assets/images/login/background.png') no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
+/*      background-image: url('../assets/images/login/background.png');
+*/      background-repeat: no-repeat;
       background-size: cover;
     }
     .scroll-content {
@@ -12,17 +11,14 @@
       padding: 0 !important;
     }
     ion-content {
-      background: url('../assets/images/login/background.png') no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
+/*     background-image: url('../assets/images/login/background.png');
+*/      background-repeat: no-repeat;
       background-size: cover;
     }
     .levelProgress {
       position: relative;
       margin-top: 1vw;
       border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
-      /*    padding: 1%;
-*/
       height: 50%;
       .col {
         padding: 0;
@@ -101,12 +97,12 @@
     }
     @media only screen and (max-width: 413px) and (min-width: 411px) {
       .statistics {
-        margin-top: 13vw !important;;
+        margin-top: 13vw !important;
       }
     }
     .userNameOpp {
       ion-col {
-        padding: 0;
+        padding: 1px !important
       }
       button {
         margin: 0;
@@ -128,20 +124,15 @@
     }
     .btn {
       background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-      border-radius: 40px;
+      border-radius: 19vw;
       box-sizing: border-box;
       color: #00a84f;
-      font: 1.125rem 'Oswald', Arial, sans-serif;
-      /*18*/
       height: 6.5vh;
-      padding-top: 0.2vw;
-      padding-bottom: 0.2vw;
       padding-left: 0.3vw;
       padding-right: 0.2vw;
       position: relative;
       text-decoration: none;
       text-transform: uppercase;
-      width: 264px;
       z-index: 2;
     }
     .btn span {
@@ -149,7 +140,7 @@
       background: black;
       border-radius: 19vw;
       display: block;
-      height: 100%;
+      height: 99%;
       transition: background .5s ease;
       width: 100%;
       .word-container {
@@ -163,74 +154,7 @@
         font-size: 1.5vh;
         color: white;
       }
-    } //OLD CODE WILL BE DELETED IN FUTURE 
-    ion-col {
-      h2 {
-        position: absolute;
-        top: 44%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        font-size: 5.9vw;
-        color: white;
-      }
     }
-    .headerRow {
-      background-color: #231f20;
-      min-height: 56px;
-      display: flex;
-      height: 100%;
-    }
-    .quizHeader h2 {
-      font-size: 2rem;
-      color: #E6E7E8;
-    }
-    .main {
-      height: 100%;
-      width: 100%;
-    }
-    .logoRow {
-      padding: 60px;
-    }
-    .item ion-avatar img {
-      width: 116px;
-      height: 93px;
-      background-color: gray;
-    }
-    .teamName h2 {
-      color: #E6E7E8;
-      font-size: 2vh;
-    }
-    ion-content .scroll-content {
-      overflow-x: hidden;
-      overflow-y: hidden;
-    }
-    .progressBarRow {}
-    .buttonRow {
-      padding-top: 15px;
-    }
-    .playButton {
-      background-color: white;
-      position: relative;
-      transform: skew(-40deg);
-      width: 100%;
-      max-width: 80%;
-      box-shadow: 9px 9px 4px rgba(255, 255, 255, 0.1);
-    }
-    .playButton p {
-      transform: skew(40deg);
-      font-weight: bold;
-    }
-    /* @media screen and (max-width: 320px) {
-    .playButton {
-      max-width: 70%;
-      height:50px;
-      flex: 100%;
-       p {
-        font-size: 15px;
-      }
-    }
-  }*/
     ion-badge {
       right: calc(50% - 30px) !important;
       top: -5px;
@@ -351,10 +275,6 @@
       display: flex;
       -webkit-box-direction: normal;
       -webkit-box-orient: vertical;
-      /*    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;*/
       -webkit-transform: scale(0);
       transform: scale(0);
       opacity: 0;

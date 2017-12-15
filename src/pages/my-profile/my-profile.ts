@@ -48,6 +48,8 @@ export class MyProfilePage {
   username = '';
   openMenu = false;
   public triangle = 'assets/images/login/triangle.png';
+  public bacgroundImage = 'assets/images/login/background.png';
+  
 
 
 
@@ -85,7 +87,6 @@ export class MyProfilePage {
       })
   }
   setStats(stats) {
-
     this.level = stats.level;
     this.wins = stats.wins;
     this.loses = stats.loses;
@@ -117,62 +118,8 @@ export class MyProfilePage {
     this.experienceNextLevel = 300 * stats.level;
     this.percentage = (this.currentExp / this.experienceNextLevel) * 100;
   }
-  play(){
-     this.appCtrl.getRootNav().push('MatchPage', { });
-  }
-
-  findUser(userName) {
-    this.showLoader();
-    this.startPageService.findUser({ username: userName }).then((result: UserFound) => {
-      this.loading.dismiss();
-      let alert = this.alertCtrl.create({
-        title: result.message,
-        message: result.userName,
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          },
-          {
-            text: 'Play with ' + userName,
-            handler: () => {
-              const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, result.inviteId);
-              this.startPageService.createArena(arenaPlayer)
-                .subscribe(data => {
-                  this.appCtrl.getRootNav().push('MatchPage', { arena: data });
-                }, err => { this.presentAlert(err.message); console.log(err) });
 
 
-
-            }
-          }
-        ]
-      });
-      alert.present();
-
-    }, (err) => {
-      this.loading.dismiss();
-      let alert = this.alertCtrl.create({
-        title: err.json().title,
-        message: err.json().message,
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          }
-        ]
-      });
-      alert.present();
-      console.log(err.json());
-    });
-
-  }
 
   findRandom() {
     this.showLoader();
