@@ -11,23 +11,23 @@ import { Component, Input, OnChanges, SimpleChange, AfterViewInit, ViewChild, El
   templateUrl: 'progress-bar.html'
 })
 export class ProgressBarComponent implements OnChanges, AfterViewInit {
-  /*  @ViewChild('arc1') acr1: ElementRef;
-    @ViewChild('arc2') arc2: ElementRef;*/
+  @ViewChild('circle') circle: ElementRef;
+
 
   arc1: any;
   arc2: any;
 
- @Input() x;
- @Input() y;
- @Input() cx;
- @Input() cy;
+  @Input() x;
+  @Input() y;
+  @Input() cx;
+  @Input() cy;
   r = 100;
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.arc1 = this.describeArc(105, 105, 100, 0, 200)
-      this.arc2 = this.describeArc(105, 105, 100, 0, 200)
-    
+      this.calucalteProgress();
+
+
     })
   }
 
@@ -45,6 +45,17 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       this.level = changes['level'].currentValue;
 
     }
+  }
+  calucalteProgress() {
+
+    console.log(this.circle.nativeElement.cx.animVal.value);
+    let radius = this.circle.nativeElement.getBoundingClientRect().height / 2;
+    this.cx=this.circle.nativeElement.cx.animVal.value;
+    this.cy=this.circle.nativeElement.cy.animVal.value;
+    
+    this.arc1 = this.describeArc(this.cx, this.cy, radius, 0, 200)
+    this.arc2 = this.describeArc(this.cx,  this.cy, radius, 0, 200)
+
   }
 
   polarToCartesian(centerX, centerY, radius, angleInDegrees) {

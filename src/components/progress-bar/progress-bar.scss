@@ -1,6 +1,9 @@
 progress-bar {
+  .col {
+    padding: 0;
+  }
   #svg circle {
-  stroke-dashoffset: 0;
+    stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
     stroke-width: 1vw;
   }
@@ -19,9 +22,9 @@ progress-bar {
     -moz-background-size: cover;
     background-size: cover;
     display: block;
-    height: 210px;
-    width: 210px;
-    margin: 2em auto; //box-shadow: 0 0 1em #669933;
+    height: 60vw;
+    width: 58vw;
+    margin: 9vw auto;
     border-radius: 100%;
     position: relative;
   }

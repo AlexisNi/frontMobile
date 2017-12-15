@@ -24,6 +24,9 @@ page-my-profile {
     border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
     padding: 1%;
     height: 50%;
+    .col{
+      padding: 0;
+    }
     img {
       position: absolute;
       width: 10vw;
@@ -51,7 +54,7 @@ page-my-profile {
       width: 1vw;
       height: 4vw;
       border-left: 1px solid white;
-      top: 5vw;
+      top: 2vw;
       left: 50%;
       opacity: 0.5;
     }
@@ -61,7 +64,7 @@ page-my-profile {
       height: 1vh;
       border-bottom: 1px solid white;
       top: 50%;
-      left: 11vw;
+      left: 13vw;
       opacity: 0.5;
     }
     .downLine {
@@ -69,7 +72,7 @@ page-my-profile {
       width: 1vw;
       height: 4vw;
       border-left: 1px solid white;
-      bottom: 5vw;
+      bottom: 2vw;
       left: 50%;
       opacity: 0.5;
     }
@@ -79,7 +82,7 @@ page-my-profile {
       height: 1vh;
       border-bottom: 1px solid white;
       top: 50%;
-      right: 11vw;
+      right: 13vw;
       opacity: 0.5;
     }
   }
@@ -136,7 +139,7 @@ page-my-profile {
   .btn span {
     position: relative;
     background: black;
-    border-radius: 40px;
+    border-radius:19vw;
     display: block;
     height: 100%;
     transition: background .5s ease;
