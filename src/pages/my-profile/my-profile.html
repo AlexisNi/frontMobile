@@ -17,7 +17,7 @@
 </ion-header>
 
 
-<ion-content [ngStyle]="{'background-image': 'url(' + bacgroundImage + ')'}" >
+<ion-content [ngClass]="{'bgImage':showBackGroundImage}" >
   <ion-row class="levelProgress" justify-content-center text-center>
     <div class="arrow">
       <img [src]="triangle">
@@ -87,7 +87,7 @@
 
   <ion-row style="margin-top: 5vh;" justify-content-center text-center class="userNameOpp">
     <ion-col>
-      <button class="btn" (click)="choosePlayer()">
+      <button class="btn" (click)="play()">
              <span><div  class="word-container">
                    <p>BΡΕΣ ΑΝΤΙΠΑΛΟ  </p>
                    <p>ME TO USERNAME</p></div>

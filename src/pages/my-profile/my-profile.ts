@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, AfterViewInit } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, App, ModalController, IonicPage } from 'ionic-angular';
 import { ArenaPlayers } from "../../models/arenaPlayers";
 import { Stats } from "../../models/stats";
@@ -23,7 +23,8 @@ import { UserFound } from "../../models/userFound";
   selector: 'page-my-profile',
   templateUrl: 'my-profile.html'
 })
-export class MyProfilePage {
+export class MyProfilePage implements AfterViewInit {
+
   firebaseService: any;
   public experienceNextLevel = 0;
   public currentExp = 0;
@@ -48,8 +49,9 @@ export class MyProfilePage {
   username = '';
   openMenu = false;
   public triangle = 'assets/images/login/triangle.png';
-  public bacgroundImage = 'assets/images/login/background.png';
-  
+  public bacgroundImage = '';
+  showBackGroundImage=false;
+
 
 
 
@@ -64,6 +66,15 @@ export class MyProfilePage {
     }
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      console.log()
+      this.bacgroundImage = 'assets/images/login/background.png';
+      this.showBackGroundImage=true;
+
+    },5000)
+
+  }
 
 
   constructor(public navCtrl: NavController,
@@ -157,6 +168,11 @@ export class MyProfilePage {
       buttons: ['Dismiss']
     });
     alert.present();
+  }
+
+
+  play() {
+    this.appCtrl.getRootNav().push('MatchPage', {});
   }
 
 

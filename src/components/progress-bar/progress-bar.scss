@@ -1,20 +1,4 @@
 progress-bar {
-  .textSvg {
-    position: absolute;
-    font-family: HIGHSPEED;
-    font-size: 20vw;
-    top: 45%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-  }
-  .textSvg::after {
-    content: 'LVL';
-    position: absolute;
-    font-size: 6vw;
-    font-family: Play;
-    top: -7vw;
-    left: 1vw;
-  }
   .col {
     padding: 0;
   }
@@ -60,57 +44,32 @@ progress-bar {
     font-size: 18vw;
     text-shadow: 0 0 0.5em black;
   }*/
-  /*  .progressCol {
-    padding: 0px;
-  }
-  .col-2 {
-    padding-bottom: 5px;
-  }
-  .progress {
-    position: relative;
-    .exp {
-      position: absolute;
-      z-index: 100;
-      left: 30%;
-      top: -10px;
-    }
-  }
-  .progress-outer {
-    width: 96%;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, -1.3);
-    position: relative;
-  }
-  .progress-inner {
-    min-width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.7);
-    font-size: 2.9vh;
-  }
-  .progress-inner p {
-    font-size: 2vh;
-  }
-  .level {
+  .textSvg {
     position: absolute;
-    top: -80%;
-    right: 48%;
-    color: black;
-  }
-  .levelCol {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding-bottom: 5%;
+    top: 45%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     .levelContainer {
-      position: relative;
-      p {
-        position: absolute;
-        top: -20px;
-        top: top;
-        right: 27%;
-        font-size: 17px;
-        font-weight: 700;
-      }
+      font-family: HIGHSPEED;
+      font-size: 20vw;
+      width: 100%;
     }
-  }*/
+  }
+  .textSvg::after {
+    content: 'LVL';
+    position: absolute;
+    font-size: 6vw;
+    font-family: Play;
+    top: -7vw;
+    left: 24vw;
+  }
+  .experienceDisplay {
+    position: absolute;
+    top: 73%;
+    left: 0%;
+    font-family: Play;
+    font-size: 6vw;
+    width: 100%;
+  }
 }

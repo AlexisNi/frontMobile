@@ -39,8 +39,12 @@ ion-icon {
   }
   &[class*="appname-statistics"] {
     mask-image: url(../assets/images/football-stats-graphic.svg);
-    /*        width: 16vw;
-*/
+  }
+  &[class*="appname-extratime"] {
+    mask-image: url(../assets/fonts/matchIcons/extratime.svg);
+  }
+  &[class*="appname-advice"] {
+    mask-image: url(../assets/fonts/match/advice.svg);
   }
 }
 
@@ -51,12 +55,12 @@ ion-navbar {
 p {
   margin: 0;
 }
-.bgImage{
-      background-image: url('../assets/images/login/background.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-}
 
+.bgImage {
+  background-image: url('../assets/images/login/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 // App Global Sass
 // --------------------------------------------------

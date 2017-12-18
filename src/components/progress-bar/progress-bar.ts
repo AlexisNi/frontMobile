@@ -16,12 +16,21 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
 
   arc1: any;
   arc2: any;
-
-  @Input() x;
-  @Input() y;
+  @Input('progress') progress;
+  @Input() level = 1;
+  @Input() currentExp;
+  @Input() experienceNextLevel;
+  @Input() exp = 10;
   @Input() cx;
   @Input() cy;
   r = 100;
+
+
+
+
+
+
+  constructor() { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -31,30 +40,38 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
     })
   }
 
-  @Input('progress') progress;
-  @Input() level = 1;
-  @Input() currentExp;
-  @Input() experienceNextLevel;
-
-  text: string;
-
-  constructor() { }
-
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    if (changes['currentExp']) {
+      this.currentExp = changes['currentExp'].currentValue;
+
+    }
     if (changes['level']) {
       this.level = changes['level'].currentValue;
 
     }
-  }
-  calucalteProgress() {
+    if (changes['progress']) {
+      this.progress = changes['progress'].currentValue;
+      this.exp = (360 * this.progress) / 100;
+      this.calucalteProgress();
+      if (this.exp > 359) {
+        this.exp = 359;
+        this.calucalteProgress();
 
-    console.log(this.circle.nativeElement.cx.animVal.value);
+      } else if (this.exp < 0) {
+        this.exp = 0;
+        this.calucalteProgress();
+      }
+
+    }
+  }
+
+  calucalteProgress() {
     let radius = this.circle.nativeElement.getBoundingClientRect().height / 2;
-    this.cx=this.circle.nativeElement.cx.animVal.value;
-    this.cy=this.circle.nativeElement.cy.animVal.value;
-    
-    this.arc1 = this.describeArc(this.cx, this.cy, radius, 0, 200)
-    this.arc2 = this.describeArc(this.cx,  this.cy, radius, 0, 200)
+    this.cx = this.circle.nativeElement.cx.animVal.value;
+    this.cy = this.circle.nativeElement.cy.animVal.value;
+
+    this.arc1 = this.describeArc(this.cx, this.cy, radius, 0, this.exp)
+    this.arc2 = this.describeArc(this.cx, this.cy, radius, 0, this.exp)
 
   }
 
