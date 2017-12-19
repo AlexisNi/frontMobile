@@ -12,6 +12,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 import { HistoricDataProvider } from "../providers/historic-data";
 import { LeaderBoardsProvider } from "../providers/leader-boards/leader-boards";
 import { FCM } from '@ionic-native/fcm';
+import { HintsProvider } from "../providers/hints/hints";
 
 
 export const COMPONENTS = [
@@ -31,5 +32,6 @@ export const PROVIDERS = [
     Keyboard,
     HistoricDataProvider,
     LeaderBoardsProvider,
-    FCM
+    FCM,
+    HintsProvider
 ]

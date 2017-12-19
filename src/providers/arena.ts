@@ -44,6 +44,7 @@ export class Arena {
         })
     })
   }
+  
 
   getResult(arenaUserInfo: ArenaCorrect) {
     return new Observable((observer: any) => {

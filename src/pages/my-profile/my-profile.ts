@@ -10,6 +10,7 @@ import { PlayWithChosenUserPage } from "../play-with-chosen-user/play-with-chose
 import { HistoricDataProvider } from "../../providers/historic-data";
 import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
 import { UserFound } from "../../models/userFound";
+import { HintsProvider } from "../../providers/hints/hints";
 
 
 /*
@@ -86,7 +87,8 @@ export class MyProfilePage implements AfterViewInit {
     public firebasaService: FirebaseServiceProvider,
     public zone: NgZone,
     public appCtrl: App,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private useHint:HintsProvider
 
   ) { }
 
@@ -96,6 +98,13 @@ export class MyProfilePage implements AfterViewInit {
       .subscribe((stats: Stats) => {
         this.zone.run(() => this.setStats(stats))
       })
+  }
+  useOneHint(){
+    this.useHint.useHint(this.firebasaService.userId,'managerAdvice').subscribe(data=>{
+      console.log(data);
+    },err=>{
+      console.log(err);
+    })
   }
   setStats(stats) {
     this.level = stats.level;

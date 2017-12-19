@@ -13,7 +13,8 @@ import { ArenaCorrect } from "../../models/arenaCorrect";
 import { Arena } from "../../providers/arena";
 import { Observable } from "rxjs/Observable";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
-
+import { HintsProvider } from "../../providers/hints/hints";
+import _ from 'lodash';
 /*
   Generated class for the Match page.
 
@@ -51,15 +52,18 @@ export class MatchPage implements OnDestroy {
     public questionServie: Questions,
     public arenaService: Arena,
     public loadingCtrl: LoadingController,
+    public useHint: HintsProvider,
     public appCtrl: App) { }
 
   ionViewDidLoad() {
-/*    this.arena = this.navParams.get('arena');
-    this.userId = this.firebasaService.userId;
-    this.getQuestions();
-    this.getInviteId();
-    this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
-    this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);*/
+
+
+    /*     this.arena = this.navParams.get('arena');
+         this.userId = this.firebasaService.userId;
+         this.getQuestions();
+         this.getInviteId();
+         this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
+         this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);*/
 
   }
   getQuestions() {
@@ -186,7 +190,7 @@ export class MatchPage implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.socketService.arenaLeave(this.inviteId,this.arena.userId,this.arena.arenaId);
+    this.socketService.arenaLeave(this.inviteId, this.arena.userId, this.arena.arenaId);
     this.statusPlayed();
 
     /*    this.socketService.reqOneArena(this.userId, this.arena.arenaId);
@@ -217,6 +221,105 @@ export class MatchPage implements OnDestroy {
   }
   playerLost() {
     this.navCtrl.setRoot('TabsPage', { index: 1 });
+
+  }
+
+  getAdvice(allOptions, findRightQuestion) {
+    let secondChoise = Math.floor((Math.random() * 3) + 1);
+    let optionsArray = ['optiona', 'optionb', 'optionc', 'optiond'];
+    let rightAnswer = _.indexOf(optionsArray, findRightQuestion, 0);
+
+
+    if (secondChoise === rightAnswer) {
+      if (rightAnswer === 3) {
+        secondChoise = 2;
+      }
+     else if (rightAnswer === 2) {
+        secondChoise = 1;
+      }
+    else  if (rightAnswer === 1) {
+        secondChoise = 3;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    for (const key of Object.keys(allOptions)) {
+
+      /*   if (allOptions[key] === findRightQuestion) {*/
+
+
+
+      /*       if (key === 'optiona') {
+               let randomSecondChoise = Math.floor((Math.random() * 60) + 1);
+               if (randomSecondChoise >= 0 && randomSecondChoise < 20) {
+                 if (randomSecondChoise >= 0 && randomSecondChoise < 10) {
+                   firstChoise = 1;
+                   secondChoise = 0;
+                 } else {
+                   firstChoise = 0;
+                   secondChoise = 1;
+                 }
+               }
+               else if (randomSecondChoise >= 20 && randomSecondChoise < 40) {
+                 if (randomSecondChoise >= 20 && randomSecondChoise < 30) {
+                   firstChoise = 0;
+                   secondChoise = 2;
+                 } else {
+                   firstChoise = 2;
+                   secondChoise = 0;
+                 }
+               }
+               else {
+                 if (randomSecondChoise >= 40 && randomSecondChoise < 50) {
+                   firstChoise = 0;
+                   secondChoise = 3;
+                 } else {
+                   firstChoise = 3;
+                   secondChoise = 0;
+                 }
+               }
+     
+     
+             }*/
+
+      /* }*/
+
+    }
+
+
+
+
+
+    /*    this.useHint.useHint(this.firebasaService.userId, 'managerAdvice').subscribe((data:any) => {
+          if(data.canUse===true){
+    
+    
+    
+          }if(data.canUse===false){
+            console.log('Can use hint right now');
+          }
+        }, err => {
+          console.log(err);
+        })*/
+
+
+  }
+
+  getExtraTime() {
 
   }
 
