@@ -15,16 +15,7 @@ $font-path: "../assets/fonts";
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( 
-    primary: #387ef5, 
-    secondary: #79ab42, 
-    danger: #f53d3d, 
-    light: #f4f4f4,
-    dark: #222, 
-    questions:#8dc63f, 
-    navBar:#000000,
-    signinButton:#5d983d,
-    shadow:#4c7733);
+$colors: ( primary: #387ef5, secondary: #79ab42, danger: #f53d3d, light: #f4f4f4, dark: #222, questions:#8dc63f, navBar:#000000, signinButton:#5d983d, shadow:#4c7733);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -53,5 +44,7 @@ $text-input-md-show-focus-highlight:false;
 $tabs-md-tab-min-height:4.0rem;
 // Fonts
 // --------------------------------------------------
+$ionicons-font-path: "../assets/fonts";
+@import "ionicons";
 @import "roboto";
 @import "noto-sans";

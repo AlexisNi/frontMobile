@@ -29,15 +29,15 @@
       <ion-row class="timerContainer">
         <ion-col class="timer">
           <p>
-            00:20
+           {{realTime}}
           </p>
         </ion-col>
       </ion-row>
     </ion-col>
-    <ion-col col-2 class="helpContainer"  (click)="getAdvice('','')" >
+    <ion-col [ngClass]="{'disableIcons':!canUseAdvice}" col-2 class="helpContainer" (click)="getAdviceHint.next(arenaQuestions[index])">
       <ion-row class="helpIconContainer">
-        <ion-col class="helpIcon" >
-          <ion-icon name="fqi-speech" ></ion-icon>
+        <ion-col class="helpIcon">
+          <ion-icon name="fqi-speech"></ion-icon>
         </ion-col>
       </ion-row>
       <ion-row class="helpTextContainer">
@@ -48,7 +48,7 @@
         </ion-col>
       </ion-row>
     </ion-col>
-    <ion-col col-2 class="helpContainer">
+    <ion-col  [ngClass]="{'disableIcons':!canUseExtraTime}" col-2 class="helpContainer" (click)="getExtraTimeHint.next()">
       <ion-row class="helpIconContainer">
         <ion-col class="helpIcon">
           <ion-icon name="fqi-extraTime"></ion-icon>
@@ -81,7 +81,8 @@
   <div class="answerRow">
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline>
+        <button (click)="checkQuestion(arenaQuestions[index]?.optiona,arenaQuestions[index],0)" [disabled]="buttonDisabled" [ngClass]="{'initializeButton':initButtons[0],'wrongButton':wrongButtons[0],'rightButton':rightButtons[0],'hideButton':hideButtons[0]}"
+          ion-button round outline [disabled]="buttonDisabled">
              <span><div  class="word-container">
                    <p>{{arenaQuestions[index]?.optiona}}   </p>
                   </div>
@@ -92,7 +93,8 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline>
+        <button (click)="checkQuestion(arenaQuestions[index]?.optionb,arenaQuestions[index],1)" [ngClass]="{'initializeButton':initButtons[1],'wrongButton':wrongButtons[1],'rightButton':rightButtons[1],'hideButton':hideButtons[1]}"
+          ion-button round outline [disabled]="buttonDisabled">
              <span><div  class="word-container">
                    <p>{{arenaQuestions[index]?.optionb}}  </p>
                   </div>
@@ -103,7 +105,8 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline>
+        <button (click)="checkQuestion(arenaQuestions[index]?.optionc,arenaQuestions[index],2)" [ngClass]="{'initializeButton':initButtons[2],'wrongButton':wrongButtons[2],'rightButton':rightButtons[2],'hideButton':hideButtons[2]}"
+          ion-button round outline [disabled]="buttonDisabled">
              <span><div  class="word-container">
                    <p>{{arenaQuestions[index]?.optionc}}  </p>
                   </div>
@@ -114,7 +117,8 @@
 
     <ion-row justify-content-center text-center class="rowAnswerContainer">
       <ion-col>
-        <button ion-button round outline>
+        <button (click)="checkQuestion(arenaQuestions[index]?.optiond,arenaQuestions[index],3)" [ngClass]="{'initializeButton':initButtons[3],'wrongButton':wrongButtons[3],'rightButton':rightButtons[3],'hideButton':hideButtons[3]}"
+          ion-button round outline [disabled]="buttonDisabled">
              <span><div  class="word-container">
                    <p>{{arenaQuestions[index]?.optiond}}  </p>
                   </div>

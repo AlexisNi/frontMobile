@@ -110,6 +110,10 @@ page-match {
     max-height: 54%;
     border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     margin-top: 0.7vw;
+    
+    ion-col{
+      height: 9vh;
+    }
     .rowAnswerContainer {
       margin-top: 5%;
     }
@@ -132,6 +136,40 @@ page-match {
         color: white;
       }
     }
+    .initializeButton {
+      display: inline-block;
+      margin: 0;
+      background-color: transparent;
+      width: 50vw;
+      position: relative;
+      border-color: white;
+      border-radius: 5vw;
+      height: 9vh;
+    }
+    .wrongButton {
+      margin: 0;
+      background-color: transparent;
+      width: 50vw;
+      position: relative;
+      border-color: red;
+      border-radius: 5vw;
+      height: 9vh;
+    }
+    .rightButton {
+      margin: 0;
+      background-color: transparent;
+      width: 50vw;
+      position: relative;
+      border-color: green;
+      border-radius: 5vw;
+      height: 9vh;
+    }
+    .hideButton{
+     display: none;
+    }
+  }
+  .disableIcons{
+    opacity: 0.2;
   }
   /*  .btn {
     background-image: linear-gradient(to right, White 50%, white 100%);

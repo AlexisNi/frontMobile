@@ -54,12 +54,12 @@ export class TabsPage implements OnDestroy {
   ) { }
 
   ionViewDidLoad() {
-    try {
-/*      this.firebasaService.onNotification();
-*/
+/*    try {
+      this.firebasaService.onNotification();
+
     } catch (err) {
       console.log(err)
-    }
+    }*/
 
   }
   ngOnDestroy(): void {
@@ -69,7 +69,7 @@ export class TabsPage implements OnDestroy {
 
 
   ngOnInit() {
-  /*  this.showLoader();
+    this.showLoader();
     this.handleSocketConnections();
     this.tab = this.navParams.get('index') || 0
     this.newArenaSubscruotion = this.stSer.newArena
@@ -81,9 +81,9 @@ export class TabsPage implements OnDestroy {
       this.getAllArenas();
       this.getOneArena();
     }, 2000);
-    this.socketService.onMessage().subscribe(data=>{
+    this.socketService.onMessage().subscribe(data => {
       console.log(data);
-    })*/
+    })
 
 
   }
@@ -146,7 +146,7 @@ export class TabsPage implements OnDestroy {
     this.oneArenaSubsription = this.socketService.getOneArena()
       .subscribe((data: Arenas) => {
         this.zone.run(() => this.findArena(data));
-        this.zone.run(()=>{this.setArenas(this.arenas)})
+        this.zone.run(() => { this.setArenas(this.arenas) })
       }, error => {
         console.log(error);
       });
@@ -192,10 +192,10 @@ export class TabsPage implements OnDestroy {
     for (let i in arena) {
       if (arena[i].inviteId == userid && arena[i].invite_played == false || arena[i].userId == userid && arena[i].user_played == false) {
         arena[i].sort = 1;
-      } else if(arena[i].invite_played == true && arena[i].user_played == true) {
+      } else if (arena[i].invite_played == true && arena[i].user_played == true) {
         arena[i].sort = 2;
-      }else{
-          arena[i].sort = 0;
+      } else {
+        arena[i].sort = 0;
       }
     }
     this.arenas = arena.sort(function (a, b) {
@@ -241,7 +241,7 @@ export class TabsPage implements OnDestroy {
 
   }
 
- 
+
 
 
 }

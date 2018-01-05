@@ -1,126 +1,168 @@
-
-<!--
-  Generated template for the GameItem component.
-
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
-
-<!--<ion-row class="arenaRow" (click)="playMatch(arena)">
-  <ion-col width-33 class="myTeamsName">
-    <div>
-      <p>{{username}}</p>
-    </div>
-  </ion-col>
-
-  <ion-col width-33 offset-34 class="myOpponentsTeamName">
-    <div>
-      <p>{{arena.userName}}</p>
-    </div>
-  </ion-col>
-</ion-row>
-
-<ion-row class="statusRow">
-  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==false||arena.inviteId==userId && arena.invite_played==false">
-    <h1>You havent play yet</h1>
-  </ion-col>
-  <ion-col width-50 class="correctAnswerCol" *ngIf="arena.userId==userId && arena.user_played==true||arena.inviteId==userId && arena.invite_played==true">
-    <h1>{{correctNumber}}</h1>
-    <p>Correct answers</p>
-  </ion-col>
-  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==false  || arena.user_played==false">
-    <h1>still playing</h1>
-    <p>Correct answers</p>
-  </ion-col>
-  <ion-col width-50 class="statusPlayCol" *ngIf="arena.invite_played==true  && arena.user_played==true">
-    <button ion-button (click)="getReward()">Reward </button>
-  </ion-col>
-
-
-</ion-row>-->
-
-<!--<div class="arenasPlayedContainer" *ngIf="arena.userId==userId && arena.user_played==true||arena.inviteId==userId && arena.invite_played==true">
-  <ion-row class="arenaRow">
-    <ion-col col-6 class="myTeamContainer">
-      <ion-row>
-        <ion-col col-2>
-
+<div *ngIf="arena.userId==userId && arena.user_played==true && arena.invite_played==false ||arena.inviteId==userId && arena.invite_played==true &&arena.user_played==false"
+  class="arenaContainer">
+  <ion-row class="rowContainer">
+    <ion-col text-center col-5 class="userCol">
+      <ion-row class="userNameRow">
+        <ion-col class="userNameContainer">
+          <p>
+            {{username}}
+          </p>
         </ion-col>
-        <ion-col col-7 class="nameContainer">
-          <p>{{username}}lexandros</p>
-        </ion-col>
-        <ion-col col-3 class="itemContainer">
-          <p class="correctNumber">{{correctNumber}}</p>
+      </ion-row>
+
+      <ion-row class="correctNumber">
+        <ion-col>
+          <p>{{correctNumber}}</p>
         </ion-col>
       </ion-row>
     </ion-col>
 
-    <ion-col col-6 class="opponentContainer">
-      <ion-row>
-        <ion-col col-3 class="itemContainer">
-          <ion-icon name="md-alarm"></ion-icon>
+    <ion-col text-center col-2 class="halftimeCol">
+      <ion-row class="halfTime1row">
+        <ion-col style="color:black">
+          <p>
+            .
+          </p>
         </ion-col>
+      </ion-row>
+      <ion-row class="halftimeRow">
+        <ion-col class="halfTimeContainer">
+          <p>
+            ΗΜΙΧΡΟΝΟ
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
 
-        <ion-col col-7 class="nameContainer">
+    <ion-col text-center col-5 class="opponentCol">
+      <ion-row class="userName">
+        <ion-col class="userNameContainer">
           <p>{{arena.userName}}</p>
         </ion-col>
+      </ion-row>
+      <ion-row class="userName">
+        <ion-col>
+          <ion-icon name="md-alarm"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
 
-        <ion-col col-2>
+  </ion-row>
+</div>
+
+<div *ngIf="arena.userId==userId && arena.user_played==false||arena.inviteId==userId && arena.invite_played==false" class="arenaContainer">
+  <ion-row class="rowContainer">
+    <ion-col text-center col-5 class="userCol">
+      <ion-row class="userNameRow">
+        <ion-col class="userNameContainer">
+          <p>
+            {{username}}
+
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="buttonRow">
+        <ion-col>
+          <button class="btn" (click)="playMatch(arena)">
+             <span><div  class="word-container">
+                   <p>ΠΑΙΞΕ</p>
+                   </div>
+             </span>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col text-center col-2 class="halftimeCol">
+      <ion-row class="halfTime1row">
+        <ion-col style="color:black">
+          <p>
+            .
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="halftimeRow">
+        <ion-col class="halfTimeContainer">
+          <p>
+            ΗΜΙΧΡΟΝΟ
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col text-center col-5 class="opponentCol">
+      <ion-row class="userName">
+        <ion-col class="userNameContainer">
+
+          <p> Ειναι η σειρα σου να παιξεις με τον {{arena.userName}} </p>
+
 
         </ion-col>
+      </ion-row>
+      <ion-row class="userName">
+        <ion-col class="correctNumber">
+          <p>
+            ?
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
 
+  </ion-row>
+</div>
+
+
+<div *ngIf="arena.invite_played==true  && arena.user_played==true" class="arenaContainer">
+  <ion-row class="rowContainer">
+    <ion-col text-center col-5 class="userCol">
+      <ion-row class="userNameRow">
+        <ion-col class="userNameContainer">
+          <p>
+            {{username}} VS {{arena.userName}}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col text-center col-2 class="halftimeCol">
+      <ion-row class="halfTime1row">
+        <ion-col style="color:black">
+          <p>
+            .
+          </p>
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
+
+    <ion-col text-center col-5 class="opponentCol">
+      <ion-row class="userName">
+        <ion-col class="userNameContainer">
+          <p>
+            O ΑΓΩΝΑΣ ΕΛΗΞΕ
+          </p>
+        </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
-</div>-->
-
-<!--<ion-row class="arenaRow" *ngIf="arena.userId==userId && 
-arena.user_played==false||arena.inviteId==userId && arena.invite_played==false">
-  <ion-col col-6 class="myTeamContainer">
-    <ion-row class="rowContainer " text-center>
-      <ion-col col-2>
-      </ion-col>
-
-      <ion-col col-7 class="nameContainer" text-center>
-        <p>{{arena.userName}}
-          <p>
-      </ion-col>
-
-      <ion-col col-3 class="itemContainer">
-        <ion-icon name="md-alarm"></ion-icon>
-      </ion-col>
-    </ion-row>
-
-  </ion-col>
-  <ion-col col-6 class="buttonContainer">
-    <button class="button"> 
-     <p>Play</p>
-    </button>
-  </ion-col>
-</ion-row>-->
-
-<!--<div class="testContainer" text-center >
-  <ion-row class="firstTeam">
-    <ion-col>
-      Manchester United
-    </ion-col>
-  </ion-row>
-
-  <ion-row >
+  <ion-row class="buttonRow">
     <ion-col text-center>
-      VS
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="secondTeam">
-    <ion-col>
-     Arsenal
+      <button class="btn" (click)="getReward()">
+             <span><div  class="word-container">
+                   <p>ΤΕΛΙΚΟ ΣΚΟΡ</p>
+                   </div>
+             </span>
+          </button>
     </ion-col>
   </ion-row>
 </div>
--->
 
-<div class="arenaWrapper" *ngIf="arena.userId==userId && arena.user_played==true && arena.invite_played==false ||arena.inviteId==userId && arena.invite_played==true &&arena.user_played==false">
+
+<!--here is old-->
+
+
+<!--<div class="arenaWrapper" *ngIf="arena.userId==userId && arena.user_played==true && arena.invite_played==false ||arena.inviteId==userId && arena.invite_played==true &&arena.user_played==false">
   <ion-row class="TeamsContainer">
     <ion-col col-6 class="myTeamContainer">
       <ion-row class="teamCorrectConteiner">
@@ -177,4 +219,4 @@ arena.user_played==false||arena.inviteId==userId && arena.invite_played==false">
       <p>Παρε το βραβειο απο τον αγωνα με τον <span>{{arena.userName}}</span> </p>
     </ion-col>
   </ion-row>
-</div>
+</div>-->

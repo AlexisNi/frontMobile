@@ -6,9 +6,13 @@
 });*/
 
 
-export const myGlobals = Object.freeze({
+/*export const myGlobals = Object.freeze({
     host:'http://localhost:3000/api/',
     socket: 'http://localhost:3000'
+});*/
+export const myGlobals = Object.freeze({
+    host:'http://localhost/api/',
+    socket: 'http://localhost'
 });
 
 /*export const myGlobals = Object.freeze({

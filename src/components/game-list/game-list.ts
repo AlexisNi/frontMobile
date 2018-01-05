@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { Arenas } from "../../models/arenas";
 import { Sockets } from "../../providers/sockets";
 import { Auth } from "../../providers/auth";
@@ -6,6 +6,7 @@ import { StartingPage } from "../../providers/starting-page";
 import { LoadingController, AlertController } from "ionic-angular";
 import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 import { Subscription } from "rxjs/Subscription";
+import { GameItemComponent } from "../game-item/game-item";
 
 /*
   Generated class for the GameList component.
@@ -22,6 +23,7 @@ export class GameListComponent implements OnInit, OnDestroy {
   arenas: Arenas[];
   loading: any;
   arenasSub: Subscription;
+  @ViewChildren(GameItemComponent, { read: ElementRef }) gameItem: QueryList<any>
 
   constructor(
     public socketService: Sockets,
@@ -33,6 +35,7 @@ export class GameListComponent implements OnInit, OnDestroy {
   ) {
   }
   ngOnInit() {
+    console.log(this.gameItem);
 
     this.arenas = this.startingPage.arenas;
     this.arenasSub = this.startingPage.getArenas
@@ -40,14 +43,25 @@ export class GameListComponent implements OnInit, OnDestroy {
         this.arenas = arenas;
       });
   }
+  ngAfterViewInit() {
+    try {
+      this.gameItem.first.nativeElement.children[0].style.marginTop = '1vw';
+
+    }catch (err){
+      
+
+    }
+
+
+  }
   ngOnDestroy(): void {
     try {
       this.arenasSub.unsubscribe();
 
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-   
+
   }
 
   findArena(arena) {

@@ -69,11 +69,10 @@ export class MyProfilePage implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      console.log()
       this.bacgroundImage = 'assets/images/login/background.png';
       this.showBackGroundImage=true;
 
-    },5000)
+    })
 
   }
 

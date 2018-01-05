@@ -6,7 +6,7 @@ page-tabs {
   .tabs .tab-button {
     border: 0;
     border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
-    border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+    border-bottom: solid rgba(121, 171, 66, 0.6) 0.1vh;
   }
   .tabs .tab-button[aria-selected=true] {
     color: lighten(#B4B4B4, 20%);

@@ -7,7 +7,7 @@ import { Auth } from "../../providers/auth";
 import { AnsweredQuestion } from "../../models/answeredQuestion";
 import { Questions } from "../../providers/questions";
 import { ArenaAnsweredQuestion } from "../../models/arenaAnsweredQuestion";
-import { Subscription } from "rxjs";
+import { Subscription, Subject } from "rxjs";
 import { FirstPage } from "../first/first";
 import { ArenaCorrect } from "../../models/arenaCorrect";
 import { Arena } from "../../providers/arena";
@@ -36,12 +36,19 @@ export class MatchPage implements OnDestroy {
   rightButtons = [false, false, false, false];
   wrongButtons = [false, false, false, false];
   initButtons = [true, true, true, true];
+  hideButtons = [false, false, false, false]
   subscription: Subscription;
   inviteId;
   loading: any;
   time = 100;
   realTime = 30;
   questionsLoaded = false;
+
+  getAdviceHint = new Subject<string>();
+  canUseAdvice = true;
+  getExtraTimeHint= new Subject<string>();
+  canUseExtraTime=true;
+
 
 
   constructor(
@@ -53,17 +60,48 @@ export class MatchPage implements OnDestroy {
     public arenaService: Arena,
     public loadingCtrl: LoadingController,
     public useHint: HintsProvider,
-    public appCtrl: App) { }
+    public appCtrl: App) {
+
+    const observableAdvice = this.getAdviceHint
+      .map(value => value)
+      .debounceTime(500)
+      .flatMap((search) => {
+        return Observable.of(search).delay(100);
+      })
+      .subscribe((data) => {
+        if (this.canUseAdvice == true) {
+          this.canUseAdvice = false;
+          this.getAdvice(data);
+        }
+
+      });
+
+    const observableExtraTime = this.getExtraTimeHint
+      .map(value => value)
+      .debounceTime(500)
+      .flatMap((search) => {
+        return Observable.of(search).delay(100);
+      })
+      .subscribe((data) => {
+        if (this.canUseExtraTime == true) {
+          this.canUseExtraTime = false;
+          this.getExtraTime();
+        }
+
+      });
+
+
+  }
 
   ionViewDidLoad() {
 
-
-    /*     this.arena = this.navParams.get('arena');
-         this.userId = this.firebasaService.userId;
-         this.getQuestions();
-         this.getInviteId();
-         this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
-         this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);*/
+    
+             this.arena = this.navParams.get('arena');
+             this.userId = this.firebasaService.userId;
+             this.getQuestions();
+             this.getInviteId();
+             this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
+             this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
 
   }
   getQuestions() {
@@ -99,6 +137,7 @@ export class MatchPage implements OnDestroy {
       this.rightButtons[i] = false;
       this.wrongButtons[i] = false;
       this.initButtons[i] = true;
+      this.hideButtons[i] = false;
       this.buttonDisabled = false;
 
 
@@ -177,8 +216,6 @@ export class MatchPage implements OnDestroy {
     this.arenaService.statusPlayed(this.arenaInfo)
       .subscribe(
       data => {
-
-        console.log(data);
         this.socketService.reqOneArena(this.inviteId, this.arena.arenaId);
 
 
@@ -224,102 +261,77 @@ export class MatchPage implements OnDestroy {
 
   }
 
-  getAdvice(allOptions, findRightQuestion) {
+  getAdvice(answer: any) {
+    console.log(answer);
+    let rightAnswer;
     let secondChoise = Math.floor((Math.random() * 3) + 1);
     let optionsArray = ['optiona', 'optionb', 'optionc', 'optiond'];
-    let rightAnswer = _.indexOf(optionsArray, findRightQuestion, 0);
+    let rightAnswerIndex;
+
+    if (answer.answer === answer.optiona) {
+      console.log('inside')
+      rightAnswer = 'optiona'
+      rightAnswerIndex = _.indexOf(optionsArray, rightAnswer, 0);
 
 
-    if (secondChoise === rightAnswer) {
-      if (rightAnswer === 3) {
+    }
+    else if (answer.answer === answer.optionb) {
+      rightAnswer = 'optionb'
+      rightAnswerIndex = _.indexOf(optionsArray, rightAnswer, 0);
+
+    }
+    else if (answer.answer === answer.optionc) {
+      rightAnswer = 'optionc'
+      rightAnswerIndex = _.indexOf(optionsArray, rightAnswer, 0);
+    }
+    else {
+      rightAnswer = 'optiond'
+      rightAnswerIndex = _.indexOf(optionsArray, rightAnswer, 0);
+    }
+
+    if (secondChoise === rightAnswerIndex) {
+      if (rightAnswerIndex === 3) {
         secondChoise = 2;
+        this.hideButtons[0] = true;
+        this.hideButtons[1] = true;
+
+
       }
-     else if (rightAnswer === 2) {
-        secondChoise = 1;
-      }
-    else  if (rightAnswer === 1) {
+      else if (rightAnswerIndex === 2) {
         secondChoise = 3;
+        this.hideButtons[0] = true;
+        this.hideButtons[1] = true;
       }
-    }
+      else if (rightAnswerIndex === 1) {
+        secondChoise = 0;
+        this.hideButtons[2] = true;
+        this.hideButtons[3] = true;
+      }
+      else if (rightAnswerIndex === 0) {
+        secondChoise = 1;
+        this.hideButtons[2] = true;
+        this.hideButtons[3] = true;
+      }
+    } else {
+      for (let i = 0; i < this.hideButtons.length; i++) {
+        console.log(secondChoise);
+        if (i === rightAnswerIndex || i == secondChoise) {
+          this.hideButtons[i] = false;
 
+        } else {
+          this.hideButtons[i] = true;
+        }
 
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    for (const key of Object.keys(allOptions)) {
-
-      /*   if (allOptions[key] === findRightQuestion) {*/
-
-
-
-      /*       if (key === 'optiona') {
-               let randomSecondChoise = Math.floor((Math.random() * 60) + 1);
-               if (randomSecondChoise >= 0 && randomSecondChoise < 20) {
-                 if (randomSecondChoise >= 0 && randomSecondChoise < 10) {
-                   firstChoise = 1;
-                   secondChoise = 0;
-                 } else {
-                   firstChoise = 0;
-                   secondChoise = 1;
-                 }
-               }
-               else if (randomSecondChoise >= 20 && randomSecondChoise < 40) {
-                 if (randomSecondChoise >= 20 && randomSecondChoise < 30) {
-                   firstChoise = 0;
-                   secondChoise = 2;
-                 } else {
-                   firstChoise = 2;
-                   secondChoise = 0;
-                 }
-               }
-               else {
-                 if (randomSecondChoise >= 40 && randomSecondChoise < 50) {
-                   firstChoise = 0;
-                   secondChoise = 3;
-                 } else {
-                   firstChoise = 3;
-                   secondChoise = 0;
-                 }
-               }
-     
-     
-             }*/
-
-      /* }*/
 
     }
-
-
-
-
-
-    /*    this.useHint.useHint(this.firebasaService.userId, 'managerAdvice').subscribe((data:any) => {
-          if(data.canUse===true){
-    
-    
-    
-          }if(data.canUse===false){
-            console.log('Can use hint right now');
-          }
-        }, err => {
-          console.log(err);
-        })*/
-
 
   }
 
   getExtraTime() {
+    this.time = this.time + 15;
+    this.realTime = this.realTime + 5;
 
   }
 

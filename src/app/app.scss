@@ -1,5 +1,4 @@
 @import '../theme/match.icons';
-
 @font-face {
   font-family: Play;
   src: url('../assets/fonts/Ubuntu-Light.ttf');
@@ -19,6 +18,8 @@
   font-size: 5vh;
   margin: 0;
 }
+
+
 
 ion-icon {
   &[class*="appname-"] {
@@ -50,7 +51,7 @@ ion-icon {
 }
 
 ion-navbar {
-  border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+  border-bottom: solid rgba(121, 171, 66, 0.6) 0.2vh;
 }
 
 p {
