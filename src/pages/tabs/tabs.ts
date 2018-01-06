@@ -69,7 +69,7 @@ export class TabsPage implements OnDestroy {
 
 
   ngOnInit() {
-    this.showLoader();
+/*    this.showLoader();
     this.handleSocketConnections();
     this.tab = this.navParams.get('index') || 0
     this.newArenaSubscruotion = this.stSer.newArena
@@ -83,7 +83,7 @@ export class TabsPage implements OnDestroy {
     }, 2000);
     this.socketService.onMessage().subscribe(data => {
       console.log(data);
-    })
+    })*/
 
 
   }

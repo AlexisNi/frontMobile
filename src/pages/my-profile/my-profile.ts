@@ -57,14 +57,14 @@ export class MyProfilePage implements AfterViewInit {
 
 
   ngOnInit(): void {
-    if (this.firebasaService.userId) {
+/*    if (this.firebasaService.userId) {
 
 
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
       this.username = this.firebasaService.username;
 
-    }
+    }*/
   }
 
   ngAfterViewInit(): void {

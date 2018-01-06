@@ -5,7 +5,7 @@
       <ion-row class="userNameRow">
         <ion-col class="userNameContainer">
           <p>
-            {{username}}
+            {{username | uppercase}}
           </p>
         </ion-col>
       </ion-row>
@@ -37,7 +37,7 @@
     <ion-col text-center col-5 class="opponentCol">
       <ion-row class="userName">
         <ion-col class="userNameContainer">
-          <p>{{arena.userName}}</p>
+          <p>{{arena.userName | uppercase}}</p>
         </ion-col>
       </ion-row>
       <ion-row class="userName">
