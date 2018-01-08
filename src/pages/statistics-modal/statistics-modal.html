@@ -5,10 +5,169 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding>
+<ion-content>
   <span (click)="dismiss()" class="close">&times;</span>
 
-  <ion-row>
+  <div class="divcontainer">
+    <ion-row class="headerRow" justify-content-center>
+      <ion-col text-center>
+        <p>
+          STATISTICS
+        </p>
+
+      </ion-col>
+    </ion-row>
+    <ion-row class="subHeaderRow">
+      <ion-col text-center col-5>
+        <span><div  class="word-container">
+                   <p>TOTAL   </p>
+                   <p>GAMES:{{totalGames}}</p></div>
+             </span>
+      </ion-col>
+      <ion-col text-right col-2>
+        <p>
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <span><div  class="word-container">
+                   <p>RIGHT   </p>
+                   <p>ANSW:{{rightQuestions}}</p></div>
+             </span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{wins}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          WIN
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p> {{sWins|number:'1.1'}}%</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{draws}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          DRAW
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p> {{sDraws|number:'1.1' }}%</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{loses}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          LOSE
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p> {{sLoses |number:'1.1'}}%</p>
+      </ion-col>
+    </ion-row>
+    <!--    STREAKS  -->
+
+    <ion-row class="headerRow" justify-content-center>
+      <ion-col text-center>
+        <p>
+          YOUR STREAKS
+        </p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="subHeaderRow">
+      <ion-col text-center col-5>
+        <span><div  class="word-container">
+                   <p>CURRENT   </p>
+                   <p>STATUS</p></div>
+             </span>
+      </ion-col>
+      <ion-col text-right col-2>
+        <p>
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <span><div  class="word-container">
+                   <p>HIGHEST   </p>
+                   <p>RECORD</p></div>
+             </span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{winningStreak?.currentStreak}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          WIN
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p>{{winningStreak?.longestStreak}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{drawStreak?.currentStreak}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          DRAW
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p>{{drawStreak?.longestStreak}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="statsRow">
+      <ion-col text-center col-5>
+        <p>{{losingStreak?.currentStreak}}</p>
+      </ion-col>
+      <ion-col text-center col-2>
+        <p>
+          LOSE
+        </p>
+      </ion-col>
+      <ion-col text-center col-5>
+        <p>{{losingStreak?.longestStreak}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="headerRow" justify-content-center>
+      <ion-col text-center>
+        <p>
+          FORM
+        </p>
+
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center class="formContainer">
+      <ion-col *ngFor="let form of forms" text-center col-1>
+        <div class="circle" [ngClass]="{'winForm':form.result=='W','loseForm':form.result=='L','drawForm':form.result=='D'}">
+          <p>{{form.result}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+
+  <!--  <ion-row>
     <ion-col col-4>
       <p>Wins</p>
     </ion-col>
@@ -93,5 +252,5 @@
       <p>{{form.result}}</p>
     </ion-col>
   </ion-row>
-
+-->
 </ion-content>

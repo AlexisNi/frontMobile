@@ -156,80 +156,6 @@
       position: static;
     }
 
-
- /*   .findButton {
-      width: 100%;
-      height: 5vh;
-      font-size: 2vh;
-    }
-    .playButton {
-      font-size: 2vh;
-      width: 100%;
-      height: 100%
-    }
-    .button {
-      display: inline-block;
-      position: relative;
-      width: 100%;
-      height: 6vh;
-      background-color: black;
-      font-size: 2vh;
-      margin: 0.3vh;
-      box-shadow: 5px 6px 2px #888888;
-      transform: skewX(-40deg);
-      p {
-        color: white;
-        transform: skewX(40deg);
-        font-size: 2.5vh;
-        font-weight: BOLD;
-        margin: 0;
-      }
-    }
-    .button:after {
-      content: "";
-      background: #90EE90;
-      display: block;
-      position: absolute;
-      padding-top: 300%;
-      padding-left: 350%;
-      margin-left: -20px!important;
-      margin-top: -120%;
-      opacity: 0;
-      transition: all 0.8s
-    }
-    .button:active:after {
-      padding: 0;
-      margin: 0;
-      opacity: 1;
-      transition: 0s
-    }*/
-/*    .container {
-      width: 100%;
-      background-color: #ddd;
-    }
-    .skills {
-      text-align: right;
-      padding-right: 20px;
-      line-height: 40px;
-      color: white;
-    }*/
-/*    .wins {
-      background-color: #4CAF50;
-    }
-    .draws {
-      background-color: #2196F3;
-    }*/
-  /*  .loses {
-      background-color: #f44336;
-    }*/
- /*   .php {
-      width: 60%;
-      background-color: #808080;
-    }*/
-/*    .userNameRow {
-      font-size: 4vw;
-      font-weight: bold;
-    }*/
     .back {
       color: #aaaaaa;
       float: left;
@@ -266,21 +192,6 @@
     background: rgba(0, 0, 0, 0.7);
   }
 
-/*  .userFoundStats {
-    font-size: 2.5vh;
-    color: black;
-    margin-top: 10px;
-    border: 1px solid black;
-    .userNameRow {
-      border-bottom: 1px solid black;
-    }
-    .userStats {
-      ion-col {
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
-      }
-    }
-  }*/
 
   ion-modal.inset-modal {
     // transparent black background overlay

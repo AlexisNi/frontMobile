@@ -1,27 +1,120 @@
 page-statistics-modal {
+  .col {
+    padding: 0;
+  }
   ion-content {
-    background-color: #F3EFE0 !important;
-    border-radius: 10px;
+    background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+    color: #00a84f;
+    border-radius: 6vw;
     .scroll-content {
       overflow-y: hidden;
     }
   }
+  .scroll-content {
+    padding-top: 0.3vw;
+    padding-left: 0.3vw;
+    padding-right: 0.3vw;
+    padding-bottom: 0.3vw;
+  }
   p {
     margin: 1.2vh 0vh;
   }
-    .close {
+  .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
     top: -1vw;
-    right: 2vw;
+    right: 4vw;
+    z-index: 100;
   }
   .close:hover,
   .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+  .divcontainer {
+    width: 100% !important;
+    height: 100%;
+    background-color: black !important;
+    border-radius: 6vw;
+    position: relative;
+  }
+  .headerRow {
+    p {
+      font-size: 3.5vw;
+      color: white;
+      margin-top: 4vw !important;
+      color: map-get($colors, secondary);
+    }
+  }
+  .subHeaderRow {
+    margin-top: 5vw;
+    height: 3vw;
+    p {
+      font-size: 2.5vw;
+      color: white;
+      margin: 0;
+    }
+  }
+  .statsRow {
+    margin-top: 4vw;
+    border-bottom: 0.3vw solid rgba(71, 103, 36, 0.4);
+    p {
+      margin: 0;
+      margin-bottom: 0.7vw;
+      font-size: 2.5vw;
+      color: map-get($colors, secondary);
+    }
+  }
+  span {
+    position: relative;
+  }
+  .word-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .formContainer {
+    ion-col {
+      margin-left: 1vw;
+    }
+  }
+  .circle {
+    position: relative;
+    border-radius: 50%;
+    width: 6vw;
+    height: 6vw;
+    background: #ffffff;
+    p {
+      position: absolute;
+      color: black;
+      margin: 0;
+      font-size: 3.5vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .winForm {
+    background-color: #79ab42;
+    p {
+      color: white;
+    }
+  }
+  .loseForm {
+    background-color: #001d00;
+    p {
+      color: white;
+    }
+  }
+  .drawForm {
+    background-color: #ffffff;
+    p {
+      color: black;
+    }
   }
 }

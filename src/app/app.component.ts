@@ -78,7 +78,10 @@ export class MyApp implements OnInit {
   showStatistics() {
     let modal = this.modalCtrl.create(this.showStats, { userId: this.firebasaService.userId });
     modal.present();
-
+  }
+  goToLeaderboard() {
+    let modal = this.modalCtrl.create('LeaderBoardPage', { userId: this.firebasaService.userId });
+    modal.present();
   }
 
 

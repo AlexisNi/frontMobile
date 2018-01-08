@@ -26,6 +26,7 @@ export class StatisticsModalPage {
   sWins;
   sLoses;
   sDraws;
+  totalGames;
   winningStreak;
   losingStreak;
   drawStreak;
@@ -75,6 +76,7 @@ export class StatisticsModalPage {
     this.drawStreak = statistics.drawStreak;
     this.rightQuestions = statistics.rightAnswer;
     let sum = this.wins + this.loses + this.draws;
+    this.totalGames=sum;
     let form = stats.last5matches;
     this.forms = form;
     this.pWins = (((this.wins / sum) * 100) + 10).toFixed(1);

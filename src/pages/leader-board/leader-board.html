@@ -19,12 +19,65 @@
   </ion-row>-->
 
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <span (click)="dismiss()" class="close">&times;</span>
-    </ion-col>
-  </ion-row>
-  <div class="listContainer">
+  <span (click)="dismiss()" class="close">&times;</span>
+  <div class="divcontainer">
+    <ion-row class="headerRow" justify-content-center>
+      <ion-col text-center>
+        <p>
+          LEADERBOARD
+        </p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="subHeaderRow">
+      <ion-col text-center col-6>
+        <span><div  class="word-container">
+                   <p>   </p>
+                   <p></p></div>
+             </span>
+      </ion-col>
+      <ion-col text-left col-3>
+        <span><div  class="word-container">
+                   <p>TOTAL   </p>
+                   <p>POINTS:</p></div>
+             </span>
+      </ion-col>
+      <ion-col text-left col-3>
+        <span><div  class="word-container">
+                   <p>PREVIOUS   </p>
+                   <p>RATING :</p></div>
+             </span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let player of list; let i=index" class="statsRow">
+      <ion-col text-center col-2>
+        <p> {{i+1}}</p>
+      </ion-col>
+      <ion-col text-left col-4>
+        <p>{{player?.username}}</p>
+      </ion-col>
+      <ion-col text-left col-3>
+        <p>
+          {{player?.statistics.rating}}
+        </p>
+      </ion-col>
+      <ion-col text-left col-3>
+        <div class="previousRatingContainer">
+          <p> {{player?.statistics.previousRanking}}</p>
+          <ion-icon class="statusArrow" *ngIf="player.statistics.ranking<player.statistics.previousRanking" name="arrow-round-down"
+            item-start></ion-icon>
+          <ion-icon class="statusArrow" *ngIf="player.statistics.ranking>player.statistics.previousRanking" name="arrow-round-up" item-start></ion-icon>
+          <ion-icon class="statusArrow" *ngIf="player.statistics.ranking==player.statistics.previousRanking" name="remove" item-start></ion-icon>
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <!-- <div class="listContainer">
     <ion-list>
       <ion-item *ngFor="let player of list; let i=index">
 
@@ -42,5 +95,5 @@
       </ion-item>
     </ion-list>
   </div>
-
+-->
 </ion-content>
