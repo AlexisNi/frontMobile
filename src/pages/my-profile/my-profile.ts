@@ -51,31 +51,31 @@ export class MyProfilePage implements AfterViewInit {
   openMenu = false;
   public triangle = 'assets/images/login/triangle.png';
   public bacgroundImage = '';
-  showBackGroundImage=false;
+  showBackGroundImage = false;
 
 
 
 
   ngOnInit(): void {
-/*    if (this.firebasaService.userId) {
+    if (this.firebasaService.userId) {
 
 
       this.socketService.reqStats(this.firebasaService.userId);
       this.loadStats();
       this.username = this.firebasaService.username;
 
-    }*/
+    }
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.bacgroundImage = 'assets/images/login/background.png';
-      this.showBackGroundImage=true;
+      this.showBackGroundImage = true;
 
     })
 
   }
-  test(){
+  test() {
     console.log('clicked')
   }
 
@@ -90,7 +90,7 @@ export class MyProfilePage implements AfterViewInit {
     public zone: NgZone,
     public appCtrl: App,
     private modalCtrl: ModalController,
-    private useHint:HintsProvider
+    private useHint: HintsProvider
 
   ) { }
 
@@ -101,10 +101,10 @@ export class MyProfilePage implements AfterViewInit {
         this.zone.run(() => this.setStats(stats))
       })
   }
-  useOneHint(){
-    this.useHint.useHint(this.firebasaService.userId,'managerAdvice').subscribe(data=>{
+  useOneHint() {
+    this.useHint.useHint(this.firebasaService.userId, 'managerAdvice').subscribe(data => {
       console.log(data);
-    },err=>{
+    }, err => {
       console.log(err);
     })
   }
