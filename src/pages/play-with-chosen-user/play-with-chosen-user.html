@@ -1,18 +1,159 @@
-<!--
-  Generated template for the PlayWithChosenUserPage page.
+<ion-content>
+  <span (click)="dismiss()" class="close">&times;</span>
+  <span *ngIf="userFound==true&&randomUser==false" (click)="goBack()" class="back">&#8249;</span>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-
-
-<ion-content >
-  <span  (click)="dismiss()" class="close">&times;</span>
   <div class="divcontainer">
+    <div class="itemContainer" *ngIf="randomUser==false&&userFound==false&&showError==false">
+      <ion-row justify-content-center text-center>
+        <ion-col text-center col-8>
+          <ion-list>
+            <ion-item>
+              <ion-label color="primary">
+                <ion-icon color="primary" name="star" item-start></ion-icon>
+              </ion-label>
+              <ion-input #username placeholder="USERNAME ΑΝΤΙΠΑΛΟΥ"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center text-center class="buttonRow">
+        <ion-col col-8 text-center>
+          <button class="btn" (click)="findUser(username.value)">
+             <span><div  class="word-container">
+                   <p>ANAZHTHΣH</p>
+                   </div>
+             </span>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
 
+    <div class="itemContainer" *ngIf="showError==true">
+      <ion-row justify-content-center text-center>
+        <ion-col text-center col-8>
+          <p>
+            {{errorDisplay}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center text-center class="buttonRow">
+        <ion-col col-8 text-center>
+          <button class="btn" (click)="goBack()" >
+             <span><div  class="word-container">
+                   <p>Ok</p>
+                   </div>
+             </span>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div *ngIf="userFound==true&&showError==false" class="userFoundCointaner">
+      <ion-row class="informationRow" justify-content-center text-center>
+        <ion-col text-center>
+          <p class="information">
+            INFORMATION
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center text-center>
+        <ion-col text-center>
+          <p style="font-size:3vw;color:white;">
+            TOTAL GAMES:{{totalGames}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center text-center class="scoreRow">
+        <ion-col text-center class="scoreContainerCol">
+          <p>
+            {{wins}}-{{loses}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="namesRow">
+        <ion-col text-center col-4>
+          <p>
+            {{myName}}
+          </p>
+        </ion-col>
+        <ion-col text-center col-4 offset-4>
+          <p>
+            {{name}}
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="statsRow">
+        <ion-col text-center col-4>
+          <p>
+            {{wins}}
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            WIN
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            {{loses}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="statsRow">
+        <ion-col text-center col-4>
+          <p>
+            {{draws}}
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            DRAW
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            {{draws}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="statsRow">
+        <ion-col text-center col-4>
+          <p>
+            {{loses}}
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            LOSE
+          </p>
+        </ion-col>
+        <ion-col text-center col-4>
+          <p>
+            {{wins}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-center text-center class="buttonRow">
+        <ion-col col-8 text-center>
+          <button class="btn" (click)="playWith()">
+             <span><div  class="word-container">
+                   <p>ΠΑΙΞΕ</p>
+                   </div>
+             </span>
+          </button>
+        </ion-col>
+      </ion-row>
+
+
+    </div>
   </div>
- <!-- <ion-grid>
+
+
+
+
+  <!-- <ion-grid>
     <div *ngIf="randomUser==false">
       <ion-row>
         <ion-col>

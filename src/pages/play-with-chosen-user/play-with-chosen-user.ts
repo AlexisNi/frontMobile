@@ -27,9 +27,13 @@ export class PlayWithChosenUserPage {
   draws = 0;
   progress = 50;
   level;
+  myName = '';
   name = 'Username';
   inviteId;
   randomUser = false;
+  showError = false;
+  errorDisplay = '';
+  totalGames = 0;
 
 
 
@@ -64,6 +68,9 @@ export class PlayWithChosenUserPage {
       this.loses = userStats.loses;
       this.draws = userStats.draws;
       this.level = userStats.level;
+      this.myName = this.firebasaService.username;
+      this.totalGames = this.wins + this.loses + this.draws;
+
     }
 
   }
@@ -83,24 +90,28 @@ export class PlayWithChosenUserPage {
     }, (err) => {
       this.userFound = false;
       this.loading.dismiss();
-      let alert = this.alertCtrl.create({
-        title: err.json().title,
-        message: err.json().message,
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          }
-        ]
-      });
-      alert.present();
-      console.log(err.json());
+      this.userFound = false;
+      this.showError = true;
+      this.errorDisplay = err.json().message;
+
+      /*    let alert = this.alertCtrl.create({
+            title: err.json().title,
+            message: err.json().message,
+            buttons: [
+              {
+                text: 'Cancel',
+                role: 'cancel',
+                handler: () => {
+                  console.log('Cancel clicked');
+                }
+              }
+            ]
+          });
+          alert.present();*/
     });
   }
   setStats(stats) {
+    this.myName = this.firebasaService.username;
     this.userFound = true;
     this.inviteId = stats.inviteId;
     this.name = stats.userName;
@@ -110,6 +121,8 @@ export class PlayWithChosenUserPage {
     this.loses = userStats.loses;
     this.draws = userStats.draws;
     this.level = userStats.level;
+    this.totalGames = this.wins + this.loses + this.draws;
+
   }
 
 
@@ -130,21 +143,33 @@ export class PlayWithChosenUserPage {
   dismiss() {
     this.viewCtrl.dismiss()
   }
-  playWith() {
-    this.viewCtrl.dismiss();
-    const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
-    this.startPageService.createArena(arenaPlayer)
-      .subscribe(data => {
-      /*  let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
-        modal.onDidDismiss(data => {
-          if (data != null) {
-            console.log('dissmiss');
-           
-          }
-        });
-        modal.present();*/
+  goBack() {
+    this.userFound = false;
+    this.showError = false;
 
-         this.appCtrl.getRootNav().push('MatchPage', { arena: data });
-      }, err => { this.presentAlert(err.message); console.log(err) });
   }
+  /*  playWith() {
+      this.viewCtrl.dismiss();
+      const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
+      this.startPageService.createArena(arenaPlayer)
+        .subscribe(data => {*/
+  /*  let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
+    modal.onDidDismiss(data => {
+      if (data != null) {
+        console.log('dissmiss');
+       
+      }
+    });
+    modal.present();*/
+
+  /*      this.appCtrl.getRootNav().push('MatchPage', { arena: data });
+      }, err => {
+
+        this.userFound = false;
+        this.showError = true;
+        this.errorDisplay = err.message;*/
+
+  /* this.presentAlert(err.message); console.log(err) */
+  /*});
+    }*/
 }

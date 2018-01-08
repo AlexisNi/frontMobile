@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Platform, Nav, AlertController, IonicApp } from 'ionic-angular';
+import { Platform, Nav, AlertController, IonicApp, ModalController } from 'ionic-angular';
 import { StatusBar, Splashscreen, Geolocation } from 'ionic-native';
 import { FirebaseServiceProvider } from "../providers/firebase-service/firebase-service";
 import { Subscription } from "rxjs/Subscription";
@@ -14,6 +14,8 @@ import { Sockets } from "../providers/sockets";
 
 export class MyApp implements OnInit {
   signinSubscription: Subscription;
+  showStats: any = 'StatisticsModalPage';
+
 
   ngOnInit(): void {
 
@@ -30,6 +32,7 @@ export class MyApp implements OnInit {
     public alertCtrl: AlertController,
     public firebasaService: FirebaseServiceProvider,
     private ionicApp: IonicApp,
+    private modalCtrl: ModalController,
     public socketService: Sockets) {
 
     platform.ready().then(() => {
@@ -70,6 +73,12 @@ export class MyApp implements OnInit {
       StatusBar.hide();
       Splashscreen.hide();
     });
+  }
+
+  showStatistics() {
+    let modal = this.modalCtrl.create(this.showStats, { userId: this.firebasaService.userId });
+    modal.present();
+
   }
 
 

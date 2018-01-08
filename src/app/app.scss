@@ -19,8 +19,6 @@
   margin: 0;
 }
 
-
-
 ion-icon {
   &[class*="appname-"] {
     mask-size: contain;
@@ -62,6 +60,37 @@ p {
   background-image: url('../assets/images/login/background.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.bgImageMenu {
+  background-image: url('../assets/images/menu.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menuRow {
+  color: white;
+  .col {
+    padding: 1px;
+  }
+  .colContainer {
+    background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+    width: 15vw;
+    height: 30vw;
+    border-radius: 1vw;
+    margin-top: 5vw;
+    margin-left: 5vw;
+    .divContainer {
+      width: 100%;
+      height: 100%;
+      border-radius: 1vw;
+      background: black;
+    }
+    p {
+      margin-top: 5vw;
+      font-size: 3vw;
+    }
+  }
 }
 
 // App Global Sass

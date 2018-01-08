@@ -1,9 +1,101 @@
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
-  <ion-menu [content]="content" id="menu-components">
-    <ion-content>
-      <ion-list>
-       <p>Logout</p>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+<ion-nav [root]="rootPage" #content></ion-nav>
 
+
+
+
+<ion-menu id="menu1" swipeEnabled="false" [content]="content">
+  <ion-content [ngClass]="{'bgImageMenu':true}">
+    <ion-row style="margin-top: 20vw;" class="menuRow">
+      <ion-col (click)="showStatistics()" col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>Statistics</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>Leaderboard</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="menuRow">
+      <ion-col col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>Friends</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>Settings</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="menuRow">
+      <ion-col col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>About</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col col-4 class="colContainer">
+        <div class="divContainer">
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon color="primary" name="star"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <p>Help</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-menu>

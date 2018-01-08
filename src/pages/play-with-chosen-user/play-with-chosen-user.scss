@@ -1,4 +1,7 @@
   page-play-with-chosen-user {
+    .col {
+      padding: 0;
+    }
     ion-content {
       background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
       color: #00a84f;
@@ -8,24 +11,156 @@
       }
     }
     .scroll-content {
-      padding: 0.3vw;
+      padding-top: 0.3vw;
+      padding-left: 0.3vw;
+      padding-right: 0.3vw;
+      padding-bottom: 0.3vw;
     }
     .divcontainer {
       width: 100% !important;
       height: 100%;
       background-color: black !important;
       border-radius: 6vw;
+      position: relative;
     }
-    .findButton {
+    .itemContainer {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      p{
+        font-size: 4vw;
+        color: white;
+      }
+    }
+    .input-wrapper {
+      border-bottom: 1px solid gray;
+    }
+    .text-input {
+      color: white;
+      margin: 0 0 0 !important;
+      margin-left: 4vw !important;
+    }
+    .item {
+      background-color: transparent;
+    }
+    .item-input:last-child {
+      border-bottom: 0 !important;
+    }
+    ion-icon {
+      margin: 0 !important;
+    }
+    ion-label {
+      margin: 0 !important;
+      font-size: 6vw;
+    }
+    ion-input {
+      font-size: 3vw;
+    }
+    .buttonRow {
+      margin-top: 3vw;
+      button {
+        margin: 0;
+        background-color: transparent;
+        width: 90%;
+        position: relative;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          margin: 0;
+          font-size: 1.5vh;
+          color: white;
+        }
+      }
+      .btn {
+        border: solid gray 1px;
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 5.5vh;
+        padding-left: 0.3vw;
+        padding-right: 0.2vw;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          margin: 0;
+          font-size: 1.5vh;
+          color: white;
+        }
+      }
+    }
+    .userFoundCointaner {
+      .informationRow {
+        .col {
+          margin-top: 10vw;
+        }
+        p {
+          margin: 0;
+          color: map-get($colors, secondary);
+          font-size: 4vw;
+        }
+      }
+      .scoreRow {
+        .scoreContainerCol {
+          p {
+            font-family: HIGHSPEED;
+            font-size: 14vw;
+            color: map-get($colors, secondary);
+            margin-top: 4vw;
+          }
+        }
+      }
+      .namesRow {
+        margin-top: 8vw;
+        p {
+          font-size: 3.9vw;
+          color: white;
+        }
+      }
+      .statsRow {
+        margin-top: 3vw;
+        p {
+          padding-bottom: 0.5vw;
+          font-size: 3vw;
+          color: map-get($colors, secondary);
+          border-bottom: 0.1vw groove map-get($colors, secondary);
+        }
+      }
+      .btn {
+        height: 6.5vh;
+      }
+    }
+    .input-cover {
+      position: static;
+    }
+
+
+ /*   .findButton {
       width: 100%;
       height: 5vh;
       font-size: 2vh;
-    }
-    ion-icon {
-      color: lighten(black, 20%) !important;
-    }
-    ion-list {
-      margin-bottom: 5% !important;
     }
     .playButton {
       font-size: 2vh;
@@ -67,8 +202,8 @@
       margin: 0;
       opacity: 1;
       transition: 0s
-    }
-    .container {
+    }*/
+/*    .container {
       width: 100%;
       background-color: #ddd;
     }
@@ -77,23 +212,33 @@
       padding-right: 20px;
       line-height: 40px;
       color: white;
-    }
-    .wins {
+    }*/
+/*    .wins {
       background-color: #4CAF50;
     }
     .draws {
       background-color: #2196F3;
-    }
-    .loses {
+    }*/
+  /*  .loses {
       background-color: #f44336;
-    }
-    .php {
+    }*/
+ /*   .php {
       width: 60%;
       background-color: #808080;
-    }
-    .userNameRow {
+    }*/
+/*    .userNameRow {
       font-size: 4vw;
       font-weight: bold;
+    }*/
+    .back {
+      color: #aaaaaa;
+      float: left;
+      font-size: 6vw;
+      font-weight: bold;
+      position: absolute;
+      top: 1vw;
+      left: 6vw;
+      z-index: 100;
     }
     .close {
       color: #aaaaaa;
@@ -103,6 +248,7 @@
       position: absolute;
       top: 1vw;
       right: 4vw;
+      z-index: 100;
     }
     .close:hover,
     .close:focus {
@@ -113,14 +259,14 @@
   }
 
   ion-modal {
-    padding-top: 30vw;
-    padding-bottom: 16vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-top: 34vw;
+    padding-bottom: 22vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
     background: rgba(0, 0, 0, 0.7);
   }
 
-  .userFoundStats {
+/*  .userFoundStats {
     font-size: 2.5vh;
     color: black;
     margin-top: 10px;
@@ -134,7 +280,7 @@
         border-bottom: 1px solid black;
       }
     }
-  }
+  }*/
 
   ion-modal.inset-modal {
     // transparent black background overlay

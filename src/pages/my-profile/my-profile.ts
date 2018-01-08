@@ -75,6 +75,9 @@ export class MyProfilePage implements AfterViewInit {
     })
 
   }
+  test(){
+    console.log('clicked')
+  }
 
 
   constructor(public navCtrl: NavController,

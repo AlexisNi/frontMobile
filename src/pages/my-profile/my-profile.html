@@ -6,18 +6,20 @@
 -->
 <ion-header>
   <ion-navbar [color]="'navBar'">
-    <ion-buttons start>
-      <button ion-button icon-only (click)="togglePopupMenu()">
-        <ion-icon color="secondary" name="apps"></ion-icon>
+      <button (click)="test()" ion-button icon-only [menuToggle]="menu1">
+        <ion-icon name="menu"></ion-icon>
       </button>
-    </ion-buttons>
-    <ion-title text-center>{{username}}ΤHOMAS</ion-title>
+
+      <!--    <button ion-button icon-only (click)="togglePopupMenu()">
+        <ion-icon color="secondary" name="apps"></ion-icon>
+      </button>-->
+    <ion-title text-center>{{username | uppercase}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content [ngClass]="{'bgImage':showBackGroundImage}" >
+<ion-content [ngClass]="{'bgImage':showBackGroundImage}">
   <ion-row class="levelProgress" justify-content-center text-center>
     <div class="arrow">
       <img [src]="triangle">
@@ -42,6 +44,7 @@
     <ion-col text-center col-4 class="statsContainer">
       <ion-row>
         <ion-col text-center>
+          
           <p> ΝΙΚΕΣ</p>
         </ion-col>
 
