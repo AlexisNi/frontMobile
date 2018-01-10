@@ -21,7 +21,7 @@ export class MyApp implements OnInit {
 
 
   }
-  rootPage: any = 'SigninPage';
+  rootPage: any = 'LoadingScreenPage';
   @ViewChild(Nav) nav: Nav;
 
 

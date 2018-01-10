@@ -74,7 +74,7 @@ export class SigninPage implements OnInit, OnDestroy {
 
 
   ionViewDidLoad() {
-    this.showLoader();
+/*    this.showLoader();
     this.firebaseService.checkAuthentication().then((res) => {
       this.loading.dismiss();
       this.firebaseService.checkUser()
@@ -108,8 +108,8 @@ export class SigninPage implements OnInit, OnDestroy {
               }
 
             })
-          /*      this.socketService.connect();
-                this.navCtrl.setRoot('TabsPage');*/
+                this.socketService.connect();
+                this.navCtrl.setRoot('TabsPage');
         }, error => {
           if (error.error == 100) {
             this.firebaseService.chechUnsubscribe();
@@ -122,7 +122,7 @@ export class SigninPage implements OnInit, OnDestroy {
       this.firebaseService.chechUnsubscribe();
 
       this.loading.dismiss();
-    });
+    });*/
   }
 
 

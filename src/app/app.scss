@@ -68,6 +68,12 @@ p {
   background-size: cover;
 }
 
+.loadingImage {
+  background-image: url('../assets/images/splash.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .menuRow {
   color: white;
   .col {

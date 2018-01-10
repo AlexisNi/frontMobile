@@ -13,7 +13,8 @@ export class PlayerResult {
         constructor(public award:Awards,
                     public isWin:boolean,
                     public isDraw:boolean,
-                    public otherPlayerCorrect:number) {
+                    public otherPlayerCorrect:number,
+                    public myResult?:number) {
     }
 
 }

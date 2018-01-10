@@ -4,7 +4,8 @@ export class Awards {
         public experience: number,
         public points: number,
         public correctAnswers: number,
-        public received:boolean) {
+        public received:boolean,
+        public message?:string) {
     }
 
 }

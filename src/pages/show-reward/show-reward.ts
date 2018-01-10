@@ -70,6 +70,7 @@ export class ShowRewardPage {
     this.arenaService.getResult(this.arenInfo)
       .subscribe(
       (playerResult: PlayerResult) => {
+        console.log(playerResult)
         if (playerResult.isDraw == true) {
           this.isDraw = true;
           this.playerResult = playerResult;

@@ -7,8 +7,64 @@
 
 
 
-<ion-content padding *ngIf="showModal">
-  <div *ngIf="isDraw==true">
+<ion-content *ngIf="showModal">
+  <div class="divcontainer">
+    <ion-row class="headerRow" justify-content-center>
+      <ion-col text-center>
+        <ion-icon color="primary" name="star"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="subHeaderRow">
+      <ion-col text-center>
+        <p>
+          {{playerResult?.award.message}}
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="titleRow">
+      <ion-col text-center>
+        <p>
+          O ΑΓΩΝΑΣ ΕΛΗΞΕ:
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="scoreRow">
+      <ion-col text-center>
+        <p>
+          {{playerResult?.otherPlayerCorrect}}-{{playerResult?.otherPlayerCorrect}}
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="statsRow">
+      <ion-col text-center>
+        <p> ΕΧPERIENCE : {{playerResult?.award.experience}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="statsRow">
+      <ion-col text-center>
+        <p> POINTS :{{playerResult?.award.points}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center text-center class="buttonRow">
+      <ion-col col-8 text-center>
+        <button class="btn" (click)="claimAwardBtn.next('d')">
+             <span><div  class="word-container">
+                   <p>COLLECT AWARD</p>
+                   </div>
+             </span>
+          </button>
+      </ion-col>
+    </ion-row>
+
+
+  </div>
+
+
+
+  <!-- <div *ngIf="isDraw==true">
     <ion-row text-center>
       <ion-col col-12>
         <ion-icon name="md-ribbon"></ion-icon>
@@ -33,6 +89,7 @@
       </ion-col>
     </ion-row>
   </div>
+
   <div *ngIf="isDraw==false && isWin==true">
     <ion-row text-center>
       <ion-col col-12>
@@ -58,6 +115,7 @@
       </ion-col>
     </ion-row>
   </div>
+
   <div *ngIf="isDraw==false && isWin==false">
     <ion-row text-center>
       <ion-col col-12>
@@ -83,7 +141,7 @@
 
       </ion-col>
     </ion-row>
-  </div>
+  </div>-->
 
 
 </ion-content>

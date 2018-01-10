@@ -1,10 +1,124 @@
     page-show-reward {
+      .col {
+        padding: 0;
+      }
       ion-content {
-        background-color: #F3EFE0 !important;
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        color: #00a84f;
+        border-radius: 6vw;
+        .scroll-content {
+          overflow-y: hidden;
+        }
       }
       .scroll-content {
-        overflow-y: hidden;
+        padding-top: 0.3vw;
+        padding-left: 0.3vw;
+        padding-right: 0.3vw;
+        padding-bottom: 0.3vw;
       }
+      .divcontainer {
+        width: 100% !important;
+        height: 100%;
+        background-color: black !important;
+        border-radius: 6vw;
+        position: relative;
+      }
+      .headerRow {
+        ion-icon {
+          font-size: 23.5vw;
+          margin-top: 6vw !important;
+          color: #79ab42;
+        }
+      }
+      .subHeaderRow {
+        margin-top: 5vw;
+        height: 5vw;
+        p {
+          font-size: 3.5vw;
+          color: #79ab42;
+          margin: 0;
+          padding-left: 0vw;
+        }
+      }
+      .scoreRow {
+        p {
+          font-family: HIGHSPEED;
+          font-size: 10vw;
+          margin-bottom: 6vw;
+          color: #79ab42;
+        }
+      }
+      .statsRow {
+        margin-top: 1vw;
+        border-bottom: 0.3vw solid rgba(71, 103, 36, 0.4);
+        p {
+          color: white;
+          margin: 0;
+          margin-bottom: 0.7vw;
+          font-size: 2.9vw;
+          color: map-get($colors, secondary);
+          padding-left: 0.3vw;
+        }
+      }
+      .titleRow {
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+        font-size: 2.5vw;
+        color: white;
+      }
+      .buttonRow {
+        margin-top: 7vw;
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: 90%;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          p {
+            margin: 0;
+            font-size: 1.5vh;
+            color: white;
+          }
+        }
+        .btn {
+          background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+          border-radius: 19vw;
+          box-sizing: border-box;
+          color: #00a84f;
+          height: 6.5vh;
+          padding-left: 0.3vw;
+          padding-right: 0.2vw;
+          position: relative;
+          text-decoration: none;
+          text-transform: uppercase;
+          z-index: 2;
+        }
+        .btn span {
+          position: relative;
+          background: black;
+          border-radius: 19vw;
+          display: block;
+          height: 99%;
+          transition: background .5s ease;
+          width: 100%;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          p {
+            margin: 0;
+            font-size: 1.5vh;
+            color: white;
+          }
+        }
+      } //old code
       .drawText {
         font-size: 3vh;
         /*        padding-top: 3vh;

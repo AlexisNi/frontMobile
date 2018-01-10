@@ -63,12 +63,14 @@ export class Arena {
                 awards.experience,
                 awards.points,
                 awards.correctAnswers,
-                awards.received);
+                awards.received,
+                response.json().message);
               let playerResult: PlayerResult = new PlayerResult(
                 transAwards,
                 response.json().isWin,
                 response.json().draw,
-                response.json().otherPlayerCorrect)
+                response.json().otherPlayerCorrect,
+                response.json().myResult)
               return playerResult;
             }).subscribe(data => {
               observer.next(data);
