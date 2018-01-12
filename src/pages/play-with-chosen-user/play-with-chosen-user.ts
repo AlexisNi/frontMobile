@@ -148,28 +148,32 @@ export class PlayWithChosenUserPage {
     this.showError = false;
 
   }
-   playWith() {
-      this.viewCtrl.dismiss();
-      const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
-      this.startPageService.createArena(arenaPlayer)
-        .subscribe(data => {
-  /*  let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
-    modal.onDidDismiss(data => {
-      if (data != null) {
-        console.log('dissmiss');
-       
-      }
-    });
-    modal.present();*/
+  playWith() {
+    this.showLoader();
+    this.viewCtrl.dismiss();
+    const arenaPlayer = new ArenaPlayers(this.firebasaService.userId, this.inviteId);
+    this.startPageService.createArena(arenaPlayer)
+      .subscribe(data => {
+        this.loading.dismiss();
+        /*  let modal = this.modalCtrl.create('MatchModalPage', { arena: data }, { enableBackdropDismiss: false, cssClass: 'inset-modal' });
+          modal.onDidDismiss(data => {
+            if (data != null) {
+              console.log('dissmiss');
+             
+            }
+          });
+          modal.present();*/
 
         this.appCtrl.getRootNav().push('MatchPage', { arena: data });
-      }, err => {
+      }, (err:any) => {
 
         this.userFound = false;
         this.showError = true;
         this.errorDisplay = err.message;
+        this.loading.dismiss();
 
-   this.presentAlert(err.message); console.log(err) 
-  });
-    }
+
+        this.presentAlert(err.message);
+      });
+  }
 }

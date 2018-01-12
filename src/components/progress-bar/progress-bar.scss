@@ -23,7 +23,7 @@ progress-bar {
     background-size: cover;
     display: block;
     height: 60vw;
-    width: 58vw;
+    width: 61vw;
     margin: 9vw auto;
     border-radius: 100%;
     position: relative;
@@ -62,7 +62,7 @@ progress-bar {
     font-size: 6vw;
     font-family: Play;
     top: -7vw;
-    left: 24vw;
+    left: 26vw;
   }
   .experienceDisplay {
     position: absolute;
@@ -72,4 +72,90 @@ progress-bar {
     font-size: 6vw;
     width: 100%;
   }
+  /*  @media only screen and (min-height:900px) and (min-width:600px) {
+    #cont {
+      background: url('../assets/images/eclipse.png') no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      display: block;
+      height: 53vw;
+      width: 53vw;
+      margin: 9vw auto;
+      border-radius: 100%;
+      position: relative;
+    }
+    .textSvg {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 17vw;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 5vw;
+      font-family: Play;
+      top: -5vw;
+      left: 22vw;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 0%;
+      font-family: Play;
+      font-size: 5vw;
+      width: 100%;
+    }
+  }*/
+  @media only screen and (min-width: 768px) {
+    #cont {
+      background: url('../assets/images/eclipse.png') no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      display: block;
+      height: 53vw;
+      width: 53vw;
+      margin: 9vw auto;
+      border-radius: 100%;
+      position: relative;
+    }
+    .textSvg {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 17vw;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 5vw;
+      font-family: Play;
+      top: -5vw;
+      left: 22vw;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 0%;
+      font-family: Play;
+      font-size: 5vw;
+      width: 100%;
+    }
+  }
 }
+
+

@@ -20,7 +20,7 @@
 
 <ion-content>
   <span (click)="dismiss()" class="close">&times;</span>
-  <div class="divcontainer">
+  <div id="scroll"   class="divcontainer">
     <ion-row class="headerRow" justify-content-center>
       <ion-col text-center>
         <p>
@@ -52,7 +52,7 @@
     </ion-row>
 
     <ion-row *ngFor="let player of list; let i=index" class="statsRow">
-      <ion-col text-center col-2>
+      <ion-col #elem  [id]="'I' + i" text-center col-2>
         <p> {{i+1}}</p>
       </ion-col>
       <ion-col text-left col-4>

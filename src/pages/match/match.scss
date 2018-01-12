@@ -110,14 +110,14 @@ page-match {
     max-height: 54%;
     border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     margin-top: 0.7vw;
-    
-    ion-col{
+    ion-col {
       height: 9vh;
     }
     .rowAnswerContainer {
       margin-top: 5%;
     }
     button {
+      text-transform: none;
       margin: 0;
       background-color: transparent;
       width: 50vw;
@@ -154,6 +154,7 @@ page-match {
       border-color: red;
       border-radius: 5vw;
       height: 9vh;
+      opacity: 1 !important;
     }
     .rightButton {
       margin: 0;
@@ -163,12 +164,13 @@ page-match {
       border-color: green;
       border-radius: 5vw;
       height: 9vh;
+      opacity: 1 !important;
     }
-    .hideButton{
-     display: none;
+    .hideButton {
+      display: none;
     }
   }
-  .disableIcons{
+  .disableIcons {
     opacity: 0.2;
   }
   /*  .btn {

@@ -1,229 +1,275 @@
-  page-play-with-chosen-user {
-    .col {
-      padding: 0;
-    }
-    ion-content {
-      background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-      color: #00a84f;
-      border-radius: 6vw;
-      .scroll-content {
-        overflow-y: hidden;
-      }
-    }
-    .scroll-content {
-      padding-top: 0.3vw;
-      padding-left: 0.3vw;
-      padding-right: 0.3vw;
-      padding-bottom: 0.3vw;
-    }
-    .divcontainer {
-      width: 100% !important;
-      height: 100%;
-      background-color: black !important;
-      border-radius: 6vw;
-      position: relative;
-    }
-    .itemContainer {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      p{
-        font-size: 4vw;
-        color: white;
-      }
-    }
-    .input-wrapper {
-      border-bottom: 1px solid gray;
-    }
-    .text-input {
-      color: white;
-      margin: 0 0 0 !important;
-      margin-left: 4vw !important;
-    }
-    .item {
-      background-color: transparent;
-    }
-    .item-input:last-child {
-      border-bottom: 0 !important;
-    }
-    ion-icon {
-      margin: 0 !important;
-    }
-    ion-label {
-      margin: 0 !important;
-      font-size: 6vw;
-    }
-    ion-input {
-      font-size: 3vw;
-    }
-    .buttonRow {
-      margin-top: 3vw;
-      button {
-        margin: 0;
-        background-color: transparent;
-        width: 90%;
-        position: relative;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: 1.5vh;
-          color: white;
-        }
-      }
-      .btn {
-        border: solid gray 1px;
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height: 5.5vh;
-        padding-left: 0.3vw;
-        padding-right: 0.2vw;
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: 1.5vh;
-          color: white;
-        }
-      }
-    }
-    .userFoundCointaner {
-      .informationRow {
+      page-play-with-chosen-user {
         .col {
-          margin-top: 10vw;
+          padding: 0;
         }
-        p {
-          margin: 0;
-          color: map-get($colors, secondary);
-          font-size: 4vw;
+        ion-content {
+          background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+          color: #00a84f;
+          border-radius: 6vw;
+          .scroll-content {
+            overflow-y: hidden;
+          }
         }
-      }
-      .scoreRow {
-        .scoreContainerCol {
+        .scroll-content {
+          padding-top: 0.3vw;
+          padding-left: 0.3vw;
+          padding-right: 0.3vw;
+          padding-bottom: 0.3vw;
+        }
+        .divcontainer {
+          width: 100% !important;
+          height: 100%;
+          background-color: black !important;
+          border-radius: 6vw;
+          position: relative;
+        }
+        .itemContainer {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           p {
-            font-family: HIGHSPEED;
-            font-size: 14vw;
-            color: map-get($colors, secondary);
+            font-size: 4vw;
+            color: white;
+          }
+        }
+        .input-wrapper {
+          border-bottom: 1px solid gray;
+        }
+        .text-input {
+          color: white;
+          margin: 0 0 0 !important;
+          margin-left: 4vw !important;
+        }
+        .item {
+          background-color: transparent;
+        }
+        .item-input:last-child {
+          border-bottom: 0 !important;
+        }
+        ion-icon {
+          margin: 0 !important;
+        }
+        ion-label {
+          margin: 0 !important;
+          font-size: 6vw;
+        }
+        ion-input {
+          font-size: 3vw;
+        }
+        .buttonRow {
+          margin-top: 10vw;
+          button {
+            margin: 0;
+            background-color: transparent;
+            width: 90%;
+            position: relative;
+            .word-container {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            p {
+              margin: 0;
+              font-size: 1.5vh;
+              color: white;
+            }
+          }
+          .btn {
+            border: solid gray 1px;
+            border-radius: 19vw;
+            box-sizing: border-box;
+            color: #00a84f;
+            height: 5.5vh;
+            padding-left: 0.3vw;
+            padding-right: 0.2vw;
+            position: relative;
+            text-decoration: none;
+            text-transform: uppercase;
+            z-index: 2;
+          }
+          .btn span {
+            position: relative;
+            background: black;
+            border-radius: 19vw;
+            display: block;
+            height: 100%;
+            transition: background .5s ease;
+            width: 100%;
+            .word-container {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            p {
+              margin: 0;
+              font-size: 1.5vh;
+              color: white;
+            }
+          }
+        }
+        .userFoundCointaner {
+          .informationRow {
+            .col {
+              margin-top: 10vw;
+            }
+            p {
+              margin: 0;
+              color: map-get($colors, secondary);
+              font-size: 4vw;
+            }
+          }
+          .scoreRow {
+            .scoreContainerCol {
+              p {
+                font-family: HIGHSPEED;
+                font-size: 14vw;
+                color: map-get($colors, secondary);
+                margin-top: 4vw;
+              }
+            }
+          }
+          .namesRow {
+            margin-top: 8vw;
+            p {
+              font-size: 3.9vw;
+              color: white;
+            }
+          }
+          .statsRow {
+            margin-top: 3vw;
+            p {
+              padding-bottom: 0.5vw;
+              font-size: 3vw;
+              color: map-get($colors, secondary);
+              border-bottom: 0.1vw groove map-get($colors, secondary);
+            }
+          }
+          .btn {
+            height: 6.5vh;
+          }
+        }
+        .input-cover {
+          position: static;
+        }
+        .back {
+          color: #aaaaaa;
+          float: left;
+          font-size: 6vw;
+          font-weight: bold;
+          position: absolute;
+          top: 1vw;
+          left: 6vw;
+          z-index: 100;
+        }
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 6vw;
+          font-weight: bold;
+          position: absolute;
+          top: 1vw;
+          right: 4vw;
+          z-index: 100;
+        }
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        @media only screen and (max-height: 613px) and (max-width: 375px) {
+          ion-modal {
+            padding-top: 15vh;
+            padding-bottom: 20vh;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+        @media only screen and (max-height: 613px) and (max-width: 425px) {
+          ion-modal {
+            padding-top: 25vw;
+            padding-bottom: 14vw;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+        @media only screen and (max-height:667px) and (max-width: 375px) {
+          ion-modal {
+            padding-top: 15vh;
+            padding-bottom: 24vh;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+        @media only screen and (max-height:812px) and (max-width: 375px) {
+          ion-modal {
+            padding-top: 21vh;
+            padding-bottom: 27vh;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+        @media only screen and (max-height:900px) and (max-width:600px) {
+          ion-modal {
+            padding-top: 21vh;
+            padding-bottom: 27vh;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+        @media only screen and (min-width:768px) {
+          .userFoundCointaner .informationRow .col {
             margin-top: 4vw;
+          }
+          .userFoundCointaner .scoreRow .scoreContainerCol p {
+            font-family: HIGHSPEED;
+            font-size: 9vw;
+            color: #79ab42;
+            margin-top: 4vw;
+          }
+          .userFoundCointaner .namesRow {
+            margin-top: 2vw;
           }
         }
       }
-      .namesRow {
-        margin-top: 8vw;
-        p {
-          font-size: 3.9vw;
-          color: white;
+
+      ion-modal {
+        padding-top: 34vw;
+        padding-bottom: 22vh;
+        padding-left: 8vw;
+        padding-right: 8vw;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      ion-modal.inset-modal {
+        // transparent black background overlay
+        background-color: rgba(0, 0, 0, .5) !important;
+        transition: opacity .25s ease-in-out;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        .modal-wrapper {
+          box-shadow: 0 0px 0px rgba(0, 0, 0, 0.4) !important;
+          height: 100%;
+          width: 100%;
         }
       }
-      .statsRow {
-        margin-top: 3vw;
-        p {
-          padding-bottom: 0.5vw;
-          font-size: 3vw;
-          color: map-get($colors, secondary);
-          border-bottom: 0.1vw groove map-get($colors, secondary);
+
+      @media only screen and (min-height: 768px) and (min-width: 768px) {
+        .modal-wrapper {
+          left: calc(50% - (600px/2));
+          top: calc(50% - (822px/2));
+          position: absolute;
+          width: 60vw;
+          height: 60vh;
         }
       }
-      .btn {
-        height: 6.5vh;
-      }
-    }
-    .input-cover {
-      position: static;
-    }
-
-    .back {
-      color: #aaaaaa;
-      float: left;
-      font-size: 6vw;
-      font-weight: bold;
-      position: absolute;
-      top: 1vw;
-      left: 6vw;
-      z-index: 100;
-    }
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 6vw;
-      font-weight: bold;
-      position: absolute;
-      top: 1vw;
-      right: 4vw;
-      z-index: 100;
-    }
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  }
-
-  ion-modal {
-    padding-top: 34vw;
-    padding-bottom: 22vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-
-  ion-modal.inset-modal {
-    // transparent black background overlay
-    background-color: rgba(0, 0, 0, .5) !important;
-    transition: opacity .25s ease-in-out;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    .modal-wrapper {
-      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.4) !important;
-      height: 100%;
-      width: 100%;
-    }
-    @media only screen and (min-height: 600px) and (min-width: 768px) {
-      .modal-wrapper {
-        position: initial !important;
-        height: 100% !important;
-        width: 100% !important;
-      }
-    }
-    @media only screen and (min-height: 768px) and (min-width: 768px) {
-      .modal-wrapper {
-        position: initial !important;
-        height: 100% !important;
-        width: 100% !important;
-      }
-    }
-    @media only screen and (min-height: 600px) and (min-width: 768px) {
-      .modal-wrapper {
-        position: initial !important;
-        height: 100% !important;
-        width: 100% !important;
-      }
-    }
-  }

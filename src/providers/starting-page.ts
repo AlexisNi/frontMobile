@@ -94,7 +94,7 @@ export class StartingPage {
               observer.next(data);
 
             }, err => {
-              observer.error(err)
+              observer.error(err.json())
             })
 
         })
@@ -128,7 +128,7 @@ export class StartingPage {
             .subscribe(data=>{
               observer.next(data);
             },err=>{
-              observer.error(err)
+              observer.error(err.json())
             })
            
         })

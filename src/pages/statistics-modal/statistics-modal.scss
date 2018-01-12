@@ -118,3 +118,65 @@ page-statistics-modal {
     }
   }
 }
+
+@media only screen and (min-height: 613px) and (min-width: 375px) {
+  ion-modal {
+    padding-top: 15vh;
+    padding-bottom: 20vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (min-height: 613px) and (min-width: 425px) {
+  ion-modal {
+    padding-top: 25vw;
+    padding-bottom: 14vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (min-height:667px) and (min-width: 375px) {
+  ion-modal {
+    padding-top: 15vh;
+    padding-bottom: 24vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (min-height:812px) and (min-width: 375px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 27vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (max-height:900px) and (max-width:600px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 11vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+
+/*@media only screen and (min-width:768px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 27vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}*/

@@ -1,7 +1,8 @@
   page-my-profile {
     ion-header {
-/*      background-image: url('../assets/images/login/background.png');
-*/    /*  background-repeat: no-repeat;
+      /*      background-image: url('../assets/images/login/background.png');
+*/
+      /*  background-repeat: no-repeat;
       background-size: cover;*/
     }
     .scroll-content {
@@ -11,8 +12,9 @@
       padding: 0 !important;
     }
     ion-content {
-/*     background-image: url('../assets/images/login/background.png');
-*/    /*  background-repeat: no-repeat;
+      /*     background-image: url('../assets/images/login/background.png');
+*/
+      /*  background-repeat: no-repeat;
       background-size: cover;*/
     }
     .levelProgress {
@@ -51,35 +53,43 @@
         height: 4vw;
         border-left: 1px solid white;
         top: 2vw;
-        left: 50%;
+        left: 49%;
+        transform: translateX(100%);
         opacity: 0.5;
+        z-index: 10000;
       }
       .leftLine {
         position: absolute;
         width: 4vw;
         height: 1vh;
-        border-bottom: 1px solid white;
+        border-top: 1px solid white;
         top: 50%;
         left: 13vw;
         opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
       }
       .downLine {
         position: absolute;
         width: 1vw;
         height: 4vw;
         border-left: 1px solid white;
-        bottom: 2vw;
-        left: 50%;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
         opacity: 0.5;
+        z-index: 10000;
       }
       .rightLine {
         position: absolute;
         width: 4vw;
         height: 1vh;
-        border-bottom: 1px solid white;
+        border-top: 1px solid white;
         top: 50%;
-        right: 13vw;
+        right: 11vw;
         opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
       }
     }
     .statistics {
@@ -155,6 +165,316 @@
         color: white;
       }
     }
+    @media only screen and (min-width: 768px) {
+      .upLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        top: 2vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .leftLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        left: 13vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .downLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .rightLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        right: 11vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .statistics {
+        margin-top: 12vw;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .percentage p {
+        font-family: HIGHSPEED;
+        font-size: 4vh;
+        margin: 0;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 96%;
+        transition: background .5s ease;
+        width: 100%;
+      }
+    }
+    @media only screen and (max-height:812px) and (max-width: 375px) {
+      .userNameOpp button {
+        width: 64vw;
+      }
+      .progressBarContainer {
+        margin-top: 10vw;
+      }
+      .upLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        top: 2vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .leftLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        left: 13vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .downLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .rightLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        right: 11vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .statistics {
+        margin-top: 12vw;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .percentage p {
+        font-family: HIGHSPEED;
+        font-size: 4vh;
+        margin: 0;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 99%;
+        transition: background .5s ease;
+        width: 100%;
+      }
+    }
+    @media only screen and (max-height:740px) and (max-width: 360px) {
+      .userNameOpp button {
+        width: 64vw;
+      }
+      .progressBarContainer {
+        margin-top: 10vw;
+      }
+      .upLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        top: 2vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .leftLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        left: 13vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .downLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .rightLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        right: 11vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .statistics {
+        margin-top: 12vw;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .percentage p {
+        font-family: HIGHSPEED;
+        font-size: 4vh;
+        margin: 0;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+      }
+    }
+    @media only screen and (max-height:900px) and (max-width:600px) {
+      .userNameOpp button {
+        width: 64vw;
+      }
+      .progressBarContainer {
+        margin-top: 0vw;
+      }
+      .upLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        top: 2vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .leftLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        left: 13vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .downLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .rightLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        right: 11vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .statistics {
+        margin-top: 12vw;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .percentage p {
+        font-family: HIGHSPEED;
+        font-size: 4vh;
+        margin: 0;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+      }
+    }
     ion-badge {
       right: calc(50% - 30px) !important;
       top: -5px;
@@ -164,163 +484,5 @@
       height: auto;
       font-size: 12px;
       line-height: 16px;
-    }
-    .popup-menu ion-icon {
-      text-align: center;
-      color: white;
-      font-size: 2.5em;
-    }
-    .popup-menu-overlay {
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      -webkit-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
-      background-image: -webkit-linear-gradient(rgba(68, 68, 68, 0.5) 0%, rgba(68, 68, 68, 0.25) 100%);
-      background-image: linear-gradient(rgba(68, 68, 68, 0.5) 0%, rgba(68, 68, 68, 0.25) 100%);
-    }
-    .popup-menu-overlay.in {
-      opacity: 1;
-      visibility: visible;
-    }
-    .popup-menu-toggle {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      top: 75px;
-      left: 27px;
-      margin-left: -20px;
-      background-color: transparent;
-      border-radius: 50%;
-      z-index: 101;
-      -webkit-transition: all 0.25s ease-in-out;
-      transition: all 0.25s ease-in-out;
-    }
-    .popup-menu-toggle:before {
-      position: absolute;
-      content: '';
-      font-family: "Ionicons";
-      width: 40px;
-      height: 40px;
-      top: 0px;
-      left: 0px;
-      line-height: 40px;
-      text-align: center;
-      font-size: 28px;
-      color: white;
-      opacity: 1;
-      -webkit-transition: all 0.25s ease-in-out;
-      transition: all 0.25s ease-in-out;
-      -webkit-transform-origin: 100% 100%;
-      transform-origin: 100% 100%;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-    .popup-menu-toggle.out {
-      opacity: 0;
-      visibility: hidden;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-      -webkit-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
-    }
-    .popup-menu-toggle.out:before {
-      -webkit-transition: all 0.15s ease-in-out;
-      transition: all 0.15s ease-in-out;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    }
-    .popup-menu-panel {
-      position: fixed;
-      width: 44vw;
-      height: 62vh;
-      border-radius: 1vw;
-      top: 13vh;
-      margin-left: 0vw;
-      padding: 0px 1vw;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 102;
-      transition: all 0.25s ease-in-out;
-      transition-delay: 0.15s;
-      -webkit-transform-origin: 25% 10%;
-      transform-origin: 25% 10%;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-    }
-    .popup-menu-panel .popup-menu-item {
-      margin: auto;
-      -webkit-box-flex: 1 0 30%;
-      -webkit-flex: 1 0 30%;
-      -moz-box-flex: 1 0 30%;
-      -moz-flex: 1 0 30%;
-      -ms-flex: 1 0 30%;
-      flex: 1 0 60%;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: vertical;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-      opacity: 0;
-      -webkit-transition: all 0.25s ease-in-out;
-      transition: all 0.25s ease-in-out;
-      padding-left: 2vw;
-    }
-    .popup-menu-panel .popup-menu-item i {
-      margin: auto 0px 5px 0px;
-      padding: 0px;
-      font-size: 30px;
-      line-height: 30px;
-      text-align: center;
-      color: white;
-    }
-    .popup-menu-panel .popup-menu-item span {
-      padding: 0px;
-      margin: 0px 0px auto 0px;
-      color: white;
-      text-align: center;
-      font-size: 11px;
-      text-transform: uppercase;
-      font-weight: bold;
-      line-height: 11px;
-    }
-    .popup-menu-panel .popup-menu-item:active i {
-      color: rgb(221, 65, 53);
-      -webkit-transition: all 0.15s;
-      transition: all 0.15s;
-    }
-    .popup-menu-panel .popup-menu-item:active span {
-      color: rgb(221, 65, 53);
-      -webkit-transition: all 0.15s;
-      transition: all 0.15s;
-    }
-    .popup-menu-panel.in {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      -webkit-transition-delay: 0s;
-      transition-delay: 0s;
-    }
-    .popup-menu-panel.in .popup-menu-item {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      opacity: 1;
-      -webkit-transition-delay: 0.15s;
-      transition-delay: 0.15s;
     }
   }

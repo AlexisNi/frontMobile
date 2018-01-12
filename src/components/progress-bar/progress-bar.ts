@@ -23,6 +23,13 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   @Input() exp = 10;
   @Input() cx;
   @Input() cy;
+  initCx=30.8;
+  initCy=30.7;
+  initR=30;
+
+  screenWidth;
+
+
   r = 100;
 
 
@@ -32,9 +39,20 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
 
   constructor() { }
 
+  ngOnInit() {
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth>767){
+      this.initR=26.2;
+      this.initCx=26.5;
+      this.initCy=26.5;
+
+    }
+  }
+
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.calucalteProgress();
+      console.log(window.innerWidth);
 
 
     })

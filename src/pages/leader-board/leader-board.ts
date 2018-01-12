@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
 
@@ -14,7 +14,8 @@ import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-board
   templateUrl: 'leader-board.html',
 })
 export class LeaderBoardPage {
-  list=[];
+  list = [];
+  @ViewChild('elem', { read: ElementRef }) someInput: QueryList<any>;
 
   constructor(
     public navCtrl: NavController,
@@ -24,9 +25,9 @@ export class LeaderBoardPage {
   }
 
   ionViewDidLoad() {
-    this.leaderBoard.getLeaderBoard().then((data:any) => {
+    this.leaderBoard.getLeaderBoard().then((data: any) => {
       console.log(data);
-     this.list = data.leaders;
+      this.list = data.leaders;
     }, error => {
       console.log(error)
     })
@@ -34,5 +35,16 @@ export class LeaderBoardPage {
   dismiss() {
     this.viewCtrl.dismiss()
   }
+  ngAfterViewInit() {
+    setTimeout(() => {
+      console.log(this.someInput);
+/*      this.someInput.forEach(elem => { console.log(elem.nativeElement) })
+*/    /* console.log(document.getElementById('I50').offsetTop);
+      document.getElementById('scroll').scrollTop = document.getElementById('I50').offsetTop;
+*/
 
+
+
+    }, 1000)
+  }
 }

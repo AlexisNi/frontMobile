@@ -45,9 +45,9 @@ export class MatchPage implements OnDestroy {
   questionsLoaded = false;
 
   getAdviceHint = new Subject<string>();
-  canUseAdvice = true;
-  getExtraTimeHint= new Subject<string>();
-  canUseExtraTime=true;
+  canUseAdvice = false;
+  getExtraTimeHint = new Subject<string>();
+  canUseExtraTime = false;
 
 
 
@@ -71,6 +71,7 @@ export class MatchPage implements OnDestroy {
       .subscribe((data) => {
         if (this.canUseAdvice == true) {
           this.canUseAdvice = false;
+          this.useHint.useHint(this.userId,'managerAdvice').subscribe();
           this.getAdvice(data);
         }
 
@@ -85,6 +86,7 @@ export class MatchPage implements OnDestroy {
       .subscribe((data) => {
         if (this.canUseExtraTime == true) {
           this.canUseExtraTime = false;
+          this.useHint.useHint(this.userId,'extraTime').subscribe();
           this.getExtraTime();
         }
 
@@ -94,14 +96,17 @@ export class MatchPage implements OnDestroy {
   }
 
   ionViewDidLoad() {
+    this.arena = this.navParams.get('arena');
+    this.userId = this.firebasaService.userId;
+    this.getInviteId();
+    this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
+    this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
+    this.useHint.checkHints(this.userId).subscribe((data:any) => {
+      this.canUseExtraTime=data.canUseHint.extraTime;
+      this.canUseAdvice=data.canUseHint.managerAdvice;      
+      this.getQuestions();
 
-    
-             this.arena = this.navParams.get('arena');
-             this.userId = this.firebasaService.userId;
-             this.getQuestions();
-             this.getInviteId();
-             this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
-             this.arenaInfo = new ArenaCorrect(this.userId, this.arena.arenaId);
+    })
 
   }
   getQuestions() {
