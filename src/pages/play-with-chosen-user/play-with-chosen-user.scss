@@ -226,18 +226,134 @@
             background: rgba(0, 0, 0, 0.7);
           }
         }
+
+        //tabletes
         @media only screen and (min-width:768px) {
-          .userFoundCointaner .informationRow .col {
-            margin-top: 4vw;
+          .itemContainer {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            p {
+              font-size: 10px;
+              color: white;
+            }
           }
-          .userFoundCointaner .scoreRow .scoreContainerCol p {
-            font-family: HIGHSPEED;
-            font-size: 9vw;
-            color: #79ab42;
-            margin-top: 4vw;
+          .input-wrapper {
+            border-bottom: 1px solid gray;
           }
-          .userFoundCointaner .namesRow {
-            margin-top: 2vw;
+          .text-input {
+            color: white;
+            margin: 0 0 0 !important;
+            margin-left: 10px !important;
+          }
+          .item {
+            background-color: transparent;
+          }
+          .item-input:last-child {
+            border-bottom: 0 !important;
+          }
+          ion-icon {
+            margin: 0 !important;
+          }
+          ion-label {
+            margin: 0 !important;
+            font-size: 20px;
+          }
+          ion-input {
+            font-size: 15px;
+          }
+          .buttonRow {
+            margin-top:52px;
+            button {
+              margin: 0;
+              background-color: transparent;
+              width: 90%;
+              position: relative;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: 15px;
+                color: white;
+              }
+            }
+            .btn {
+              border: solid gray 1px;
+              border-radius: 19vw;
+              box-sizing: border-box;
+              color: #00a84f;
+              height: 81px;
+              padding-left: 0.3vw;
+              padding-right: 0.2vw;
+              position: relative;
+              text-decoration: none;
+              text-transform: uppercase;
+              z-index: 2;
+            }
+            .btn span {
+              position: relative;
+              background: black;
+              border-radius: 19vw;
+              display: block;
+              height: 100%;
+              transition: background .5s ease;
+              width: 100%;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: 22.8px;
+                color: white;
+              }
+            }
+          }
+          .userFoundCointaner {
+            .informationRow {
+              .col {
+                margin-top: 85px;
+              }
+              p {
+                margin: 0;
+                color: map-get($colors, secondary);
+                font-size: 26.5px;
+              }
+            }
+            .scoreRow {
+              .scoreContainerCol {
+                p {
+                  font-family: HIGHSPEED;
+                  font-size: 88.33px;
+                  color: map-get($colors, secondary);
+                  margin-top: 50px
+                }
+              }
+            }
+            .namesRow {
+              margin-top: 60px;
+              p {
+                font-size: 26.5px;
+                color: white;
+              }
+            }
+            .statsRow {
+              margin-top: 30px;
+              p {
+                padding-bottom: 0.5vw;
+                font-size: 22.16px;
+                color: map-get($colors, secondary);
+                border-bottom: 0.1vw groove map-get($colors, secondary);
+              }
+            }
           }
         }
       }
@@ -266,10 +382,11 @@
 
       @media only screen and (min-height: 768px) and (min-width: 768px) {
         .modal-wrapper {
-          left: calc(50% - (600px/2));
+          /*          left: calc(50% - (600px/2));
+*/
           top: calc(50% - (822px/2));
           position: absolute;
-          width: 60vw;
-          height: 60vh;
+          width: 627px;
+          height: 747px;
         }
       }

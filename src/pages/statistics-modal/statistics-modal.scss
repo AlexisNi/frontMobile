@@ -22,10 +22,10 @@ page-statistics-modal {
   .close {
     color: #aaaaaa;
     float: right;
-    font-size: 28px;
+    font-size: 6vw;
     font-weight: bold;
     position: absolute;
-    top: -1vw;
+    top: 1vw;
     right: 4vw;
     z-index: 100;
   }
@@ -117,6 +117,94 @@ page-statistics-modal {
       color: black;
     }
   }
+  @media only screen and (min-width:768px) {
+    .scroll-content {
+      padding-top: 2px;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-bottom: 2px;
+    }
+    p {
+      margin: 0;
+    }
+    .headerRow {
+      p {
+        font-size: 26.5px;
+        color: white;
+        margin-top: 27px !important;
+        color: map-get($colors, secondary);
+      }
+    }
+    .subHeaderRow {
+      margin-top: 20px;
+      /*      height: 45px;
+*/
+      p {
+        font-size: 17.67px;
+        color: white;
+        margin: 0;
+      }
+    }
+    .statsRow {
+      margin-top: 30px;
+      border-bottom: 0.3vw solid rgba(71, 103, 36, 0.4);
+      p {
+        margin: 0;
+        margin-bottom: 2px;
+        font-size: 22.8px;
+        color: map-get($colors, secondary);
+      }
+    }
+    span {
+      position: relative;
+    }
+    .word-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .formContainer {
+      margin-top: 30px;
+      ion-col {
+        margin-left: 30px;
+      }
+    }
+    .circle {
+      position: relative;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      background: #ffffff;
+      p {
+        position: absolute;
+        color: black;
+        margin: 0;
+        font-size: 25px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .winForm {
+      background-color: #79ab42;
+      p {
+        color: white;
+      }
+    }
+    .loseForm {
+      background-color: #001d00;
+      p {
+        color: white;
+      }
+    }
+    .drawForm {
+      background-color: #ffffff;
+      p {
+        color: black;
+      }
+    }
+  }
 }
 
 @media only screen and (min-height: 613px) and (min-width: 375px) {
@@ -168,7 +256,6 @@ page-statistics-modal {
     background: rgba(0, 0, 0, 0.7);
   }
 }
-
 
 
 /*@media only screen and (min-width:768px) {
