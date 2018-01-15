@@ -1,12 +1,21 @@
 page-tabs {
   .tabs .tabbar {
     background: #000000;
-    margin-top: 0.5vw;
+    margin-top: 2px;
+  }
+  .tabs .tabbar {
+    border-top: groove rgba(121, 171, 66, 0.5) 1px ;
+    border-bottom: solid rgba(121, 171, 66, 0.6) 1px;
+  }
+  @media only screen and (min-width:600px) {
+    .tabs .tabbar {
+      margin-top: 2px;
+      border-top: groove rgba(121, 171, 66, 0.7) 1px !important;
+      border-bottom: solid rgba(121, 171, 66, 1) 1px !important;
+    }
   }
   .tabs .tab-button {
     border: 0;
-    border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
-    border-bottom: solid rgba(121, 171, 66, 0.6) 0.1vh;
   }
   .tabs .tab-button[aria-selected=true] {
     color: lighten(#B4B4B4, 20%);

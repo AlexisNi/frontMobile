@@ -19,8 +19,8 @@
     }
     .levelProgress {
       position: relative;
-      margin-top: 1vw;
-      border-top: groove rgba(121, 171, 66, 0.7) 0.1vw;
+      margin-top: 6px;
+      border-top: groove rgba(121, 171, 66, 0.5) 1px;
       height: 50%;
       .col {
         padding: 0;
@@ -163,6 +163,13 @@
         margin: 0;
         font-size: 1.5vh;
         color: white;
+      }
+    }
+    @media only screen and (min-width:600px) {
+      .levelProgress {
+        position: relative;
+        margin-top: 8px;
+        border-top: groove rgba(121, 171, 66, 0.8) 1px;
       }
     }
     @media only screen and (min-width: 768px) {

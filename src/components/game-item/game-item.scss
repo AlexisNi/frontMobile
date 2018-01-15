@@ -10,7 +10,7 @@
       height: 20%;
       padding: 1vw;
       .rowContainer {
-     /*   margin-left: 5vw;*/
+        /*   margin-left: 5vw;*/
         margin-top: 4.5vw;
         .userNameContainer {
           p {
@@ -90,6 +90,15 @@
     ion-icon {
       font-size: 11vw;
       color: #79ab42;
+    }
+    @media only screen and (min-width:600px) {
+      .arenaContainer {
+        margin-top: 0.5vw;
+        border-bottom: solid rgba(121, 171, 66, 1) 1px;
+        border-top: groove rgba(121, 171, 66, 0.8) 1px;
+        height: 20%;
+        padding: 1vw;
+      }
     }
   }
 

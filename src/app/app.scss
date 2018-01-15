@@ -81,20 +81,60 @@ p {
   }
   .colContainer {
     background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
-    width: 15vw;
+    max-width: 80px;
     height: 30vw;
-    border-radius: 1vw;
+    border-radius: 5px;
     margin-top: 5vw;
     margin-left: 5vw;
     .divContainer {
       width: 100%;
       height: 100%;
-      border-radius: 1vw;
+      border-radius: 5px;
       background: black;
     }
     p {
       margin-top: 5vw;
       font-size: 3vw;
+    }
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .col {
+    padding: 0;
+  }
+  .menu-inner {
+    width: 507px !important;
+  }
+  .menuRow {
+    color: white;
+    margin-left: 70px;
+    .col {
+      padding: 1px;
+    }
+    .colContainer {
+      background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+      max-width: 160px;
+      height: 220px;
+      border-radius: 1vw;
+      margin-top: 5vw;
+      margin-left: 0;
+      .divContainer {
+        width: 100%;
+        height: 100%;
+        border-radius: 1vw;
+        background: black;
+      }
+      p {
+        margin-top: 5vw;
+        font-size: 22.96px;
+      }
+    }
+    .colContainer:nth-child(even) {
+      margin-left: 40px;
+    }
+    ion-icon {
+      font-size: 26.5px;
     }
   }
 }
