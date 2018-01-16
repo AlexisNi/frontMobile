@@ -1,9 +1,6 @@
   page-my-profile {
+    $levelProgressMarginTop: 6px;
     ion-header {
-      /*      background-image: url('../assets/images/login/background.png');
-*/
-      /*  background-repeat: no-repeat;
-      background-size: cover;*/
     }
     .scroll-content {
       overflow: hidden !important;
@@ -12,10 +9,6 @@
       padding: 0 !important;
     }
     ion-content {
-      /*     background-image: url('../assets/images/login/background.png');
-*/
-      /*  background-repeat: no-repeat;
-      background-size: cover;*/
     }
     .levelProgress {
       position: relative;
@@ -245,7 +238,18 @@
         width: 100%;
       }
     }
-    @media only screen and (max-height:812px) and (max-width: 375px) {
+    @media only screen and (min-height:812px) and (max-width: 376px) {
+      .progressBarContainer {
+        margin-top: 51px;
+        color: white;
+        position: relative;
+        .progressBarWrapper {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
       .userNameOpp button {
         width: 64vw;
       }
@@ -329,7 +333,7 @@
         width: 64vw;
       }
       .progressBarContainer {
-        margin-top: 10vw;
+        margin-top: 3vw;
       }
       .upLine {
         position: absolute;
@@ -403,7 +407,86 @@
         width: 100%;
       }
     }
-    @media only screen and (max-height:900px) and (max-width:600px) {
+    @media only screen and (max-height:780px) and (max-width: 412px) {
+      .userNameOpp button {
+        width: 64vw;
+      }
+      .progressBarContainer {
+        margin-top: 3vw;
+      }
+      .upLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        top: 2vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .leftLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        left: 13vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .downLine {
+        position: absolute;
+        width: 1vw;
+        height: 4vw;
+        border-left: 1px solid white;
+        bottom: 1vw;
+        left: 49%;
+        transform: translateX(100%);
+        opacity: 0.5;
+        z-index: 10000;
+      }
+      .rightLine {
+        position: absolute;
+        width: 4vw;
+        height: 1vh;
+        border-top: 1px solid white;
+        top: 50%;
+        right: 11vw;
+        opacity: 0.5;
+        transform: translateY(100%);
+        z-index: 10000;
+      }
+      .statistics {
+        margin-top: 12vw;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .percentage p {
+        font-family: HIGHSPEED;
+        font-size: 4vh;
+        margin: 0;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+      }
+    }
+    @media only screen and (min-height:500px) and (min-width:600px) {
       .userNameOpp button {
         width: 64vw;
       }

@@ -1,4 +1,16 @@
 page-statistics-modal {
+  $headerFontSize: 13.25px;
+  $headerMarginTop: 13.5px;
+  $subHeaderMarginTop: 10px;
+  $subHeaderFontSize: 8.8px;
+  $statsMarginTop: 15px;
+  $statsMarginBottom: 1px;
+  $statsFontSize: 11.4px;
+  $formMarginTop: 15px;
+  $formMarginLeft: 15px;
+  $circleFontSize: 12.5px;
+  $cirlceWidth: 25px;
+  $circleHeigh: 25px;
   .col {
     padding: 0;
   }
@@ -165,7 +177,7 @@ page-statistics-modal {
       transform: translate(-50%, -50%);
     }
     .formContainer {
-      margin-top:13px;
+      margin-top: 13px;
       ion-col {
         margin-left: 13px;
       }
@@ -205,41 +217,41 @@ page-statistics-modal {
       }
     }
   }
-  @media only screen and (min-width:600px) {
+  @media only screen and (min-width: 375px) {
     .scroll-content {
-      padding-top: 2px;
-      padding-left: 2px;
-      padding-right: 2px;
-      padding-bottom: 2px;
+      padding-top: 1px;
+      padding-left: 1px;
+      padding-right: 1px;
+      padding-bottom: 1px;
     }
     p {
       margin: 0;
     }
     .headerRow {
       p {
-        font-size: 26.5px;
+        font-size: 13px;
         color: white;
-        margin-top: 27px !important;
+        margin-top: 15px !important;
         color: map-get($colors, secondary);
       }
     }
     .subHeaderRow {
-      margin-top: 20px;
+      margin-top: 10px;
       /*      height: 45px;
 */
       p {
-        font-size: 17.67px;
+        font-size: 9px;
         color: white;
         margin: 0;
       }
     }
     .statsRow {
-      margin-top: 30px;
-      border-bottom: 0.3vw solid rgba(71, 103, 36, 0.4);
+      margin-top: 15px;
+      border-bottom: 1px solid rgba(71, 103, 36, 0.4);
       p {
         margin: 0;
-        margin-bottom: 2px;
-        font-size: 22.8px;
+        margin-bottom: 1px;
+        font-size: 11px;
         color: map-get($colors, secondary);
       }
     }
@@ -253,22 +265,286 @@ page-statistics-modal {
       transform: translate(-50%, -50%);
     }
     .formContainer {
-      margin-top: 30px;
+      margin-top: 15px;
       ion-col {
-        margin-left: 30px;
+        margin-left: 15px;
       }
     }
     .circle {
       position: relative;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 25px;
+      height: 25px;
       background: #ffffff;
       p {
         position: absolute;
         color: black;
         margin: 0;
-        font-size: 25px;
+        font-size: 12.5px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .winForm {
+      background-color: #79ab42;
+      p {
+        color: white;
+      }
+    }
+    .loseForm {
+      background-color: #001d00;
+      p {
+        color: white;
+      }
+    }
+    .drawForm {
+      background-color: #ffffff;
+      p {
+        color: black;
+      }
+    }
+  }
+  @media only screen and (min-width: 412px) {
+    .scroll-content {
+      padding-top: 1px;
+      padding-left: 1px;
+      padding-right: 1px;
+      padding-bottom: 1px;
+    }
+    p {
+      margin: 0;
+    }
+    .headerRow {
+      p {
+        font-size: calc(#{$headerFontSize}*1);
+        color: white;
+        margin-top:calc(#{$subHeaderMarginTop}*1) !important;
+        color: map-get($colors, secondary);
+      }
+    }
+    .subHeaderRow {
+      margin-top: calc(#{$subHeaderMarginTop}*1);
+      /*      height: 45px;
+*/
+      p {
+        font-size: calc(#{$subHeaderFontSize}*1);
+        color: white;
+        margin: 0;
+      }
+    }
+    .statsRow {
+      margin-top: calc(#{$statsMarginTop}*1);
+      border-bottom: 1px solid rgba(71, 103, 36, 0.4);
+      p {
+        margin: 0;
+        margin-bottom: calc(#{$statsMarginBottom}*1);
+        font-size: calc(#{$statsFontSize}*1);
+        color: map-get($colors, secondary);
+      }
+    }
+    span {
+      position: relative;
+    }
+    .word-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .formContainer {
+      margin-top: calc(#{$formMarginTop}*1);
+      ion-col {
+        margin-left: calc(#{$formMarginLeft}*1);
+      }
+    }
+    .circle {
+      position: relative;
+      border-radius: 50%;
+      width: calc(#{$circleHeigh}*1);
+      height: calc(#{$cirlceWidth}*1);
+      background: #ffffff;
+      p {
+        position: absolute;
+        color: black;
+        margin: 0;
+        font-size: calc(#{$circleFontSize}*1);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .winForm {
+      background-color: #79ab42;
+      p {
+        color: white;
+      }
+    }
+    .loseForm {
+      background-color: #001d00;
+      p {
+        color: white;
+      }
+    }
+    .drawForm {
+      background-color: #ffffff;
+      p {
+        color: black;
+      }
+    }
+  }
+  @media only screen and (min-width:600px) {
+    .scroll-content {
+      padding-top: 1px;
+      padding-left: 1px;
+      padding-right: 1px;
+      padding-bottom: 1px;
+    }
+    p {
+      margin: 0;
+    }
+    .headerRow {
+      p {
+        font-size: calc(#{$headerFontSize}*1);
+        color: white;
+        margin-top:calc(#{$subHeaderMarginTop}*1) !important;
+        color: map-get($colors, secondary);
+      }
+    }
+    .subHeaderRow {
+      margin-top: calc(#{$subHeaderMarginTop}*1);
+      /*      height: 45px;
+*/
+      p {
+        font-size: calc(#{$subHeaderFontSize}*1);
+        color: white;
+        margin: 0;
+      }
+    }
+    .statsRow {
+      margin-top: calc(#{$statsMarginTop}*1);
+      border-bottom: 1px solid rgba(71, 103, 36, 0.4);
+      p {
+        margin: 0;
+        margin-bottom: calc(#{$statsMarginBottom}*1);
+        font-size: calc(#{$statsFontSize}*1);
+        color: map-get($colors, secondary);
+      }
+    }
+    span {
+      position: relative;
+    }
+    .word-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .formContainer {
+      margin-top: calc(#{$formMarginTop}*1);
+      ion-col {
+        margin-left: calc(#{$formMarginLeft}*1);
+      }
+    }
+    .circle {
+      position: relative;
+      border-radius: 50%;
+      width: calc(#{$circleHeigh}*1);
+      height: calc(#{$cirlceWidth}*1);
+      background: #ffffff;
+      p {
+        position: absolute;
+        color: black;
+        margin: 0;
+        font-size: calc(#{$circleFontSize}*1);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .winForm {
+      background-color: #79ab42;
+      p {
+        color: white;
+      }
+    }
+    .loseForm {
+      background-color: #001d00;
+      p {
+        color: white;
+      }
+    }
+    .drawForm {
+      background-color: #ffffff;
+      p {
+        color: black;
+      }
+    }
+  }
+  @media only screen and (min-width:900px) {
+    .scroll-content {
+      padding-top: 1px;
+      padding-left: 1px;
+      padding-right: 1px;
+      padding-bottom: 1px;
+    }
+    p {
+      margin: 0;
+    }
+    .headerRow {
+      p {
+        font-size: calc(#{$headerFontSize}*1.5);
+        color: white;
+        margin-top:calc(#{$subHeaderMarginTop}*1.5) !important;
+        color: map-get($colors, secondary);
+      }
+    }
+    .subHeaderRow {
+      margin-top: calc(#{$subHeaderMarginTop}*1.5);
+      /*      height: 45px;
+*/
+      p {
+        font-size: calc(#{$subHeaderFontSize}*1.5);
+        color: white;
+        margin: 0;
+      }
+    }
+    .statsRow {
+      margin-top: calc(#{$statsMarginTop}*1.5);
+      border-bottom: 1px solid rgba(71, 103, 36, 0.4);
+      p {
+        margin: 0;
+        margin-bottom: calc(#{$statsMarginBottom}*1.5);
+        font-size: calc(#{$statsFontSize}*1.5);
+        color: map-get($colors, secondary);
+      }
+    }
+    span {
+      position: relative;
+    }
+    .word-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .formContainer {
+      margin-top: calc(#{$formMarginTop}*1.5);
+      ion-col {
+        margin-left: calc(#{$formMarginLeft}*1.5);
+      }
+    }
+    .circle {
+      position: relative;
+      border-radius: 50%;
+      width: calc(#{$circleHeigh}*1.5);
+      height: calc(#{$cirlceWidth}*1.5);
+      background: #ffffff;
+      p {
+        position: absolute;
+        color: black;
+        margin: 0;
+        font-size: calc(#{$circleFontSize}*1.5);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -295,65 +571,7 @@ page-statistics-modal {
   }
 }
 
-@media only screen and (max-width: 375px) {
-  ion-modal {
-    padding-top: 110px;
-    padding-bottom: 171px;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
 
-@media only screen and (min-height: 613px) and (min-width: 375px) {
-  ion-modal {
-    padding-top: 15vh;
-    padding-bottom: 20vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (min-height: 613px) and (min-width: 425px) {
-  ion-modal {
-    padding-top: 25vw;
-    padding-bottom: 14vw;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (min-height:667px) and (min-width: 375px) {
-  ion-modal {
-    padding-top: 15vh;
-    padding-bottom: 24vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (min-height:812px) and (min-width: 375px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 27vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (min-height:900px) and (min-width:600px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 11vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
 
 
 /*@media only screen and (min-width:768px) {

@@ -1,4 +1,19 @@
       page-play-with-chosen-user {
+        $buttonRowMarginTop: 32px;
+        $buttonRowFontSize: 11.04px;
+        $buttonHeigh: 40px;
+        $buttonPaddingLeft: 1px;
+        $buttonPaddingRight: 1px;
+        $informationRowMarginTop: 42px;
+        $informationFontSize: 13.2px;
+        $totalGames: 11px;
+        $scoreRowFontSize: 44px;
+        $scoreMarginTop: 22px;
+        $namesRowMarginTop: 30px;
+        $namesRowFontSize: 13.2px;
+        $statRowMarginTop: 15px;
+        $statsRowPaddingBottom: 1px;
+        $statsRowFontSize: 11.04px;
         .col {
           padding: 0;
         }
@@ -117,6 +132,7 @@
               margin-top: 10vw;
             }
             p {
+              font-weight: bold;
               margin: 0;
               color: map-get($colors, secondary);
               font-size: 4vw;
@@ -148,9 +164,9 @@
               border-bottom: 0.1vw groove map-get($colors, secondary);
             }
           }
-          .btn {
+          /*     .btn {
             height: 6.5vh;
-          }
+          }*/
         }
         .input-cover {
           position: static;
@@ -181,91 +197,10 @@
           text-decoration: none;
           cursor: pointer;
         }
-        @media only screen and (max-height: 613px) and (max-width: 375px) {
-          ion-modal {
-            padding-top: 15vh;
-            padding-bottom: 20vh;
-            padding-left: 8vw;
-            padding-right: 8vw;
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-        @media only screen and (max-height: 613px) and (max-width: 425px) {
-          ion-modal {
-            padding-top: 25vw;
-            padding-bottom: 14vw;
-            padding-left: 8vw;
-            padding-right: 8vw;
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-        @media only screen and (max-height:667px) and (max-width: 375px) {
-          ion-modal {
-            padding-top: 15vh;
-            padding-bottom: 24vh;
-            padding-left: 8vw;
-            padding-right: 8vw;
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-        @media only screen and (max-height:812px) and (max-width: 375px) {
-          ion-modal {
-            padding-top: 21vh;
-            padding-bottom: 27vh;
-            padding-left: 8vw;
-            padding-right: 8vw;
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-        @media only screen and (max-height:900px) and (max-width:600px) {
-          ion-modal {
-            padding-top: 21vh;
-            padding-bottom: 27vh;
-            padding-left: 8vw;
-            padding-right: 8vw;
-            background: rgba(0, 0, 0, 0.7);
-          }
-        }
-
-        //tabletes
-        @media only screen and (min-width:768px) {
-          .itemContainer {
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            p {
-              font-size: 10px;
-              color: white;
-            }
-          }
-          .input-wrapper {
-            border-bottom: 1px solid gray;
-          }
-          .text-input {
-            color: white;
-            margin: 0 0 0 !important;
-            margin-left: 10px !important;
-          }
-          .item {
-            background-color: transparent;
-          }
-          .item-input:last-child {
-            border-bottom: 0 !important;
-          }
-          ion-icon {
-            margin: 0 !important;
-          }
-          ion-label {
-            margin: 0 !important;
-            font-size: 20px;
-          }
-          ion-input {
-            font-size: 15px;
-          }
+        @media only screen and (max-width: 375px) {
+          $multiplier: 0.90;
           .buttonRow {
-            margin-top:52px;
+            margin-top:calc(#{$buttonRowMarginTop}*#{$multiplier});
             button {
               margin: 0;
               background-color: transparent;
@@ -279,7 +214,7 @@
               }
               p {
                 margin: 0;
-                font-size: 15px;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
                 color: white;
               }
             }
@@ -288,9 +223,9 @@
               border-radius: 19vw;
               box-sizing: border-box;
               color: #00a84f;
-              height: 81px;
-              padding-left: 0.3vw;
-              padding-right: 0.2vw;
+              height: calc(#{$buttonHeigh}*#{$multiplier});
+              padding-left: calc(#{$buttonPaddingLeft}*#{$multiplier});
+              padding-right: calc(#{$buttonPaddingRight}*#{$multiplier});
               position: relative;
               text-decoration: none;
               text-transform: uppercase;
@@ -312,7 +247,7 @@
               }
               p {
                 margin: 0;
-                font-size: 22.8px;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
                 color: white;
               }
             }
@@ -320,50 +255,354 @@
           .userFoundCointaner {
             .informationRow {
               .col {
-                margin-top: 85px;
+                margin-top: calc(#{$informationRowMarginTop}*#{$multiplier});
               }
               p {
                 margin: 0;
                 color: map-get($colors, secondary);
-                font-size: 26.5px;
+                font-size: calc(#{$informationFontSize}*#{$multiplier});
               }
+            }
+            p.totalGames {
+              font-size: calc(#{$totalGames}*#{$multiplier});
             }
             .scoreRow {
               .scoreContainerCol {
                 p {
                   font-family: HIGHSPEED;
-                  font-size: 88.33px;
+                  font-size: calc(#{$scoreRowFontSize}*#{$multiplier});
                   color: map-get($colors, secondary);
-                  margin-top: 50px
+                  margin-top:calc(#{$scoreMarginTop}*#{$multiplier});
                 }
               }
             }
             .namesRow {
-              margin-top: 60px;
+              margin-top:calc(#{$namesRowMarginTop}*#{$multiplier});
               p {
-                font-size: 26.5px;
+                font-size: calc(#{$namesRowFontSize}*#{$multiplier});
                 color: white;
               }
             }
             .statsRow {
-              margin-top: 30px;
+              margin-top: calc(#{$statRowMarginTop}*#{$multiplier});
               p {
-                padding-bottom: 0.5vw;
-                font-size: 22.16px;
+                padding-bottom:calc(#{$statsRowPaddingBottom}*#{$multiplier});
+                font-size: calc(#{$statsRowFontSize}*#{$multiplier});
                 color: map-get($colors, secondary);
                 border-bottom: 0.1vw groove map-get($colors, secondary);
               }
             }
           }
         }
-      }
-
-      ion-modal {
-        padding-top: 34vw;
-        padding-bottom: 22vh;
-        padding-left: 8vw;
-        padding-right: 8vw;
-        background: rgba(0, 0, 0, 0.7);
+        @media only screen and (min-width: 375px) {
+          .scroll-content {
+            padding-top: 0.3vw;
+            padding-left: 0.3vw;
+            padding-right: 0.3vw;
+            padding-bottom: 0.5vw;
+          }
+          $multiplier: 1;
+          .buttonRow {
+            margin-top:calc(#{$buttonRowMarginTop}*#{$multiplier});
+            button {
+              margin: 0;
+              background-color: transparent;
+              width: 90%;
+              position: relative;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .btn {
+              border: solid gray 1px;
+              border-radius: 19vw;
+              box-sizing: border-box;
+              color: #00a84f;
+              height: calc(#{$buttonHeigh}*#{$multiplier});
+              padding-left: calc(#{$buttonPaddingLeft}*#{$multiplier});
+              padding-right: calc(#{$buttonPaddingRight}*#{$multiplier});
+              position: relative;
+              text-decoration: none;
+              text-transform: uppercase;
+              z-index: 2;
+            }
+            .btn span {
+              position: relative;
+              background: black;
+              border-radius: 19vw;
+              display: block;
+              height: 100%;
+              transition: background .5s ease;
+              width: 100%;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+          }
+          .userFoundCointaner {
+            .informationRow {
+              .col {
+                margin-top: calc(#{$informationRowMarginTop}*#{$multiplier});
+              }
+              p {
+                margin: 0;
+                color: map-get($colors, secondary);
+                font-size: calc(#{$informationFontSize}*#{$multiplier});
+              }
+            }
+            p.totalGames {
+              font-size: calc(#{$totalGames}*#{$multiplier});
+            }
+            .scoreRow {
+              .scoreContainerCol {
+                p {
+                  font-family: HIGHSPEED;
+                  font-size: calc(#{$scoreRowFontSize}*#{$multiplier});
+                  color: map-get($colors, secondary);
+                  margin-top:calc(#{$scoreMarginTop}*#{$multiplier});
+                }
+              }
+            }
+            .namesRow {
+              margin-top:calc(#{$namesRowMarginTop}*#{$multiplier});
+              p {
+                font-size: calc(#{$namesRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .statsRow {
+              margin-top: calc(#{$statRowMarginTop}*#{$multiplier});
+              p {
+                padding-bottom:calc(#{$statsRowPaddingBottom}*#{$multiplier});
+                font-size: calc(#{$statsRowFontSize}*#{$multiplier});
+                color: map-get($colors, secondary);
+                border-bottom: 0.1vw groove map-get($colors, secondary);
+              }
+            }
+          }
+        }
+        @media only screen and (min-width: 600px) {
+          .scroll-content {
+            padding-top: 0.3vw;
+            padding-left: 0.3vw;
+            padding-right: 0.3vw;
+            padding-bottom: 0.5vw;
+          }
+          $multiplier: 1.4;
+          .buttonRow {
+            margin-top:calc(#{$buttonRowMarginTop}*#{$multiplier});
+            button {
+              margin: 0;
+              background-color: transparent;
+              width: 90%;
+              position: relative;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .btn {
+              border: solid gray 1px;
+              border-radius: 19vw;
+              box-sizing: border-box;
+              color: #00a84f;
+              height: calc(#{$buttonHeigh}*#{$multiplier});
+              padding-left: calc(#{$buttonPaddingLeft}*#{$multiplier});
+              padding-right: calc(#{$buttonPaddingRight}*#{$multiplier});
+              position: relative;
+              text-decoration: none;
+              text-transform: uppercase;
+              z-index: 2;
+            }
+            .btn span {
+              position: relative;
+              background: black;
+              border-radius: 19vw;
+              display: block;
+              height: 100%;
+              transition: background .5s ease;
+              width: 100%;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+          }
+          .userFoundCointaner {
+            .informationRow {
+              .col {
+                margin-top: calc(#{$informationRowMarginTop}*#{$multiplier});
+              }
+              p {
+                margin: 0;
+                color: map-get($colors, secondary);
+                font-size: calc(#{$informationFontSize}*#{$multiplier});
+              }
+            }
+            p.totalGames {
+              font-size: calc(#{$totalGames}*#{$multiplier});
+            }
+            .scoreRow {
+              .scoreContainerCol {
+                p {
+                  font-family: HIGHSPEED;
+                  font-size: calc(#{$scoreRowFontSize}*#{$multiplier});
+                  color: map-get($colors, secondary);
+                  margin-top:calc(#{$scoreMarginTop}*#{$multiplier});
+                }
+              }
+            }
+            .namesRow {
+              margin-top:calc(#{$namesRowMarginTop}*#{$multiplier});
+              p {
+                font-size: calc(#{$namesRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .statsRow {
+              margin-top: calc(#{$statRowMarginTop}*#{$multiplier});
+              p {
+                padding-bottom:calc(#{$statsRowPaddingBottom}*#{$multiplier});
+                font-size: calc(#{$statsRowFontSize}*#{$multiplier});
+                color: map-get($colors, secondary);
+                border-bottom: 0.1vw groove map-get($colors, secondary);
+              }
+            }
+          }
+        }
+        @media only screen and (min-width: 900px) {
+          .scroll-content {
+            padding-top: 0.3vw;
+            padding-left: 0.3vw;
+            padding-right: 0.3vw;
+            padding-bottom: 0.5vw;
+          }
+          $multiplier: 1.9;
+          .buttonRow {
+            margin-top:calc(#{$buttonRowMarginTop}*#{$multiplier});
+            button {
+              margin: 0;
+              background-color: transparent;
+              width: 90%;
+              position: relative;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .btn {
+              border: solid gray 1px;
+              border-radius: 19vw;
+              box-sizing: border-box;
+              color: #00a84f;
+              height: calc(#{$buttonHeigh}*#{$multiplier});
+              padding-left: calc(#{$buttonPaddingLeft}*#{$multiplier});
+              padding-right: calc(#{$buttonPaddingRight}*#{$multiplier});
+              position: relative;
+              text-decoration: none;
+              text-transform: uppercase;
+              z-index: 2;
+            }
+            .btn span {
+              position: relative;
+              background: black;
+              border-radius: 19vw;
+              display: block;
+              height: 100%;
+              transition: background .5s ease;
+              width: 100%;
+              .word-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              p {
+                margin: 0;
+                font-size: calc(#{$buttonRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+          }
+          .userFoundCointaner {
+            .informationRow {
+              .col {
+                margin-top: calc(#{$informationRowMarginTop}*#{$multiplier});
+              }
+              p {
+                margin: 0;
+                color: map-get($colors, secondary);
+                font-size: calc(#{$informationFontSize}*#{$multiplier});
+              }
+            }
+            p.totalGames {
+              font-size: calc(#{$totalGames}*#{$multiplier});
+            }
+            .scoreRow {
+              .scoreContainerCol {
+                p {
+                  font-family: HIGHSPEED;
+                  font-size: calc(#{$scoreRowFontSize}*#{$multiplier});
+                  color: map-get($colors, secondary);
+                  margin-top:calc(#{$scoreMarginTop}*#{$multiplier});
+                }
+              }
+            }
+            .namesRow {
+              margin-top:calc(#{$namesRowMarginTop}*#{$multiplier});
+              p {
+                font-size: calc(#{$namesRowFontSize}*#{$multiplier});
+                color: white;
+              }
+            }
+            .statsRow {
+              margin-top: calc(#{$statRowMarginTop}*#{$multiplier});
+              p {
+                padding-bottom:calc(#{$statsRowPaddingBottom}*#{$multiplier});
+                font-size: calc(#{$statsRowFontSize}*#{$multiplier});
+                color: map-get($colors, secondary);
+                border-bottom: 0.1vw groove map-get($colors, secondary);
+              }
+            }
+          }
+        }
       }
 
       ion-modal.inset-modal {
@@ -377,16 +616,5 @@
           box-shadow: 0 0px 0px rgba(0, 0, 0, 0.4) !important;
           height: 100%;
           width: 100%;
-        }
-      }
-
-      @media only screen and (min-height: 768px) and (min-width: 768px) {
-        .modal-wrapper {
-          /*          left: calc(50% - (600px/2));
-*/
-          top: calc(50% - (822px/2));
-          position: absolute;
-          width: 627px;
-          height: 747px;
         }
       }

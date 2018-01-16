@@ -139,6 +139,131 @@ p {
   }
 }
 
+ion-modal {
+  padding-top: 34vw;
+  padding-bottom: 22vh;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+@media only screen and (max-width: 375px) {
+  ion-modal {
+    padding-top: 110px;
+    padding-bottom: 171px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  ion-modal {
+    padding-top: 75px;
+    padding-bottom: 110px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      height: 380px !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 412px) {
+  ion-modal {
+    padding-top: 108px;
+    padding-bottom: 128px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      height: 380px !important;
+    }
+  }
+}
+
+@media only screen and (min-height:667px) and (min-width: 375px) {
+  ion-modal {
+    padding-top: 15vh;
+    padding-bottom: 24vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (min-height:812px) and (min-width: 375px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 27vh;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media only screen and (max-height:600px) and (min-width:500px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 11vh;
+    padding-left: 80px;
+    padding-right: 93px;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      max-height: 400px !important;
+    }
+  }
+}
+
+@media only screen and (min-width:600px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 11vh;
+    padding-left: 140px;
+    padding-right: 140px;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      height: 390px !important;
+    }
+  }
+}
+
+@media only screen and (min-width:700px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 11vh;
+    padding-left: 140px;
+    padding-right: 140px;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      height: 550px !important;
+    }
+  }
+}
+
+@media only screen and (min-width:900px) and (min-height:800px) {
+  ion-modal {
+    padding-top: 21vh;
+    padding-bottom: 11vh;
+    padding-left: 140px;
+    padding-right: 140px;
+    background: rgba(0, 0, 0, 0.7);
+    .modal-wrapper {
+      height: 740px !important;
+    }
+  }
+}
+
+@media only screen and (min-height: 768px) and (min-width: 768px) {
+  .modal-wrapper {
+    top: calc(50% - (731px/2));
+    position: absolute;
+    width: 627px;
+    height: 747px;
+  }
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
