@@ -1,117 +1,150 @@
   page-my-profile {
     $levelProgressMarginTop: 6px;
-    ion-header {
-    }
-    .scroll-content {
-      overflow: hidden !important;
-    }
-    .scroll-content {
-      padding: 0 !important;
-    }
-    ion-content {
-    }
-    .levelProgress {
-      position: relative;
-      margin-top: 6px;
-      border-top: groove rgba(121, 171, 66, 0.5) 1px;
-      height: 50%;
-      .col {
-        padding: 0;
-      }
-      img {
-        position: absolute;
-        width: 10vw;
-        top: -0.43vw;
-        left: 19vw;
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-        z-index: 10000000;
-      }
-      .progressBarContainer {
-        color: white;
+    $upLineWidth: 3px;
+    $upLineHeight: 15px;
+    $leftLineHeight: 3px;
+    $leftLineWidth: 15px;
+    $marginLine: 10px;
+    $statiSticsMarginTop: 30px;
+    $headerFontsize: 13.25px;
+    $percentageFontSize: 32.25px;
+    $buttonWidth: 175px;
+    $buttonHeight: 40px;
+    $paddingButton: 1px;
+    $buttonFontSize: 13.25px;
+    @media only screen and (max-height: 740px) and (max-width: 375px) {
+      $multiplier:0.90;
+      .levelProgress {
         position: relative;
-        .progressBarWrapper {
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        height: 50%;
+        .col {
+          padding: 0;
+        }
+        img {
           position: absolute;
-          top: 50%;
+          width: 10vw;
+          top: -0.43vw;
+          left: 19vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+        .upLine {
+          position: absolute;
+          width: calc(#{$upLineWidth}*#{$multiplier});
+          height: calc(#{$upLineHeight}*#{$multiplier});
+          border-left: 1px solid white;
+          top: 7px;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translateX(100%);
+          opacity: 0.7;
+          z-index: 10000;
+        }
+        .leftLine {
+          position: absolute;
+          width: calc(#{$leftLineWidth}*#{$multiplier});
+          height: calc(#{$leftLineHeight}*#{$multiplier});
+          border-top: 1px solid white;
+          top: 50%;
+          left: 63px;
+          opacity: 0.7;
+          transform: translateY(100%);
+          z-index: 10000;
+        }
+        .downLine {
+          position: absolute;
+          width: calc(#{$upLineWidth}*#{$multiplier});
+          height: calc(#{$upLineHeight}*#{$multiplier});
+          border-left: 1px solid white;
+          bottom: 7px;
+          left: 50%;
+          transform: translateX(100%);
+          opacity: 0.7;
+          z-index: 10000;
+        }
+        .rightLine {
+          position: absolute;
+          width: calc(#{$leftLineWidth}*#{$multiplier});
+          height: calc(#{$leftLineHeight}*#{$multiplier});
+          border-top: 1px solid white;
+          top: 50%;
+          right: 60px;
+          opacity: 0.7;
+          transform: translateY(100%);
+          z-index: 10000;
         }
       }
-      .progressBarInsider {
+      .statistics {
+        margin-top: 6vw;
+        color: white;
         position: relative;
-      }
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-    }
-    .statistics {
-      margin-top: 6vw;
-      color: white;
-      position: relative;
-      .col {
-        padding: 0;
-      }
-      .statsContainer {
-        p {
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: 5vh;
           margin: 0;
         }
       }
-    }
-    @media only screen and (max-width: 413px) and (min-width: 411px) {
-      .statistics {
-        margin-top: 13vw !important;
+      .userNameOpp {
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: 50vw;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
       }
-    }
-    .userNameOpp {
-      ion-col {
-        padding: 1px !important
-      }
-      button {
-        margin: 0;
-        background-color: transparent;
-        width: 50vw;
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 6.5vh;
+        padding-left: 0.3vw;
+        padding-right: 0.2vw;
         position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 99%;
+        transition: background .5s ease;
+        width: 100%;
         .word-container {
           position: absolute;
           top: 50%;
@@ -125,183 +158,85 @@
         }
       }
     }
-    .btn {
-      background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-      border-radius: 19vw;
-      box-sizing: border-box;
-      color: #00a84f;
-      height: 6.5vh;
-      padding-left: 0.3vw;
-      padding-right: 0.2vw;
-      position: relative;
-      text-decoration: none;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-    .btn span {
-      position: relative;
-      background: black;
-      border-radius: 19vw;
-      display: block;
-      height: 99%;
-      transition: background .5s ease;
-      width: 100%;
-      .word-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      p {
-        margin: 0;
-        font-size: 1.5vh;
-        color: white;
-      }
-    }
-    @media only screen and (min-width:600px) {
+    @media only screen and (max-height:780px) and (min-width: 375px) {
+      $multiplier: 1;
       .levelProgress {
         position: relative;
-        margin-top: 8px;
-        border-top: groove rgba(121, 171, 66, 0.8) 1px;
-      }
-    }
-    @media only screen and (min-width: 768px) {
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .statistics {
-        margin-top: 12vw;
-        color: white;
-        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        height: 50%;
         .col {
           padding: 0;
         }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-      }
-      .percentage p {
-        font-family: HIGHSPEED;
-        font-size: 4vh;
-        margin: 0;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 96%;
-        transition: background .5s ease;
-        width: 100%;
-      }
-    }
-    @media only screen and (min-height:812px) and (max-width: 376px) {
-      .progressBarContainer {
-        margin-top: 51px;
-        color: white;
-        position: relative;
-        .progressBarWrapper {
+        img {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          width: 10vw;
+          top: -0.43vw;
+          left: 19vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
         }
-      }
-      .userNameOpp button {
-        width: 64vw;
-      }
-      .progressBarContainer {
-        margin-top: 10vw;
-      }
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+/*        .upLine {
+          position: absolute;
+          width: calc(#{$upLineWidth}*#{$multiplier});
+          height: calc(#{$upLineHeight}*#{$multiplier});
+          border-left: 1px solid white;
+          top: 7px;
+          left: 50%;
+          transform: translateX(100%);
+          opacity: 0.7;
+          z-index: 10000;
+        }
+        .leftLine {
+          position: absolute;
+          width: calc(#{$leftLineWidth}*#{$multiplier});
+          height: calc(#{$leftLineHeight}*#{$multiplier});
+          border-top: 1px solid white;
+          top: 50%;
+          left: 81px;
+          opacity: 1;
+          transform: translateY(100%);
+          z-index: 10000;
+        }
+        .downLine {
+          position: absolute;
+          width: calc(#{$upLineWidth}*#{$multiplier});
+          height: calc(#{$upLineHeight}*#{$multiplier});
+          border-left: 1px solid white;
+          bottom: 7px;
+          left: 50%;
+          transform: translateX(100%);
+          opacity: 0.7;
+          z-index: 10000;
+        }
+        .rightLine {
+          position: absolute;
+          width: calc(#{$leftLineWidth}*#{$multiplier});
+          height: calc(#{$leftLineHeight}*#{$multiplier});
+          border-top: 1px solid white;
+          top: 50%;
+          right: 77px;
+          opacity: 1;
+          transform: translateY(100%);
+          z-index: 10000;
+        }*/
       }
       .statistics {
-        margin-top: 12vw;
+        margin-top: 6vw;
         color: white;
         position: relative;
         .col {
@@ -312,11 +247,41 @@
             margin: 0;
           }
         }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: 5vh;
+          margin: 0;
+        }
       }
-      .percentage p {
-        font-family: HIGHSPEED;
-        font-size: 4vh;
-        margin: 0;
+      .userNameOpp {
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: 50vw;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 6.5vh;
+        padding-left: 0.3vw;
+        padding-right: 0.2vw;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
       }
       .btn span {
         position: relative;
@@ -326,243 +291,17 @@
         height: 99%;
         transition: background .5s ease;
         width: 100%;
-      }
-    }
-    @media only screen and (max-height:740px) and (max-width: 360px) {
-      .userNameOpp button {
-        width: 64vw;
-      }
-      .progressBarContainer {
-        margin-top: 3vw;
-      }
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .statistics {
-        margin-top: 12vw;
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
+        p {
+          margin: 0;
+          font-size: 1.5vh;
+          color: white;
         }
-      }
-      .percentage p {
-        font-family: HIGHSPEED;
-        font-size: 4vh;
-        margin: 0;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-      }
-    }
-    @media only screen and (max-height:780px) and (max-width: 412px) {
-      .userNameOpp button {
-        width: 64vw;
-      }
-      .progressBarContainer {
-        margin-top: 3vw;
-      }
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .statistics {
-        margin-top: 12vw;
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-      }
-      .percentage p {
-        font-family: HIGHSPEED;
-        font-size: 4vh;
-        margin: 0;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-      }
-    }
-    @media only screen and (min-height:500px) and (min-width:600px) {
-      .userNameOpp button {
-        width: 64vw;
-      }
-      .progressBarContainer {
-        margin-top: 0vw;
-      }
-      .upLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        top: 2vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .leftLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        left: 13vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .downLine {
-        position: absolute;
-        width: 1vw;
-        height: 4vw;
-        border-left: 1px solid white;
-        bottom: 1vw;
-        left: 49%;
-        transform: translateX(100%);
-        opacity: 0.5;
-        z-index: 10000;
-      }
-      .rightLine {
-        position: absolute;
-        width: 4vw;
-        height: 1vh;
-        border-top: 1px solid white;
-        top: 50%;
-        right: 11vw;
-        opacity: 0.5;
-        transform: translateY(100%);
-        z-index: 10000;
-      }
-      .statistics {
-        margin-top: 12vw;
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-      }
-      .percentage p {
-        font-family: HIGHSPEED;
-        font-size: 4vh;
-        margin: 0;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
       }
     }
     ion-badge {

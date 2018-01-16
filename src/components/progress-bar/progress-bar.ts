@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChange, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 /*
   Generated class for the ProgressBar component.
@@ -23,14 +23,21 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   @Input() exp = 10;
   @Input() cx;
   @Input() cy;
-  initCx=30.8;
-  initCy=30.7;
-  initR=30;
+  initCx = 30.8;
+  initCy = 30.7;
+  initR = 30;
 
   screenWidth;
+  screenHeight;
 
 
   r = 100;
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.initCircle();
+
+
+  }
 
 
 
@@ -40,14 +47,10 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    this.screenWidth = window.innerWidth;
-    if(this.screenWidth>767){
-      this.initR=26.2;
-      this.initCx=26.5;
-      this.initCy=26.5;
+    this.initCircle();
 
-    }
   }
+
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -57,6 +60,7 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
 
     })
   }
+
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['currentExp']) {
@@ -81,6 +85,31 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       }
 
     }
+  }
+  initCircle() {
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+    if (this.screenWidth > 767) {
+      this.initR = 26.2;
+      this.initCx = 26.5;
+      this.initCy = 26.5;
+    }
+    if (this.screenHeight <= 600 && this.screenWidth <= 375) {
+      this.initR = 80;
+      this.initCy = 85;
+      this.initCx = 84;
+    }
+    if (this.screenHeight > 600 && this.screenWidth < 375) {
+      this.initR = 92;
+      this.initCy = 98;
+      this.initCx = 97;
+    }
+    if (this.screenHeight > 600 && this.screenWidth > 375) {
+      this.initR = 92;
+      this.initCy = 98;
+      this.initCx = 97;
+    }
+
   }
 
   calucalteProgress() {
