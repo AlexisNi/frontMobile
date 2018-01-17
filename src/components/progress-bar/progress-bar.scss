@@ -119,40 +119,7 @@ progress-bar {
     }
   }*/
   @media only screen and (max-height: 600px) {
-    #cont {
-      height: 168px;
-      width: 163px;
-    }
-    .textSvg {
-      position: absolute;
-      top: 45%;
-      left: 55%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      .levelContainer {
-        font-family: HIGHSPEED;
-        font-size: 50px;
-        width: 100%;
-      }
-    }
-    .textSvg::after {
-      content: 'LVL';
-      position: absolute;
-      font-size: 18px;
-      font-family: Play;
-      top: -6vw;
-      left: 21vw;
-    }
-    .experienceDisplay {
-      position: absolute;
-      top: 73%;
-      left: 4%;
-      font-family: Play;
-      font-size: 6vw;
-      width: 100%;
-    }
-  }
-  @media only screen and (min-height: 600px) and (max-width:375px) {
+    $multiplier: 0.9;
     svg {
       position: absolute;
       left: -6px;
@@ -188,6 +155,133 @@ progress-bar {
       font-family: Play;
       font-size: 20px;
       width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -21px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: -28px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -31px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+  }
+  @media only screen and (min-height: 600px) and (max-width:375px) {
+    $multiplier: 0.9;
+    svg {
+      position: absolute;
+      left: -6px;
+    }
+    #cont {
+      height: 191px;
+      width: 177px;
+    }
+    .textSvg {
+      position: absolute;
+      top: 45%;
+      left: 54%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 50px;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 18px;
+      font-family: Play;
+      top: -18px;
+      left: 73px;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 4%;
+      font-family: Play;
+      font-size: 20px;
+      width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -21px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: -28px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -31px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
     }
   }
   @media only screen and (min-height: 600px) and (min-width:375px) {
@@ -233,7 +327,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      top: -19px;
+      top: -21px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -245,7 +339,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      left: -26px;
+      left: -28px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
@@ -255,7 +349,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      bottom: -20px;
+      bottom: -22px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -267,7 +361,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      right: -29px;
+      right: -31px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
