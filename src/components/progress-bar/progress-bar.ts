@@ -95,15 +95,15 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       this.initCy = 26.5;
     }
     if (this.screenHeight <= 600) {
+      this.initR = 85;
+      this.initCy = 90;
+      this.initCx = 88;
+    }
+/*    if (this.screenHeight <= 600 && this.screenWidth >= 375) {
       this.initR = 92;
       this.initCy = 98;
       this.initCx = 97;
-    }
-    if (this.screenHeight <= 600 && this.screenWidth >= 375) {
-      this.initR = 92;
-      this.initCy = 98;
-      this.initCx = 97;
-    }
+    }*/
     if (this.screenHeight > 600 && this.screenWidth < 375) {
       this.initR = 92;
       this.initCy = 98;

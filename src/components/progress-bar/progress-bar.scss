@@ -21,8 +21,8 @@ progress-bar {
     filter: blur(5px);
   }
   #cont {
-    background: url('../assets/images/eclipse.png') no-repeat;
-    -webkit-background-size: cover;
+/*    background: url('../assets/images/eclipse.png') no-repeat;
+*/    -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     display: block;
@@ -118,15 +118,16 @@ progress-bar {
       width: 100%;
     }
   }*/
-  @media only screen and (max-height: 600px) {
-    $multiplier: 0.9;
+  @media only screen and (max-height: 600px) and (max-width: 375px) {
+    $multiplier: 0.7;
     svg {
       position: absolute;
       left: -6px;
     }
     #cont {
-      height: 191px;
-      width: 177px;
+      height: 171px;
+      width: 158px;
+      ;
     }
     .textSvg {
       position: absolute;
@@ -284,6 +285,90 @@ progress-bar {
       z-index: 10000;
     }
   }
+  @media only screen and (max-height: 700px) and (min-width: 375px) {
+    $multiplier: 0.7;
+    svg {
+      position: absolute;
+      left: -6px;
+    }
+    #cont {
+      height: 171px;
+      width: 158px;
+      margin: 4vh auto;
+    }
+    .textSvg {
+      position: absolute;
+      top: 45%;
+      left: 54%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 50px;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 18px;
+      font-family: Play;
+      top: -18px;
+      left: 64px;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 4%;
+      font-family: Play;
+      font-size: 20px;
+      width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -17px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: -28px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -31px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+  }
   @media only screen and (min-height: 600px) and (min-width:375px) {
     $multiplier: 1;
     svg {
@@ -368,45 +453,86 @@ progress-bar {
     }
   }
   @media only screen and (min-width: 768px) {
+    $multiplier: 1;
+    svg {
+      position: absolute;
+      left: -6px;
+    }
     #cont {
-      background: url('../assets/images/eclipse.png') no-repeat;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      display: block;
-      height: 53vw;
-      width: 53vw;
-      margin: 9vw auto;
-      border-radius: 100%;
-      position: relative;
+      height: 191px;
+      width: 177px;
     }
     .textSvg {
       position: absolute;
       top: 45%;
-      left: 50%;
+      left: 54%;
       transform: translate(-50%, -50%);
       width: 100%;
       .levelContainer {
         font-family: HIGHSPEED;
-        font-size: 17vw;
+        font-size: 50px;
         width: 100%;
       }
     }
     .textSvg::after {
       content: 'LVL';
       position: absolute;
-      font-size: 5vw;
+      font-size: 18px;
       font-family: Play;
-      top: -5vw;
-      left: 22vw;
+      top: -18px;
+      left: 73px;
     }
     .experienceDisplay {
       position: absolute;
       top: 73%;
-      left: 0%;
+      left: 4%;
       font-family: Play;
-      font-size: 5vw;
+      font-size: 20px;
       width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -21px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: -28px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -31px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
     }
   }
 }
