@@ -3,8 +3,8 @@
     <div id="cont" level="1">
       <svg width="205px" height="205px">
         <defs>
-          <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="205" width="205">
-            <image x="0" y="0" height="205" width="205" xlink:href="../assets/images/eclipse.png"
+          <pattern id="image"  patternUnits="userSpaceOnUse" [attr.height]="patternSize" [attr.width]="patternSize">
+            <image x="0" y="0" [attr.height]="imageSize" [attr.width]="imageSize" xlink:href="../assets/images/eclipse.png"
             />
           </pattern>
           <filter id="dropshadow" height="130%">

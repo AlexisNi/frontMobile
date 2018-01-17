@@ -13,8 +13,6 @@
   font-family: Play;
 }
 
-
-
 ion-icon {
   &[class*="appname-"] {
     mask-size: contain;
@@ -45,7 +43,7 @@ ion-icon {
 }
 
 ion-navbar {
-  border-bottom: solid rgba(121, 171, 66, 0.6) 0.2vh;
+  border-bottom: solid rgba(121, 171, 66, 0.7) 1px;
 }
 
 p {
@@ -95,25 +93,25 @@ p {
   }
 }
 
-@media only screen and (min-width:600px) {
+@media only screen and (max-width:375px) {
   .col {
     padding: 0;
   }
   .menu-inner {
-    width: 507px !important;
+    width: 220px !important;
   }
   .menuRow {
     color: white;
-    margin-left: 70px;
+    margin-left: 20px;
     .col {
       padding: 1px;
     }
     .colContainer {
       background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
-      max-width: 160px;
-      height: 220px;
+      max-width: 80px;
+      height: 130px;
       border-radius: 1vw;
-      margin-top: 5vw;
+      margin-top: 15px;
       margin-left: 0;
       .divContainer {
         width: 100%;
@@ -122,15 +120,95 @@ p {
         background: black;
       }
       p {
-        margin-top: 5vw;
-        font-size: 22.96px;
+        margin-top: 15px;
+        font-size: 10px;
       }
     }
     .colContainer:nth-child(even) {
-      margin-left: 40px;
+      margin-left: 20px;
     }
     ion-icon {
-      font-size: 26.5px;
+      font-size: 17px;
+    }
+  }
+}
+
+@media only screen and (min-width:375px) {
+  .col {
+    padding: 0;
+  }
+  .menu-inner {
+    width: 250px !important;
+  }
+  .menuRow {
+    color: white;
+    margin-left: 23px;
+    .col {
+      padding: 1px;
+    }
+    .colContainer {
+      background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+      max-width: 90px;
+      height: 140px;
+      border-radius: 1vw;
+      margin-top: 20px;
+      margin-left: 0;
+      .divContainer {
+        width: 100%;
+        height: 100%;
+        border-radius: 1vw;
+        background: black;
+      }
+      p {
+        margin-top: 15px;
+        font-size: 10px;
+      }
+    }
+    .colContainer:nth-child(even) {
+      margin-left: 20px;
+    }
+    ion-icon {
+      font-size: 17px;
+    }
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .col {
+    padding: 0;
+  }
+  .menu-inner {
+    width: 450px !important;
+  }
+  .menuRow {
+    color: white;
+    margin-left: 60px;
+    .col {
+      padding: 1px;
+    }
+    .colContainer {
+      background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+      max-width: 140px;
+      height: 200px;
+      border-radius: 1vw;
+      margin-top:30px;
+      margin-left: 0;
+      .divContainer {
+        width: 100%;
+        height: 100%;
+        border-radius: 1vw;
+        background: black;
+      }
+      p {
+        margin-top: 30px;
+        font-size: 17px;
+      }
+    }
+    .colContainer:nth-child(even) {
+      margin-left: 30px;
+    }
+    ion-icon {
+      font-size: 20px;
     }
   }
 }
@@ -150,6 +228,9 @@ ion-modal {
     padding-left: 8vw;
     padding-right: 8vw;
     background: rgba(0, 0, 0, 0.7);
+  }
+  .modal-wrapper {
+    height: 370px !important;
   }
 }
 

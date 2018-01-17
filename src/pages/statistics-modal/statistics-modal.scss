@@ -141,9 +141,9 @@ page-statistics-modal {
     }
     .headerRow {
       p {
-        font-size: 11px;
+        font-size: 13px;
         color: white;
-        margin-top: 12px !important;
+        margin-top: 13px !important;
         color: map-get($colors, secondary);
       }
     }
@@ -152,18 +152,18 @@ page-statistics-modal {
       /*      height: 45px;
 */
       p {
-        font-size: 7px;
+        font-size: 9px;
         color: white;
         margin: 0;
       }
     }
     .statsRow {
-      margin-top: 13px;
+      margin-top: 14px;
       border-bottom: 1px solid rgba(71, 103, 36, 0.4);
       p {
         margin: 0;
         margin-bottom: 1px;
-        font-size: 10px;
+        font-size: 12px;
         color: map-get($colors, secondary);
       }
     }
@@ -177,7 +177,7 @@ page-statistics-modal {
       transform: translate(-50%, -50%);
     }
     .formContainer {
-      margin-top: 13px;
+      margin-top: 14px;
       ion-col {
         margin-left: 13px;
       }
@@ -185,14 +185,14 @@ page-statistics-modal {
     .circle {
       position: relative;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: 23px;
+      height: 23px;
       background: #ffffff;
       p {
         position: absolute;
         color: black;
         margin: 0;
-        font-size: 11px;
+        font-size: 13px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -493,29 +493,29 @@ page-statistics-modal {
     }
     .headerRow {
       p {
-        font-size: calc(#{$headerFontSize}*1.5);
+        font-size: calc(#{$headerFontSize}*2);
         color: white;
-        margin-top:calc(#{$subHeaderMarginTop}*1.5) !important;
+        margin-top:calc(#{$subHeaderMarginTop}*2) !important;
         color: map-get($colors, secondary);
       }
     }
     .subHeaderRow {
-      margin-top: calc(#{$subHeaderMarginTop}*1.5);
+      margin-top: calc(#{$subHeaderMarginTop}*2);
       /*      height: 45px;
 */
       p {
-        font-size: calc(#{$subHeaderFontSize}*1.5);
+        font-size: calc(#{$subHeaderFontSize}*2);
         color: white;
         margin: 0;
       }
     }
     .statsRow {
-      margin-top: calc(#{$statsMarginTop}*1.5);
+      margin-top: calc(#{$statsMarginTop}*2);
       border-bottom: 1px solid rgba(71, 103, 36, 0.4);
       p {
         margin: 0;
-        margin-bottom: calc(#{$statsMarginBottom}*1.5);
-        font-size: calc(#{$statsFontSize}*1.5);
+        margin-bottom: calc(#{$statsMarginBottom}*2);
+        font-size: calc(#{$statsFontSize}*2);
         color: map-get($colors, secondary);
       }
     }
@@ -529,9 +529,9 @@ page-statistics-modal {
       transform: translate(-50%, -50%);
     }
     .formContainer {
-      margin-top: calc(#{$formMarginTop}*1.5);
+      margin-top: calc(#{$formMarginTop}*2);
       ion-col {
-        margin-left: calc(#{$formMarginLeft}*1.5);
+        margin-left: calc(#{$formMarginLeft}*2);
       }
     }
     .circle {

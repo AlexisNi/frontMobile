@@ -433,7 +433,7 @@
       }
     }
     @media only screen and (max-height:700px) and (min-width: 500px) {
-      $multiplier: 1;
+      $multiplier: 1.2;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
@@ -468,7 +468,7 @@
       }
       .statistics {
         margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        margin-bottom:calc(#{$statisticsMarginBottom}*0.60);
         color: white;
         position: relative;
         .col {
@@ -486,7 +486,7 @@
         }
       }
       .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        margin-bottom: calc(#{$buttonBetweenMargin}*0.60);
         ion-col {
           padding: 1px !important
         }
@@ -521,7 +521,7 @@
         background: black;
         border-radius: 19vw;
         display: block;
-        height: 99%;
+        height: 100%;
         transition: background .5s ease;
         width: 100%;
         .word-container {
@@ -642,14 +642,13 @@
         }
       }
     }
-    @media only screen and (min-width:700px) {
-      $multiplier: 1.2;
+    @media only screen and (min-height:820px) and (min-width: 768px) {
+      $multiplier: 1.4;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*        height: 50%;
-*/
+
         .col {
           padding: 0;
         }
@@ -731,7 +730,111 @@
         background: black;
         border-radius: 19vw;
         display: block;
-        height: 99%;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          margin: 0;
+          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          color: white;
+        }
+      }
+    }
+       @media only screen and (min-height:900px) and (min-width: 768px) {
+      $multiplier: 1.5;
+      .levelProgress {
+        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 10vw;
+          top: -0.43vw;
+          left: 19vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
+        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: calc(#{$percentageFontSize}*#{$multiplier});
+          margin: 0;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: calc(#{$buttonWidth}*#{$multiplier});
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height:calc(#{$buttonHeight}*#{$multiplier});
+        padding-left: calc(#{$paddingButton}*#{$multiplier});
+        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
         transition: background .5s ease;
         width: 100%;
         .word-container {

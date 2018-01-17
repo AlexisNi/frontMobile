@@ -29,6 +29,8 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
 
   screenWidth;
   screenHeight;
+  imageSize = 205;
+  patternSize = 500;
 
 
   r = 100;
@@ -89,30 +91,33 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   initCircle() {
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
-    if (this.screenWidth > 767) {
-      this.initR = 26.2;
-      this.initCx = 26.5;
-      this.initCy = 26.5;
-    }
+
     if (this.screenHeight <= 600) {
       this.initR = 85;
       this.initCy = 90;
       this.initCx = 88;
     }
-/*    if (this.screenHeight <= 600 && this.screenWidth >= 375) {
-      this.initR = 92;
-      this.initCy = 98;
-      this.initCx = 97;
-    }*/
+    /*    if (this.screenHeight <= 600 && this.screenWidth >= 375) {
+          this.initR = 92;
+          this.initCy = 98;
+          this.initCx = 97;
+        }*/
     if (this.screenHeight > 600 && this.screenWidth < 375) {
       this.initR = 92;
       this.initCy = 98;
       this.initCx = 97;
     }
-    if (this.screenHeight > 600 && this.screenWidth > 375) {
+    if (this.screenHeight > 600 && this.screenWidth > 375 && this.screenWidth < 767) {
       this.initR = 92;
       this.initCy = 98;
       this.initCx = 97;
+    }
+    if (this.screenWidth > 767) {
+      this.initR = 115;
+      this.initCx = 160;
+      this.initCy = 125;
+      this.imageSize = 300;
+      this.patternSize = 700;
     }
 
   }

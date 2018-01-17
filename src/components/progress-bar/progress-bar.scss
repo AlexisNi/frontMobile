@@ -21,8 +21,9 @@ progress-bar {
     filter: blur(5px);
   }
   #cont {
-/*    background: url('../assets/images/eclipse.png') no-repeat;
-*/    -webkit-background-size: cover;
+    /*       background: url('../assets/images/eclipse.png') no-repeat;
+*/
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     display: block;
@@ -147,7 +148,7 @@ progress-bar {
       font-size: 18px;
       font-family: Play;
       top: -18px;
-      left: 73px;
+      left: 65px;
     }
     .experienceDisplay {
       position: absolute;
@@ -452,42 +453,46 @@ progress-bar {
       z-index: 10000;
     }
   }
-  @media only screen and (min-width: 768px) {
-    $multiplier: 1;
+  @media only screen and(min-height: 680px) and (min-width: 768px) {
+    $multiplier: 1.2;
     svg {
       position: absolute;
       left: -6px;
+      width: 300px;
+      height: 300px !important;
     }
     #cont {
-      height: 191px;
-      width: 177px;
+      height: 250px;
+      width: 300px;
+      margin: auto;
+      margin-top: 55px;
     }
     .textSvg {
       position: absolute;
       top: 45%;
-      left: 54%;
+      left: 52%;
       transform: translate(-50%, -50%);
       width: 100%;
       .levelContainer {
         font-family: HIGHSPEED;
-        font-size: 50px;
+        font-size: 65px;
         width: 100%;
       }
     }
     .textSvg::after {
       content: 'LVL';
       position: absolute;
-      font-size: 18px;
+      font-size: 21px;
       font-family: Play;
-      top: -18px;
-      left: 73px;
+      top: -30px;
+      left: 133px;
     }
     .experienceDisplay {
       position: absolute;
       top: 73%;
-      left: 4%;
+      left: 2%;
       font-family: Play;
-      font-size: 20px;
+      font-size: 25px;
       width: 100%;
     }
     .upLine {
@@ -507,7 +512,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      left: -28px;
+      left: 0px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
@@ -517,7 +522,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      bottom: -22px;
+      bottom: -3px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;

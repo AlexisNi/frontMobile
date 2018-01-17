@@ -96,7 +96,7 @@ export class MatchPage implements OnDestroy {
   }
 
   ionViewDidLoad() {
-    this.arena = this.navParams.get('arena');
+/*    this.arena = this.navParams.get('arena');
     this.userId = this.firebasaService.userId;
     this.getInviteId();
     this.socketService.enterArena(this.arena.arenaId, this.userId, this.inviteId);
@@ -106,7 +106,7 @@ export class MatchPage implements OnDestroy {
       this.canUseAdvice=data.canUseHint.managerAdvice;      
       this.getQuestions();
 
-    })
+    })*/
 
   }
   getQuestions() {
