@@ -1,4 +1,20 @@
 page-signin {
+  $imageHeight: 150px;
+  $ionGridMarginTop: 30px;
+  $connectWithFontSize: 13.7px;
+  $facebookFontSize: 13.7px;
+  $line: 15px;
+  $linePaddingLeft: 15px;
+  $googleFontSize: 13.7px;
+  $paddingFacebook: 10px;
+  $buttonWidth: 170px;
+  $marginButton: 10px;
+  $orFontSize: 15px;
+  $marginOr: 40px;
+  $signFontSize: 15px;
+  $signInSection: 220px;
+  $triangleWidth: 40px;
+  $placeHolder: 10px;
   p {
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
@@ -17,7 +33,7 @@ page-signin {
     -moz-background-size: cover;
     background-size: cover;
   }
-  .backgroundIm {
+  /*  .backgroundIm {
     width: 100%;
     height: 45vw;
   }
@@ -108,6 +124,778 @@ page-signin {
       width: 100%;
       background-color: map-get($colors, signinButton);
       box-shadow: 0vw 0.8vw map-get($colors, shadow)
+    }
+  }*/
+  @media only screen and (max-height:580px) and (max-width: 375px) {
+    $multiplier: 0.8;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: 17px;
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 7px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 1vh;
+      background-color: #ffffff;
+      height: 800px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        max-height: 32px;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 0.8vw map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (min-height:580px) and (max-width: 375px) {
+    $multiplier: 0.90;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: calc(#{$ionGridMarginTop}*#{$multiplier});
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 7px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 1vh;
+      background-color: #ffffff;
+      height: 800px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        max-height: 32px;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 0.8vw map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (max-height:650px)and (min-width: 375px) {
+    $multiplier: 0.95;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: 25px;
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top: 20px;
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 6px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1300px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        max-height: 35px;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 0.8vw map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (min-height:650px)and (min-width: 375px) {
+    $multiplier: 1;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: 25px;
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top: 20px;
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 7px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1300px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        max-height: 35px;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 4px map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (max-height:750px)and (min-width: 600px) {
+    $multiplier: 1;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: calc(#{$ionGridMarginTop}*#{$multiplier});
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 7px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1220px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 0.8vw map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (min-height:750px)and (min-width: 600px) {
+    $multiplier: 1.2;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: calc(#{$ionGridMarginTop}*#{$multiplier});
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 10px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1220px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      .text-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 4px map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (min-height:900px)and (min-width: 900px) {
+    $multiplier: 1.3;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: calc(#{$ionGridMarginTop}*#{$multiplier});
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 11px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1220px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      ion-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 0.8vw map-get($colors, shadow)
+      }
+    }
+  }
+  @media only screen and (min-height:1100px)and (min-width: 900px) {
+    $multiplier: 2;
+    .backgroundIm {
+      width: 100%;
+      height: calc(#{$imageHeight}*#{$multiplier});
+    }
+    ion-grid {
+      color: white;
+      margin-top: calc(#{$ionGridMarginTop}*#{$multiplier});
+    }
+    .navBar {
+      .connectWith {
+        color: #79ab42;
+        font-size:calc(#{$connectWithFontSize}*#{$multiplier});
+      }
+      .facebook {
+        font-size:calc(#{$facebookFontSize}*#{$multiplier});
+        width: calc(#{$buttonWidth}*#{$multiplier});
+        border: 1px solid white;
+        border-radius: 6vw;
+        background-color: transparent;
+        color: #ffffff;
+        padding:calc(#{$paddingFacebook}*#{$multiplier});
+        p {
+          margin: 0;
+        }
+        .lineCol {
+          padding-top: 1px;
+          .line {
+            border-left: 1px solid gray;
+            height: calc(#{$line}*#{$multiplier});
+            margin-left: calc(#{$linePaddingLeft}*#{$multiplier});
+          }
+        }
+      }
+    }
+    .margin {
+      margin-top:calc(#{$marginButton}*#{$multiplier});
+      p {
+        margin-left: 4vw;
+      }
+    }
+    .or {
+      color: #79ab42;
+      font-size: calc(#{$orFontSize}*#{$multiplier});
+      margin-top:calc(#{$marginOr}*#{$multiplier});
+    }
+    .selectRow {
+      .col[offset-1] {
+        margin-left: 11.33333% !important;
+      }
+      .col[offset-6] {
+        margin-left: 45.33333% !important;
+      }
+      .select {
+        position: relative;
+        height: 100%;
+        font-size: calc(#{$signFontSize}*#{$multiplier});
+        img {
+          position: absolute;
+          width: calc(#{$triangleWidth}*#{$multiplier});
+          bottom: 22px;
+          left: 5px;
+        }
+      }
+    }
+    .sigin-section {
+      margin-top: 8px;
+      background-color: #ffffff;
+      height: 1220px;
+      color: black;
+      ion-icon {
+        margin: 0 !important;
+      }
+      ion-label {
+        margin: 0 !important;
+      }
+      .text-input {
+        font-size: calc(#{$placeHolder}*#{$multiplier});
+      }
+      .list-md .item-input:last-child {
+        border-bottom: 0 !important;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 1px solid #dedede !important;
+      }
+      .col[offset-2] {
+        margin-left: 22.33333% !important;
+      }
+      button {
+        width: 100%;
+        background-color: map-get($colors, signinButton);
+        box-shadow: 0vw 4px map-get($colors, shadow)
+      }
     }
   }
 }

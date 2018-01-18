@@ -54,7 +54,7 @@ export class TabsPage implements OnDestroy {
   ) { }
 
   ionViewDidLoad() {
-      /*  try {
+   /*     try {
           this.firebasaService.onNotification();
     
         } catch (err) {

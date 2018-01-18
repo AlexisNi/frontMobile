@@ -41,7 +41,7 @@ page-match {
     height: 24%;
     max-height: 24%;
     padding: 0;
-    margin-top: 0.7vw;
+    margin-top: 2px;
     color: white;
     border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
@@ -52,7 +52,7 @@ page-match {
       margin-top: 4%;
       p {
         margin: 0;
-        font-size: 3.8vw;
+        font-size: 3vh;
         letter-spacing: 0.4vw;
       }
     }
@@ -60,7 +60,7 @@ page-match {
   .helperRow {
     height: 12.5%;
     max-height: 12.5;
-    margin-top: 0.7vw;
+    margin-top: 2px;
     color: white;
     border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
     border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
@@ -70,9 +70,9 @@ page-match {
         position: relative;
         .timerIcon {
           position: absolute;
-          top: -3vw;
-          font-size: 5vw;
-          left: 14vw;
+          top: -3vh;
+          font-size: 4vh;
+          left: 6vw;
         }
       }
     }
@@ -81,7 +81,7 @@ page-match {
         font-family: HIGHSPEED;
         font-size: 4.1vh;
         margin-left: 8vw;
-        margin-top: 5.5vh;
+        margin-top: 5.0vh;
       }
     }
     .helpContainer {
@@ -90,8 +90,8 @@ page-match {
         position: relative;
         .helpIcon {
           position: absolute;
-          top: 3vw;
-          font-size: 6.5vw;
+          top: 2vh;
+          font-size: 4vh;
           left: 1vw;
         }
       }
@@ -99,7 +99,7 @@ page-match {
     .helpTextContainer {
       .help {
         p {
-          font-size: 2.4vw;
+          font-size: 1.3vh;
           margin-top: 7.5vh;
         }
       }
@@ -109,12 +109,12 @@ page-match {
     height: 54%;
     max-height: 54%;
     border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
-    margin-top: 0.7vw;
+    margin-top: 2px;
     ion-col {
       height: 9vh;
     }
     .rowAnswerContainer {
-      margin-top: 5%;
+      margin-top: 3vh;
     }
     button {
       text-transform: none;
@@ -173,5 +173,119 @@ page-match {
   .disableIcons {
     opacity: 0.2;
   }
-
+  @media only screen and (min-height:812px) and (max-width: 375px) {
+    .helperRow {
+      height: 12.5%;
+      max-height: 12.5;
+      margin-top: 2px;
+      color: white;
+      border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
+      border-bottom: solid rgba(121, 171, 66, 0.8) 0.1vh;
+      .timerContainer {
+        padding: 0;
+        .timerIconContainer {
+          position: relative;
+          .timerIcon {
+            position: absolute;
+            top: -20px;
+            font-size: 30px;
+            left: 22px;
+          }
+        }
+      }
+      .timer {
+        p {
+          font-family: HIGHSPEED;
+          font-size: 33px;
+          margin-left: 32px;
+          margin-top: 43px;
+        }
+      }
+      .helpContainer {
+        margin-left: 5vw;
+        .helpIconContainer {
+          position: relative;
+          .helpIcon {
+            position: absolute;
+            top: 2vh;
+            font-size: 4vh;
+            left: 1vw;
+          }
+        }
+      }
+      .helpTextContainer {
+        .help {
+          p {
+            font-size: 10px;
+            margin-top: 62px;
+          }
+        }
+      }
+    }
+    .answerRow {
+      height: 54%;
+      max-height: 54%;
+      border-top: solid rgba(121, 171, 66, 0.3) 0.1vh;
+      margin-top: 2px;
+      ion-col {
+        height: 9vh;
+      }
+      .rowAnswerContainer {
+        margin-top: 20px;
+      }
+      button {
+        text-transform: none;
+        margin: 0;
+        background-color: transparent;
+        width: 50vw;
+        position: relative;
+        border-color: white;
+        border-radius: 5vw;
+        height: 9vh;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          font-size: 2vh;
+          color: white;
+        }
+      }
+      .initializeButton {
+        display: inline-block;
+        margin: 0;
+        background-color: transparent;
+        width: 266px;
+        position: relative;
+        border-color: white;
+        border-radius: 5vw;
+        height: 61px;
+      }
+      .wrongButton {
+        margin: 0;
+        background-color: transparent;
+        width: 50vw;
+        position: relative;
+        border-color: red;
+        border-radius: 5vw;
+        height: 9vh;
+        opacity: 1 !important;
+      }
+      .rightButton {
+        margin: 0;
+        background-color: transparent;
+        width: 50vw;
+        position: relative;
+        border-color: green;
+        border-radius: 5vw;
+        height: 9vh;
+        opacity: 1 !important;
+      }
+      .hideButton {
+        display: none;
+      }
+    }
+  }
 }

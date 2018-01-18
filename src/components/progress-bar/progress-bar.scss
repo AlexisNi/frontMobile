@@ -246,7 +246,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      top: -21px;
+      top: -17px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -522,7 +522,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      bottom: -3px;
+      bottom: -18px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -534,7 +534,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      right: -31px;
+      right: -9px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
