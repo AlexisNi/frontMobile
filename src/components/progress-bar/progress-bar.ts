@@ -62,7 +62,7 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       setInterval(() => {
         this.initCircle();
         this.calucalteProgress();
-      },10000);
+      }, 10000);
 
 
     }, 50)
@@ -103,30 +103,21 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       this.initCx = 97;
     }
 
-    if (this.screenHeight > 600 && this.screenWidth < 375) {
+
+    if (this.screenHeight > 600 && this.screenWidth < 479) {
       this.initR = 92;
       this.initCy = 98;
       this.initCx = 97;
     }
-    if (this.screenHeight > 600 && this.screenWidth >= 375 && this.screenWidth < 767) {
-      this.initR = 92;
-      this.initCy = 98;
-      this.initCx = 97;
-    }
-    if (this.screenWidth > 767 && this.screenWidth < 900) {
-      this.initR = 115;
-      this.initCx = 160;
-      this.initCy = 125;
+    if (this.screenWidth > 479 && this.screenHeight > 600) {
+      this.initR = 110;
+      this.initCy = 150;
+      this.initCx = 158;
       this.imageSize = 300;
       this.patternSize = 700;
     }
-    if (this.screenWidth > 900 && this.screenHeight > 900) {
-      this.initR = 160;
-      this.initCx = 175;
-      this.initCy = 162;
-      this.imageSize = 400;
-      this.patternSize = 1000;
-    }
+
+
 
   }
 

@@ -77,8 +77,7 @@ progress-bar {
     font-size: 6vw;
     width: 100%;
   }
-
-  @media only screen and (max-height: 600px) and (max-width: 479px) {
+  @media only screen and (max-height: 800px) and (max-width: 479px) {
     $multiplier: 0.7;
     svg {
       position: absolute;
@@ -163,26 +162,28 @@ progress-bar {
       z-index: 10000;
     }
   }
-  @media only screen and (min-height: 700px) and (max-width: 479px) {
-    $multiplier: 0.9;
+  @media only screen and (max-height:900px) and (min-width: 479px) {
+    $multiplier: 0.7;
     svg {
       position: absolute;
       left: -6px;
+      height: 300px;
+      width: 300px;
     }
     #cont {
-      height: 191px;
-      width: 177px;
-      margin: 4vh auto;
+      height: 300px;
+      width: 300px;
+      margin: 2vh auto;
     }
     .textSvg {
       position: absolute;
       top: 50%;
-      left: 53%;
+      left: 52%;
       transform: translate(-50%, -50%);
       width: 100%;
       .levelContainer {
         font-family: HIGHSPEED;
-        font-size: 10vh;
+        font-size: 9vh;
         width: 100%;
       }
     }
@@ -191,8 +192,8 @@ progress-bar {
       position: absolute;
       font-size: 3vh;
       font-family: Play;
-      top: -17px;
-      left: 72px;
+      top: -21px;
+      left: 125px;
       letter-spacing: 1px;
     }
     .experienceDisplay {
@@ -206,9 +207,9 @@ progress-bar {
     .upLine {
       position: absolute;
       width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
+      height: 18px;
       border-left: 1px solid white;
-      top: -2.3vh;
+      top: 13px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -216,11 +217,11 @@ progress-bar {
     }
     .leftLine {
       position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
+      width: 18px;
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      left: -5.5vw;
+      left: 11px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
@@ -228,9 +229,9 @@ progress-bar {
     .downLine {
       position: absolute;
       width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
+      height: 18px;
       border-left: 1px solid white;
-      bottom: -3vh;
+      bottom: 12px;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -238,185 +239,11 @@ progress-bar {
     }
     .rightLine {
       position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
+      width: 18px;
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      right: -7vw;
-      opacity: 1;
-      transform: translateY(100%);
-      z-index: 10000;
-    }
-  }
-  @media only screen and(min-height: 680px) and (min-width: 768px) {
-    $multiplier: 1.2;
-    svg {
-      position: absolute;
-      left: -6px;
-      width: 300px;
-      height: 300px !important;
-    }
-    #cont {
-      height: 250px;
-      width: 300px;
-      margin: auto;
-      margin-top: 55px;
-    }
-    .textSvg {
-      position: absolute;
-      top: 45%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      .levelContainer {
-        font-family: HIGHSPEED;
-        font-size: 65px;
-        width: 100%;
-      }
-    }
-    .textSvg::after {
-      content: 'LVL';
-      position: absolute;
-      font-size: 21px;
-      font-family: Play;
-      top: -30px;
-      left: 133px;
-    }
-    .experienceDisplay {
-      position: absolute;
-      top: 73%;
-      left: 2%;
-      font-family: Play;
-      font-size: 25px;
-      width: 100%;
-    }
-    .upLine {
-      position: absolute;
-      width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
-      border-left: 1px solid white;
-      top: -21px;
-      left: 50%;
-      transform: translateX(100%);
-      opacity: 0.7;
-      z-index: 10000;
-    }
-    .leftLine {
-      position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
-      height: calc(#{$leftLineHeight}*#{$multiplier});
-      border-top: 1px solid white;
-      top: 50%;
-      left: 0px;
-      opacity: 1;
-      transform: translateY(100%);
-      z-index: 10000;
-    }
-    .downLine {
-      position: absolute;
-      width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
-      border-left: 1px solid white;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(100%);
-      opacity: 0.7;
-      z-index: 10000;
-    }
-    .rightLine {
-      position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
-      height: calc(#{$leftLineHeight}*#{$multiplier});
-      border-top: 1px solid white;
-      top: 50%;
-      right: -9px;
-      opacity: 1;
-      transform: translateY(100%);
-      z-index: 10000;
-    }
-  }
-  @media only screen and(min-height: 900px) and (min-width:900px) {
-    $multiplier: 1.5;
-    svg {
-      position: absolute;
-      left: -6px;
-      width: 400px;
-      height: 400px !important;
-    }
-    #cont {
-      height: 400px;
-      width: 800px;
-      margin: auto;
-      margin-top: 55px;
-    }
-    .textSvg {
-      position: absolute;
-      top: 45%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      .levelContainer {
-        font-family: HIGHSPEED;
-        font-size: 65px;
-        width: 100%;
-      }
-    }
-    .textSvg::after {
-      content: 'LVL';
-      position: absolute;
-      font-size: 21px;
-      font-family: Play;
-      top: -30px;
-      left: 133px;
-    }
-    .experienceDisplay {
-      position: absolute;
-      top: 73%;
-      left: 2%;
-      font-family: Play;
-      font-size: 25px;
-      width: 100%;
-    }
-    .upLine {
-      position: absolute;
-      width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
-      border-left: 1px solid white;
-      top: -21px;
-      left: 50%;
-      transform: translateX(100%);
-      opacity: 0.7;
-      z-index: 10000;
-    }
-    .leftLine {
-      position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
-      height: calc(#{$leftLineHeight}*#{$multiplier});
-      border-top: 1px solid white;
-      top: 50%;
-      left: 0px;
-      opacity: 1;
-      transform: translateY(100%);
-      z-index: 10000;
-    }
-    .downLine {
-      position: absolute;
-      width: calc(#{$upLineWidth}*#{$multiplier});
-      height: calc(#{$upLineHeight}*#{$multiplier});
-      border-left: 1px solid white;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(100%);
-      opacity: 0.7;
-      z-index: 10000;
-    }
-    .rightLine {
-      position: absolute;
-      width: calc(#{$leftLineWidth}*#{$multiplier});
-      height: calc(#{$leftLineHeight}*#{$multiplier});
-      border-top: 1px solid white;
-      top: 50%;
-      right: -9px;
+      right: 11px;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;

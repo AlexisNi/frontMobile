@@ -40,7 +40,6 @@
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*  height: 50%;*/
         .col {
           padding: 0;
         }
@@ -68,8 +67,8 @@
         }
       }
       .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        margin-top: 5vh;
+        margin-bottom: 8vh;
         color: white;
         position: relative;
         .col {
@@ -109,19 +108,17 @@
         .percentage p {
           font-family: HIGHSPEED;
           font-size: 4vh;
-          /*          margin: 0;
-*/
         }
       }
       .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        margin-bottom: 2vh;
         ion-col {
           padding: 1px !important
         }
         button {
           margin: 0;
           background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
+          width: 40vw;
           position: relative;
           .word-container {
             position: absolute;
@@ -136,9 +133,9 @@
         border-radius: 19vw;
         box-sizing: border-box;
         color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        height: 7vh;
+        padding-left: 1px;
+        padding-right: 1px;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
@@ -160,18 +157,24 @@
         }
         p {
           margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          font-size: 1.5vh;
           color: white;
         }
       }
     }
-    @media only screen and (min-height: 600px) and (max-width: 375px) {
-      $multiplier: 0.90;
+    @media only screen and (min-height: 600px) and (max-width: 479px) {
+      .scroll-content {
+        margin-top: 11vh !important;
+      }
+      .toolbar-md {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      $multiplier: 0.8;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*  height: 50%;*/
         .col {
           padding: 0;
         }
@@ -199,8 +202,8 @@
         }
       }
       .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        margin-top: 5vh;
+        margin-bottom: 8vh;
         color: white;
         position: relative;
         .col {
@@ -208,24 +211,49 @@
         }
         .statsContainer {
           p {
-            margin: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2.3vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 10vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 10vw;
           }
         }
         .percentage p {
           font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
+          font-size: 3.7vh;
         }
       }
       .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        margin-bottom: 2vh;
         ion-col {
           padding: 1px !important
         }
         button {
           margin: 0;
           background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
+          width: 40vw;
           position: relative;
           .word-container {
             position: absolute;
@@ -240,9 +268,9 @@
         border-radius: 19vw;
         box-sizing: border-box;
         color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        height: 6vh;
+        padding-left: 1px;
+        padding-right: 1px;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
@@ -263,20 +291,26 @@
           transform: translate(-50%, -50%);
         }
         p {
+          width: 40vw;
           margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          font-size: 1.4vh;
           color: white;
         }
       }
     }
-    @media only screen and (max-height:600px) and (min-width: 375px) {
-      $multiplier: 0.9;
+    @media only screen and (min-height: 600px) and (min-width: 479px) {
+      .scroll-content {
+        margin-top: 11vh !important;
+      }
+      .toolbar-md {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      $multiplier: 0.8;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*        height: 50%;
-*/
         .col {
           padding: 0;
         }
@@ -304,8 +338,8 @@
         }
       }
       .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        margin-top: 5vh;
+        margin-bottom: 8vh;
         color: white;
         position: relative;
         .col {
@@ -313,24 +347,49 @@
         }
         .statsContainer {
           p {
-            margin: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2.3vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 10vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 10vw;
           }
         }
         .percentage p {
           font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
+          font-size: 3.7vh;
         }
       }
       .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        margin-bottom: 2vh;
         ion-col {
           padding: 1px !important
         }
         button {
           margin: 0;
           background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
+          width: 40vw;
           position: relative;
           .word-container {
             position: absolute;
@@ -345,9 +404,9 @@
         border-radius: 19vw;
         box-sizing: border-box;
         color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        height: 6vh;
+        padding-left: 1px;
+        padding-right: 1px;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
@@ -368,736 +427,9 @@
           transform: translate(-50%, -50%);
         }
         p {
+          width: 40vw;
           margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (min-height:600px) and (min-width: 375px) {
-      $multiplier: 1;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*        height: 50%;
-*/
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 35px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (max-height:700px) and (min-width: 500px) {
-      $multiplier: 1.2;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*        height: 50%;
-*/
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 35px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*0.60);
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*0.60);
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (min-height:700px) and (min-width: 500px) {
-      $multiplier: 1.2;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        /*        height: 50%;
-*/
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 35px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (min-height:820px) and (min-width: 768px) {
-      $multiplier: 1.4;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 40px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (min-height:900px) and (min-width: 768px) {
-      $multiplier: 1.8;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 50px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (max-height:900px) and (min-width: 900px) {
-      $multiplier: 1.8;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 50px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
-          color: white;
-        }
-      }
-    }
-    @media only screen and (min-height:900px) and (min-width: 900px) {
-      $multiplier: 2.5;
-      .levelProgress {
-        position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
-        .col {
-          padding: 0;
-        }
-        img {
-          position: absolute;
-          width: 50px;
-          top: -0.70vw;
-          left: 18vw;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-          z-index: 10000000;
-        }
-        .progressBarContainer {
-          color: white;
-          position: relative;
-          margin-top: 60px;
-          .progressBarWrapper {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-        .progressBarInsider {
-          position: relative;
-        }
-      }
-      .statistics {
-        margin-top:calc(#{80px}*#{$multiplier});
-        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
-        color: white;
-        position: relative;
-        .col {
-          padding: 0;
-        }
-        .statsContainer {
-          p {
-            margin: 0;
-          }
-        }
-        .percentage p {
-          font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
-        }
-      }
-      .userNameOpp {
-        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
-        ion-col {
-          padding: 1px !important
-        }
-        button {
-          margin: 0;
-          background-color: transparent;
-          width: calc(#{$buttonWidth}*#{$multiplier});
-          position: relative;
-          .word-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
-      .btn {
-        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
-        border-radius: 19vw;
-        box-sizing: border-box;
-        color: #00a84f;
-        height:calc(#{$buttonHeight}*#{$multiplier});
-        padding-left: calc(#{$paddingButton}*#{$multiplier});
-        padding-right: calc(#{$paddingButton}*#{$multiplier});
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-      .btn span {
-        position: relative;
-        background: black;
-        border-radius: 19vw;
-        display: block;
-        height: 100%;
-        transition: background .5s ease;
-        width: 100%;
-        .word-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        p {
-          margin: 0;
-          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          font-size: 1.4vh;
           color: white;
         }
       }
