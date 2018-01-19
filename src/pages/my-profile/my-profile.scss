@@ -14,6 +14,10 @@
     $paddingButton: 1px;
     $buttonFontSize: 8.8px;
     $buttonBetweenMargin: 10px;
+    .toolbar-md {
+      min-height: 6vh !important;
+      max-height: 6vh !important;
+    }
     .userNameOpp {
       button {
         .word-container {
@@ -23,13 +27,13 @@
         }
       }
     }
-    @media only screen and (max-height: 600px) and (max-width: 375px) {
+    @media only screen and (max-height: 600px) and (max-width: 479px) {
       .scroll-content {
-        margin-top: 12.5vh;
+        margin-top: 10.7vh !important;
       }
       .toolbar-md {
-        min-height: 1vh !important;
-        max-height: 8vh !important;
+        min-height: 6vh !important;
+        max-height: 6vh !important;
       }
       $multiplier: 0.8;
       .levelProgress {
