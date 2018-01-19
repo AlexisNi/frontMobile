@@ -316,9 +316,9 @@
         }
         img {
           position: absolute;
-          width: 35px;
+          width: 40px;
           top: -0.70vw;
-          left: 18vw;
+          left: 14vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -365,7 +365,7 @@
             margin-top: 0;
             margin-bottom: 0;
             margin-right: 0;
-            margin-left: 10vw;
+            margin-left:8vw;
           }
         }
         .statsContainer:last-child {
@@ -373,7 +373,7 @@
             margin-top: 0;
             margin-bottom: 0;
             margin-right: 0;
-            margin-right: 10vw;
+            margin-right: 8vw;
           }
         }
         .percentage p {
@@ -427,7 +427,7 @@
           transform: translate(-50%, -50%);
         }
         p {
-          width: 40vw;
+          width: 42vw;
           margin: 0;
           font-size: 1.4vh;
           color: white;

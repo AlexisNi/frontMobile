@@ -116,6 +116,13 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       this.imageSize = 300;
       this.patternSize = 700;
     }
+    if (this.screenWidth >= 768 && this.screenHeight >= 700) {
+      this.initR = 120;
+      this.initCy = 152;
+      this.initCx = 158;
+      this.imageSize = 300;
+      this.patternSize = 700;
+    }
 
 
 
