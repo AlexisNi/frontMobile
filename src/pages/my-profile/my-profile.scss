@@ -365,7 +365,7 @@
             margin-top: 0;
             margin-bottom: 0;
             margin-right: 0;
-            margin-left:8vw;
+            margin-left: 8vw;
           }
         }
         .statsContainer:last-child {
@@ -430,6 +430,281 @@
           width: 42vw;
           margin: 0;
           font-size: 1.4vh;
+          color: white;
+        }
+      }
+    }
+    @media only screen and (min-height: 768px) and (min-width: 768px) {
+      .scroll-content {
+        margin-top: 11vh !important;
+      }
+      .toolbar-md {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      $multiplier: 0.8;
+      .levelProgress {
+        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 50px;
+          top: -0.70vw;
+          left: 8vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top: 5vh;
+        margin-bottom: 8vh;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2.5vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 3vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 3vw;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: 4.5vh;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: 2vh;
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: 43vw;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 7vh;
+        padding-left: 1px;
+        padding-right: 1px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          width: 42vw;
+          margin: 0;
+          font-size: 1.7vh;
+          color: white;
+        }
+      }
+    }
+    @media only screen and (min-height: 900px) and (min-width: 900px) {
+      ion-navbar {
+        border-bottom: solid rgba(121, 171, 66, 0.7) 5px;
+      }
+      .scroll-content {
+        margin-top: 11vh !important;
+      }
+      .toolbar-md {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      $multiplier: 0.8;
+      .levelProgress {
+        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 50px;
+          top: -0.70vw;
+          left: 8vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top: 5vh;
+        margin-bottom: 8vh;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2.5vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 3vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 3vw;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: 4.5vh;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: 2vh;
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: 43vw;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 7vh;
+        padding-left: 1px;
+        padding-right: 1px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          width: 42vw;
+          margin: 0;
+          font-size: 1.7vh;
           color: white;
         }
       }
