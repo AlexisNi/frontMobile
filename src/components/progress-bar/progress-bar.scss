@@ -124,31 +124,33 @@ progress-bar {
     svg {
       position: absolute;
       left: -6px;
+
     }
     #cont {
-      height: 171px;
-      width: 158px;
-      ;
+      height: 191px;
+      width: 177px;
+      margin: 4vh auto;
     }
     .textSvg {
       position: absolute;
-      top: 45%;
-      left: 54%;
+      top: 50%;
+      left: 53%;
       transform: translate(-50%, -50%);
       width: 100%;
       .levelContainer {
         font-family: HIGHSPEED;
-        font-size: 50px;
+        font-size: 10vh;
         width: 100%;
       }
     }
     .textSvg::after {
       content: 'LVL';
       position: absolute;
-      font-size: 18px;
+      font-size: 3vh;
       font-family: Play;
-      top: -18px;
-      left: 65px;
+      top: -17px;
+      left: 72px;
+      letter-spacing: 1px;
     }
     .experienceDisplay {
       position: absolute;
@@ -163,7 +165,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      top: -21px;
+      top: -2.3vh;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -175,7 +177,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      left: -28px;
+      left: -5.5vw;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
@@ -185,7 +187,7 @@ progress-bar {
       width: calc(#{$upLineWidth}*#{$multiplier});
       height: calc(#{$upLineHeight}*#{$multiplier});
       border-left: 1px solid white;
-      bottom: -22px;
+      bottom: -3vh;
       left: 50%;
       transform: translateX(100%);
       opacity: 0.7;
@@ -197,7 +199,7 @@ progress-bar {
       height: calc(#{$leftLineHeight}*#{$multiplier});
       border-top: 1px solid white;
       top: 50%;
-      right: -31px;
+      right: -7vw;
       opacity: 1;
       transform: translateY(100%);
       z-index: 10000;
@@ -464,6 +466,93 @@ progress-bar {
     #cont {
       height: 250px;
       width: 300px;
+      margin: auto;
+      margin-top: 55px;
+    }
+    .textSvg {
+      position: absolute;
+      top: 45%;
+      left: 52%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 65px;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 21px;
+      font-family: Play;
+      top: -30px;
+      left: 133px;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 2%;
+      font-family: Play;
+      font-size: 25px;
+      width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -21px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: 0px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -9px;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+  }
+  @media only screen and(min-height: 900px) and (min-width:900px) {
+    $multiplier: 1.5;
+    svg {
+      position: absolute;
+      left: -6px;
+      width: 400px;
+      height: 400px !important;
+    }
+    #cont {
+      height: 400px;
+      width: 800px;
       margin: auto;
       margin-top: 55px;
     }

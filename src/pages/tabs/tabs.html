@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-tabs tabsPlacement="top" [selectedIndex]="tab">
-  <ion-tab tappable [root]="startingPage" tabTitle="MY TEAM"></ion-tab>
+  <ion-tab class="myTeam" tappable [root]="startingPage" tabTitle="MY TEAM"></ion-tab>
   <ion-tab tappable [root]="arenaPage" [tabBadge]="nots>0 ? nots : null" tabBadgeStyle="danger" tabTitle="MY ARENAS"></ion-tab>
   
 </ion-tabs>

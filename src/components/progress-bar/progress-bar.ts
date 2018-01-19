@@ -51,16 +51,21 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   ngOnInit() {
     this.initCircle();
 
+
   }
 
 
   ngAfterViewInit(): void {
     setTimeout(() => {
+      this.initCircle();
       this.calucalteProgress();
-      console.log(window.innerWidth);
+      setInterval(() => {
+        this.initCircle();
+        this.calucalteProgress();
+      },10000);
 
 
-    })
+    }, 50)
   }
 
 
@@ -92,16 +97,12 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
 
-    if (this.screenHeight <= 600) {
+    if (this.screenHeight <= 600 && this.screenWidth < 375) {
       this.initR = 85;
-      this.initCy = 90;
-      this.initCx = 88;
+      this.initCy = 98;
+      this.initCx = 97;
     }
-    /*    if (this.screenHeight <= 600 && this.screenWidth >= 375) {
-          this.initR = 92;
-          this.initCy = 98;
-          this.initCx = 97;
-        }*/
+
     if (this.screenHeight > 600 && this.screenWidth < 375) {
       this.initR = 92;
       this.initCy = 98;
@@ -112,12 +113,19 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
       this.initCy = 98;
       this.initCx = 97;
     }
-    if (this.screenWidth > 767) {
+    if (this.screenWidth > 767 && this.screenWidth < 900) {
       this.initR = 115;
       this.initCx = 160;
       this.initCy = 125;
       this.imageSize = 300;
       this.patternSize = 700;
+    }
+    if (this.screenWidth > 900 && this.screenHeight > 900) {
+      this.initR = 160;
+      this.initCx = 175;
+      this.initCy = 162;
+      this.imageSize = 400;
+      this.patternSize = 1000;
     }
 
   }

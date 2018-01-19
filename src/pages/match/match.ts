@@ -249,8 +249,8 @@ export class MatchPage implements OnDestroy {
   timer() {
     let timer = Observable.timer(100, 1000);
     this.subscription = timer.subscribe(t => {
-     /* this.time = this.time - 3.3;
-      this.realTime = this.realTime - 1;*/
+      this.time = this.time - 3.3;
+      this.realTime = this.realTime - 1;
       if (this.realTime <= 0) {
         this.realTime = 0;
       }

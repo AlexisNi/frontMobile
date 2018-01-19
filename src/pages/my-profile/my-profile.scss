@@ -14,8 +14,24 @@
     $paddingButton: 1px;
     $buttonFontSize: 8.8px;
     $buttonBetweenMargin: 10px;
+    .userNameOpp {
+      button {
+        .word-container {
+          p {
+            margin-bottom: 2px;
+          }
+        }
+      }
+    }
     @media only screen and (max-height: 600px) and (max-width: 375px) {
-      $multiplier:0.8;
+      .scroll-content {
+        margin-top: 12.5vh;
+      }
+      .toolbar-md {
+        min-height: 1vh !important;
+        max-height: 8vh !important;
+      }
+      $multiplier: 0.8;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
@@ -26,9 +42,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -57,13 +73,40 @@
         }
         .statsContainer {
           p {
-            margin: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2.5vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 10vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 10vw;
           }
         }
         .percentage p {
           font-family: HIGHSPEED;
-          font-size: calc(#{$percentageFontSize}*#{$multiplier});
-          margin: 0;
+          font-size: 4vh;
+          /*          margin: 0;
+*/
         }
       }
       .userNameOpp {
@@ -130,9 +173,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -235,9 +278,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -340,9 +383,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -416,7 +459,7 @@
         background: black;
         border-radius: 19vw;
         display: block;
-        height:100%;
+        height: 100%;
         transition: background .5s ease;
         width: 100%;
         .word-container {
@@ -445,9 +488,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -550,9 +593,9 @@
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 35px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -648,15 +691,14 @@
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-
         .col {
           padding: 0;
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 40px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -746,21 +788,20 @@
         }
       }
     }
-       @media only screen and (min-height:900px) and (min-width: 768px) {
-      $multiplier: 1.5;
+    @media only screen and (min-height:900px) and (min-width: 768px) {
+      $multiplier: 1.8;
       .levelProgress {
         position: relative;
         margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
-
         .col {
           padding: 0;
         }
         img {
           position: absolute;
-          width: 10vw;
-          top: -0.43vw;
-          left: 19vw;
+          width: 50px;
+          top: -0.70vw;
+          left: 18vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -781,6 +822,213 @@
       }
       .statistics {
         margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
+        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: calc(#{$percentageFontSize}*#{$multiplier});
+          margin: 0;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: calc(#{$buttonWidth}*#{$multiplier});
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height:calc(#{$buttonHeight}*#{$multiplier});
+        padding-left: calc(#{$paddingButton}*#{$multiplier});
+        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          margin: 0;
+          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          color: white;
+        }
+      }
+    }
+    @media only screen and (max-height:900px) and (min-width: 900px) {
+      $multiplier: 1.8;
+      .levelProgress {
+        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 50px;
+          top: -0.70vw;
+          left: 18vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top:calc(#{$statiSticsMarginTop}*#{$multiplier});
+        margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin: 0;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: calc(#{$percentageFontSize}*#{$multiplier});
+          margin: 0;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: calc(#{$buttonBetweenMargin}*#{$multiplier});
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          margin: 0;
+          background-color: transparent;
+          width: calc(#{$buttonWidth}*#{$multiplier});
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height:calc(#{$buttonHeight}*#{$multiplier});
+        padding-left: calc(#{$paddingButton}*#{$multiplier});
+        padding-right: calc(#{$paddingButton}*#{$multiplier});
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          margin: 0;
+          font-size: calc(#{$buttonFontSize}*#{$multiplier});
+          color: white;
+        }
+      }
+    }
+    @media only screen and (min-height:900px) and (min-width: 900px) {
+      $multiplier: 2.5;
+      .levelProgress {
+        position: relative;
+        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 50px;
+          top: -0.70vw;
+          left: 18vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          margin-top: 60px;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top:calc(#{80px}*#{$multiplier});
         margin-bottom:calc(#{$statisticsMarginBottom}*#{$multiplier});
         color: white;
         position: relative;

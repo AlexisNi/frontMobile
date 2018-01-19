@@ -3,9 +3,8 @@
     <div id="cont" level="1">
       <svg width="205px" height="205px">
         <defs>
-          <pattern id="image"  patternUnits="userSpaceOnUse" [attr.height]="patternSize" [attr.width]="patternSize">
-            <image x="0" y="0" [attr.height]="imageSize" [attr.width]="imageSize" xlink:href="assets/images/eclipse.png"
-            />
+          <pattern id="image" patternUnits="userSpaceOnUse" [attr.height]="patternSize" [attr.width]="patternSize">
+            <image x="0" y="0" [attr.height]="imageSize" [attr.width]="imageSize" xlink:href="assets/images/eclipse.png" />
           </pattern>
           <filter id="dropshadow" height="130%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
@@ -27,7 +26,9 @@
           </marker>
         </defs>
         <circle #circle [attr.cx]="initCx" [attr.cy]="initCy" [attr.r]="initR + 'px' " fill="url(#image)" stroke-width="5" stroke="white"
-        />
+        />-
+     <!--   <circle #circle [attr.cx]="initCx  " [attr.cy]="initCy  " [attr.r]="initR + 'vh' " fill="url(#image)" stroke-width="5" stroke="white"
+        />-->
 
         <path [attr.d]="arc1" stroke="#79ab42" style="filter:url(#dropshadow)" fill="none" stroke-width="5" />
         <path [attr.d]="arc2" style="filter:url(#dropshadow)" marker-start='url(#dot)' fill="none" stroke-width="1" />
@@ -42,11 +43,11 @@
           {{level}}
         </div>
       </div>
-      <div text-center class="experienceDisplay">
+  <!--    <div text-center class="experienceDisplay">
         <div text-center style="width:100%">
           {{currentExp}}/{{experienceNextLevel}}
         </div>
-      </div>
+      </div>-->
 
       <!--      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>

@@ -1,356 +1,356 @@
-@import '../theme/match.icons';
-@font-face {
-  font-family: Play;
-  src: url('../assets/fonts/Ubuntu-Light.ttf');
-}
-
-@font-face {
-  font-family: HIGHSPEED;
-  src: url('../assets/fonts/HIGHSPEED.TTF');
-}
-
-* {
-  font-family: Play;
-}
-
-ion-icon {
-  &[class*="appname-"] {
-    mask-size: contain;
-    mask-position: 50% 50%;
-    mask-repeat: no-repeat;
-    background: currentColor;
-    width: 1em;
-    height: 1em;
-  } // custom icons
-  &[class*="appname-customicon1"] {
-    mask-image: url(../assets/images/icons_tab_arena.svg);
+  @import '../theme/match.icons';
+  @font-face {
+    font-family: Play;
+    src: url('../assets/fonts/Ubuntu-Light.ttf');
   }
-  &[class*="appname-customicon2"] {
-    mask-image: url(../assets/images/icons_tab_team.svg);
-  }
-  &[class*="appname-court"] {
-    mask-image: url(../assets/images/Match_field_icon-01.svg);
-  }
-  &[class*="appname-statistics"] {
-    mask-image: url(../assets/images/football-stats-graphic.svg);
-  }
-  &[class*="appname-extratime"] {
-    mask-image: url(../assets/fonts/matchIcons/extratime.svg);
-  }
-  &[class*="appname-advice"] {
-    mask-image: url(../assets/fonts/match/advice.svg);
-  }
-}
 
-ion-navbar {
-  border-bottom: solid rgba(121, 171, 66, 0.7) 1px;
-}
-
-p {
-  margin: 0;
-}
-
-.bgImage {
-  background-image: url('../assets/images/login/background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.bgImageMenu {
-  background-image: url('../assets/images/menu.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.loadingImage {
-  background-image: url('../assets/images/splash.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.menuRow {
-  color: white;
-  .col {
-    padding: 1px;
+  @font-face {
+    font-family: HIGHSPEED;
+    src: url('../assets/fonts/HIGHSPEED.TTF');
   }
-  .colContainer {
-    background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
-    max-width: 80px;
-    height: 30vw;
-    border-radius: 5px;
-    margin-top: 5vw;
-    margin-left: 5vw;
-    .divContainer {
-      width: 100%;
-      height: 100%;
-      border-radius: 5px;
-      background: black;
+
+  * {
+    font-family: Play;
+  }
+
+  ion-icon {
+    &[class*="appname-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    } // custom icons
+    &[class*="appname-customicon1"] {
+      mask-image: url(../assets/images/icons_tab_arena.svg);
     }
-    p {
-      margin-top: 5vw;
-      font-size: 3vw;
+    &[class*="appname-customicon2"] {
+      mask-image: url(../assets/images/icons_tab_team.svg);
+    }
+    &[class*="appname-court"] {
+      mask-image: url(../assets/images/Match_field_icon-01.svg);
+    }
+    &[class*="appname-statistics"] {
+      mask-image: url(../assets/images/football-stats-graphic.svg);
+    }
+    &[class*="appname-extratime"] {
+      mask-image: url(../assets/fonts/matchIcons/extratime.svg);
+    }
+    &[class*="appname-advice"] {
+      mask-image: url(../assets/fonts/match/advice.svg);
     }
   }
-}
 
-@media only screen and (max-width:375px) {
-  .col {
-    padding: 0;
+  ion-navbar {
+    border-bottom: solid rgba(121, 171, 66, 0.7) 1px;
   }
-  .menu-inner {
-    width: 220px !important;
+
+  p {
+    margin: 0;
   }
+
+  .bgImage {
+    background-image: url('../assets/images/login/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bgImageMenu {
+    background-image: url('../assets/images/menu.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .loadingImage {
+    background-image: url('../assets/images/splash.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .menuRow {
     color: white;
-    margin-left: 20px;
     .col {
       padding: 1px;
     }
     .colContainer {
       background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
       max-width: 80px;
-      height: 130px;
-      border-radius: 1vw;
-      margin-top: 15px;
-      margin-left: 0;
+      height: 30vw;
+      border-radius: 5px;
+      margin-top: 5vw;
+      margin-left: 5vw;
       .divContainer {
         width: 100%;
         height: 100%;
-        border-radius: 1vw;
+        border-radius: 5px;
         background: black;
       }
       p {
-        margin-top: 15px;
-        font-size: 10px;
+        margin-top: 5vw;
+        font-size: 3vw;
       }
     }
-    .colContainer:nth-child(even) {
-      margin-left: 20px;
-    }
-    ion-icon {
-      font-size: 17px;
-    }
   }
-}
 
-@media only screen and (min-width:375px) {
-  .col {
-    padding: 0;
-  }
-  .menu-inner {
-    width: 250px !important;
-  }
-  .menuRow {
-    color: white;
-    margin-left: 23px;
-    .col {
-      padding: 1px;
-    }
-    .colContainer {
-      background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
-      max-width: 90px;
-      height: 140px;
-      border-radius: 1vw;
-      margin-top: 20px;
-      margin-left: 0;
-      .divContainer {
-        width: 100%;
-        height: 100%;
-        border-radius: 1vw;
-        background: black;
-      }
-      p {
-        margin-top: 15px;
-        font-size: 10px;
-      }
-    }
-    .colContainer:nth-child(even) {
-      margin-left: 20px;
-    }
-    ion-icon {
-      font-size: 17px;
-    }
-  }
-}
 
-@media only screen and (min-width:600px) {
-  .col {
-    padding: 0;
-  }
-  .menu-inner {
-    width: 450px !important;
-  }
-  .menuRow {
-    color: white;
-    margin-left: 60px;
+
+  @media only screen and (max-width:375px) {
     .col {
-      padding: 1px;
+      padding: 0;
     }
-    .colContainer {
-      background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
-      max-width: 140px;
-      height: 200px;
-      border-radius: 1vw;
-      margin-top:30px;
-      margin-left: 0;
-      .divContainer {
-        width: 100%;
-        height: 100%;
-        border-radius: 1vw;
-        background: black;
+    .menu-inner {
+      width: 220px !important;
+    }
+    .menuRow {
+      color: white;
+      margin-left: 20px;
+      .col {
+        padding: 1px;
       }
-      p {
-        margin-top: 30px;
+      .colContainer {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+        max-width: 80px;
+        height: 130px;
+        border-radius: 1vw;
+        margin-top: 15px;
+        margin-left: 0;
+        .divContainer {
+          width: 100%;
+          height: 100%;
+          border-radius: 1vw;
+          background: black;
+        }
+        p {
+          margin-top: 15px;
+          font-size: 10px;
+        }
+      }
+      .colContainer:nth-child(even) {
+        margin-left: 20px;
+      }
+      ion-icon {
         font-size: 17px;
       }
     }
-    .colContainer:nth-child(even) {
-      margin-left: 30px;
+  }
+
+  @media only screen and (min-width:375px) {
+    .col {
+      padding: 0;
     }
-    ion-icon {
-      font-size: 20px;
+    .menu-inner {
+      width: 250px !important;
+    }
+    .menuRow {
+      color: white;
+      margin-left: 23px;
+      .col {
+        padding: 1px;
+      }
+      .colContainer {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+        max-width: 90px;
+        height: 140px;
+        border-radius: 1vw;
+        margin-top: 20px;
+        margin-left: 0;
+        .divContainer {
+          width: 100%;
+          height: 100%;
+          border-radius: 1vw;
+          background: black;
+        }
+        p {
+          margin-top: 15px;
+          font-size: 10px;
+        }
+      }
+      .colContainer:nth-child(even) {
+        margin-left: 20px;
+      }
+      ion-icon {
+        font-size: 17px;
+      }
     }
   }
-}
 
-ion-modal {
-  padding-top: 34vw;
-  padding-bottom: 22vh;
-  padding-left: 8vw;
-  padding-right: 8vw;
-  background: rgba(0, 0, 0, 0.7);
-}
+  @media only screen and (min-width:600px) {
+    .col {
+      padding: 0;
+    }
+    .menu-inner {
+      width: 450px !important;
+    }
+    .menuRow {
+      color: white;
+      margin-left: 60px;
+      .col {
+        padding: 1px;
+      }
+      .colContainer {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 0%, white 100%);
+        max-width: 140px;
+        height: 200px;
+        border-radius: 1vw;
+        margin-top: 30px;
+        margin-left: 0;
+        .divContainer {
+          width: 100%;
+          height: 100%;
+          border-radius: 1vw;
+          background: black;
+        }
+        p {
+          margin-top: 30px;
+          font-size: 17px;
+        }
+      }
+      .colContainer:nth-child(even) {
+        margin-left: 30px;
+      }
+      ion-icon {
+        font-size: 20px;
+      }
+    }
+  }
 
-@media only screen and (max-width: 375px) {
   ion-modal {
-    padding-top: 110px;
-    padding-bottom: 171px;
+    padding-top: 34vw;
+    padding-bottom: 22vh;
     padding-left: 8vw;
     padding-right: 8vw;
     background: rgba(0, 0, 0, 0.7);
   }
-  .modal-wrapper {
-    height: 370px !important;
-  }
-}
 
-@media only screen and (min-width: 375px) {
-  ion-modal {
-    padding-top: 75px;
-    padding-bottom: 110px;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
+  @media only screen and (max-width: 375px) {
+    ion-modal {
+      padding-top: 110px;
+      padding-bottom: 171px;
+      padding-left: 8vw;
+      padding-right: 8vw;
+      background: rgba(0, 0, 0, 0.7);
+    }
     .modal-wrapper {
-      height: 380px !important;
+      height: 370px !important;
     }
   }
-}
 
-@media only screen and (min-width: 412px) {
-  ion-modal {
-    padding-top: 108px;
-    padding-bottom: 128px;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-    .modal-wrapper {
-      height: 380px !important;
+  @media only screen and (min-width: 375px) {
+    ion-modal {
+      padding-top: 75px;
+      padding-bottom: 110px;
+      padding-left: 8vw;
+      padding-right: 8vw;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        height: 380px !important;
+      }
     }
   }
-}
 
-@media only screen and (min-height:667px) and (min-width: 375px) {
-  ion-modal {
-    padding-top: 15vh;
-    padding-bottom: 24vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (min-height:812px) and (min-width: 375px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 27vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
-    background: rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media only screen and (max-height:600px) and (min-width:500px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 11vh;
-    padding-left: 80px;
-    padding-right: 93px;
-    background: rgba(0, 0, 0, 0.7);
-    .modal-wrapper {
-      max-height: 400px !important;
+  @media only screen and (min-width: 412px) {
+    ion-modal {
+      padding-top: 108px;
+      padding-bottom: 128px;
+      padding-left: 8vw;
+      padding-right: 8vw;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        height: 380px !important;
+      }
     }
   }
-}
 
-@media only screen and (min-width:600px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 11vh;
-    padding-left: 140px;
-    padding-right: 140px;
-    background: rgba(0, 0, 0, 0.7);
-    .modal-wrapper {
-      height: 390px !important;
+  @media only screen and (min-height:667px) and (min-width: 375px) {
+    ion-modal {
+      padding-top: 15vh;
+      padding-bottom: 24vh;
+      padding-left: 8vw;
+      padding-right: 8vw;
+      background: rgba(0, 0, 0, 0.7);
     }
   }
-}
 
-@media only screen and (min-width:700px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 11vh;
-    padding-left: 140px;
-    padding-right: 140px;
-    background: rgba(0, 0, 0, 0.7);
-    .modal-wrapper {
-      height: 550px !important;
+  @media only screen and (min-height:812px) and (min-width: 375px) {
+    ion-modal {
+      padding-top: 21vh;
+      padding-bottom: 27vh;
+      padding-left: 8vw;
+      padding-right: 8vw;
+      background: rgba(0, 0, 0, 0.7);
     }
   }
-}
 
-@media only screen and (min-width:900px) and (min-height:800px) {
-  ion-modal {
-    padding-top: 21vh;
-    padding-bottom: 11vh;
-    padding-left: 140px;
-    padding-right: 140px;
-    background: rgba(0, 0, 0, 0.7);
-    .modal-wrapper {
-      height: 740px !important;
+  @media only screen and (max-height:600px) and (min-width:500px) {
+    ion-modal {
+      padding-top: 21vh;
+      padding-bottom: 11vh;
+      padding-left: 80px;
+      padding-right: 93px;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        max-height: 400px !important;
+      }
     }
   }
-}
 
-@media only screen and (min-height: 768px) and (min-width: 768px) {
-  .modal-wrapper {
-    top: calc(50% - (731px/2));
-    position: absolute;
-    width: 627px;
-    height: 747px;
+  @media only screen and (min-width:600px) {
+    ion-modal {
+      padding-top: 21vh;
+      padding-bottom: 11vh;
+      padding-left: 140px;
+      padding-right: 140px;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        height: 390px !important;
+      }
+    }
   }
-}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+  @media only screen and (min-width:700px) {
+    ion-modal {
+      padding-top: 21vh;
+      padding-bottom: 11vh;
+      padding-left: 140px;
+      padding-right: 140px;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        height: 550px !important;
+      }
+    }
+  }
+
+  @media only screen and (min-width:900px) and (min-height:800px) {
+    ion-modal {
+      padding-top: 21vh;
+      padding-bottom: 11vh;
+      padding-left: 140px;
+      padding-right: 140px;
+      background: rgba(0, 0, 0, 0.7);
+      .modal-wrapper {
+        height: 740px !important;
+      }
+    }
+  }
+
+  @media only screen and (min-height: 768px) and (min-width: 768px) {
+    .modal-wrapper {
+      top: calc(50% - (731px/2));
+      position: absolute;
+      width: 627px;
+      height: 747px;
+    }
+  } // App Global Sass
+  // --------------------------------------------------
+  // Put style rules here that you want to apply globally. These
+  // styles are for the entire app and not just one component.
+  // Additionally, this file can be also used as an entry point
+  // to import other Sass files to be included in the output CSS.
+  //
+  // Shared Sass variables, which can be used to adjust Ionic's
+  // default Sass variables, belong in "theme/variables.scss".
+  //
+  // To declare rules for a specific mode, create a child rule
+  // for the .md, .ios, or .wp mode classes. The mode class is
+  // automatically applied to the <body> element in the app.
