@@ -1,5 +1,5 @@
   page-my-profile {
-    $levelProgressMarginTop: 6px;
+    $levelProgressMarginTop: 4px;
     $upLineWidth: 3px;
     $upLineHeight: 15px;
     $leftLineHeight: 3px;
@@ -18,11 +18,19 @@
       min-height: 6vh !important;
       max-height: 6vh !important;
     }
+    .toolbar-ios {
+      min-height: 6vh !important;
+      max-height: 6vh !important;
+    }
+    .progressBarContainer {
+      margin-top: 5vh;
+    }
     .userNameOpp {
       button {
         .word-container {
           p {
             margin-bottom: 2px;
+            width: 30vw;
           }
         }
       }
@@ -35,10 +43,14 @@
         min-height: 6vh !important;
         max-height: 6vh !important;
       }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
       $multiplier: 0.8;
       .levelProgress {
         position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        margin-top: calc(4px*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
         .col {
           padding: 0;
@@ -170,10 +182,14 @@
         min-height: 6vh !important;
         max-height: 6vh !important;
       }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
       $multiplier: 0.8;
       .levelProgress {
         position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
+        margin-top: calc(4px*#{$multiplier});
         border-top: groove rgba(121, 171, 66, 0.5) 1px;
         .col {
           padding: 0;
@@ -306,6 +322,10 @@
         min-height: 6vh !important;
         max-height: 6vh !important;
       }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
       $multiplier: 0.8;
       .levelProgress {
         position: relative;
@@ -387,6 +407,8 @@
           padding: 1px !important
         }
         button {
+          padding-bottom: 3px;
+          padding-top: 3px;
           margin: 0;
           background-color: transparent;
           width: 40vw;
@@ -442,11 +464,15 @@
         min-height: 6vh !important;
         max-height: 6vh !important;
       }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
       $multiplier: 0.8;
       .levelProgress {
         position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        margin-top: 5px;
+        border-top: groove rgba(121, 171, 66, 0.3) 2px;
         .col {
           padding: 0;
         }
@@ -454,7 +480,7 @@
           position: absolute;
           width: 50px;
           top: -0.70vw;
-          left: 8vw;
+          left: 12vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -474,7 +500,7 @@
         }
       }
       .statistics {
-        margin-top: 5vh;
+        margin-top: 5.1vh;
         margin-bottom: 8vh;
         color: white;
         position: relative;
@@ -518,11 +544,13 @@
         }
       }
       .userNameOpp {
-        margin-bottom: 2vh;
+        margin-bottom: 2.1vh;
         ion-col {
           padding: 1px !important
         }
         button {
+          padding-bottom: 3px;
+          padding-top: 3px;
           margin: 0;
           background-color: transparent;
           width: 43vw;
@@ -541,8 +569,8 @@
         box-sizing: border-box;
         color: #00a84f;
         height: 7vh;
-        padding-left: 1px;
-        padding-right: 1px;
+        padding-bottom: 3px;
+        padding-top: 3px;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
@@ -572,7 +600,7 @@
     }
     @media only screen and (min-height: 900px) and (min-width: 900px) {
       ion-navbar {
-        border-bottom: solid rgba(121, 171, 66, 0.7) 5px;
+        border-bottom: solid rgba(121, 171, 66, 0.7) 2px;
       }
       .scroll-content {
         margin-top: 11vh !important;
@@ -581,19 +609,23 @@
         min-height: 6vh !important;
         max-height: 6vh !important;
       }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
       $multiplier: 0.8;
       .levelProgress {
         position: relative;
-        margin-top: calc(#{$levelProgressMarginTop}*#{$multiplier});
-        border-top: groove rgba(121, 171, 66, 0.5) 1px;
+        margin-top: 8px;
+        border-top: groove rgba(121, 171, 66, 0.3) 2px;
         .col {
           padding: 0;
         }
         img {
           position: absolute;
-          width: 50px;
+          width: 65px;
           top: -0.70vw;
-          left: 8vw;
+          left: 12vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -613,7 +645,7 @@
         }
       }
       .statistics {
-        margin-top: 5vh;
+        margin-top: 5.1vh;
         margin-bottom: 8vh;
         color: white;
         position: relative;
@@ -657,11 +689,13 @@
         }
       }
       .userNameOpp {
-        margin-bottom: 2vh;
+        margin-bottom: 2.1vh;
         ion-col {
           padding: 1px !important
         }
         button {
+          padding-bottom: 3px;
+          padding-top: 3px;
           margin: 0;
           background-color: transparent;
           width: 43vw;
@@ -680,8 +714,8 @@
         box-sizing: border-box;
         color: #00a84f;
         height: 7vh;
-        padding-left: 1px;
-        padding-right: 1px;
+        padding-bottom: 3px;
+        padding-top: 3px;
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
@@ -708,15 +742,5 @@
           color: white;
         }
       }
-    }
-    ion-badge {
-      right: calc(50% - 30px) !important;
-      top: -5px;
-      position: absolute;
-      right: 4%;
-      padding: 1px 6px;
-      height: auto;
-      font-size: 12px;
-      line-height: 16px;
     }
   }

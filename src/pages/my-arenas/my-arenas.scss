@@ -1,3 +1,18 @@
 page-my-arenas {
-
+  .toolbar-md {
+    min-height: 6vh !important;
+    max-height: 6vh !important;
+  }
+  .toolbar-ios {
+    min-height: 6vh !important;
+    max-height: 6vh !important;
+  }
+  .scroll-content {
+    margin-top: 10.7vh !important;
+  }
+  @media only screen and (max-height: 600px) and (max-width: 479px) {
+    .scroll-content {
+      margin-top: 10.7vh !important;
+    }
+  }
 }
