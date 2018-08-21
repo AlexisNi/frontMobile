@@ -162,6 +162,91 @@ progress-bar {
       z-index: 10000;
     }
   }
+  @media only screen and (max-height: 1024px) and (max-width: 479px) {
+    $multiplier: 0.7;
+    svg {
+      position: absolute;
+      left: -6px;
+    }
+    #cont {
+      height: 191px;
+      width: 177px;
+      margin: 4vh auto;
+    }
+    .textSvg {
+      position: absolute;
+      top: 50%;
+      left: 53%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      .levelContainer {
+        font-family: HIGHSPEED;
+        font-size: 10vh;
+        width: 100%;
+      }
+    }
+    .textSvg::after {
+      content: 'LVL';
+      position: absolute;
+      font-size: 3vh;
+      font-family: Play;
+      top: -17px;
+      left: 72px;
+      letter-spacing: 1px;
+    }
+    .experienceDisplay {
+      position: absolute;
+      top: 73%;
+      left: 4%;
+      font-family: Play;
+      font-size: 20px;
+      width: 100%;
+    }
+    .upLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      top: -2.3vh;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .leftLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      left: -5.5vw;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+    .downLine {
+      position: absolute;
+      width: calc(#{$upLineWidth}*#{$multiplier});
+      height: calc(#{$upLineHeight}*#{$multiplier});
+      border-left: 1px solid white;
+      bottom: -3vh;
+      left: 50%;
+      transform: translateX(100%);
+      opacity: 0.7;
+      z-index: 10000;
+    }
+    .rightLine {
+      position: absolute;
+      width: calc(#{$leftLineWidth}*#{$multiplier});
+      height: calc(#{$leftLineHeight}*#{$multiplier});
+      border-top: 1px solid white;
+      top: 50%;
+      right: -7vw;
+      opacity: 1;
+      transform: translateY(100%);
+      z-index: 10000;
+    }
+  }
   @media only screen and (max-height:900px) and (min-width: 479px) {
     $multiplier: 0.7;
     svg {

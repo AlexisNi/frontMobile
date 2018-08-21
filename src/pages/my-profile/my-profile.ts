@@ -11,6 +11,7 @@ import { HistoricDataProvider } from "../../providers/historic-data";
 import { LeaderBoardsProvider } from "../../providers/leader-boards/leader-boards";
 import { UserFound } from "../../models/userFound";
 import { HintsProvider } from "../../providers/hints/hints";
+import { AdMobPro } from "@ionic-native/admob-pro";
 
 
 /*
@@ -67,6 +68,11 @@ export class MyProfilePage implements AfterViewInit {
     }
   }
 
+  ionViewDidLoad() {
+    this.admob.onAdDismiss()
+      .subscribe(() => { console.log('User dismissed ad'); });
+  }
+
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.bacgroundImage = 'assets/images/login/background.png';
@@ -74,6 +80,17 @@ export class MyProfilePage implements AfterViewInit {
 
     })
 
+  }
+  showAd() {
+    this.admob.createBanner({
+      isTesting: true,
+      position: this.admob.AD_POSITION.BOTTOM_CENTER
+    })
+  }
+  showInterstitialAd() {
+    if (AdMobPro) {
+      this.admob.showInterstitial();
+    }
   }
   test() {
     console.log('clicked')
@@ -90,7 +107,8 @@ export class MyProfilePage implements AfterViewInit {
     public zone: NgZone,
     public appCtrl: App,
     private modalCtrl: ModalController,
-    private useHint: HintsProvider
+    private useHint: HintsProvider,
+    private admob: AdMobPro
 
   ) { }
 

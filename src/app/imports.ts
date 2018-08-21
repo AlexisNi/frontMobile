@@ -13,6 +13,7 @@ import { HistoricDataProvider } from "../providers/historic-data";
 import { LeaderBoardsProvider } from "../providers/leader-boards/leader-boards";
 import { FCM } from '@ionic-native/fcm';
 import { HintsProvider } from "../providers/hints/hints";
+import { AdMobPro } from '@ionic-native/admob-pro';
 
 
 export const COMPONENTS = [
@@ -33,5 +34,8 @@ export const PROVIDERS = [
     HistoricDataProvider,
     LeaderBoardsProvider,
     FCM,
-    HintsProvider
+    HintsProvider,
+    AdMobPro
+    
+    
 ]

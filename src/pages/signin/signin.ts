@@ -57,10 +57,7 @@ export class SigninPage implements OnInit, OnDestroy {
 
 
   constructor(public navCtrl: NavController,
-    public authService: Auth,
     public loadingCtrl: LoadingController,
-    private afAuth: AngularFireAuth,
-    private fb: Facebook,
     private platform: Platform,
     public alertCtrl: AlertController,
     private firebaseService: FirebaseServiceProvider,

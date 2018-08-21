@@ -63,7 +63,7 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
         this.initCircle();
         this.calucalteProgress();
       }, 10000);
-
+ 
 
     }, 50)
   }
@@ -72,7 +72,6 @@ export class ProgressBarComponent implements OnChanges, AfterViewInit {
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['currentExp']) {
       this.currentExp = changes['currentExp'].currentValue;
-
     }
     if (changes['level']) {
       this.level = changes['level'].currentValue;

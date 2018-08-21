@@ -51,8 +51,8 @@
     }
     @media only screen and (max-height: 800px) and (max-width: 479px) {
       .tab-badge {
-        right: 5vw !important;
-        top: 1.5vh !important;
+        right: 7vw !important;
+        top: 1.4vh !important;
         position: absolute;
         right: 4%;
         padding: 1px 6px;
@@ -81,6 +81,7 @@
       }
       .tabs .tab-button[aria-selected=true] .tab-button-text {
         font-size: 2.1vh !important;
+        margin-right: 16px;
       }
       .tabs-md .tab-button-text {
         font-size: 2.4vh !important;
@@ -97,8 +98,8 @@
     }
     @media only screen and (max-height: 600px) and (max-width: 479px) {
       .tab-badge {
-        right: 5vw !important;
-        top: 1.5vh !important;
+        right: 8vw !important;
+        top: 1.6vh !important;
         position: absolute;
         right: 4%;
         padding: 1px 6px;
@@ -143,8 +144,8 @@
     }
     @media only screen and (max-height: 600px) and (min-width: 479px) {
       .tab-badge {
-        right: 5vw !important;
-        top: 1.5vh !important;
+        right: 8vw !important;
+        top: 1.6vh !important;
         position: absolute;
         right: 4%;
         padding: 1px 6px;
@@ -185,8 +186,8 @@
     }
     @media only screen and (min-height: 600px) and (min-width: 479px) {
       .tab-badge {
-        right: 5vw !important;
-        top: 1.5vh !important;
+        right: 8vw !important;
+        top: 1.6vh !important;
         position: absolute;
         right: 4%;
         padding: 1px 6px;
@@ -205,6 +206,48 @@
         #tab-t0-1 {
           .tab-button-text {
             margin-left: 25vw;
+            font-size: 2vh !important;
+          }
+        }
+      }
+      .tabs .tab-button[aria-selected=true] .tab-button-text {
+        font-size: 2.1vh !important;
+      }
+      .tabs-md .tab-button-text {
+        font-size: 2.4vh !important;
+      }
+      .tabs-ios .tab-button-text {
+        font-size: 2.4vh !important;
+      }
+      .tabs .tabbar {
+        margin-top: -0.8vh;
+        min-height: 5vh !important;
+        max-height: 5vh !important;
+        top: 7.1vh !important;
+      }
+    }
+    @media only screen and (min-height: 812px) and (min-width: 375px) {
+      .tab-badge {
+        right: 3vw !important;
+        top: 1.5vh !important;
+        position: absolute;
+        right: 4%;
+        padding: 1px 6px;
+        height: auto;
+        font-size: 12px;
+        line-height: 16px;
+        border-radius: 4vw;
+      }
+      .tabbar.show-tabbar {
+        #tab-t0-0 {
+          .tab-button-text {
+            margin-right: 14vw;
+            font-size: 2vh !important;
+          }
+        }
+        #tab-t0-1 {
+          .tab-button-text {
+            margin-left: 14vw;
             font-size: 2vh !important;
           }
         }
@@ -306,7 +349,7 @@
         top: 7.1vh !important;
       }
       .tab-badge {
-        right: 5vw !important;
+        right: 2vw !important;
         top: 0vw !important;
         position: absolute;
         right: 4%;

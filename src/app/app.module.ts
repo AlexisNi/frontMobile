@@ -9,7 +9,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SharedModule } from "./shared.module";
 import { PROVIDERS } from "./imports";
-import { HintsProvider } from '../providers/hints/hints';
 
 
 
@@ -44,8 +43,8 @@ export const firebaseConfig = {
 
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },
-  PROVIDERS,
-    HintsProvider],
+  PROVIDERS
+    ],
 
 
 })

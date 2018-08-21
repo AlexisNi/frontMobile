@@ -59,7 +59,7 @@
           position: absolute;
           width: 35px;
           top: -0.70vw;
-          left: 18vw;
+          left: 15vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -198,7 +198,7 @@
           position: absolute;
           width: 35px;
           top: -0.70vw;
-          left: 18vw;
+          left: 15vw;
           -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
           z-index: 10000000;
@@ -258,7 +258,7 @@
         }
         .percentage p {
           font-family: HIGHSPEED;
-          font-size: 3.7vh;
+          font-size: 3.6vh;
         }
       }
       .userNameOpp {
@@ -398,7 +398,7 @@
         }
         .percentage p {
           font-family: HIGHSPEED;
-          font-size: 3.7vh;
+          font-size: 3.6vh;
         }
       }
       .userNameOpp {
@@ -452,6 +452,148 @@
           width: 42vw;
           margin: 0;
           font-size: 1.4vh;
+          color: white;
+        }
+      }
+    }
+    @media only screen and (min-height: 812px) and (max-width: 375px) {
+      .scroll-content {
+        margin-top: 11vh !important;
+      }
+      .toolbar-md {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      .toolbar-ios {
+        min-height: 6vh !important;
+        max-height: 6vh !important;
+      }
+      $multiplier: 0.8;
+      .levelProgress {
+        position: relative;
+        margin-top: 3px;
+        border-top: groove rgba(121, 171, 66, 0.3) 2px;
+        .col {
+          padding: 0;
+        }
+        img {
+          position: absolute;
+          width: 38px;
+          top: -0.7vw;
+          left: 12vw;
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+          z-index: 10000000;
+        }
+        .progressBarContainer {
+          color: white;
+          position: relative;
+          .progressBarWrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .progressBarInsider {
+          position: relative;
+        }
+      }
+      .statistics {
+        margin-top: 5.1vh;
+        margin-bottom: 8vh;
+        color: white;
+        position: relative;
+        .col {
+          padding: 0;
+        }
+        .statsContainer {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 0vw;
+          }
+          .headerRow {
+            margin-bottom: 1vh;
+            p {
+              font-size: 2vh;
+              letter-spacing: 1px;
+            }
+          }
+        }
+        .statsContainer:first-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-left: 4vw;
+          }
+        }
+        .statsContainer:last-child {
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
+            margin-right: 4vw;
+          }
+        }
+        .percentage p {
+          font-family: HIGHSPEED;
+          font-size: 3.5vh;
+        }
+      }
+      .userNameOpp {
+        margin-bottom: 2.1vh;
+        ion-col {
+          padding: 1px !important
+        }
+        button {
+          padding-bottom: 1px;
+          padding-top: 1px;
+          margin: 0;
+          background-color: transparent;
+          width: 58vw;
+          position: relative;
+          .word-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      .btn {
+        background-image: linear-gradient(to right, map-get($colors, secondary) 50%, white 100%);
+        border-radius: 19vw;
+        box-sizing: border-box;
+        color: #00a84f;
+        height: 6vh;
+        padding-bottom: 3px;
+        padding-top: 3px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+      .btn span {
+        position: relative;
+        background: black;
+        border-radius: 19vw;
+        display: block;
+        height: 100%;
+        transition: background .5s ease;
+        width: 100%;
+        .word-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        p {
+          width: 42vw;
+          margin: 0;
+          font-size: 1.6vh;
           color: white;
         }
       }
@@ -553,7 +695,7 @@
           padding-top: 3px;
           margin: 0;
           background-color: transparent;
-          width: 43vw;
+          width: 44vw;
           position: relative;
           .word-container {
             position: absolute;
@@ -698,7 +840,7 @@
           padding-top: 3px;
           margin: 0;
           background-color: transparent;
-          width: 43vw;
+          width: 44vw;
           position: relative;
           .word-container {
             position: absolute;

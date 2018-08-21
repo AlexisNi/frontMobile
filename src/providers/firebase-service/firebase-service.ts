@@ -47,7 +47,7 @@ export class FirebaseServiceProvider {
     }
     else {
       return this.afAuth.auth
-        .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .signInWithPopup(new firebase.auth.FacebookAuthProvider()) 
         .then(res => {
         });
     }
